@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 
-//type FoodRecepies = { recepiename: string };
+type Meal = {
+  title: string;
+  description: string;
+  imageUrl: string;
+  categories: string[];
+  avgRating: number;
+};
 
 //call recipe-API to get the toast-recipe
 export const Meal = () => {
-  const [recepies, setRecepies] = useState<any>();
+  const [recepies, setRecepies] = useState<Meal>();
 
   useEffect(() => {
     fetch(
@@ -13,5 +19,12 @@ export const Meal = () => {
       .then((res) => res.json())
       .then((data) => setRecepies(data));
   }, []);
-  return <p>{recepies && recepies.title}</p>;
+  return (
+    <>
+      <p>Title: {recepies && recepies.title}</p>
+      <p>Description: {recepies && recepies.description}</p>
+      <p>Rating: {recepies && recepies.avgRating}</p>
+      <img src={recepies && recepies.imageUrl}></img>
+    </>
+  );
 };
