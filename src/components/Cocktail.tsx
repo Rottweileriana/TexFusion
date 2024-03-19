@@ -21,7 +21,7 @@ export const Cocktail = () => {
       .then((res) => res.json())
       .then((data) => setCocktails(data));
   }, []);
-  //const cocktail = cocktails?.cocktails[0];
+  const cocktail = cocktails?.cocktails[0];
   return (
     <>
       <p>Id: {cocktail && cocktail.idDrink}</p>
