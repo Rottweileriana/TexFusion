@@ -1,16 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 type DishProps = {
   imageUrl: string;
   title: string;
   ingredients: Ingredient[];
   price: number;
-}
+};
 
 type Ingredient = {
   name: string;
-}
+};
 
 const StyledDish = styled.div`
   display: flex;
@@ -41,7 +41,12 @@ const Text = styled.p`
   padding-right: 5px;
 `;
 
-const Dish: React.FC<DishProps> = ({ imageUrl, title, ingredients, price = 100 }) => {
+const Dish: React.FC<DishProps> = ({
+  imageUrl,
+  title,
+  ingredients,
+  price = 100,
+}) => {
   const formattedIngredients = ingredients
     .map((ingredient) => ingredient.name)
     .reduce((acc, curr, index, array) => {
@@ -52,17 +57,17 @@ const Dish: React.FC<DishProps> = ({ imageUrl, title, ingredients, price = 100 }
       } else {
         return `${acc}, ${curr}`;
       }
-    }, '');
+    }, "");
 
-const MAX_LENGTH = 19;
-let formattedIngredientText = formattedIngredients;
+  const MAX_LENGTH = 19;
+  let formattedIngredientText = formattedIngredients;
 
-if (formattedIngredientText.length > MAX_LENGTH) {
-  formattedIngredientText = formattedIngredientText.substring(0, MAX_LENGTH) + '...';
-}
-else {
-  formattedIngredientText = `${formattedIngredients}.`;
-}
+  if (formattedIngredientText.length > MAX_LENGTH) {
+    formattedIngredientText =
+      formattedIngredientText.substring(0, MAX_LENGTH) + "...";
+  } else {
+    formattedIngredientText = `${formattedIngredients}.`;
+  }
 
   return (
     <StyledDish>
