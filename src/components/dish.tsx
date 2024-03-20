@@ -25,7 +25,7 @@ const StyledDish = styled.div`
   text-align: left;
 `;
 
-const Image = styled.img`
+const Image = styled.img`npm
   width: height;
   height: 100px;
   border-radius: 1px;
