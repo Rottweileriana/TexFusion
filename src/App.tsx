@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   return (
     <>
+    <MenuComponent/>
       <h3>Recipe from API:</h3>
       <div>
         <Meal></Meal>
