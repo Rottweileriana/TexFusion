@@ -1,12 +1,13 @@
-import { Meal } from "./components/index";
+import { MenuComponent, Cocktail } from "./components/index";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <h3>Recipe from API:</h3>
+      <MenuComponent />
+      <h3>Cocktail from API:</h3>
       <div>
-        <Meal></Meal>
+        <Cocktail></Cocktail>
       </div>
     </>
   );
