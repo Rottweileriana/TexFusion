@@ -1,2 +1,2 @@
 export { Cocktail } from "./Cocktail";
-export { MenuComponent } from "./Menu";
+export { MenuComponent } from "./MenuComponent";

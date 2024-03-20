@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Dish from "./Dish";
+import Dish from "./Course";
 
 type Recipes = {
   recipes: Recipe[];
