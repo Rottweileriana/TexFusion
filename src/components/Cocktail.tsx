@@ -8,20 +8,19 @@ type Cocktail = {
 };
 
 type Result = {
-  cocktails: Cocktail[];
+  drinks: Cocktail[];
 };
 
-//call recipe-API to get the toast-recipe
+//call recipe-API to get a cocktail by id
 export const Cocktail = () => {
   const [cocktails, setCocktails] = useState<Result>();
-  //const [cocktail, setCocktail] = useState<Cocktail>();
 
   useEffect(() => {
-    fetch("www.thecocktaildb.com/api/json/v1/1/random.php")
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11001")
       .then((res) => res.json())
       .then((data) => setCocktails(data));
   }, []);
-  const cocktail = cocktails?.cocktails[0];
+  const cocktail = cocktails?.drinks[0];
   return (
     <>
       <p>Id: {cocktail && cocktail.idDrink}</p>
