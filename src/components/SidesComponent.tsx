@@ -32,21 +32,22 @@ const Title = styled.h3`
   margin: 0;
 `;
 
-const Text = styled.p`
-  width: 150px;
-  margin: 5px;
-  padding-right: 5px;
-`;
-
 const Price = styled.p`
   margin: 0;
+  margin-top: 5px;
+`;
+
+const CounterBtnRight = styled.div`
+  display: flex;
+  justify-content: right;
+  width: 170px;
 `;
 
 const CounterContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
-  margin-top: 15px;
+  margin-top: 10px;
   border: 0px solid #808080;
   border-radius: 5px;
   background-color: #D3D3D3;
@@ -101,12 +102,14 @@ const SidesComponent: React.FC<SideProps> = ({
       <Image src={imageUrl} alt={title} />
       <div>
         <Title>{title}</Title>
-          <Price>{price} kr</Price>
+        <Price>{price} kr</Price>
+        <CounterBtnRight>
           <CounterContainer>
             <CounterButton onClick={handleDecrement}>-</CounterButton>
             <ResultField type="text" value={count} readOnly />
             <CounterButton onClick={handleIncrement}>+</CounterButton>
           </CounterContainer>
+        </CounterBtnRight>
       </div>
     </StyledSide>
   );
