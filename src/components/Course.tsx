@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+//Används inte!
+
 type DishProps = {
   imageUrl: string;
   title: string;

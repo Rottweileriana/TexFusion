@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Dish from "./Course";
+import CourseComponent from "./CourseComponent";
 
-//Används inte!
+//Lägg in villkor för att bara hämta/visa recept för main courses (ej sides)
 
 type Recipe = {
   _id: string;
@@ -18,8 +18,8 @@ type Ingredient = {
   amount: number;
   unit: string;
 };
-
-export function MenuComponent() {
+//https://iths-2024-recept-grupp6-bc215j.reky.se/categories/main/recipes
+export function CourseMenu() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const API_URL = "https://iths-2024-recept-grupp6-bc215j.reky.se/recipes";
 
@@ -46,13 +46,13 @@ export function MenuComponent() {
 
   return (
     <>
-      <h2>Main Courses</h2>
+      <h2>Huvudrätt</h2>
       {recipes &&
         recipes.map(
           (recipe) =>
             recipe.title &&
             recipe.title.trim() !== "" && (
-              <Dish
+              <CourseComponent
                 key={recipe._id}
                 imageUrl={recipe.imageUrl}
                 title={recipe.title}

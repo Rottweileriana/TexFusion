@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+// Används inte!.
+
 type Cocktail = {
   idDrink: string;
   strDrink: string;
