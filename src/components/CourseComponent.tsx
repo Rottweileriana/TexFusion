@@ -19,7 +19,7 @@ const StyledCourse = styled.div`
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
-  background-color: #f2f2f2;
+  background-color: #e0e0e0;
   color: black;
   margin-bottom: 10px;
   text-align: left;
@@ -28,7 +28,8 @@ const StyledCourse = styled.div`
 const Image = styled.img`
   width: 100px;
   height: 100px;
-  border-radius: 1px;
+  border-radius: 5px;
+  border: 1px solid #000;
   margin-right: 20px;
 `;
 
@@ -37,12 +38,14 @@ const Title = styled.h3`
 `;
 
 const Text = styled.p`
+  width: 155px;
   margin: 5px;
   padding-right: 5px;
 `;
 
 const Price = styled.p`
   margin: 0;
+  margin-bottom: 5px;
 `;
 
 const PriceAndAddContainer = styled.div`
@@ -55,6 +58,10 @@ const CounterContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
+  margin-top: 5px;
+  border: 0px solid #808080;
+  border-radius: 5px;
+  background-color: #D3D3D3;
 `;
 
 const CounterButton = styled.button`
