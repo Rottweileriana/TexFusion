@@ -38,9 +38,10 @@ const Title = styled.h3`
 `;
 
 const Text = styled.p`
-  width: 155px;
+  width: 160px;
   margin: 5px;
   padding-right: 5px;
+  color: #808080;
 `;
 
 const Price = styled.p`

@@ -40,7 +40,7 @@ const Price = styled.p`
 const CounterBtnRight = styled.div`
   display: flex;
   justify-content: right;
-  width: 170px;
+  width: 175px;
 `;
 
 const CounterContainer = styled.div`
