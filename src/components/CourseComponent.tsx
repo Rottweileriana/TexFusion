@@ -23,6 +23,7 @@ const StyledCourse = styled.div`
   color: black;
   margin-bottom: 10px;
   text-align: left;
+  &:hover { cursor: default; }
 `;
 
 const Image = styled.img`
