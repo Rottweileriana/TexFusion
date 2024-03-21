@@ -24,7 +24,7 @@ const StyledCocktail = styled.div`
 `;
 
 const Image = styled.img`npm
-  width: height;
+  width: 100px;
   height: 100px;
   border-radius: 1px;
   margin-right: 20px;

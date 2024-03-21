@@ -26,7 +26,7 @@ const StyledCourse = styled.div`
 `;
 
 const Image = styled.img`
-  width: height;
+  width: 100px;
   height: 100px;
   border-radius: 1px;
   margin-right: 20px;
