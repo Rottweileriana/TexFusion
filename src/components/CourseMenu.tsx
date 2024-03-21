@@ -9,7 +9,7 @@ type Recipe = {
   title: string;
   description: string;
   ingredients: Ingredient[];
-  price: number;
+  timeInMins: number;
 };
 
 type Ingredient = {
@@ -46,7 +46,7 @@ export function CourseMenu() {
 
   return (
     <>
-      <h2>Huvudrätt</h2>
+      <h2>HUVUDRÄTT</h2>
       {recipes &&
         recipes.map(
           (recipe) =>
@@ -57,7 +57,7 @@ export function CourseMenu() {
                 imageUrl={recipe.imageUrl}
                 title={recipe.title}
                 ingredients={recipe.ingredients}
-                price={recipe.price}
+                price={recipe.timeInMins}
               />
             )
         )}

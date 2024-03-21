@@ -54,7 +54,7 @@ export function CocktailMenu() {
 
   return (
     <>
-      <h2>Cocktail</h2>
+      <h2>COCKTAIL</h2>
       {recCocktail !== undefined && (
         <CocktailComponent
           strDrinkThumb={recCocktail.strDrinkThumb}

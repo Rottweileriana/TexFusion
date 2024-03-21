@@ -4,6 +4,7 @@ import styled from "styled-components";
 type SideProps = {
     imageUrl: string;
     title: string;
+    info?: string;
     price: number;
   };
 
@@ -32,14 +33,21 @@ const Title = styled.h3`
   margin: 0;
 `;
 
-const Price = styled.p`
-  margin: 0;
-  margin-top: 5px;
+const Text = styled.p`
+  margin: 5px;
+  padding-right: 5px;
+  color: #808080;
 `;
 
-const CounterBtnRight = styled.div`
+const Price = styled.p`
+  margin: 0;
+  margin-bottom: 5px;
+`;
+
+const PriceAndAddContainer = styled.div`
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
+  align-items: center;
   width: 175px;
 `;
 
@@ -47,7 +55,7 @@ const CounterContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
-  margin-top: 10px;
+  margin-top: 5px;
   border: 0px solid #808080;
   border-radius: 5px;
   background-color: #D3D3D3;
@@ -82,6 +90,7 @@ const ResultField = styled.input`
 const SidesComponent: React.FC<SideProps> = ({
   imageUrl,
   title,
+  info,
   price = 15,
 
 }) => {
@@ -102,14 +111,15 @@ const SidesComponent: React.FC<SideProps> = ({
       <Image src={imageUrl} alt={title} />
       <div>
         <Title>{title}</Title>
-        <Price>{price} kr</Price>
-        <CounterBtnRight>
+        <Text>{info || '\u00A0'}</Text>
+        <PriceAndAddContainer>
+          <Price>{price} kr</Price>
           <CounterContainer>
             <CounterButton onClick={handleDecrement}>-</CounterButton>
             <ResultField type="text" value={count} readOnly />
             <CounterButton onClick={handleIncrement}>+</CounterButton>
           </CounterContainer>
-        </CounterBtnRight>
+        </PriceAndAddContainer>
       </div>
     </StyledSide>
   );

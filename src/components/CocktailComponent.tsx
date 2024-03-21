@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 type CocktailProps = {
-  // idDrink: string;
   strDrink: string;
-  // strAlcoholic: string;
   strDrinkThumb: string;
-  // price: number;
   recommended?: string;
 };
 
@@ -35,14 +32,21 @@ const Title = styled.h3`
   margin: 0;
 `;
 
-const Price = styled.p`
-  margin: 0;
-  margin-top: 5px;
+const Text = styled.p`
+  margin: 5px;
+  padding-right: 5px;
+  color: #6A0DAD;
 `;
 
-const CounterBtnRight = styled.div`
+const Price = styled.p`
+  margin: 0;
+  margin-bottom: 5px;
+`;
+
+const PriceAndAddContainer = styled.div`
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
+  align-items: center;
   width: 175px;
 `;
 
@@ -50,7 +54,7 @@ const CounterContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
-  margin-top: 10px;
+  margin-top: 5px;
   border: 0px solid #808080;
   border-radius: 5px;
   background-color: #D3D3D3;
@@ -85,12 +89,11 @@ const ResultField = styled.input`
 const Cocktail: React.FC<CocktailProps> = ({
   strDrinkThumb,
   strDrink,
-  // strAlcoholic,
-  // price,
   recommended,
 
 }) => {
   const [count, setCount] = useState<number>(0);
+  const price = 80;
   const MAX_LENGTH = 16;
   let formattedCocktailName = strDrink;
 
@@ -114,14 +117,15 @@ const Cocktail: React.FC<CocktailProps> = ({
       <Image src={strDrinkThumb} alt={strDrink} />
       <div>
         <Title>{formattedCocktailName}</Title>
-        <Price>50 kr {recommended}</Price>
-        <CounterBtnRight>
+        <Text>{recommended || '\u00A0'}</Text>
+        <PriceAndAddContainer>
+          <Price>{price} kr</Price>
           <CounterContainer>
             <CounterButton onClick={handleDecrement}>-</CounterButton>
             <ResultField type="text" value={count} readOnly />
             <CounterButton onClick={handleIncrement}>+</CounterButton>
           </CounterContainer>
-        </CounterBtnRight>
+        </PriceAndAddContainer>
       </div>
     </StyledCocktail>
   );
