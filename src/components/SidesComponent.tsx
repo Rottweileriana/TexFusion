@@ -19,6 +19,7 @@ type SideProps = {
   color: black;
   margin-bottom: 10px;
   text-align: left;
+  &:hover { cursor: default; }
 `;
 
 const Image = styled.img`
@@ -85,7 +86,7 @@ const ResultField = styled.input`
   color: black;
   font-size: 15px;
   outline: none;
-`;
+  `;
 
 const SidesComponent: React.FC<SideProps> = ({
   imageUrl,
