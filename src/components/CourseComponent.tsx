@@ -122,7 +122,9 @@ const CourseComponent: React.FC<CourseProps> = ({
   }
 
   const handleIncrement = () => {
-    setCount((prevCount) => prevCount + 1);
+    if (count < 99) {
+      setCount((prevCount) => prevCount + 1);
+    }
   };
 
   const handleDecrement = () => {

@@ -103,7 +103,9 @@ const Cocktail: React.FC<CocktailProps> = ({
   }
 
   const handleIncrement = () => {
-    setCount((prevCount) => prevCount + 1);
+    if (count < 99) {
+      setCount((prevCount) => prevCount + 1);
+    }
   };
 
   const handleDecrement = () => {

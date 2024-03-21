@@ -97,7 +97,9 @@ const SidesComponent: React.FC<SideProps> = ({
   const [count, setCount] = useState<number>(0);
 
   const handleIncrement = () => {
-    setCount((prevCount) => prevCount + 1);
+    if (count < 99) {
+      setCount((prevCount) => prevCount + 1);
+    }
   };
 
   const handleDecrement = () => {
