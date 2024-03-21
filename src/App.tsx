@@ -1,4 +1,4 @@
-import { CourseMenu, CocktailMenu, SidesMenu, Cocktail } from "./components/index";
+import { CourseMenu, CocktailMenu, SidesMenu } from "./components/index";
 import "./App.css";
 
 function App() {
@@ -7,10 +7,6 @@ function App() {
       <CourseMenu />
       <SidesMenu />
       <CocktailMenu />
-      {/* <h3>Cocktail from API:</h3>
-      <div>
-        <Cocktail></Cocktail>
-      </div> */}
     </>
   );
 }
