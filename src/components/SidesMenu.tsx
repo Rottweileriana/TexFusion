@@ -7,7 +7,7 @@ type Side = {
   _id: string;
   imageUrl: string;
   title: string;
-  price: number;
+  timeInMins: number;
 };
 // https://iths-2024-recept-grupp6-bc215j.reky.se/categories/side/recipes
 export function SidesMenu() {
@@ -37,7 +37,7 @@ export function SidesMenu() {
 
   return (
     <>
-      <h2>Tillbehör</h2>
+      <h2>TILLBEHÖR</h2>
       {sides &&
         sides.map(
           (side) =>
@@ -47,7 +47,7 @@ export function SidesMenu() {
                 key={side._id}
                 imageUrl={side.imageUrl}
                 title={side.title}
-                price={side.price}
+                price={side.timeInMins}
               />
             )
         )}
