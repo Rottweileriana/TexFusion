@@ -1,17 +1,9 @@
 import { useState, useEffect } from "react";
 import SidesComponent from "./SidesComponent";
+import { Dish } from "../types/index";
 
-//Lägg in villkor för att bara hämta/visa recept för sides (ej main courses)
-
-type Side = {
-  _id: string;
-  imageUrl: string;
-  title: string;
-  timeInMins: number;
-};
-// https://iths-2024-recept-grupp6-bc215j.reky.se/categories/side/recipes
 export function SidesMenu() {
-  const [sides, setSides] = useState<Side[]>([]);
+  const [sides, setSides] = useState<Dish[]>([]);
   const API_URL =
     "https://iths-2024-recept-grupp6-bc215j.reky.se/categories/side/recipes";
 
@@ -25,7 +17,7 @@ export function SidesMenu() {
         const data = await response.json();
         setSides(data);
       } catch (error) {
-        console.error("Error fetching recipe:", error);
+        console.error("Error fetching dishes:", error);
       }
     };
 
@@ -48,6 +40,7 @@ export function SidesMenu() {
                 key={side._id}
                 imageUrl={side.imageUrl}
                 title={side.title}
+                ingredients={side.ingredients}
                 price={side.timeInMins}
               />
             )

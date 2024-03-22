@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-//import { DishProps } from "../types/index.ts";
+import { DishProps } from "../types/index.ts";
 
-type SideProps = {
-  imageUrl: string;
-  title: string;
-  info?: string;
-  price: number;
-};
-
+//#region Styles
 const StyledSide = styled.div`
   display: flex;
   width: 300px;
@@ -87,14 +81,37 @@ const ResultField = styled.input`
   font-size: 15px;
   outline: none;
 `;
+//#endregion
 
-const SidesComponent: React.FC<SideProps> = ({
+const SidesComponent: React.FC<DishProps> = ({
   imageUrl,
   title,
-  info,
-  price = 15,
+  ingredients,
+  price = 30,
 }) => {
   const [count, setCount] = useState<number>(0);
+
+  const formattedIngredients = ingredients
+    .map((ingredient) => ingredient.name)
+    .reduce((acc, curr, index, array) => {
+      if (index === 0) {
+        return curr;
+      } else if (index === array.length - 1) {
+        return `${acc} och ${curr}`;
+      } else {
+        return `${acc}, ${curr}`;
+      }
+    }, "");
+
+  const MAX_LENGTH = 19;
+  let formattedIngredientText = formattedIngredients;
+
+  if (formattedIngredientText.length > MAX_LENGTH) {
+    formattedIngredientText =
+      formattedIngredientText.substring(0, MAX_LENGTH) + "...";
+  } else {
+    formattedIngredientText = `${formattedIngredients}.`;
+  }
 
   const handleIncrement = () => {
     if (count < 99) {
@@ -113,7 +130,7 @@ const SidesComponent: React.FC<SideProps> = ({
       <Image src={imageUrl} alt={title} />
       <div>
         <Title>{title}</Title>
-        <Text>{info || "\u00A0"}</Text>
+        <Text>{formattedIngredientText}</Text>
         <PriceAndAddContainer>
           <Price>{price} kr</Price>
           <CounterContainer>

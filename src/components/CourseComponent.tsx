@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { DishProps } from "../types/index";
 
+//#region Styles
+
 const StyledCourse = styled.div`
   display: flex;
   width: 300px;
@@ -80,6 +82,7 @@ const ResultField = styled.input`
   font-size: 15px;
   outline: none;
 `;
+//#endregion
 
 const CourseComponent: React.FC<DishProps> = ({
   imageUrl,
