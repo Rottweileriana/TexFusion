@@ -1,16 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
-type CourseProps = {
-  imageUrl: string;
-  title: string;
-  ingredients: Ingredient[];
-  price: number;
-};
-
-type Ingredient = {
-  name: string;
-};
+import { DishProps } from "../types/index";
 
 const StyledCourse = styled.div`
   display: flex;
@@ -62,23 +52,23 @@ const CounterContainer = styled.div`
   margin-top: 5px;
   border: 0px solid #808080;
   border-radius: 5px;
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
 `;
 
 const CounterButton = styled.button`
-margin: 0;
-padding: 0;
-padding-bottom: 5px;
-width: 30px;
-height: 30px;
-background-color: transparent;
-border: none;
-color: black;
-font-size: 20px;
-cursor: pointer;
-display: flex;
-justify-content: center;
-align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ResultField = styled.input`
@@ -91,7 +81,7 @@ const ResultField = styled.input`
   outline: none;
 `;
 
-const CourseComponent: React.FC<CourseProps> = ({
+const CourseComponent: React.FC<DishProps> = ({
   imageUrl,
   title,
   ingredients,

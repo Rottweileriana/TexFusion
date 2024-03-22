@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+//import { DishProps } from "../types/index.ts";
 
 type SideProps = {
-    imageUrl: string;
-    title: string;
-    info?: string;
-    price: number;
-  };
+  imageUrl: string;
+  title: string;
+  info?: string;
+  price: number;
+};
 
-  const StyledSide = styled.div`
+const StyledSide = styled.div`
   display: flex;
   width: 300px;
   height: 100px;
@@ -58,23 +59,23 @@ const CounterContainer = styled.div`
   margin-top: 5px;
   border: 0px solid #808080;
   border-radius: 5px;
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
 `;
 
 const CounterButton = styled.button`
-margin: 0;
-padding: 0;
-padding-bottom: 5px;
-width: 30px;
-height: 30px;
-background-color: transparent;
-border: none;
-color: black;
-font-size: 20px;
-cursor: pointer;
-display: flex;
-justify-content: center;
-align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ResultField = styled.input`
@@ -92,7 +93,6 @@ const SidesComponent: React.FC<SideProps> = ({
   title,
   info,
   price = 15,
-
 }) => {
   const [count, setCount] = useState<number>(0);
 
@@ -113,7 +113,7 @@ const SidesComponent: React.FC<SideProps> = ({
       <Image src={imageUrl} alt={title} />
       <div>
         <Title>{title}</Title>
-        <Text>{info || '\u00A0'}</Text>
+        <Text>{info || "\u00A0"}</Text>
         <PriceAndAddContainer>
           <Price>{price} kr</Price>
           <CounterContainer>

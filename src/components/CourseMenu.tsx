@@ -1,26 +1,12 @@
 import { useState, useEffect } from "react";
 import CourseComponent from "./CourseComponent";
+import { Dish } from "../types/index";
 
 //Lägg in villkor för att bara hämta/visa recept för main courses (ej sides)
 
-type Recipe = {
-  _id: string;
-  imageUrl: string;
-  title: string;
-  description: string;
-  ingredients: Ingredient[];
-  timeInMins: number;
-};
-
-type Ingredient = {
-  _id: string;
-  name: string;
-  amount: number;
-  unit: string;
-};
 //https://iths-2024-recept-grupp6-bc215j.reky.se/categories/main/recipes
 export function CourseMenu() {
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [recipes, setRecipes] = useState<Dish[]>([]);
   const API_URL =
     "https://iths-2024-recept-grupp6-bc215j.reky.se/categories/main/recipes";
 
