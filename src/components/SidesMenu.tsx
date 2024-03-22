@@ -12,7 +12,8 @@ type Side = {
 // https://iths-2024-recept-grupp6-bc215j.reky.se/categories/side/recipes
 export function SidesMenu() {
   const [sides, setSides] = useState<Side[]>([]);
-  const API_URL = "https://iths-2024-recept-grupp6-bc215j.reky.se/recipes";
+  const API_URL =
+    "https://iths-2024-recept-grupp6-bc215j.reky.se/categories/side/recipes";
 
   useEffect(() => {
     const fetchSides = async () => {

@@ -21,7 +21,8 @@ type Ingredient = {
 //https://iths-2024-recept-grupp6-bc215j.reky.se/categories/main/recipes
 export function CourseMenu() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const API_URL = "https://iths-2024-recept-grupp6-bc215j.reky.se/recipes";
+  const API_URL =
+    "https://iths-2024-recept-grupp6-bc215j.reky.se/categories/main/recipes";
 
   useEffect(() => {
     const fetchRecipes = async () => {
