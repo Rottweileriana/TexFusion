@@ -1,37 +1,62 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useState, ReactNode } from 'react';
 
-// Define your context
+type CartItem = {
+  imageUrl: string;
+  title: string;
+  totItemPrice: number;
+  quantity: number;
+};
+
 type CartContextType = {
-  addToCart: () => void;
-  removeFromCart: () => void;
+  cart: CartItem[];
+  addToCart: (product: CartItem) => void;
+  removeFromCart: (index: number) => void;
 };
 
 export const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// Define your provider
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<number>(0);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
-  const addToCart = () => {
-    setCartItems((prevCount) => prevCount + 1);
+  const addToCart = (product: CartItem) => {
+    const existingProductIndex = cart.findIndex(item => item.title === product.title);
+
+    if (existingProductIndex !== -1) {
+      // Om produkten redan finns, öka dess kvantitet med 1
+      const updatedCart = cart.map((item, index) => {
+        if (index === existingProductIndex) {
+          return {
+            ...item,
+            quantity: item.quantity + 1
+          };
+        }
+        return item;
+      });
+      setCart(updatedCart);
+    } else {
+      // Om produkten inte finns, lägg till den som ett nytt objekt
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
   };
 
-  const removeFromCart = () => {
-    setCartItems((prevCount) => prevCount - 1);
+  const removeFromCart = (index: number) => {
+    const newCart = [...cart];
+    const itemToRemove = newCart[index];
+
+    if (itemToRemove.quantity > 1) {
+      // Om kvantiteten är större än ett, minska kvantiteten med ett
+      itemToRemove.quantity -= 1;
+    } else {
+      // Om kvantiteten är ett, ta bort produkten från kundvagnen
+      newCart.splice(index, 1);
+    }
+
+    setCart(newCart);
   };
 
   return (
-    <CartContext.Provider value={{ addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );
-};
-
-// Define a custom hook to consume the context
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error("useCart must be used within a CartProvider");
-  }
-  return context;
 };
