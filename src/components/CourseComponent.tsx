@@ -20,7 +20,7 @@ const StyledCourse = styled.div`
   border-radius: 5px;
   padding: 5px;
   background-color: #e0e0e0;
-  color: black;
+  color: #333333;
   margin-bottom: 10px;
   text-align: left;
   &:hover { cursor: default; }
@@ -30,7 +30,7 @@ const Image = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 5px;
-  border: 1px solid #000;
+  border: 1px solid #222222;
   margin-right: 20px;
 `;
 
@@ -69,12 +69,12 @@ const CounterContainer = styled.div`
 const CounterButton = styled.button`
 margin: 0;
 padding: 0;
-padding-bottom: 5px;
+padding-bottom: 4px;
 width: 30px;
 height: 30px;
 background-color: transparent;
 border: none;
-color: black;
+color: #333333;
 font-size: 20px;
 cursor: pointer;
 display: flex;
@@ -87,7 +87,7 @@ const ResultField = styled.input`
   text-align: center;
   background-color: transparent;
   border: none;
-  color: black;
+  color: #333333;
   font-size: 15px;
   outline: none;
 `;
