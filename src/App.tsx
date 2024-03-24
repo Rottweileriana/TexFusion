@@ -32,20 +32,22 @@ const App: React.FC = () => {
   return (
     <>
       <CartProvider>
-    <div>
-    <NavBarComponent scrollToRef={scrollToRef}/>
-      <div ref={CourseMenuRef}>
-        <CourseMenu  />
-      </div>
-      <div ref={SidesMenuRef}>
-        <SidesMenu />
-      </div>
-      <div ref={CocktailMenuRef}>
-        <CocktailMenu />
-      </div>
-      <ShoppingCart />
-    </div>
-    </CartProvider>
+        <div>
+          <NavBarComponent scrollToRef={scrollToRef}/>
+          <div ref={CourseMenuRef}>
+            <CourseMenu  />
+          </div>
+          <div ref={SidesMenuRef}>
+            <SidesMenu />
+          </div>
+          <div ref={CocktailMenuRef}>
+            <CocktailMenu />
+          </div>
+          <div>
+          <ShoppingCart />
+          </div>
+        </div>
+      </CartProvider>
     </>
   );
 }
