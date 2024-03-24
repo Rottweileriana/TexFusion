@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "./context";
 import styled from "styled-components";
 
-type SideProps = {
+type Side = {
+    _id: string;
     imageUrl: string;
     title: string;
     info?: string;
     price: number;
+  };
+
+  type Product = {
+    imageUrl: string;
+    title: string;
+    price: number;
+    quantity: number;
   };
 
   const StyledSide = styled.div`
@@ -89,25 +98,37 @@ const ResultField = styled.input`
   &:hover { cursor: default; }
 `;
 
-const SidesComponent: React.FC<SideProps> = ({
+const SidesComponent: React.FC<Side> = ({
+  _id,
   imageUrl,
   title,
   info,
-  price = 15,
-
+  price
 }) => {
-  const [count, setCount] = useState<number>(0);
+  const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
+
+  // Hitta den aktuella produkten i varukorgen baserat på _id
+  const productInCart = cart.find(product => product._id === _id);
+
+  // Hämta quantity från den aktuella produkten, om den finns i varukorgen
+  const quantity = productInCart ? productInCart.quantity : 0;
 
   const handleIncrement = () => {
-    if (count < 99) {
-      setCount((prevCount) => prevCount + 1);
-    }
+    // Skapa ett nytt objekt för den aktuella produkten
+    const product = {
+      _id,
+      imageUrl,
+      title,
+      price,
+      quantity: 1
+    };
+    // Anropa addToCart-metoden med det nya produktobjektet
+    addToCart(product);
   };
 
   const handleDecrement = () => {
-    if (count > 0) {
-      setCount((prevCount) => prevCount - 1);
-    }
+    // Anropa removeFromCart-metoden för att ta bort produkten
+    removeFromCart(_id);
   };
 
   return (
@@ -120,7 +141,7 @@ const SidesComponent: React.FC<SideProps> = ({
           <Price>{price} kr</Price>
           <CounterContainer>
             <CounterButton onClick={handleDecrement}>-</CounterButton>
-            <ResultField type="text" value={count} readOnly />
+            <ResultField type="text" value={quantity} readOnly />
             <CounterButton onClick={handleIncrement}>+</CounterButton>
           </CounterContainer>
         </PriceAndAddContainer>
