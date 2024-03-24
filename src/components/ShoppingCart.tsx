@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "./context";
 import styled from "styled-components";
 
 type CartItem = {
+  _id: string;
   imageUrl: string;
   title: string;
   price: number;
@@ -11,7 +13,7 @@ type CartItem = {
 const CartList = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: #e0e0e0;
   color: #333333;
   padding: 1px;
@@ -62,8 +64,10 @@ const Price = styled.div`
 const ItemImage = styled.img`
   width: 50px;
   height: 50px;
+  margin-top: 4px;
   margin-left: 8px;
-  border-radius: 1px;
+  border: 1px;
+  border-radius: 3px;
 `;
 
 const CounterContainer = styled.div`
@@ -83,7 +87,8 @@ const CounterButton = styled.button`
   width: 30px;
   height: 25px;
   background-color: transparent;
-  border: none;
+  border: 0;
+  border-radius: 5px;
   font-size: 20px;
   color: #333333;
   cursor: pointer;
@@ -100,6 +105,7 @@ const ResultField = styled.input`
   border: none;
   font-size: 15px;
   outline: none;
+  &:hover { cursor: default; }
 `;
 
 const DeleteButton = styled.div`
@@ -109,6 +115,7 @@ const DeleteButton = styled.div`
   border-radius: 5px;
   color: white;
   background-color: #C08484;
+  cursor: pointer;
 `;
 
 const CartTotals = styled.div`
@@ -124,7 +131,7 @@ const CartTotals = styled.div`
 
 const TotalPrice = styled.div`
   font-weight: bold;
-  margin-left: 2px;
+  margin-left: 15px;
 `;
 
 const TotalQuantity = styled.div`
@@ -133,44 +140,31 @@ const TotalQuantity = styled.div`
 `;
 
 export const ShoppingCart: React.FC = () => {
-  const [shoppingCart, setShoppingCart] = useState<CartItem[]>([
-    {
-      imageUrl: "url-till-bild-1.jpg",
-      title: "Produkt 1",
-      price: 19.99,
-      quantity: 2
-    },
-    {
-      imageUrl: "url-till-bild-2.jpg",
-      title: "Produkt 2",
-      price: 24.99,
-      quantity: 1
-    }
-  ]);
-  const [count, setCount] = useState<number>(0);
+  const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
 
   // Beräkna totProdPrice, totCartPrice och totCartQuant
-  const totProdPrice = shoppingCart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totProdPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
   const totCartPrice = totProdPrice; // Totala varukorgspriset kan vara samma som det totala produktpriset i detta enkla exempel
-  const totCartQuant = shoppingCart.reduce((total, item) => total + item.quantity, 0);
+  const totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
 
-  const handleIncrement = () => {
-    if (count < 99) {
-      setCount((prevCount) => prevCount + 1);
-    }
+  const handleIncrement = (product: CartItem ) => {
+    addToCart(product);
   };
 
-  const handleDecrement = () => {
-    if (count > 0) {
-      setCount((prevCount) => prevCount - 1);
-    }
+  const handleDecrement = (id: string) => {
+    // Anropa removeFromCart-metoden för att ta bort produkten
+    removeFromCart(id);
+  };
+
+  const deleteProdFromCart = (id: string, deleteProdFromCart: boolean) => {
+    removeFromCart(id, deleteProdFromCart);
   };
 
   return (
     <div>
       <h2>VARUKORG</h2>
       <CartList>
-        {shoppingCart.map((cartItem, index) => (
+        {cart.map((cartItem, index) => (
           <CartRow key={index}>
             <CartItemElement>
               <ItemImage src={cartItem.imageUrl} alt={cartItem.title} />
@@ -180,11 +174,11 @@ export const ShoppingCart: React.FC = () => {
               </ItemCol>
               <ItemColBtn>
                 <CounterContainer>
-                  <CounterButton onClick={handleDecrement}>-</CounterButton>
-                  <ResultField type="text" value={count} readOnly />
-                  <CounterButton onClick={handleIncrement}>+</CounterButton>
+                  <CounterButton onClick={() => handleDecrement(cartItem._id)}>-</CounterButton>
+                  <ResultField type="text" value={cartItem.quantity} readOnly />
+                  <CounterButton onClick={() => handleIncrement(cartItem)}>+</CounterButton>
                 </CounterContainer>
-                <DeleteButton>Ta Bort</DeleteButton>
+                <DeleteButton onClick={() => deleteProdFromCart(cartItem._id, true)}>Ta Bort</DeleteButton>
               </ItemColBtn>
             </CartItemElement>
           </CartRow>

@@ -54,6 +54,7 @@ export function CourseMenu() {
             recipe.title.trim() !== "" && (
               <CourseComponent
                 key={recipe._id}
+                _id={recipe._id}
                 imageUrl={recipe.imageUrl}
                 title={recipe.title}
                 ingredients={recipe.ingredients}

@@ -70,19 +70,19 @@ const CounterContainer = styled.div`
 `;
 
 const CounterButton = styled.button`
-margin: 0;
-padding: 0;
-padding-bottom: 4px;
-width: 30px;
-height: 30px;
-background-color: transparent;
-border: none;
-color: #333333;
-font-size: 20px;
-cursor: pointer;
-display: flex;
-justify-content: center;
-align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 4px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  color: #333333;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ResultField = styled.input`
@@ -93,6 +93,7 @@ const ResultField = styled.input`
   color: #333333;
   font-size: 15px;
   outline: none;
+  &:hover { cursor: default; }
 `;
 
 const Cocktail: React.FC<CocktailProps> = ({
