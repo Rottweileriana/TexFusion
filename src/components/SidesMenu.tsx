@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import SidesComponent from "./SidesComponent";
 
-//Lägg in villkor för att bara hämta/visa recept för sides (ej main courses)
-
 type Side = {
   _id: string;
   imageUrl: string;

@@ -57,6 +57,7 @@ export function CocktailMenu() {
       <h2>COCKTAIL</h2>
       {recCocktail !== undefined && (
         <CocktailComponent
+          idDrink={recCocktail.idDrink}
           strDrinkThumb={recCocktail.strDrinkThumb}
           strDrink={recCocktail.strDrink}
           recommended="Rekommenderad"
@@ -65,6 +66,7 @@ export function CocktailMenu() {
       {cocktails.map(cocktail => (
         <CocktailComponent
           key={cocktail.idDrink}
+          idDrink={cocktail.idDrink}
           strDrinkThumb={cocktail.strDrinkThumb}
           strDrink={cocktail.strDrink}
         />

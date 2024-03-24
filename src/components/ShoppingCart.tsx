@@ -141,6 +141,7 @@ const TotalQuantity = styled.div`
 
 export const ShoppingCart: React.FC = () => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
+  const MAX_LENGTH = 15;
 
   // Beräkna totProdPrice, totCartPrice och totCartQuant
   const totProdPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -169,7 +170,7 @@ export const ShoppingCart: React.FC = () => {
             <CartItemElement>
               <ItemImage src={cartItem.imageUrl} alt={cartItem.title} />
               <ItemCol>
-                <Title>{cartItem.title}</Title>
+                <Title>{cartItem.title.length > MAX_LENGTH ? cartItem.title.substring(0, MAX_LENGTH) + "..." : cartItem.title}</Title>
                 <Price>{cartItem.price * cartItem.quantity} kr</Price>
               </ItemCol>
               <ItemColBtn>

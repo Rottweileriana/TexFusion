@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "./context";
 import styled from "styled-components";
 
-type CocktailProps = {
+type Cocktail = {
+  idDrink: string;
   strDrink: string;
   strDrinkThumb: string;
   recommended?: string;
+};
+
+type Product = {
+  imageUrl: string;
+  title: string;
+  price: number;
+  quantity: number;
 };
 
 const StyledCocktail = styled.div`
@@ -96,16 +105,21 @@ const ResultField = styled.input`
   &:hover { cursor: default; }
 `;
 
-const Cocktail: React.FC<CocktailProps> = ({
+const Cocktail: React.FC<Cocktail> = ({
+  idDrink,
   strDrinkThumb,
   strDrink,
-  recommended,
-
+  recommended
 }) => {
-  const [count, setCount] = useState<number>(0);
-  const price = 80;
+  const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
+  const cocktailPrice = 180;
   const MAX_LENGTH = 19;
   let formattedCocktailName = strDrink;
+
+  const productInCart = cart.find(product => product._id === idDrink);
+
+  // Hämta quantity från den aktuella produkten, om den finns i varukorgen
+  const quantity = productInCart ? productInCart.quantity : 0;
 
   if (formattedCocktailName.length > MAX_LENGTH) {
     formattedCocktailName =
@@ -113,15 +127,21 @@ const Cocktail: React.FC<CocktailProps> = ({
   }
 
   const handleIncrement = () => {
-    if (count < 99) {
-      setCount((prevCount) => prevCount + 1);
-    }
+    // Skapa ett nytt objekt för den aktuella produkten
+    const product = {
+      _id: idDrink,
+      imageUrl: strDrinkThumb,
+      title: strDrink,
+      price: cocktailPrice,
+      quantity: 1
+    };
+    // Anropa addToCart-metoden med det nya produktobjektet
+    addToCart(product);
   };
 
   const handleDecrement = () => {
-    if (count > 0) {
-      setCount((prevCount) => prevCount - 1);
-    }
+    // Anropa removeFromCart-metoden för att ta bort produkten
+    removeFromCart(idDrink);
   };
 
   return (
@@ -131,10 +151,10 @@ const Cocktail: React.FC<CocktailProps> = ({
         <Title>{formattedCocktailName}</Title>
         {recommended ? <Recommended>{recommended}</Recommended> : <BlancRow>{'\u00A0'}</BlancRow>}
         <PriceAndAddContainer>
-          <Price>{price} kr</Price>
+          <Price>{cocktailPrice} kr</Price>
           <CounterContainer>
             <CounterButton onClick={handleDecrement}>-</CounterButton>
-            <ResultField type="text" value={count} readOnly />
+            <ResultField type="text" value={quantity} readOnly />
             <CounterButton onClick={handleIncrement}>+</CounterButton>
           </CounterContainer>
         </PriceAndAddContainer>
