@@ -1,39 +1,98 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import React, { useState, useContext } from "react";
+import { CartContext } from "./context";
+import { Link, animateScroll as scroll } from 'react-scroll';
 
-export function NavBarComponent({ scrollToRef }){
+
+export const NavBarComponent: React.FC = () => {
+    const { cart } = useContext(CartContext)!;
+
+    // Variabel för logic till navbar-varukorg
+    const totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
+
     return(
+        
         <NavBarList>
             <NavBarListElements>
-                <ListATags onClick={() => scrollToRef("CourseMenu")}>
+                <LinkStyle
+                activeClass="active"
+                to="CourseMenu"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                >
                     Huvudrätt
-                </ListATags>
+                </LinkStyle>
             </NavBarListElements>
             <NavBarListElements>
-                <ListATags onClick={() => scrollToRef("SidesMenu")}>
+                <LinkStyle
+                activeClass="active"
+                to="SidesMenu"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
                     Tillbehör
-                </ListATags>
+                </LinkStyle>
             </NavBarListElements>
             <NavBarListElements>
-                <ListATags onClick={() => scrollToRef("CocktailMenu")}>
+                <LinkStyle
+                activeClass="active"
+                to="CocktailMenu"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
                     Cocktail
-                </ListATags>
+                </LinkStyle>
             </NavBarListElements>
             <NavBarListElements>
-                <ListATags onClick={() => scrollToRef("ShoppingCart")}>
+            {totCartQuant > 10 ? (
+                <LinkStyle
+                activeClass="active"
+                to="ShoppingCart"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
+                10+
+                <FontAwesomeIcon icon={faShoppingCart}/>
+                </LinkStyle>
+            ) : totCartQuant > 0 ? (
+                <LinkStyle
+                activeClass="active"
+                to="ShoppingCart"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
+                    {totCartQuant}
                     <FontAwesomeIcon icon={faShoppingCart}/>
-                </ListATags>
+                </LinkStyle>
+            ) : (
+                <LinkStyle
+                activeClass="active"
+                to="ShoppingCart"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
+                    <FontAwesomeIcon icon={faShoppingCart}/>
+                </LinkStyle>
+            )}
+                
             </NavBarListElements>
         </NavBarList>
     )
 }
-
+//#region CSS
 const NavBarList = styled.ul`
     position: fixed;
     list-style-type: none;
-    margin: 0;
+    margin: 0px;
     padding: 0;
     overflow: hidden;
     background-color: #333;
@@ -44,30 +103,20 @@ const NavBarListElements = styled.li`
     float: left;
 `;
 
-const ListATags = styled.a`
-display: block;
-color: white;
-text-align: center;
-padding: 10px 16px;
-text-decoration: none;
-&:hover{
-    background-color: #444;
-    cursor: default;
-};
-`;
+// remember* CSS för flera sidor med LINK - Används ej vid singlepage-application
 
-/*
-const ListATags = styled(Link)`
-    display: block,
-    color: white,
-    text-align: center,
-    padding: 14px 16px,
-    text-decoration: none,
+
+const LinkStyle = styled(Link)`
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 30px;
+    text-decoration: none
     &:hover{
         background-color: #444;
-    };
 `;
-   */ 
 
 
+
+//#endregion CSS
 

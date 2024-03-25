@@ -10,6 +10,9 @@ type CartItem = {
   quantity: number;
 };
 
+//#region CSS
+
+
 const CartList = styled.div`
   display: flex;
   flex-direction: column;
@@ -138,6 +141,7 @@ const TotalQuantity = styled.div`
   font-weight: bold;
   margin-right: 14px;
 `;
+//#endregion CSS
 
 export const ShoppingCart: React.FC = () => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
