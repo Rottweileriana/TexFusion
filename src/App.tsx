@@ -19,7 +19,7 @@ const MainComponent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center; /* Centrerar innehållet horisontellt */
-  padding-top: 50px;
+  padding-top: 100px;
 `;
 
 const App: React.FC = () => {
@@ -32,7 +32,7 @@ const App: React.FC = () => {
             <NavBarComponent />
             <MainComponent>
               <Routes>
-                <Route path="/Huvudrätt" element={<CourseMenu />} />
+                <Route path="/" element={<CourseMenu />} />
                 <Route path="/SidesMenu" element={<SidesMenu />} />
                 <Route path="/CocktailMenu" element={<CocktailMenu />} />
                 <Route path="/ShoppingCart" element={<ShoppingCart />} />

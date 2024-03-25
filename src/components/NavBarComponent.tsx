@@ -16,7 +16,7 @@ export const NavBarComponent: React.FC = () => {
       <NavBarList>
         <NavBarListElements>
           <LinkStyle
-            to="/Huvudrätt"
+            to="/"
           >
             Huvudrätt
           </LinkStyle>
