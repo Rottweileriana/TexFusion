@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "./context";
 import styled from "styled-components";
 
 const defaultFormData = {
@@ -26,6 +27,9 @@ const CityInput = styled.div`
 //#endregion
 
 export function CheckoutForm() {
+  //Cart för senare användning för att skapa confirmation page
+  const { cart } = useContext(CartContext)!;
+
   const [formData, setFormData] = useState(defaultFormData);
   const { firstName, lastName, email, address, zipCode, city, phone } =
     formData;
@@ -39,7 +43,7 @@ export function CheckoutForm() {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //lägg till logik för confirmation page??
+    //lägg till logik för confirmation page
     console.log(formData);
 
     setFormData(defaultFormData);

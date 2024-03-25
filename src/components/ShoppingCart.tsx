@@ -10,6 +10,7 @@ type CartItem = {
   quantity: number;
 };
 
+//#region Styles
 const CartList = styled.div`
   display: flex;
   flex-direction: column;
@@ -105,7 +106,9 @@ const ResultField = styled.input`
   border: none;
   font-size: 15px;
   outline: none;
-  &:hover { cursor: default; }
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const DeleteButton = styled.div`
@@ -114,7 +117,7 @@ const DeleteButton = styled.div`
   height: 25px;
   border-radius: 5px;
   color: white;
-  background-color: #C08484;
+  background-color: #c08484;
   cursor: pointer;
 `;
 
@@ -126,7 +129,7 @@ const CartTotals = styled.div`
   padding-bottom: 5px;
   height: 60px;
   color: #333333;
-  background-color: #C0D6C0;
+  background-color: #c0d6c0;
 `;
 
 const TotalPrice = styled.div`
@@ -138,17 +141,21 @@ const TotalQuantity = styled.div`
   font-weight: bold;
   margin-right: 14px;
 `;
+//#endregion
 
 export const ShoppingCart: React.FC = () => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const MAX_LENGTH = 15;
 
   // Beräkna totProdPrice, totCartPrice och totCartQuant
-  const totProdPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totProdPrice = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
   const totCartPrice = totProdPrice; // Totala varukorgspriset kan vara samma som det totala produktpriset i detta enkla exempel
   const totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
 
-  const handleIncrement = (product: CartItem ) => {
+  const handleIncrement = (product: CartItem) => {
     addToCart(product);
   };
 
@@ -170,16 +177,28 @@ export const ShoppingCart: React.FC = () => {
             <CartItemElement>
               <ItemImage src={cartItem.imageUrl} alt={cartItem.title} />
               <ItemCol>
-                <Title>{cartItem.title.length > MAX_LENGTH ? cartItem.title.substring(0, MAX_LENGTH) + "..." : cartItem.title}</Title>
+                <Title>
+                  {cartItem.title.length > MAX_LENGTH
+                    ? cartItem.title.substring(0, MAX_LENGTH) + "..."
+                    : cartItem.title}
+                </Title>
                 <Price>{cartItem.price * cartItem.quantity} kr</Price>
               </ItemCol>
               <ItemColBtn>
                 <CounterContainer>
-                  <CounterButton onClick={() => handleDecrement(cartItem._id)}>-</CounterButton>
+                  <CounterButton onClick={() => handleDecrement(cartItem._id)}>
+                    -
+                  </CounterButton>
                   <ResultField type="text" value={cartItem.quantity} readOnly />
-                  <CounterButton onClick={() => handleIncrement(cartItem)}>+</CounterButton>
+                  <CounterButton onClick={() => handleIncrement(cartItem)}>
+                    +
+                  </CounterButton>
                 </CounterContainer>
-                <DeleteButton onClick={() => deleteProdFromCart(cartItem._id, true)}>Ta Bort</DeleteButton>
+                <DeleteButton
+                  onClick={() => deleteProdFromCart(cartItem._id, true)}
+                >
+                  Ta Bort
+                </DeleteButton>
               </ItemColBtn>
             </CartItemElement>
           </CartRow>
