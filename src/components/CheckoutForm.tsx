@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styled from "styled-components";
 
 const defaultFormData = {
   firstName: "",
@@ -9,6 +10,20 @@ const defaultFormData = {
   city: "",
   phone: "",
 };
+
+//#region Styles
+const InputForm = styled.div`
+  display: flex;
+`;
+
+const NameInput = styled.div`
+  display: flex;
+`;
+
+const CityInput = styled.div`
+  display: flex;
+`;
+//#endregion
 
 export function CheckoutForm() {
   const [formData, setFormData] = useState(defaultFormData);
@@ -33,77 +48,84 @@ export function CheckoutForm() {
   return (
     <div>
       <h2>KASSA</h2>
-      <form onSubmit={onSubmit}>
-        <div>
+      <InputForm>
+        <form onSubmit={onSubmit}>
+          <NameInput>
+            <div>
+              <label>
+                Förnamn:
+                <input
+                  type="text"
+                  id="firstName"
+                  value={firstName}
+                  onChange={onChange}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Efternamn:
+                <input
+                  type="text"
+                  id="lastName"
+                  value={lastName}
+                  onChange={onChange}
+                />
+              </label>
+            </div>
+          </NameInput>
           <div>
             <label>
-              Förnamn:
+              Epost:
               <input
-                type="text"
-                id="firstName"
-                value={firstName}
+                type="email"
+                id="email"
+                value={email}
                 onChange={onChange}
               />
             </label>
           </div>
           <div>
             <label>
-              Efternamn:
+              Adress:
               <input
                 type="text"
-                id="lastName"
-                value={lastName}
+                id="address"
+                value={address}
                 onChange={onChange}
               />
             </label>
           </div>
-        </div>
-        <div>
-          <label>
-            Epost:
-            <input type="email" id="email" value={email} onChange={onChange} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Adress:
-            <input
-              type="text"
-              id="address"
-              value={address}
-              onChange={onChange}
-            />
-          </label>
-        </div>
-        <div>
+          <CityInput>
+            <div>
+              <label>
+                Postnr:
+                <input
+                  type="text"
+                  id="zipCode"
+                  value={zipCode}
+                  onChange={onChange}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Stad:
+                <input type="text" id="city" value={city} onChange={onChange} />
+              </label>
+            </div>
+          </CityInput>
           <div>
             <label>
-              Postnr:
-              <input
-                type="text"
-                id="zipCode"
-                value={zipCode}
-                onChange={onChange}
-              />
+              Telefon:
+              <input type="text" id="phone" value={phone} onChange={onChange} />
             </label>
           </div>
           <div>
-            <label>
-              Stad:
-              <input type="text" id="city" value={city} onChange={onChange} />
-            </label>
+            <button type="submit">Submit</button>
           </div>
-        </div>
-        <div>
-          <label>
-            Telefon:
-            <input type="text" id="phone" value={phone} onChange={onChange} />
-          </label>
-        </div>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+        </form>
+      </InputForm>
     </div>
   );
 }

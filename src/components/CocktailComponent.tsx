@@ -16,6 +16,7 @@ type Product = {
   quantity: number;
 };
 
+//#region Styles
 const StyledCocktail = styled.div`
   display: flex;
   width: 300px;
@@ -27,7 +28,9 @@ const StyledCocktail = styled.div`
   color: #333333;
   margin-bottom: 10px;
   text-align: left;
-  &:hover { cursor: default; }
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const Image = styled.img`
@@ -47,8 +50,8 @@ const Recommended = styled.p`
   padding: 2px;
   padding-left: 19px;
   border-radius: 5px;
-  color: #7D532C;
-  background-color: #EAC898;
+  color: #7d532c;
+  background-color: #eac898;
 `;
 
 const BlancRow = styled.p`
@@ -75,7 +78,7 @@ const CounterContainer = styled.div`
   margin-top: 5px;
   border: 0px solid #808080;
   border-radius: 5px;
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
 `;
 
 const CounterButton = styled.button`
@@ -102,28 +105,31 @@ const ResultField = styled.input`
   color: #333333;
   font-size: 15px;
   outline: none;
-  &:hover { cursor: default; }
+  &:hover {
+    cursor: default;
+  }
 `;
+//#endregion
 
 const Cocktail: React.FC<Cocktail> = ({
   idDrink,
   strDrinkThumb,
   strDrink,
-  recommended
+  recommended,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const cocktailPrice = 180;
   const MAX_LENGTH = 19;
   let formattedCocktailName = strDrink;
 
-  const productInCart = cart.find(product => product._id === idDrink);
+  const productInCart = cart.find((product) => product._id === idDrink);
 
   // Hämta quantity från den aktuella produkten, om den finns i varukorgen
   const quantity = productInCart ? productInCart.quantity : 0;
 
   if (formattedCocktailName.length > MAX_LENGTH) {
     formattedCocktailName =
-    formattedCocktailName.substring(0, MAX_LENGTH) + "...";
+      formattedCocktailName.substring(0, MAX_LENGTH) + "...";
   }
 
   const handleIncrement = () => {
@@ -133,7 +139,7 @@ const Cocktail: React.FC<Cocktail> = ({
       imageUrl: strDrinkThumb,
       title: strDrink,
       price: cocktailPrice,
-      quantity: 1
+      quantity: 1,
     };
     // Anropa addToCart-metoden med det nya produktobjektet
     addToCart(product);
@@ -149,7 +155,11 @@ const Cocktail: React.FC<Cocktail> = ({
       <Image src={strDrinkThumb} alt={strDrink} />
       <div>
         <Title>{formattedCocktailName}</Title>
-        {recommended ? <Recommended>{recommended}</Recommended> : <BlancRow>{'\u00A0'}</BlancRow>}
+        {recommended ? (
+          <Recommended>{recommended}</Recommended>
+        ) : (
+          <BlancRow>{"\u00A0"}</BlancRow>
+        )}
         <PriceAndAddContainer>
           <Price>{cocktailPrice} kr</Price>
           <CounterContainer>
