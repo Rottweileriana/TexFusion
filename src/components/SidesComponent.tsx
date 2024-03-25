@@ -15,7 +15,9 @@ const StyledSide = styled.div`
   color: #333333;
   margin-bottom: 10px;
   text-align: left;
-  &:hover { cursor: default; }
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const Image = styled.img`
@@ -82,7 +84,9 @@ const ResultField = styled.input`
   color: #333333;
   font-size: 15px;
   outline: none;
-  &:hover { cursor: default; }
+  &:hover {
+    cursor: default;
+  }
 `;
 //#endregion
 
@@ -91,12 +95,12 @@ const SidesComponent: React.FC<DishProps> = ({
   imageUrl,
   title,
   ingredients,
-  price
+  price,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
 
   // Hitta den aktuella produkten i varukorgen baserat på _id
-  const productInCart = cart.find(product => product._id === _id);
+  const productInCart = cart.find((product) => product._id === _id);
 
   // Hämta quantity från den aktuella produkten, om den finns i varukorgen
   const quantity = productInCart ? productInCart.quantity : 0;
@@ -130,7 +134,7 @@ const SidesComponent: React.FC<DishProps> = ({
       imageUrl,
       title,
       price,
-      quantity: 1
+      quantity: 1,
     };
     // Anropa addToCart-metoden med det nya produktobjektet
     addToCart(product);
