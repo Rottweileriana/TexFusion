@@ -11,6 +11,7 @@ type CartItem = {
 };
 
 //#region Styles
+
 const CartList = styled.div`
   display: flex;
   flex-direction: column;
@@ -148,11 +149,8 @@ export const ShoppingCart: React.FC = () => {
   const MAX_LENGTH = 15;
 
   // Beräkna totProdPrice, totCartPrice och totCartQuant
-  const totProdPrice = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-  const totCartPrice = totProdPrice; // Totala varukorgspriset kan vara samma som det totala produktpriset i detta enkla exempel
+  const totProdPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totCartPrice = totProdPrice;
   const totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
 
   const handleIncrement = (product: CartItem) => {

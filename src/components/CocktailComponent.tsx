@@ -7,6 +7,7 @@ type Cocktail = {
   strDrink: string;
   strDrinkThumb: string;
   recommended?: string;
+  cocktailPrice: number;
 };
 
 type Product = {
@@ -116,9 +117,10 @@ const Cocktail: React.FC<Cocktail> = ({
   strDrinkThumb,
   strDrink,
   recommended,
+  cocktailPrice
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
-  const cocktailPrice = 180;
+  // const cocktailPrice = 180;
   const MAX_LENGTH = 19;
   let formattedCocktailName = strDrink;
 

@@ -1,72 +1,122 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-export function NavBarComponent({ scrollToRef }) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import React, { useContext } from "react";
+import { CartContext } from "./context";
+import { Link, animateScroll as scroll } from 'react-scroll';
+
+export const NavBarComponent: React.FC = () => {
+  const { cart } = useContext(CartContext)!;
+
+  // Variabel för logic till navbar-varukorg
+  const totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
+    <MainDiv>
     <NavBarList>
       <NavBarListElements>
-        <ListATags onClick={() => scrollToRef("CourseMenu")}>
+        <LinkStyle
+          activeClass="active"
+          to="CourseMenu"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+        >
           Huvudrätt
-        </ListATags>
+        </LinkStyle>
       </NavBarListElements>
       <NavBarListElements>
-        <ListATags onClick={() => scrollToRef("SidesMenu")}>
+        <LinkStyle
+          activeClass="active"
+          to="SidesMenu"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+        >
           Tillbehör
-        </ListATags>
+        </LinkStyle>
       </NavBarListElements>
       <NavBarListElements>
-        <ListATags onClick={() => scrollToRef("CocktailMenu")}>
+        <LinkStyle
+          activeClass="active"
+          to="CocktailMenu"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+        >
           Cocktail
-        </ListATags>
+        </LinkStyle>
       </NavBarListElements>
       <NavBarListElements>
-        <ListATags onClick={() => scrollToRef("ShoppingCart")}>
-          <FontAwesomeIcon icon={faShoppingCart} />
-        </ListATags>
+        <LinkStyle
+          activeClass="active"
+          to="ShoppingCart"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+        >
+          <Badge>
+            {totCartQuant > 0 && (totCartQuant > 10 ? '10+' : totCartQuant)}
+          </Badge>
+          <FontAwesomeIcon icon={faShoppingCart}/>
+        </LinkStyle>
       </NavBarListElements>
     </NavBarList>
+    </MainDiv>
   );
 }
 
-//#region Styles
+//#region CSS
+
+const MainDiv = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+
 const NavBarList = styled.ul`
   position: fixed;
+  top: 0;
   list-style-type: none;
-  margin: 0;
+  margin: 0px;
   padding: 0;
   overflow: hidden;
   background-color: #333;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 const NavBarListElements = styled.li`
   float: left;
 `;
 
-const ListATags = styled.a`
+const LinkStyle = styled(Link)`
   display: block;
   color: white;
   text-align: center;
-  padding: 10px 16px;
+  padding: 14px 30px;
   text-decoration: none;
-  &:hover {
+  position: relative;
+  &:hover{
     background-color: #444;
-    cursor: default;
   }
 `;
 
-/*
-const ListATags = styled(Link)`
-    display: block,
-    color: white,
-    text-align: center,
-    padding: 14px 16px,
-    text-decoration: none,
-    &:hover{
-        background-color: #444;
-    };
+const Badge = styled.span`
+  position: absolute;
+  top: 6px;
+  right: 14px;
+  background-color: #EAC898;
+  color: black;
+  border-radius: 50%;
+  padding: 0 2px;
+  font-size: 12px;
+  min-width: 20px;
+  text-align: center;
 `;
-   */
-//#endregion
+
+//#endregion CSS
