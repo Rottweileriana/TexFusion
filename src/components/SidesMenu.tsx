@@ -38,6 +38,7 @@ export function SidesMenu() {
             side.title.trim() !== "" && (
               <SidesComponent
                 key={side._id}
+                _id={side._id}
                 imageUrl={side.imageUrl}
                 title={side.title}
                 ingredients={side.ingredients}

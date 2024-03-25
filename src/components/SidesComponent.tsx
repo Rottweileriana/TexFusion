@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "./context";
 import styled from "styled-components";
 import { DishProps } from "../types/index.ts";
 
@@ -11,16 +12,17 @@ const StyledSide = styled.div`
   border-radius: 5px;
   padding: 5px;
   background-color: #e0e0e0;
-  color: black;
+  color: #333333;
   margin-bottom: 10px;
   text-align: left;
+  &:hover { cursor: default; }
 `;
 
 const Image = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 5px;
-  border: 1px solid #000;
+  border: 1px solid #222222;
   margin-right: 20px;
 `;
 
@@ -59,12 +61,12 @@ const CounterContainer = styled.div`
 const CounterButton = styled.button`
   margin: 0;
   padding: 0;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
   width: 30px;
   height: 30px;
   background-color: transparent;
   border: none;
-  color: black;
+  color: #333333;
   font-size: 20px;
   cursor: pointer;
   display: flex;
@@ -77,19 +79,27 @@ const ResultField = styled.input`
   text-align: center;
   background-color: transparent;
   border: none;
-  color: black;
+  color: #333333;
   font-size: 15px;
   outline: none;
+  &:hover { cursor: default; }
 `;
 //#endregion
 
 const SidesComponent: React.FC<DishProps> = ({
+  _id,
   imageUrl,
   title,
   ingredients,
-  price = 30,
+  price
 }) => {
-  const [count, setCount] = useState<number>(0);
+  const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
+
+  // Hitta den aktuella produkten i varukorgen baserat på _id
+  const productInCart = cart.find(product => product._id === _id);
+
+  // Hämta quantity från den aktuella produkten, om den finns i varukorgen
+  const quantity = productInCart ? productInCart.quantity : 0;
 
   const formattedIngredients = ingredients
     .map((ingredient) => ingredient.name)
@@ -114,15 +124,21 @@ const SidesComponent: React.FC<DishProps> = ({
   }
 
   const handleIncrement = () => {
-    if (count < 99) {
-      setCount((prevCount) => prevCount + 1);
-    }
+    // Skapa ett nytt objekt för den aktuella produkten
+    const product = {
+      _id,
+      imageUrl,
+      title,
+      price,
+      quantity: 1
+    };
+    // Anropa addToCart-metoden med det nya produktobjektet
+    addToCart(product);
   };
 
   const handleDecrement = () => {
-    if (count > 0) {
-      setCount((prevCount) => prevCount - 1);
-    }
+    // Anropa removeFromCart-metoden för att ta bort produkten
+    removeFromCart(_id);
   };
 
   return (
@@ -135,7 +151,7 @@ const SidesComponent: React.FC<DishProps> = ({
           <Price>{price} kr</Price>
           <CounterContainer>
             <CounterButton onClick={handleDecrement}>-</CounterButton>
-            <ResultField type="text" value={count} readOnly />
+            <ResultField type="text" value={quantity} readOnly />
             <CounterButton onClick={handleIncrement}>+</CounterButton>
           </CounterContainer>
         </PriceAndAddContainer>

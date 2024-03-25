@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "./context";
 import styled from "styled-components";
 
-type CocktailProps = {
+type Cocktail = {
+  idDrink: string;
   strDrink: string;
   strDrinkThumb: string;
   recommended?: string;
+};
+
+type Product = {
+  imageUrl: string;
+  title: string;
+  price: number;
+  quantity: number;
 };
 
 const StyledCocktail = styled.div`
@@ -15,27 +24,36 @@ const StyledCocktail = styled.div`
   border-radius: 5px;
   padding: 5px;
   background-color: #e0e0e0;
-  color: black;
+  color: #333333;
   margin-bottom: 10px;
   text-align: left;
+  &:hover { cursor: default; }
 `;
 
 const Image = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 5px;
-  border: 1px solid #000;
+  border: 1px solid #222222;
   margin-right: 20px;
 `;
 
-const Title = styled.h3`
+const Title = styled.h4`
   margin: 0;
 `;
 
-const Text = styled.p`
+const Recommended = styled.p`
   margin: 5px;
-  padding-right: 5px;
-  color: #6A0DAD;
+  padding: 2px;
+  padding-left: 19px;
+  border-radius: 5px;
+  color: #7D532C;
+  background-color: #EAC898;
+`;
+
+const BlancRow = styled.p`
+  margin: 5px;
+  padding: 2px;
 `;
 
 const Price = styled.p`
@@ -61,19 +79,19 @@ const CounterContainer = styled.div`
 `;
 
 const CounterButton = styled.button`
-margin: 0;
-padding: 0;
-padding-bottom: 5px;
-width: 30px;
-height: 30px;
-background-color: transparent;
-border: none;
-color: black;
-font-size: 20px;
-cursor: pointer;
-display: flex;
-justify-content: center;
-align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 4px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  color: #333333;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ResultField = styled.input`
@@ -81,21 +99,27 @@ const ResultField = styled.input`
   text-align: center;
   background-color: transparent;
   border: none;
-  color: black;
+  color: #333333;
   font-size: 15px;
   outline: none;
+  &:hover { cursor: default; }
 `;
 
-const Cocktail: React.FC<CocktailProps> = ({
+const Cocktail: React.FC<Cocktail> = ({
+  idDrink,
   strDrinkThumb,
   strDrink,
-  recommended,
-
+  recommended
 }) => {
-  const [count, setCount] = useState<number>(0);
-  const price = 80;
-  const MAX_LENGTH = 16;
+  const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
+  const cocktailPrice = 180;
+  const MAX_LENGTH = 19;
   let formattedCocktailName = strDrink;
+
+  const productInCart = cart.find(product => product._id === idDrink);
+
+  // Hämta quantity från den aktuella produkten, om den finns i varukorgen
+  const quantity = productInCart ? productInCart.quantity : 0;
 
   if (formattedCocktailName.length > MAX_LENGTH) {
     formattedCocktailName =
@@ -103,15 +127,21 @@ const Cocktail: React.FC<CocktailProps> = ({
   }
 
   const handleIncrement = () => {
-    if (count < 99) {
-      setCount((prevCount) => prevCount + 1);
-    }
+    // Skapa ett nytt objekt för den aktuella produkten
+    const product = {
+      _id: idDrink,
+      imageUrl: strDrinkThumb,
+      title: strDrink,
+      price: cocktailPrice,
+      quantity: 1
+    };
+    // Anropa addToCart-metoden med det nya produktobjektet
+    addToCart(product);
   };
 
   const handleDecrement = () => {
-    if (count > 0) {
-      setCount((prevCount) => prevCount - 1);
-    }
+    // Anropa removeFromCart-metoden för att ta bort produkten
+    removeFromCart(idDrink);
   };
 
   return (
@@ -119,12 +149,12 @@ const Cocktail: React.FC<CocktailProps> = ({
       <Image src={strDrinkThumb} alt={strDrink} />
       <div>
         <Title>{formattedCocktailName}</Title>
-        <Text>{recommended || '\u00A0'}</Text>
+        {recommended ? <Recommended>{recommended}</Recommended> : <BlancRow>{'\u00A0'}</BlancRow>}
         <PriceAndAddContainer>
-          <Price>{price} kr</Price>
+          <Price>{cocktailPrice} kr</Price>
           <CounterContainer>
             <CounterButton onClick={handleDecrement}>-</CounterButton>
-            <ResultField type="text" value={count} readOnly />
+            <ResultField type="text" value={quantity} readOnly />
             <CounterButton onClick={handleIncrement}>+</CounterButton>
           </CounterContainer>
         </PriceAndAddContainer>
