@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import React, { useContext } from "react";
 import { CartContext } from "./context";
-import { Link, animateScroll as scroll } from 'react-scroll';
-
+import { Link } from 'react-router-dom'; // Uppdaterad import
 
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
@@ -14,59 +13,39 @@ export const NavBarComponent: React.FC = () => {
 
   return (
     <MainDiv>
-    <NavBarList>
-      <NavBarListElements>
-        <LinkStyle
-          activeClass="active"
-          to="CourseMenu"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-        >
-          Huvudrätt
-        </LinkStyle>
-      </NavBarListElements>
-      <NavBarListElements>
-        <LinkStyle
-          activeClass="active"
-          to="SidesMenu"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-        >
-          Tillbehör
-        </LinkStyle>
-      </NavBarListElements>
-      <NavBarListElements>
-        <LinkStyle
-          activeClass="active"
-          to="CocktailMenu"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-        >
-          Cocktail
-        </LinkStyle>
-      </NavBarListElements>
-      <NavBarListElements>
-        <LinkStyle
-          activeClass="active"
-          to="ShoppingCart"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-        >
-          <Badge>
-            {totCartQuant > 0 && (totCartQuant > 10 ? '10+' : totCartQuant)}
-          </Badge>
-          <FontAwesomeIcon icon={faShoppingCart}/>
-        </LinkStyle>
-      </NavBarListElements>
-    </NavBarList>
+      <NavBarList>
+        <NavBarListElements>
+          <LinkStyle
+            to="/Huvudrätt"
+          >
+            Huvudrätt
+          </LinkStyle>
+        </NavBarListElements>
+        <NavBarListElements>
+          <LinkStyle
+            to="/SidesMenu"
+          >
+            Tillbehör
+          </LinkStyle>
+        </NavBarListElements>
+        <NavBarListElements>
+          <LinkStyle
+            to="/CocktailMenu"
+          >
+            Cocktail
+          </LinkStyle>
+        </NavBarListElements>
+        <NavBarListElements>
+          <LinkStyle
+            to="/ShoppingCart"
+          >
+            <Badge>
+              {totCartQuant > 0 && (totCartQuant > 10 ? '10+' : totCartQuant)}
+            </Badge>
+            <FontAwesomeIcon icon={faShoppingCart}/>
+          </LinkStyle>
+        </NavBarListElements>
+      </NavBarList>
     </MainDiv>
   );
 }

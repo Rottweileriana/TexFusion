@@ -20,6 +20,7 @@ const CartList = styled.div`
   background-color: #e0e0e0;
   color: #333333;
   padding: 1px;
+  width: 320px;
 `;
 
 const CartRow = styled.div`
