@@ -6,17 +6,18 @@ type Cocktail = {
   strDrink: string;
   strAlcoholic: string;
   strDrinkThumb: string;
+  cocktailPrice: number;
 };
 
 export function CocktailMenu() {
-  const [recCocktail, setRecCocktail] = useState<Cocktail | undefined | any>(
-    undefined
-  );
+  const [recCocktail, setRecCocktail] = useState<Cocktail | undefined | any>(undefined);
   const [cocktails, setCocktails] = useState<Cocktail[]>([]);
+  const [cocktailPrices, setCocktailPrices] = useState<number[]>([
+    180, 170, 175, 180, 150, 165, 155, 170, 160, 180
+  ]);
 
   const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
-  const API_URL_2 =
-    "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
+  const API_URL_2 = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
 
   useEffect(() => {
     const fetchRecCocktail = async () => {
@@ -40,7 +41,12 @@ export function CocktailMenu() {
         }
         const data = await response.json();
         const firstTenCocktails = data.drinks ? data.drinks.slice(0, 10) : [];
-        setCocktails(firstTenCocktails);
+        // Loopar igenom varje cocktail och tilldela cocktailPrice från cocktailPrices
+        const cocktailsWithPrices = firstTenCocktails.map((cocktail: Cocktail, index: number) => ({
+          ...cocktail,
+          cocktailPrice: cocktailPrices[index]
+        }));
+        setCocktails(cocktailsWithPrices);
       } catch (error) {
         console.error("Error fetching cocktails:", error);
       }
@@ -52,6 +58,7 @@ export function CocktailMenu() {
     return () => {
       setRecCocktail(undefined);
       setCocktails([]);
+      setCocktailPrices([]);
     };
   }, []);
 
@@ -64,7 +71,8 @@ export function CocktailMenu() {
           strDrinkThumb={recCocktail.strDrinkThumb}
           strDrink={recCocktail.strDrink}
           recommended="Rekommenderad"
-        /> //Rekommendation används bara när visa tillval av dryck efter vald huvudrätt(?)
+          cocktailPrice={160}
+        />
       )}
       {cocktails.map((cocktail) => (
         <CocktailComponent
@@ -72,6 +80,7 @@ export function CocktailMenu() {
           idDrink={cocktail.idDrink}
           strDrinkThumb={cocktail.strDrinkThumb}
           strDrink={cocktail.strDrink}
+          cocktailPrice={cocktail.cocktailPrice}
         />
       ))}
     </>
