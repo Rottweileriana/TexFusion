@@ -1,10 +1,10 @@
 import styled from "styled-components";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import React, { useContext } from "react";
 import { CartContext } from "./context";
 import { Link, animateScroll as scroll } from 'react-scroll';
-
 
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
@@ -118,4 +118,5 @@ const Badge = styled.span`
   min-width: 20px;
   text-align: center;
 `;
+
 //#endregion CSS
