@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import CocktailComponent from "./CocktailComponent";
 
 type Cocktail = {
@@ -9,11 +9,14 @@ type Cocktail = {
 };
 
 export function CocktailMenu() {
-  const [recCocktail, setRecCocktail] = useState<Cocktail | undefined | any>(undefined);
+  const [recCocktail, setRecCocktail] = useState<Cocktail | undefined | any>(
+    undefined
+  );
   const [cocktails, setCocktails] = useState<Cocktail[]>([]);
 
   const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
-  const API_URL_2 = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
+  const API_URL_2 =
+    "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
 
   useEffect(() => {
     const fetchRecCocktail = async () => {
@@ -63,7 +66,7 @@ export function CocktailMenu() {
           recommended="Rekommenderad"
         /> //Rekommendation används bara när visa tillval av dryck efter vald huvudrätt(?)
       )}
-      {cocktails.map(cocktail => (
+      {cocktails.map((cocktail) => (
         <CocktailComponent
           key={cocktail.idDrink}
           idDrink={cocktail.idDrink}

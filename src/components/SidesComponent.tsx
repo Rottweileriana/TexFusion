@@ -1,23 +1,10 @@
 import React, { useState, useContext } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
+import { DishProps } from "../types/index.ts";
 
-type Side = {
-    _id: string;
-    imageUrl: string;
-    title: string;
-    info?: string;
-    price: number;
-  };
-
-  type Product = {
-    imageUrl: string;
-    title: string;
-    price: number;
-    quantity: number;
-  };
-
-  const StyledSide = styled.div`
+//#region Styles
+const StyledSide = styled.div`
   display: flex;
   width: 300px;
   height: 100px;
@@ -68,7 +55,7 @@ const CounterContainer = styled.div`
   margin-top: 5px;
   border: 0px solid #808080;
   border-radius: 5px;
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
 `;
 
 const CounterButton = styled.button`
@@ -97,12 +84,13 @@ const ResultField = styled.input`
   outline: none;
   &:hover { cursor: default; }
 `;
+//#endregion
 
-const SidesComponent: React.FC<Side> = ({
+const SidesComponent: React.FC<DishProps> = ({
   _id,
   imageUrl,
   title,
-  info,
+  ingredients,
   price
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
@@ -112,6 +100,28 @@ const SidesComponent: React.FC<Side> = ({
 
   // Hämta quantity från den aktuella produkten, om den finns i varukorgen
   const quantity = productInCart ? productInCart.quantity : 0;
+
+  const formattedIngredients = ingredients
+    .map((ingredient) => ingredient.name)
+    .reduce((acc, curr, index, array) => {
+      if (index === 0) {
+        return curr;
+      } else if (index === array.length - 1) {
+        return `${acc} och ${curr}`;
+      } else {
+        return `${acc}, ${curr}`;
+      }
+    }, "");
+
+  const MAX_LENGTH = 19;
+  let formattedIngredientText = formattedIngredients;
+
+  if (formattedIngredientText.length > MAX_LENGTH) {
+    formattedIngredientText =
+      formattedIngredientText.substring(0, MAX_LENGTH) + "...";
+  } else {
+    formattedIngredientText = `${formattedIngredients}.`;
+  }
 
   const handleIncrement = () => {
     // Skapa ett nytt objekt för den aktuella produkten
@@ -136,7 +146,7 @@ const SidesComponent: React.FC<Side> = ({
       <Image src={imageUrl} alt={title} />
       <div>
         <Title>{title}</Title>
-        <Text>{info || '\u00A0'}</Text>
+        <Text>{formattedIngredientText}</Text>
         <PriceAndAddContainer>
           <Price>{price} kr</Price>
           <CounterContainer>

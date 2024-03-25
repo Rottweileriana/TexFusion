@@ -1,62 +1,47 @@
 import { useState, useEffect } from "react";
 import CourseComponent from "./CourseComponent";
-
-type Recipe = {
-  _id: string;
-  imageUrl: string;
-  title: string;
-  description: string;
-  ingredients: Ingredient[];
-  timeInMins: number;
-};
-
-type Ingredient = {
-  _id: string;
-  name: string;
-  amount: number;
-  unit: string;
-};
+import { Dish } from "../types/index";
 
 export function CourseMenu() {
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const API_URL = "https://iths-2024-recept-grupp6-bc215j.reky.se/categories/main/recipes";
+  const [mains, setMains] = useState<Dish[]>([]);
+  const API_URL =
+    "https://iths-2024-recept-grupp6-bc215j.reky.se/categories/main/recipes";
 
   useEffect(() => {
-    const fetchRecipes = async () => {
+    const fetchMains = async () => {
       try {
         const response = await fetch(API_URL);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setRecipes(data);
+        setMains(data);
       } catch (error) {
-        console.error("Error fetching recipe:", error);
+        console.error("Error fetching dishes:", error);
       }
     };
 
-    fetchRecipes();
+    fetchMains();
 
     return () => {
-      setRecipes([]);
+      setMains([]);
     };
   }, []);
 
   return (
     <>
       <h2>HUVUDRÄTT</h2>
-      {recipes &&
-        recipes.map(
-          (recipe) =>
-            recipe.title &&
-            recipe.title.trim() !== "" && (
+      {mains &&
+        mains.map(
+          (main) =>
+            main.title &&
+            main.title.trim() !== "" && (
               <CourseComponent
-                key={recipe._id}
-                _id={recipe._id}
-                imageUrl={recipe.imageUrl}
-                title={recipe.title}
-                ingredients={recipe.ingredients}
-                price={recipe.timeInMins}
+                key={main._id}
+                imageUrl={main.imageUrl}
+                title={main.title}
+                ingredients={main.ingredients}
+                price={main.timeInMins}
               />
             )
         )}

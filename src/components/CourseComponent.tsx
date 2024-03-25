@@ -1,18 +1,7 @@
 import React, { useState, useContext } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
-
-type Course = {
-  _id: string;
-  imageUrl: string;
-  title: string;
-  ingredients: Ingredient[];
-  price: number;
-};
-
-type Ingredient = {
-  name: string;
-};
+import { DishProps } from "../types/index";
 
 type Product = {
   imageUrl: string;
@@ -20,7 +9,8 @@ type Product = {
   price: number;
   quantity: number;
 };
-
+        
+//#region Styles       
 const StyledCourse = styled.div`
   display: flex;
   width: 300px;
@@ -72,7 +62,7 @@ const CounterContainer = styled.div`
   margin-top: 5px;
   border: 0px solid #808080;
   border-radius: 5px;
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
 `;
 
 const CounterButton = styled.button`
@@ -101,8 +91,9 @@ const ResultField = styled.input`
   outline: none;
   &:hover { cursor: default; }
 `;
+//#endregion
 
-const CourseComponent: React.FC<Course> = ({
+const CourseComponent: React.FC<DishProps> = ({
   _id,
   imageUrl,
   title,
