@@ -1,17 +1,20 @@
 import { CartProvider } from './components/context';
 import { CourseMenu, CocktailMenu, SidesMenu, NavBarComponent, ShoppingCart } from "./components/index";
 import React, {useRef} from 'react'
+import styled from "styled-components";
 import "./App.css";
 
+const MainComponent = styled.div`
+  padding-top: 20px;
+`;
 
 const App: React.FC = () => {
-
 
   return (
     <>
       <CartProvider>
         <NavBarComponent />
-          <div>
+          <MainComponent>
             <div id="CourseMenu">
              <CourseMenu  />
             </div>
@@ -24,7 +27,7 @@ const App: React.FC = () => {
             <div id="ShoppingCart">
              <ShoppingCart />
             </div>
-          </div>
+          </MainComponent>
       </CartProvider>
     </>
   );

@@ -13,6 +13,7 @@ export const NavBarComponent: React.FC = () => {
   const totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
+    <MainDiv>
     <NavBarList>
       <NavBarListElements>
         <LinkStyle
@@ -66,18 +67,27 @@ export const NavBarComponent: React.FC = () => {
         </LinkStyle>
       </NavBarListElements>
     </NavBarList>
+    </MainDiv>
   );
 }
 
 //#region CSS
+
+const MainDiv = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+
 const NavBarList = styled.ul`
   position: fixed;
+  top: 0;
   list-style-type: none;
   margin: 0px;
   padding: 0;
   overflow: hidden;
   background-color: #333;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 const NavBarListElements = styled.li`
