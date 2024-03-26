@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useEffect, useState } from "react";
 
 export function ConfirmationPage(){
@@ -21,3 +22,12 @@ export function ConfirmationPage(){
         <h2>Finns jag: {value}</h2>
     );
 }
+=======
+export function ConfirmationPage() {
+  return (
+    <>
+      <table></table>
+    </>
+  );
+}
+>>>>>>> 0d995dcb4db9e534b11275eefea83db4364d1c3d

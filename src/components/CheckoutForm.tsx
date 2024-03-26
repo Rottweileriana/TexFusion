@@ -1,9 +1,10 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
+import { CartItem } from "../types/index";
 
 const defaultFormData = {
-  firstName: "a",
+  firstName: "",
   lastName: "",
   email: "",
   address: "",
@@ -12,25 +13,34 @@ const defaultFormData = {
   phone: "",
 };
 
+type formData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  address: string;
+  zipCode: string;
+  city: string;
+  phone: string;
+};
+
 //#region Styles
 const InputForm = styled.div`
   display: flex;
 `;
 
-const NameInput = styled.div`
+const NameInput = styled.fieldset`
   display: flex;
 `;
 
-const CityInput = styled.div`
+const CityInput = styled.fieldset`
   display: flex;
 `;
 //#endregion
 
-
-
 export function CheckoutForm() {
   //Cart för senare användning för att skapa confirmation page
   const { cart } = useContext(CartContext)!;
+
   const [formData, setFormData] = useState(defaultFormData);
   const { firstName, lastName, email, address, zipCode, city, phone } =
     formData;
@@ -49,7 +59,7 @@ export function CheckoutForm() {
     e.preventDefault();
     //lägg till logik för confirmation page
     console.log(formData);
-    sessionStorage.setItem('formdata', JSON.stringify(formData))
+
     setFormData(defaultFormData);
 
     const data = sessionStorage.getItem('formdata');
@@ -66,6 +76,7 @@ export function CheckoutForm() {
       <h2>KASSA</h2>
       <InputForm>
         <form onSubmit={onSubmit}>
+          <fieldset></fieldset>
           <NameInput>
             <div>
               <label>
