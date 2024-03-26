@@ -2,9 +2,9 @@ import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "./context";
 import styled from "styled-components";
-import { CartItem } from "../types/index";
+import { CartItem, FormData } from "../types/index";
 
-const defaultFormData: formData = {
+const defaultFormData: FormData = {
   firstName: "",
   lastName: "",
   email: "",
@@ -12,16 +12,6 @@ const defaultFormData: formData = {
   zipCode: "",
   city: "",
   phone: "",
-};
-
-type formData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  address: string;
-  zipCode: string;
-  city: string;
-  phone: string;
 };
 
 //#region Styles
@@ -54,7 +44,7 @@ export function CheckoutForm() {
     getSessionStorageOrDefault("confirmationItems", [])
   );
 
-  const [formData, setFormData] = useState<formData>(defaultFormData);
+  const [formData, setFormData] = useState<FormData>(defaultFormData);
   const { firstName, lastName, email, address, zipCode, city, phone } =
     formData;
 
@@ -69,14 +59,9 @@ export function CheckoutForm() {
     e.preventDefault();
     //lägg till logik för confirmation page
     setConfirmationItems(cart);
-    const addressData: formData = formData;
+    const addressData: FormData = formData;
 
-    useEffect(() => {
-      sessionStorage.setItem(
-        "confirmationItems",
-        JSON.stringify(confirmationItems)
-      );
-    }, [confirmationItems]);
+    sessionStorage.setItem("addressData", JSON.stringify(addressData));
 
     setFormData(defaultFormData);
   };
