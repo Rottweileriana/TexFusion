@@ -25,3 +25,11 @@ type Ingredient = {
   amount: number;
   unit: string;
 };
+
+export type CartItem = {
+  _id: string;
+  imageUrl: string;
+  title: string;
+  price: number;
+  quantity: number;
+};
