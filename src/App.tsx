@@ -1,5 +1,5 @@
 import { CartProvider } from './components/context';
-import { CourseMenu, CocktailMenu, SidesMenu, NavBarComponent, ShoppingCart, CheckoutForm } from "./components/index";
+import { CourseMenu, CocktailMenu, SidesMenu, NavBarComponent, ShoppingCart, CheckoutForm, ConfirmationPage } from "./components/index";
 import React, {useRef} from 'react'
 import styled from "styled-components";
 import "./App.css";
@@ -28,6 +28,9 @@ const App: React.FC = () => {
             </div>
             <div>
             <CheckoutForm />
+            </div>
+            <div>
+            <ConfirmationPage />
             </div>
           </MainComponent>
       </CartProvider>

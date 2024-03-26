@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
 
 const defaultFormData = {
-  firstName: "",
+  firstName: "a",
   lastName: "",
   email: "",
   address: "",
@@ -26,13 +26,17 @@ const CityInput = styled.div`
 `;
 //#endregion
 
+
+
 export function CheckoutForm() {
   //Cart för senare användning för att skapa confirmation page
   const { cart } = useContext(CartContext)!;
-
   const [formData, setFormData] = useState(defaultFormData);
   const { firstName, lastName, email, address, zipCode, city, phone } =
     formData;
+
+
+  
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevState) => ({
@@ -45,10 +49,18 @@ export function CheckoutForm() {
     e.preventDefault();
     //lägg till logik för confirmation page
     console.log(formData);
-
+    sessionStorage.setItem('formdata', JSON.stringify(formData))
     setFormData(defaultFormData);
-  };
 
+    const data = sessionStorage.getItem('formdata');
+    if (data)
+    {
+      const parsData = JSON.parse(data);
+      console.log(parsData);
+    }
+    
+  };
+  
   return (
     <div>
       <h2>KASSA</h2>
