@@ -1,8 +1,10 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "./context";
 import styled from "styled-components";
+import { CartItem } from "../types/index";
 
-const defaultFormData = {
+const defaultFormData: formData = {
   firstName: "",
   lastName: "",
   email: "",
@@ -12,25 +14,47 @@ const defaultFormData = {
   phone: "",
 };
 
+type formData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  address: string;
+  zipCode: string;
+  city: string;
+  phone: string;
+};
+
 //#region Styles
 const InputForm = styled.div`
   display: flex;
 `;
 
-const NameInput = styled.div`
+const NameInput = styled.fieldset`
   display: flex;
 `;
 
-const CityInput = styled.div`
+const CityInput = styled.fieldset`
   display: flex;
 `;
 //#endregion
+
+function getSessionStorageOrDefault(key: string, defaultValue: CartItem[]) {
+  const stored = sessionStorage.getItem(key);
+  if (!stored) {
+    return defaultValue;
+  }
+  return JSON.parse(stored);
+}
 
 export function CheckoutForm() {
   //Cart för senare användning för att skapa confirmation page
   const { cart } = useContext(CartContext)!;
 
-  const [formData, setFormData] = useState(defaultFormData);
+  const [confirmationItems, setConfirmationItems] = useState(
+    getSessionStorageOrDefault("confirmationItems", [])
+  );
+
+  const [formData, setFormData] = useState<formData>(defaultFormData);
   const { firstName, lastName, email, address, zipCode, city, phone } =
     formData;
 
@@ -44,7 +68,15 @@ export function CheckoutForm() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //lägg till logik för confirmation page
-    console.log(formData);
+    setConfirmationItems(cart);
+    const addressData: formData = formData;
+
+    useEffect(() => {
+      sessionStorage.setItem(
+        "confirmationItems",
+        JSON.stringify(confirmationItems)
+      );
+    }, [confirmationItems]);
 
     setFormData(defaultFormData);
   };
@@ -54,6 +86,7 @@ export function CheckoutForm() {
       <h2>KASSA</h2>
       <InputForm>
         <form onSubmit={onSubmit}>
+          <fieldset></fieldset>
           <NameInput>
             <div>
               <label>
