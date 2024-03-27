@@ -68,7 +68,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 
   const deleteCart = () => {
     setCart([]);
-    localStorage.setItem("cart", JSON.stringify([]));
+    localStorage.removeItem("cart");
   };
 
   return (
