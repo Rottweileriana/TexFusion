@@ -38,7 +38,7 @@ function getSessionStorageOrDefault(key: string, defaultValue: CartItem[]) {
 
 export function CheckoutForm() {
   //Cart för senare användning för att skapa confirmation page
-  const { cart } = useContext(CartContext)!;
+  const { cart, deleteCart } = useContext(CartContext)!;
   const navigate = useNavigate();
 
   const [confirmationItems, setConfirmationItems] = useState(
@@ -70,6 +70,7 @@ export function CheckoutForm() {
     navigate("/ConfirmationPage");
 
     setFormData(defaultFormData);
+    deleteCart;
   };
 
   return (
