@@ -8,7 +8,7 @@ import {
   CheckoutForm,
   ConfirmationPage,
 } from "./components/index";
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
