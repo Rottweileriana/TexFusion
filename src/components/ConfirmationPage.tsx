@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 export function ConfirmationPage() {
-  
   // Get AdressData
   const [formvalue] = useState<FormData>(() => {
     const storedValue = sessionStorage.getItem("addressData");
@@ -19,43 +18,58 @@ export function ConfirmationPage() {
   });
   const navigate = useNavigate();
 
-// Navigera till Huvudmeny via knapp
+  // Navigera till Huvudmeny via knapp
   const onClickTest = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    navigate('/');
+    navigate("/");
   };
 
-//Beräkna totala kostnaden för beställningsbekräftelsen
- const totalCost = cartValue.reduce((acc, cartValue) => acc + cartValue.price * cartValue.quantity, 0); 
-  return(
-<>
-<button onClick={onClickTest}>Tillbaka</button>
-<h1>Tack för din beställning {formvalue.firstName} {formvalue.lastName}!</h1>
-<p>Din leverans kommer att skickas med PostNord Express. Leveranstid ca: 10-15 minuter.</p>
-<p>Leverens sker till {formvalue.address}, {formvalue.zipCode}, {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.</p>
-<p>Ett bekräftelsemejl och fakturan på totalt {totalCost} SEK har skickats till {formvalue.email}</p>
-{cartValue.map(cartValue => {
-  return(
-    <StyledMainCartItems>
-      <StyledCartItems>
-          <Image src={cartValue.imageUrl}/>
-          <div>
-          <Title>{cartValue.title} x {cartValue.quantity} </Title>
-          {cartValue.price} Sek <br/>
-          </div>
-      </StyledCartItems>
-    </StyledMainCartItems>
-    
-  )
-})}
-</>
-  ) 
+  //Beräkna totala kostnaden för beställningsbekräftelsen
+  const totalCost = cartValue.reduce(
+    (acc, cartValue) => acc + cartValue.price * cartValue.quantity,
+    0
+  );
+  return (
+    <>
+      <button onClick={onClickTest}>Tillbaka</button>
+      <h1>
+        Tack för din beställning {formvalue.firstName} {formvalue.lastName}!
+      </h1>
+      <p>
+        Din leverans kommer att skickas med PostNord Express. Leveranstid ca:
+        10-15 minuter.
+      </p>
+      <p>
+        Leverens sker till {formvalue.address}, {formvalue.zipCode},{" "}
+        {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.
+      </p>
+      <p>
+        Ett bekräftelsemejl och fakturan på totalt {totalCost} SEK har skickats
+        till {formvalue.email}
+      </p>
+      {cartValue.map((cartValue) => {
+        return (
+          <StyledMainCartItems>
+            <StyledCartItems>
+              <Image src={cartValue.imageUrl} />
+              <div>
+                <Title>
+                  {cartValue.title} x {cartValue.quantity}{" "}
+                </Title>
+                {cartValue.price} Sek <br />
+              </div>
+            </StyledCartItems>
+          </StyledMainCartItems>
+        );
+      })}
+    </>
+  );
 }
 //#region CSS...
 const StyledMainCartItems = styled.div`
-display:block;
-flex-wrap: wrap;
+  display: block;
+  flex-wrap: wrap;
 `;
 
 const StyledCartItems = styled.div`

@@ -17,20 +17,32 @@ const defaultFormData: FormData = {
 //#region Styles
 const InputForm = styled.div`
   display: flex;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #e0e0e0;
+  color: #333333;
 `;
 
-const PaymentInput = styled.fieldset`
+const PaymentInput = styled.div`
   diplay: flex;
   border: none;
 `;
 
-const NameInput = styled.fieldset`
+const PaymentRadio = styled.label`
+  margin-right: 10px;
+`;
+
+const NameInput = styled.div`
   display: flex;
+  flex-wrap: wrap;
   border: none;
 `;
 
-const CityInput = styled.fieldset`
+const CityInput = styled.div`
   display: flex;
+  flex-wrap: wrap;
   border: none;
 `;
 //#endregion
@@ -65,7 +77,7 @@ export function CheckoutForm() {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //lägg till logik för confirmation page
+
     setConfirmationItems(cart);
     const addressData: FormData = formData;
 
@@ -87,22 +99,33 @@ export function CheckoutForm() {
           <div>
             Välj betalmetod:
             <PaymentInput>
-              <input type="radio" id="card" name="paymentMethod" value="card" />
-              <label htmlFor="card">Kreditkort</label>
-              <input
-                type="radio"
-                id="klarna"
-                name="paymentMethod"
-                value="klarna"
-              />
-              <label htmlFor="card">Klarna</label>
-              <input
-                type="radio"
-                id="swish"
-                name="paymentMethod"
-                value="swish"
-              />
-              <label htmlFor="card">Swish</label>
+              <PaymentRadio>
+                <input
+                  type="radio"
+                  id="card"
+                  name="paymentMethod"
+                  value="card"
+                />
+                Kreditkort
+              </PaymentRadio>
+              <PaymentRadio>
+                <input
+                  type="radio"
+                  id="klarna"
+                  name="paymentMethod"
+                  value="klarna"
+                />
+                Klarna
+              </PaymentRadio>
+              <PaymentRadio>
+                <input
+                  type="radio"
+                  id="swish"
+                  name="paymentMethod"
+                  value="swish"
+                />
+                Swish
+              </PaymentRadio>
             </PaymentInput>
           </div>
           <NameInput>
@@ -177,7 +200,7 @@ export function CheckoutForm() {
             </label>
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button type="submit">Beställ</button>
           </div>
         </form>
       </InputForm>
