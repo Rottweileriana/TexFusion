@@ -49,9 +49,6 @@ export function CheckoutForm() {
   const { firstName, lastName, email, address, zipCode, city, phone } =
     formData;
 
-
-  
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -70,12 +67,11 @@ export function CheckoutForm() {
     sessionStorage.setItem("confirmedItems", JSON.stringify(cart));
 
     //Navigate to ConfirmationPage
-    navigate('/ConfirmationPage');
+    navigate("/ConfirmationPage");
 
     setFormData(defaultFormData);
-
   };
-  
+
   return (
     <div>
       <h2>KASSA</h2>
