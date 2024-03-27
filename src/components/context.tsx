@@ -68,9 +68,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const deleteCart = () => {
-    let updatedCart = [...cart];
-    updatedCart = [];
-        setCart(updatedCart);
+        setCart([]);
   }
 
   return (
