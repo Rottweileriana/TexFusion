@@ -1,9 +1,11 @@
 import { useState, useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "./context";
 import styled from "styled-components";
+import { CartItem, FormData } from "../types/index";
 
-const defaultFormData = {
-  firstName: "a",
+const defaultFormData: FormData = {
+  firstName: "",
   lastName: "",
   email: "",
   address: "",
@@ -17,21 +19,32 @@ const InputForm = styled.div`
   display: flex;
 `;
 
-const NameInput = styled.div`
+const NameInput = styled.fieldset`
   display: flex;
 `;
 
-const CityInput = styled.div`
+const CityInput = styled.fieldset`
   display: flex;
 `;
 //#endregion
 
-
+function getSessionStorageOrDefault(key: string, defaultValue: CartItem[]) {
+  const stored = sessionStorage.getItem(key);
+  if (!stored) {
+    return defaultValue;
+  }
+  return JSON.parse(stored);
+}
 
 export function CheckoutForm() {
   //Cart för senare användning för att skapa confirmation page
   const { cart } = useContext(CartContext)!;
-  const [formData, setFormData] = useState(defaultFormData);
+
+  const [confirmationItems, setConfirmationItems] = useState(
+    getSessionStorageOrDefault("confirmationItems", [])
+  );
+
+  const [formData, setFormData] = useState<FormData>(defaultFormData);
   const { firstName, lastName, email, address, zipCode, city, phone } =
     formData;
 
@@ -48,8 +61,11 @@ export function CheckoutForm() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //lägg till logik för confirmation page
-    console.log(formData);
-    sessionStorage.setItem('formdata', JSON.stringify(formData))
+    setConfirmationItems(cart);
+    const addressData: FormData = formData;
+
+    sessionStorage.setItem("addressData", JSON.stringify(addressData));
+
     setFormData(defaultFormData);
 
     const data = sessionStorage.getItem('formdata');
@@ -66,6 +82,7 @@ export function CheckoutForm() {
       <h2>KASSA</h2>
       <InputForm>
         <form onSubmit={onSubmit}>
+          <fieldset></fieldset>
           <NameInput>
             <div>
               <label>

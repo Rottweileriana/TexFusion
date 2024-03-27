@@ -1,6 +1,14 @@
-import { CartProvider } from './components/context';
-import { CourseMenu, CocktailMenu, SidesMenu, NavBarComponent, ShoppingCart, CheckoutForm, ConfirmationPage } from "./components/index";
-import React, {useRef} from 'react'
+import { CartProvider } from "./components/context";
+import {
+  CourseMenu,
+  CocktailMenu,
+  SidesMenu,
+  NavBarComponent,
+  ShoppingCart,
+  CheckoutForm,
+  ConfirmationPage,
+} from "./components/index";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import "./App.css";
 
@@ -13,26 +21,26 @@ const App: React.FC = () => {
     <>
       <CartProvider>
         <NavBarComponent />
-          <MainComponent>
-            <div id="CourseMenu">
-             <CourseMenu  />
-            </div>
-            <div id="SidesMenu">
-             <SidesMenu />
-            </div>
-            <div id="CocktailMenu">
-             <CocktailMenu />
-            </div>
-            <div id="ShoppingCart">
-             <ShoppingCart />
-            </div>
-            <div>
+        <MainComponent>
+          <div id="CourseMenu">
+            <CourseMenu />
+          </div>
+          <div id="SidesMenu">
+            <SidesMenu />
+          </div>
+          <div id="CocktailMenu">
+            <CocktailMenu />
+          </div>
+          <div id="ShoppingCart">
+            <ShoppingCart />
+          </div>
+          <div>
             <CheckoutForm />
-            </div>
-            <div>
+          </div>
+          <div>
             <ConfirmationPage />
-            </div>
-          </MainComponent>
+          </div>
+        </MainComponent>
       </CartProvider>
     </>
   );
