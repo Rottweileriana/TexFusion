@@ -1,5 +1,5 @@
-import { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "./context";
 import styled from "styled-components";
 import { CartItem, FormData } from "../types/index";
@@ -68,7 +68,6 @@ export function CheckoutForm() {
 
     //Navigate to ConfirmationPage
     navigate("/ConfirmationPage");
-
     setFormData(defaultFormData);
   };
 
