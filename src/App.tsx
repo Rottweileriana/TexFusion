@@ -10,6 +10,8 @@ import {
 } from "./components/index";
 import React, { useRef } from "react";
 import styled from "styled-components";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import "./App.css";
 
 const MainComponent = styled.div`
@@ -19,29 +21,32 @@ const MainComponent = styled.div`
 const App: React.FC = () => {
   return (
     <>
-      <CartProvider>
-        <NavBarComponent />
-        <MainComponent>
-          <div id="CourseMenu">
-            <CourseMenu />
-          </div>
-          <div id="SidesMenu">
-            <SidesMenu />
-          </div>
-          <div id="CocktailMenu">
-            <CocktailMenu />
-          </div>
-          <div id="ShoppingCart">
-            <ShoppingCart />
-          </div>
-          <div>
-            <CheckoutForm />
-          </div>
-          <div>
-            <ConfirmationPage />
-          </div>
-        </MainComponent>
-      </CartProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<CartProvider>
+          <NavBarComponent />
+          <MainComponent>
+            <div id="CourseMenu">
+              <CourseMenu />
+            </div>
+            <div id="SidesMenu">
+              <SidesMenu />
+            </div>
+            <div id="CocktailMenu">
+              <CocktailMenu />
+            </div>
+            <div id="ShoppingCart">
+              <ShoppingCart />
+            </div>
+            <div>
+              <CheckoutForm />
+            </div>
+          </MainComponent>
+        </CartProvider>}></Route>
+        <Route path="/ConfirmationPage" element={<ConfirmationPage />}></Route>
+      </Routes>
+    </BrowserRouter>
+      
     </>
   );
 };

@@ -39,6 +39,7 @@ function getSessionStorageOrDefault(key: string, defaultValue: CartItem[]) {
 export function CheckoutForm() {
   //Cart för senare användning för att skapa confirmation page
   const { cart } = useContext(CartContext)!;
+  const navigate = useNavigate();
 
   const [confirmationItems, setConfirmationItems] = useState(
     getSessionStorageOrDefault("confirmationItems", [])
@@ -64,17 +65,15 @@ export function CheckoutForm() {
     setConfirmationItems(cart);
     const addressData: FormData = formData;
 
+    //Store current formdata to SessionStorage
     sessionStorage.setItem("addressData", JSON.stringify(addressData));
+    sessionStorage.setItem("confirmedItems", JSON.stringify(cart));
+
+    //Navigate to ConfirmationPage
+    navigate('/ConfirmationPage');
 
     setFormData(defaultFormData);
 
-    const data = sessionStorage.getItem('formdata');
-    if (data)
-    {
-      const parsData = JSON.parse(data);
-      console.log(parsData);
-    }
-    
   };
   
   return (
