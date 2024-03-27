@@ -19,12 +19,19 @@ const InputForm = styled.div`
   display: flex;
 `;
 
+const PaymentInput = styled.fieldset`
+  diplay: flex;
+  border: none;
+`;
+
 const NameInput = styled.fieldset`
   display: flex;
+  border: none;
 `;
 
 const CityInput = styled.fieldset`
   display: flex;
+  border: none;
 `;
 //#endregion
 
@@ -80,7 +87,7 @@ export function CheckoutForm() {
         <form onSubmit={onSubmit}>
           <div>
             Välj betalmetod:
-            <fieldset>
+            <PaymentInput>
               <input type="radio" id="card" name="paymentMethod" value="card" />
               <label htmlFor="card">Kreditkort</label>
               <input
@@ -97,7 +104,7 @@ export function CheckoutForm() {
                 value="swish"
               />
               <label htmlFor="card">Swish</label>
-            </fieldset>
+            </PaymentInput>
           </div>
           <NameInput>
             <div>
