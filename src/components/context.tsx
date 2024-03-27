@@ -67,11 +67,14 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const deleteCart = () => {
-        setCart([]);
-  }
+    setCart([]);
+    localStorage.setItem("cart", JSON.stringify([]));
+  };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, deleteCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, deleteCart }}
+    >
       {children}
     </CartContext.Provider>
   );

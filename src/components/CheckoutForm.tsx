@@ -66,11 +66,11 @@ export function CheckoutForm() {
     sessionStorage.setItem("addressData", JSON.stringify(addressData));
     sessionStorage.setItem("confirmedItems", JSON.stringify(cart));
 
+    deleteCart();
     //Navigate to ConfirmationPage
     navigate("/ConfirmationPage");
 
     setFormData(defaultFormData);
-    deleteCart;
   };
 
   return (
@@ -78,7 +78,27 @@ export function CheckoutForm() {
       <h2>KASSA</h2>
       <InputForm>
         <form onSubmit={onSubmit}>
-          <fieldset></fieldset>
+          <div>
+            Välj betalmetod:
+            <fieldset>
+              <input type="radio" id="card" name="paymentMethod" value="card" />
+              <label htmlFor="card">Kreditkort</label>
+              <input
+                type="radio"
+                id="klarna"
+                name="paymentMethod"
+                value="klarna"
+              />
+              <label htmlFor="card">Klarna</label>
+              <input
+                type="radio"
+                id="swish"
+                name="paymentMethod"
+                value="swish"
+              />
+              <label htmlFor="card">Swish</label>
+            </fieldset>
+          </div>
           <NameInput>
             <div>
               <label>
