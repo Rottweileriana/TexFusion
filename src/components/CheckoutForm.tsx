@@ -50,6 +50,7 @@ const CityInput = styled.div`
 const TextInput = styled.input`
   margin-left: 5px;
   background-color: #d3d3d3;
+  color: #333333;
   border: 1px solid #222222;
   border-radius: 5px;
 `;
@@ -70,16 +71,8 @@ export function CheckoutForm() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<FormData>(defaultFormData);
-  const {
-    firstName,
-    lastName,
-    email,
-    address,
-    zipCode,
-    city,
-    phone,
-    paymentMethod,
-  } = formData;
+  const { firstName, lastName, email, address, zipCode, city, phone } =
+    formData;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevState) => ({
