@@ -12,6 +12,7 @@ const defaultFormData: FormData = {
   zipCode: "",
   city: "",
   phone: "",
+  paymentMethod: "",
 };
 
 //#region Styles
@@ -45,6 +46,14 @@ const CityInput = styled.div`
   flex-wrap: wrap;
   border: none;
 `;
+
+const TextInput = styled.input`
+  margin-left: 5px;
+  background-color: #d3d3d3;
+  border: 1px solid #222222;
+  border-radius: 5px;
+`;
+
 //#endregion
 
 function getSessionStorageOrDefault(key: string, defaultValue: CartItem[]) {
@@ -60,13 +69,17 @@ export function CheckoutForm() {
   const { cart, deleteCart } = useContext(CartContext)!;
   const navigate = useNavigate();
 
-  const [confirmationItems, setConfirmationItems] = useState(
-    getSessionStorageOrDefault("confirmationItems", [])
-  );
-
   const [formData, setFormData] = useState<FormData>(defaultFormData);
-  const { firstName, lastName, email, address, zipCode, city, phone } =
-    formData;
+  const {
+    firstName,
+    lastName,
+    email,
+    address,
+    zipCode,
+    city,
+    phone,
+    paymentMethod,
+  } = formData;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevState) => ({
@@ -75,10 +88,16 @@ export function CheckoutForm() {
     }));
   };
 
+  const onPaymentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      paymentMethod: e.target.value,
+    }));
+  };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setConfirmationItems(cart);
     const addressData: FormData = formData;
 
     //Store current formdata to SessionStorage
@@ -104,7 +123,8 @@ export function CheckoutForm() {
                   type="radio"
                   id="card"
                   name="paymentMethod"
-                  value="card"
+                  value="Kreditkort"
+                  onChange={onPaymentChange}
                 />
                 Kreditkort
               </PaymentRadio>
@@ -113,7 +133,8 @@ export function CheckoutForm() {
                   type="radio"
                   id="klarna"
                   name="paymentMethod"
-                  value="klarna"
+                  value="Klarna"
+                  onChange={onPaymentChange}
                 />
                 Klarna
               </PaymentRadio>
@@ -122,7 +143,8 @@ export function CheckoutForm() {
                   type="radio"
                   id="swish"
                   name="paymentMethod"
-                  value="swish"
+                  value="Swish"
+                  onChange={onPaymentChange}
                 />
                 Swish
               </PaymentRadio>
@@ -132,7 +154,7 @@ export function CheckoutForm() {
             <div>
               <label>
                 Förnamn:
-                <input
+                <TextInput
                   type="text"
                   id="firstName"
                   value={firstName}
@@ -143,7 +165,7 @@ export function CheckoutForm() {
             <div>
               <label>
                 Efternamn:
-                <input
+                <TextInput
                   type="text"
                   id="lastName"
                   value={lastName}
@@ -155,7 +177,7 @@ export function CheckoutForm() {
           <div>
             <label>
               Epost:
-              <input
+              <TextInput
                 type="email"
                 id="email"
                 value={email}
@@ -166,7 +188,7 @@ export function CheckoutForm() {
           <div>
             <label>
               Adress:
-              <input
+              <TextInput
                 type="text"
                 id="address"
                 value={address}
@@ -178,7 +200,7 @@ export function CheckoutForm() {
             <div>
               <label>
                 Postnr:
-                <input
+                <TextInput
                   type="text"
                   id="zipCode"
                   value={zipCode}
@@ -189,14 +211,24 @@ export function CheckoutForm() {
             <div>
               <label>
                 Stad:
-                <input type="text" id="city" value={city} onChange={onChange} />
+                <TextInput
+                  type="text"
+                  id="city"
+                  value={city}
+                  onChange={onChange}
+                />
               </label>
             </div>
           </CityInput>
           <div>
             <label>
               Telefon:
-              <input type="text" id="phone" value={phone} onChange={onChange} />
+              <TextInput
+                type="text"
+                id="phone"
+                value={phone}
+                onChange={onChange}
+              />
             </label>
           </div>
           <div>

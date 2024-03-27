@@ -42,4 +42,5 @@ export type FormData = {
   zipCode: string;
   city: string;
   phone: string;
+  paymentMethod: string;
 };
