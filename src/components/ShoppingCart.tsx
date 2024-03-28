@@ -148,22 +148,40 @@ export const ShoppingCart: React.FC = () => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const MAX_LENGTH = 15;
 
-  // Beräkna totProdPrice, totCartPrice och totCartQuant
-  const totProdPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  const totCartPrice = totProdPrice;
-  const totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
+  let totProdPrice = 0;
+  let totCartPrice = 0;
+  let totCartQuant = 0;
+
+  try {
+    totProdPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    totCartPrice = totProdPrice;
+    totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
+  } catch (error) {
+    console.error('Error calculating totals:', error);
+  }
 
   const handleIncrement = (product: CartItem) => {
-    addToCart(product);
+    try {
+      addToCart(product);
+    } catch (error) {
+      console.error('Error adding item to cart:', error);
+    }
   };
 
   const handleDecrement = (id: string) => {
-    // Anropa removeFromCart-metoden för att ta bort produkten
-    removeFromCart(id);
+    try {
+      removeFromCart(id);
+    } catch (error) {
+      console.error('Error removing item from cart:', error);
+    }
   };
 
   const deleteProdFromCart = (id: string, deleteProdFromCart: boolean) => {
-    removeFromCart(id, deleteProdFromCart);
+    try {
+      removeFromCart(id, deleteProdFromCart);
+    } catch (error) {
+      console.error('Error deleting item from cart:', error);
+    }
   };
 
   return (
