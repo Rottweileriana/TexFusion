@@ -9,8 +9,13 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
 
-  // Variabel för logic till navbar-varukorg
-  const totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
+  let totCartQuant = 0;
+
+  try {
+    totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
+  } catch (error) {
+    console.error('Error calculating total quantity in cart:', error);
+  }
 
   return (
     <MainDiv>
