@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CartItem, FormData } from "../types/index";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
@@ -18,6 +18,20 @@ export function ConfirmationPage() {
   });
   const navigate = useNavigate();
 
+  const [waiting, setWaiting] = useState(false);
+  useEffect(() => {
+    if(formvalue.paymentMethod === "Swish") {
+        setWaiting(true);
+        const timer = setTimeout(() => {
+          setWaiting(false);
+        }, 3000);
+        return () => {
+          clearTimeout(timer);
+        };
+      }
+    }, [formvalue.paymentMethod]);
+  
+  
   // Navigera till Huvudmeny via knapp
   const onClickTest = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -30,7 +44,7 @@ export function ConfirmationPage() {
     (acc, cartValue) => acc + cartValue.price * cartValue.quantity,
     0
   );
-  return (
+  return formvalue.paymentMethod === 'Klarna' ?
     <>
       <button onClick={onClickTest}>Tillbaka</button>
       <h1>
@@ -41,6 +55,7 @@ export function ConfirmationPage() {
         10-15 minuter.
       </p>
       <p>
+        {formvalue.paymentMethod}
         Leverens sker till {formvalue.address}, {formvalue.zipCode},{" "}
         {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.
       </p>
@@ -64,8 +79,79 @@ export function ConfirmationPage() {
         );
       })}
     </>
-  );
-}
+    : formvalue.paymentMethod === 'KreditKort' ?
+    <>
+    <button onClick={onClickTest}>Tillbaka</button>
+    <h1>
+      Tack för din betalning {formvalue.firstName} {formvalue.lastName}!
+    </h1>
+    <p>
+      Din leverans kommer att skickas med PostNord Express. Leveranstid ca:
+      10-15 minuter.
+    </p>
+    <p>
+      {formvalue.paymentMethod}
+      Leverens sker till {formvalue.address}, {formvalue.zipCode},{" "}
+      {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.
+    </p>
+    <p>
+      Ett bekräftelsemejl och kvittot på totalt {totalCost} SEK har skickats
+      till {formvalue.email}
+    </p>
+    {cartValue.map((cartValue) => {
+      return (
+        <StyledMainCartItems>
+          <StyledCartItems>
+            <Image src={cartValue.imageUrl} />
+            <div>
+              <Title>
+                {cartValue.title} x {cartValue.quantity}{" "}
+              </Title>
+              {cartValue.price} Sek <br />
+            </div>
+          </StyledCartItems>
+        </StyledMainCartItems>
+      );
+    })}
+  </>
+  : formvalue.paymentMethod === 'Swish' && waiting ?
+    <h1>Väntar på betalning...</h1>
+  : 
+<>
+    <button onClick={onClickTest}>Tillbaka</button>
+      <h1>
+        Tack för din betalning {formvalue.firstName} {formvalue.lastName}!
+      </h1>
+      <p>
+        Din leverans kommer att skickas med PostNord Express. Leveranstid ca:
+        10-15 minuter.
+      </p>
+      <p>
+        {formvalue.paymentMethod}
+        Leverens sker till {formvalue.address}, {formvalue.zipCode},{" "}
+        {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.
+      </p>
+      <p>
+        Ett bekräftelsemejl och kvittot på totalt {totalCost} SEK har skickats
+        till {formvalue.email}
+      </p>
+      {cartValue.map((cartValue) => {
+        return (
+          <StyledMainCartItems>
+            <StyledCartItems>
+              <Image src={cartValue.imageUrl} />
+              <div>
+                <Title>
+                  {cartValue.title} x {cartValue.quantity}{" "}
+                </Title>
+                {cartValue.price} Sek <br />
+              </div>
+            </StyledCartItems>
+          </StyledMainCartItems>
+        );
+      })}
+    </>
+};
 //#region CSS...
 const StyledMainCartItems = styled.div`
   display: block;

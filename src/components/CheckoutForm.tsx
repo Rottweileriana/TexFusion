@@ -5,8 +5,8 @@ import styled from "styled-components";
 import { CartItem, FormData } from "../types/index";
 
 const defaultFormData: FormData = {
-  firstName: "",
-  lastName: "",
+  firstName: '',
+  lastName: '',
   email: "",
   address: "",
   zipCode: "",
@@ -90,6 +90,19 @@ export function CheckoutForm() {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      address === "" ||
+      zipCode === "" ||
+      city === "" ||
+      phone === "" ||
+      formData.paymentMethod === ""
+    ) {
+      alert('Var vänlig fyll i alla obligatoriska fält.');
+      return; // Avbryt inlämningen om något fält är tomt
+    }
 
     const addressData: FormData = formData;
 

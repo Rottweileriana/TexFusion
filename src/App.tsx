@@ -7,6 +7,7 @@ import {
   ShoppingCart,
   CheckoutForm,
   ConfirmationPage,
+  ErrorPage,
 } from "./components/index";
 import React from "react";
 import styled from "styled-components";
@@ -44,6 +45,7 @@ const App: React.FC = () => {
           </MainComponent>
         </CartProvider>}></Route>
         <Route path="/ConfirmationPage" element={<ConfirmationPage />}></Route>
+        <Route path="*" element={<ErrorPage/>}></Route>
       </Routes>
     </BrowserRouter>
       
