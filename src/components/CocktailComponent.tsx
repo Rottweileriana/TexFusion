@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
 
@@ -120,37 +120,53 @@ const Cocktail: React.FC<Cocktail> = ({
   cocktailPrice
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
-  // const cocktailPrice = 180;
+  const [ error, setError ] = useState<string | null>(null);
+  const [ quantity, setQuantity ] = useState<number>(0);
+  
   const MAX_LENGTH = 19;
   let formattedCocktailName = strDrink;
 
-  const productInCart = cart.find((product) => product._id === idDrink);
+  let handleIncrement: () => void = () => {};
+  let handleDecrement: () => void = () => {};
 
-  // Hämta quantity från den aktuella produkten, om den finns i varukorgen
-  const quantity = productInCart ? productInCart.quantity : 0;
+  try 
+  {
+    useEffect(() => {
+      const productInCart = cart.find(product => product._id === idDrink);
+      const quantityInCart = productInCart ? productInCart.quantity : 0;
+      setQuantity(prevQuantity => {
+        // Only update if the quantity changed to avoid infinite loop
+        return prevQuantity !== quantityInCart ? quantityInCart : prevQuantity;
+      });
+    }, [cart, idDrink]);
 
-  if (formattedCocktailName.length > MAX_LENGTH) {
-    formattedCocktailName =
-      formattedCocktailName.substring(0, MAX_LENGTH) + "...";
-  }
+    if (formattedCocktailName.length > MAX_LENGTH) {
+      formattedCocktailName =
+        formattedCocktailName.substring(0, MAX_LENGTH) + "...";
+    }
 
-  const handleIncrement = () => {
-    // Skapa ett nytt objekt för den aktuella produkten
-    const product = {
-      _id: idDrink,
-      imageUrl: strDrinkThumb,
-      title: strDrink,
-      price: cocktailPrice,
-      quantity: 1,
+    handleIncrement = () => {
+      // Skapa ett nytt objekt för den aktuella produkten
+      const product = {
+        _id: idDrink,
+        imageUrl: strDrinkThumb,
+        title: strDrink,
+        price: cocktailPrice,
+        quantity: 1,
+      };
+      // Anropa addToCart-metoden med det nya produktobjektet
+      addToCart(product);
     };
-    // Anropa addToCart-metoden med det nya produktobjektet
-    addToCart(product);
-  };
 
-  const handleDecrement = () => {
-    // Anropa removeFromCart-metoden för att ta bort produkten
-    removeFromCart(idDrink);
-  };
+    handleDecrement = () => {
+      // Anropa removeFromCart-metoden för att ta bort produkten
+      removeFromCart(idDrink);
+    };
+  }
+  catch (error) {
+    console.error("Error in creating cocktail component", error)
+    setError("An error occurred while rendering cocktail component.");
+  }
 
   return (
     <StyledCocktail>

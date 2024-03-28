@@ -160,7 +160,7 @@ const CourseComponent: React.FC<DishProps> = ({
   }
   catch (error) {
     console.error("Error in creating course component", error)
-    setError("An error occurred while rendering this component.");
+    setError("An error occurred while rendering course component.");
   }
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
 import { DishProps } from "../types/index.ts";
@@ -98,52 +98,68 @@ const SidesComponent: React.FC<DishProps> = ({
   price,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
+  const [error, setError] = useState<string | null>(null);
+  const [quantity, setQuantity] = useState<number>(0);
 
-  // Hitta den aktuella produkten i varukorgen baserat på _id
-  const productInCart = cart.find((product) => product._id === _id);
+  let formattedIngredientText = "";
+  let handleIncrement: () => void = () => {};
+  let handleDecrement: () => void = () => {};
 
-  // Hämta quantity från den aktuella produkten, om den finns i varukorgen
-  const quantity = productInCart ? productInCart.quantity : 0;
+  try
+  {
+    useEffect(() => {
+      const productInCart = cart.find(product => product._id === _id);
+      const quantityInCart = productInCart ? productInCart.quantity : 0;
+      setQuantity(prevQuantity => {
+        // Only update if the quantity changed to avoid infinite loop
+        return prevQuantity !== quantityInCart ? quantityInCart : prevQuantity;
+      });
+    }, [cart, _id]);
 
-  const formattedIngredients = ingredients
-    .map((ingredient) => ingredient.name)
-    .reduce((acc, curr, index, array) => {
-      if (index === 0) {
-        return curr;
-      } else if (index === array.length - 1) {
-        return `${acc} och ${curr}`;
-      } else {
-        return `${acc}, ${curr}`;
-      }
-    }, "");
+    const formattedIngredients = ingredients
+      .map((ingredient) => ingredient.name)
+      .reduce((acc, curr, index, array) => {
+        if (index === 0) {
+          return curr;
+        } else if (index === array.length - 1) {
+          return `${acc} och ${curr}`;
+        } else {
+          return `${acc}, ${curr}`;
+        }
+      }, "");
 
-  const MAX_LENGTH = 19;
-  let formattedIngredientText = formattedIngredients;
+    const MAX_LENGTH = 19;
+    formattedIngredientText = formattedIngredients;
 
-  if (formattedIngredientText.length > MAX_LENGTH) {
-    formattedIngredientText =
-      formattedIngredientText.substring(0, MAX_LENGTH) + "...";
-  } else {
-    formattedIngredientText = `${formattedIngredients}.`;
-  }
+    if (formattedIngredientText.length > MAX_LENGTH) {
+      formattedIngredientText =
+        formattedIngredientText.substring(0, MAX_LENGTH) + "...";
+    } else {
+      formattedIngredientText = `${formattedIngredients}.`;
+    }
 
-  const handleIncrement = () => {
-    // Skapa ett nytt objekt för den aktuella produkten
-    const product = {
-      _id,
-      imageUrl,
-      title,
-      price,
-      quantity: 1,
+    handleIncrement = () => {
+      // Skapa ett nytt objekt för den aktuella produkten
+      const product = {
+        _id,
+        imageUrl,
+        title,
+        price,
+        quantity: 1,
+      };
+      // Anropa addToCart-metoden med det nya produktobjektet
+      addToCart(product);
     };
-    // Anropa addToCart-metoden med det nya produktobjektet
-    addToCart(product);
-  };
 
-  const handleDecrement = () => {
-    // Anropa removeFromCart-metoden för att ta bort produkten
-    removeFromCart(_id);
-  };
+    handleDecrement = () => {
+      // Anropa removeFromCart-metoden för att ta bort produkten
+      removeFromCart(_id);
+    };
+  }
+  catch (error) {
+    console.error("Error in creating sides component", error)
+    setError("An error occurred while rendering sides component.");
+  }
 
   return (
     <StyledSide>
