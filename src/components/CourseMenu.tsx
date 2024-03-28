@@ -4,6 +4,7 @@ import { Dish } from "../types/index";
 
 export function CourseMenu() {
   const [mains, setMains] = useState<Dish[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const API_URL =
     "https://iths-2024-recept-grupp6-bc215j.reky.se/categories/main/recipes";
 
@@ -17,7 +18,8 @@ export function CourseMenu() {
         const data = await response.json();
         setMains(data);
       } catch (error) {
-        console.error("Error fetching dishes:", error);
+        console.error("Error fetching main courses:", error);
+        setError("An error occurred while fetching data.");
       }
     };
 
@@ -27,6 +29,10 @@ export function CourseMenu() {
       setMains([]);
     };
   }, []);
+
+  // if (error) {
+  //   return <div>Huvudrätter: Kunde inte hämta huvudrätter.</div>;
+  // }
 
   return (
     <>
