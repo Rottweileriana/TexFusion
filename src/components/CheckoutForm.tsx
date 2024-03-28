@@ -67,7 +67,7 @@ function getSessionStorageOrDefault(key: string, defaultValue: CartItem[]) {
 
 export function CheckoutForm() {
   //Cart för senare användning för att skapa confirmation page
-  const { cart, setConfirmedCheckout, deleteCart } = useContext(CartContext)!;
+  const { cart, confirmation, deleteCart } = useContext(CartContext)!;
   const navigate = useNavigate();
 
  // var [confirmCheckout, setConfirmedCheckout] = useState();
@@ -110,7 +110,7 @@ export function CheckoutForm() {
     //Store current formdata to SessionStorage
     sessionStorage.setItem("addressData", JSON.stringify(addressData));
     sessionStorage.setItem("confirmedItems", JSON.stringify(cart));
-    setConfirmedCheckout(true);
+    confirmation(true);
     deleteCart();
     setFormData(defaultFormData);
     //Navigate to ConfirmationPage

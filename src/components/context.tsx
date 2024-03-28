@@ -5,7 +5,6 @@ type CartContextType = {
   cart: CartItem[];
   confirmedCheckout: boolean;
   confirmation: (confirmed: boolean) => void;
-  setConfirmedCheckout: (confirmed: boolean) => void;
   addToCart: (product: CartItem) => void;
   removeFromCart: (_id: string, deleteProdFromCart?: boolean) => void;
   deleteCart: () => void;
@@ -22,8 +21,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     const storedCart = localStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) : [];
   });
-  
+
   const [confirmedCheckout, setConfirmedCheckout] = useState<boolean>(false);
+
+  const confirmation = (confirmed: boolean) => {
+    setConfirmedCheckout(confirmed);
+  };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -78,7 +81,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, deleteCart }}
+      value={{ cart, addToCart, removeFromCart, deleteCart, confirmedCheckout, confirmation }}
     >
       {children}
     </CartContext.Provider>

@@ -7,9 +7,12 @@ import { CartContext } from "./context";
 export function ConfirmationPage() {
   const { confirmedCheckout } = useContext(CartContext)!;
   const navigate = useNavigate();
-  if(confirmedCheckout)
-  navigate("/")
-  else {
+  useEffect(() => {
+    if(!confirmedCheckout){
+      navigate("/");
+    }
+  }, [confirmedCheckout, navigate])
+  
     // Get AdressData
     const [formvalue] = useState<FormData>(() => {
       const storedValue = sessionStorage.getItem("addressData");
@@ -70,7 +73,7 @@ export function ConfirmationPage() {
         </p>
         {cartValue.map((cartValue) => {
           return (
-            <StyledMainCartItems>
+            <StyledMainCartItems key={cartValue._id}>
               <StyledCartItems>
                 <Image src={cartValue.imageUrl} />
                 <div>
@@ -105,7 +108,7 @@ export function ConfirmationPage() {
       </p>
       {cartValue.map((cartValue) => {
         return (
-          <StyledMainCartItems>
+          <StyledMainCartItems key={cartValue._id}>
             <StyledCartItems>
               <Image src={cartValue.imageUrl} />
               <div>
@@ -141,8 +144,8 @@ export function ConfirmationPage() {
           till {formvalue.email}
         </p>
         {cartValue.map((cartValue) => {
-          return (
-            <StyledMainCartItems>
+          return ( 
+            <StyledMainCartItems key={cartValue._id}>
               <StyledCartItems>
                 <Image src={cartValue.imageUrl} />
                 <div>
@@ -156,9 +159,7 @@ export function ConfirmationPage() {
           );
         })}
       </>
-  }
-  
-};
+  };
 //#region CSS...
 const StyledMainCartItems = styled.div`
   display: block;
