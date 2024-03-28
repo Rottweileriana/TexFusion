@@ -23,8 +23,10 @@ const App: React.FC = () => {
   return (
     <>
     <BrowserRouter>
+    <CartProvider>
       <Routes>
-        <Route path="/" element={<CartProvider>
+        <Route path="/" element={
+          <>
           <NavBarComponent />
           <MainComponent>
             <div id="CourseMenu">
@@ -43,10 +45,12 @@ const App: React.FC = () => {
               <CheckoutForm />
             </div>
           </MainComponent>
-        </CartProvider>}></Route>
+          </>
+        }></Route>
         <Route path="/ConfirmationPage" element={<ConfirmationPage />}></Route>
         <Route path="*" element={<ErrorPage/>}></Route>
       </Routes>
+      </CartProvider>
     </BrowserRouter>
       
     </>

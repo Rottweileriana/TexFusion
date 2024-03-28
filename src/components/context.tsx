@@ -3,6 +3,9 @@ import { CartItem } from "../types/index";
 
 type CartContextType = {
   cart: CartItem[];
+  confirmedCheckout: boolean;
+  confirmation: (confirmed: boolean) => void;
+  setConfirmedCheckout: (confirmed: boolean) => void;
   addToCart: (product: CartItem) => void;
   removeFromCart: (_id: string, deleteProdFromCart?: boolean) => void;
   deleteCart: () => void;
@@ -19,6 +22,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     const storedCart = localStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) : [];
   });
+  
+  const [confirmedCheckout, setConfirmedCheckout] = useState<boolean>(false);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
