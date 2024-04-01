@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "./index";
 import SidesComponent from "./SidesComponent";
 import { Dish } from "../types/index";
 

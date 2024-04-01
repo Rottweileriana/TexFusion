@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useContext, useNavigate } from "./index";
 import { CartContext } from "./context";
 import styled from "styled-components";
 import { CartItem, FormData } from "../types/index";

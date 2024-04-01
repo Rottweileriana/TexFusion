@@ -9,9 +9,11 @@ import {
   CheckoutForm,
   ConfirmationPage,
   ErrorPage,
+  BrowserRouter,
+  Routes,
+  Route,
 } from "./components/index";
 import styled from "styled-components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 

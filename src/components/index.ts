@@ -6,3 +6,8 @@ export { ShoppingCart } from "./ShoppingCart";
 export { CheckoutForm } from "./CheckoutForm";
 export { ConfirmationPage } from "./ConfirmationPage";
 export { ErrorPage } from "./ErrorPage";
+export { useState, useContext, useEffect } from "react";
+export { useNavigate, BrowserRouter, Routes, Route } from "react-router-dom";
+export { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+export { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+

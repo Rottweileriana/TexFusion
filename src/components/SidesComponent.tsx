@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "./index.ts";
 import { CartContext } from "./context";
 import styled from "styled-components";
 import { DishProps } from "../types/index.ts";

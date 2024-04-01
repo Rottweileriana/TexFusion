@@ -1,6 +1,5 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useNavigate } from "./index";
 import { CartItem, FormData } from "../types/index";
-import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { CartContext } from "./context";
 

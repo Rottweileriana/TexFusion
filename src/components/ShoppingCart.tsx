@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useContext } from "./index";
 import { CartContext } from "./context";
 import styled from "styled-components";
 
