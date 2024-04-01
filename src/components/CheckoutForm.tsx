@@ -25,33 +25,60 @@ const InputForm = styled.div`
   color: #333333;
 `;
 
-const PaymentInput = styled.div`
-  diplay: flex;
+const FormInputElements = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   border: none;
+  margin-top: 20px;
+`;
+
+const PaymentRadioBtnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border: none;
+  margin-left: 16px;
+`;
+
+const PaymentInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border: none;
+`;
+
+const RadioElement = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  border: none;
+`;
+
+const RadioBtn = styled.input`
+  margin-left: 90px;
+}
 `;
 
 const PaymentRadio = styled.label`
-  margin-right: 10px;
+  margin-left: 10px;
+  
 `;
 
-const NameInput = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  border: none;
-`;
-
-const CityInput = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  border: none;
+const InputElement = styled.div`
+  margin-left: auto;
+  margin-right: 30px;
 `;
 
 const TextInput = styled.input`
-  margin-left: 5px;
+  margin-left: 10px;
   background-color: #d3d3d3;
   color: #333333;
   border: 1px solid #222222;
   border-radius: 5px;
+`;
+
+const FormBtn = styled.div`
+  margin-bottom: 20px;
 `;
 
 //#endregion
@@ -122,125 +149,131 @@ export function CheckoutForm() {
       <h2>KASSA</h2>
       <InputForm>
         <form onSubmit={onSubmit}>
-          <div>
-            Välj betalmetod:
-            <PaymentInput>
-              <PaymentRadio>
-                <input
-                  type="radio"
-                  id="card"
-                  name="paymentMethod"
-                  value="Kreditkort"
-                  onChange={onPaymentChange}
-                />
-                Kreditkort
-              </PaymentRadio>
-              <PaymentRadio>
-                <input
-                  type="radio"
-                  id="klarna"
-                  name="paymentMethod"
-                  value="Klarna"
-                  onChange={onPaymentChange}
-                />
-                Klarna
-              </PaymentRadio>
-              <PaymentRadio>
-                <input
-                  type="radio"
-                  id="swish"
-                  name="paymentMethod"
-                  value="Swish"
-                  onChange={onPaymentChange}
-                />
-                Swish
-              </PaymentRadio>
-            </PaymentInput>
-          </div>
-          <NameInput>
-            <div>
+          <FormInputElements>
+            <InputElement>
               <label>
-                Förnamn:
+                Förnamn
+                </label>
                 <TextInput
                   type="text"
                   id="firstName"
                   value={firstName}
                   onChange={onChange}
                 />
-              </label>
-            </div>
-            <div>
+              </InputElement>
+            <InputElement>
               <label>
-                Efternamn:
+                Efternamn
+                </label>
                 <TextInput
                   type="text"
                   id="lastName"
                   value={lastName}
                   onChange={onChange}
                 />
-              </label>
-            </div>
-          </NameInput>
-          <div>
+            </InputElement>
+          <InputElement>
             <label>
-              Epost:
+              E-post
+              </label>
               <TextInput
                 type="email"
                 id="email"
                 value={email}
                 onChange={onChange}
               />
-            </label>
-          </div>
-          <div>
+          </InputElement>
+          <InputElement>
             <label>
-              Adress:
-              <TextInput
-                type="text"
-                id="address"
-                value={address}
-                onChange={onChange}
-              />
-            </label>
-          </div>
-          <CityInput>
-            <div>
-              <label>
-                Postnr:
-                <TextInput
-                  type="text"
-                  id="zipCode"
-                  value={zipCode}
-                  onChange={onChange}
-                />
+              Telefon
               </label>
-            </div>
-            <div>
-              <label>
-                Stad:
-                <TextInput
-                  type="text"
-                  id="city"
-                  value={city}
-                  onChange={onChange}
-                />
-              </label>
-            </div>
-          </CityInput>
-          <div>
-            <label>
-              Telefon:
               <TextInput
                 type="text"
                 id="phone"
                 value={phone}
                 onChange={onChange}
               />
-            </label>
-          </div>
-          <div>
+          </InputElement>
+          <InputElement>
+            <label>
+              Adress
+              </label>
+              <TextInput
+                type="text"
+                id="address"
+                value={address}
+                onChange={onChange}
+              />
+          </InputElement>
+            <InputElement>
+              <label>
+                Postnummer
+                </label>
+                <TextInput
+                  type="text"
+                  id="zipCode"
+                  value={zipCode}
+                  onChange={onChange}
+                />
+            </InputElement>
+            <InputElement>
+              <label>
+                Stad
+                </label>
+                <TextInput
+                  type="text"
+                  id="city"
+                  value={city}
+                  onChange={onChange}
+                />
+            </InputElement>
+          </FormInputElements>
+          <br/>
+          <PaymentRadioBtnContainer>
+            Betalmetod
+            <PaymentInput>
+              <RadioElement>
+                <RadioBtn
+                  type="radio"
+                  id="card"
+                  name="paymentMethod"
+                  value="Kreditkort"
+                  onChange={onPaymentChange}
+                />
+                <PaymentRadio>
+                Kreditkort
+              </PaymentRadio>
+              </RadioElement>
+              <RadioElement>
+                <RadioBtn
+                  type="radio"
+                  id="klarna"
+                  name="paymentMethod"
+                  value="Klarna"
+                  onChange={onPaymentChange}
+                />
+                <PaymentRadio>
+                Klarna
+              </PaymentRadio>
+              </RadioElement>
+              <RadioElement>
+                <RadioBtn
+                  type="radio"
+                  id="swish"
+                  name="paymentMethod"
+                  value="Swish"
+                  onChange={onPaymentChange}
+                />
+                <PaymentRadio>
+                Swish
+              </PaymentRadio>
+              </RadioElement>
+            </PaymentInput>
+          </PaymentRadioBtnContainer>
+          <br/>
+          <FormBtn>
             <button type="submit">Beställ</button>
-          </div>
+          </FormBtn>
         </form>
       </InputForm>
     </div>
