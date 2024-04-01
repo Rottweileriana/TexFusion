@@ -63,8 +63,7 @@ export function ConfirmationPage() {
           10-15 minuter.
         </p>
         <p>
-          {formvalue.paymentMethod}
-          Leverens sker till {formvalue.address}, {formvalue.zipCode},{" "}
+          Leverans sker till {formvalue.address}, {formvalue.zipCode},{" "}
           {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.
         </p>
         <p>
@@ -98,7 +97,6 @@ export function ConfirmationPage() {
         10-15 minuter.
       </p>
       <p>
-        {formvalue.paymentMethod}
         Leverens sker till {formvalue.address}, {formvalue.zipCode},{" "}
         {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.
       </p>
@@ -135,7 +133,6 @@ export function ConfirmationPage() {
           10-15 minuter.
         </p>
         <p>
-          {formvalue.paymentMethod}
           Leverens sker till {formvalue.address}, {formvalue.zipCode},{" "}
           {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.
         </p>
