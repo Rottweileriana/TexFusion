@@ -240,7 +240,7 @@ export function CheckoutForm() {
                   value="Kreditkort"
                   onChange={onPaymentChange}
                 />
-                <PaymentRadio>
+                <PaymentRadio htmlFor="card">
                 Kreditkort
               </PaymentRadio>
               </RadioElement>
@@ -252,7 +252,7 @@ export function CheckoutForm() {
                   value="Klarna"
                   onChange={onPaymentChange}
                 />
-                <PaymentRadio>
+                <PaymentRadio htmlFor="klarna">
                 Klarna
               </PaymentRadio>
               </RadioElement>
@@ -264,7 +264,7 @@ export function CheckoutForm() {
                   value="Swish"
                   onChange={onPaymentChange}
                 />
-                <PaymentRadio>
+                <PaymentRadio htmlFor="swish">
                 Swish
               </PaymentRadio>
               </RadioElement>
