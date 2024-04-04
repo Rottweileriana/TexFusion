@@ -4,6 +4,7 @@ export type DishProps = {
   title: string;
   ingredients: IngredientProp[];
   price: number;
+  cocktailRec: string;
 };
 
 type IngredientProp = {
