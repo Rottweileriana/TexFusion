@@ -146,7 +146,7 @@ export function CheckoutForm() {
 
   return (
     <div>
-      <h2>KASSA</h2>
+      <h2>Kassa</h2>
       <InputForm>
         <form onSubmit={onSubmit}>
           <FormInputElements>

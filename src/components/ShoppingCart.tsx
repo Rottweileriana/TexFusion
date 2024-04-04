@@ -186,7 +186,7 @@ export const ShoppingCart: React.FC = () => {
 
   return (
     <div>
-      <h2>VARUKORG</h2>
+      <h2>Varukorg</h2>
       <CartList>
         {cart.map((cartItem, index) => (
           <CartRow key={index}>

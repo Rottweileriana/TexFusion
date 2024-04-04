@@ -36,7 +36,7 @@ export function CourseMenu() {
 
   return (
     <>
-      <h2>HUVUDRÄTT</h2>
+      <h2>Huvudrätter</h2>
       {mains &&
         mains.map(
           (main) =>
