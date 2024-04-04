@@ -158,12 +158,14 @@ const CourseComponent: React.FC<DishProps> = ({
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
+  const [cocktailQuantity, setCocktailQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
   let handleIncrement: () => void = () => {};
   let handleDecrement: () => void = () => {};
 
   try {
+    //course
     useEffect(() => {
       const productInCart = cart.find((product) => product._id === _id);
       const quantityInCart = productInCart ? productInCart.quantity : 0;
@@ -194,6 +196,16 @@ const CourseComponent: React.FC<DishProps> = ({
     } else {
       formattedIngredientText = `${formattedIngredients}.`;
     }
+
+    //cocktail
+    useEffect(() => {
+      const productInCart = cart.find((product) => product._id === cocktailRec.idDrink);
+      const quantityInCart = productInCart ? productInCart.quantity : 0;
+      setCocktailQuantity((prevQuantity) => {
+        // Only update if the quantity changed to avoid infinite loop
+        return prevQuantity !== quantityInCart ? quantityInCart : prevQuantity;
+      });
+    }, [cart, _id]);
 
     handleIncrement = () => {
       // Skapa ett nytt objekt för den aktuella produkten
@@ -235,10 +247,10 @@ const CourseComponent: React.FC<DishProps> = ({
       <Recommendation>
         {quantity > 0 && (
           <RecAndAddContainer>
-          <CocktailRec>Rekommenderas: {cocktailRec}</CocktailRec>
+          <CocktailRec>Rekommenderas: {cocktailRec.strDrink}</CocktailRec>
           <CocktailCounterContainer>
             <CocktailCounterButton onClick={handleDecrement}>-</CocktailCounterButton>
-            <ResultField type="text" value={quantity} readOnly />
+            <ResultField type="text" value={cocktailQuantity} readOnly />
             <CocktailCounterButton onClick={handleIncrement}>+</CocktailCounterButton>
           </CocktailCounterContainer>
           </RecAndAddContainer>
