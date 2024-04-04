@@ -30,7 +30,7 @@ export function SidesMenu() {
 
   return (
     <>
-      <h2>TILLBEHÖR</h2>
+      <h2>Tillbehör</h2>
       {sides &&
         sides.map(
           (side) =>

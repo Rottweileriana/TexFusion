@@ -11,7 +11,7 @@ const StyledSide = styled.div`
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
-  background-color: #e0e0e0;
+  background-color: #156082;
   color: #333333;
   margin-bottom: 10px;
   text-align: left;
@@ -35,12 +35,13 @@ const Title = styled.h3`
 const Text = styled.p`
   margin: 5px;
   padding-right: 5px;
-  color: #808080;
+  color: white;
 `;
 
 const Price = styled.p`
   margin: 0;
   margin-bottom: 5px;
+  color: white;
 `;
 
 const PriceAndAddContainer = styled.div`

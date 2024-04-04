@@ -18,7 +18,7 @@ import styled from "styled-components";
 import "./App.css";
 
 const MainComponent = styled.div`
-  padding-top: 20px;
+  padding-top: 50px;
 `;
 
 interface ErrorBoundaryProps {
@@ -65,8 +65,9 @@ const App: React.FC = () => {
               path="/"
               element={
                 <ErrorBoundary>
-                  <NavBarComponent />
+                  
                   <MainComponent>
+                  <NavBarComponent />
                     <div id="CourseMenu">
                       <CourseMenu />
                     </div>

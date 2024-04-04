@@ -15,15 +15,18 @@ export const NavBarComponent: React.FC = () => {
   }
 
   return (
+    <>
+    
     <MainDiv>
     <NavBarList>
+    <NavBarLogo>TexFusion</NavBarLogo>
       <NavBarListElements>
         <LinkStyle
           activeClass="active"
           to="CourseMenu"
           spy={true}
           smooth={true}
-          offset={-70}
+          offset={-140}
           duration={500}
         >
           Huvudrätt
@@ -35,7 +38,7 @@ export const NavBarComponent: React.FC = () => {
           to="SidesMenu"
           spy={true}
           smooth={true}
-          offset={-70}
+          offset={-150}
           duration={500}
         >
           Tillbehör
@@ -47,7 +50,7 @@ export const NavBarComponent: React.FC = () => {
           to="CocktailMenu"
           spy={true}
           smooth={true}
-          offset={-70}
+          offset={-140}
           duration={500}
         >
           Cocktail
@@ -59,7 +62,7 @@ export const NavBarComponent: React.FC = () => {
           to="ShoppingCart"
           spy={true}
           smooth={true}
-          offset={-70}
+          offset={-120}
           duration={500}
         >
           <Badge>
@@ -69,7 +72,11 @@ export const NavBarComponent: React.FC = () => {
         </LinkStyle>
       </NavBarListElements>
     </NavBarList>
+    
     </MainDiv>
+    
+    </>
+    
   );
 }
 
@@ -78,6 +85,16 @@ export const NavBarComponent: React.FC = () => {
 const MainDiv = styled.div`
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
+`;
+
+const NavBarLogo = styled.h1`
+font-family: 'Dancing Script';
+font-size: 50px;
+font-weight: bold;
+color: #eca884;
+margin: 0;
+padding: 0;
 `;
 
 const NavBarList = styled.ul`
@@ -85,9 +102,9 @@ const NavBarList = styled.ul`
   top: 0;
   list-style-type: none;
   margin: 0px;
-  padding: 0;
+  padding: 0px;
   overflow: hidden;
-  background-color: #333;
+  background-color: #145775;
   border-radius: 10px;
   cursor: pointer;
 `;
@@ -95,24 +112,29 @@ const NavBarList = styled.ul`
 const NavBarListElements = styled.li`
   float: left;
 `;
-
+ // box-shadow: 0 0 10px rgba(0,0,0,0,5);
 const LinkStyle = styled(Link)`
   display: block;
   color: white;
+  font-family: 'Dancing Script';
+  font-size: 20px;
+  margin:0px;
   text-align: center;
-  padding: 14px 30px;
+  padding: 5px 35px;
   text-decoration: none;
   position: relative;
+  border-radius: 5px;
   &:hover{
-    background-color: #444;
+    color: #eca884;
+    font-size:22px;
   }
 `;
 
 const Badge = styled.span`
   position: absolute;
-  top: 6px;
+  top: 0px;
   right: 14px;
-  background-color: #EAC898;
+  background-color: #eca884;
   color: black;
   border-radius: 50%;
   padding: 0 2px;
