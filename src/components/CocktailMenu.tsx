@@ -64,7 +64,7 @@ export function CocktailMenu() {
 
   return (
     <>
-      <h2>COCKTAIL</h2>
+      <h2>Cocktail</h2>
       {recCocktail !== undefined && (
         <CocktailComponent
           idDrink={recCocktail.idDrink}

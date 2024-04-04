@@ -25,8 +25,8 @@ const StyledCocktail = styled.div`
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
-  background-color: #e0e0e0;
-  color: #333333;
+  background-color: #156082;
+  color: white;
   margin-bottom: 10px;
   text-align: left;
   &:hover {
@@ -63,6 +63,7 @@ const BlancRow = styled.p`
 const Price = styled.p`
   margin: 0;
   margin-bottom: 5px;
+  color: white;
 `;
 
 const PriceAndAddContainer = styled.div`
