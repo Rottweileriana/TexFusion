@@ -28,7 +28,7 @@ const StyledCourse = styled.div<StyledCourseProps>`
   color: #333333;
   margin-bottom: 10px;
   text-align: left;
-  position: relative; /* Lägg till position: relative */
+  position: relative;
 `;
 
 const Image = styled.img`
@@ -104,8 +104,8 @@ const Recommendation = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
-  padding: 10px;
+  width: 97%;
+  margin: 5px;
 `;
 
 //#endregion

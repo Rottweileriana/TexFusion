@@ -10,12 +10,10 @@ type RecCocktail = {
 //#region Styles
 const StyledCocktail = styled.div`
   display: flex;
-  width: 300px;
-  height: 100px;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
-  background-color: #e0e0e0;
+  background-color: blue;
   color: #333333;
   margin-bottom: 10px;
   text-align: left;
@@ -32,7 +30,6 @@ const PriceAndAddContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 175px;
 `;
 
 const Price = styled.p`
@@ -150,9 +147,9 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({
     if (cocktail) {
       const product = {
         _id: cocktail.idDrink,
-        imageUrl: "", // Set your image URL here
+        imageUrl: "",
         title: cocktail.strDrink,
-        price: 10, // Set your price here
+        price: 10,
         quantity: 1,
       };
       addToCart(product);
@@ -170,7 +167,7 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({
   return (
     <StyledCocktail>
       {cocktail ? (
-        <>
+        <div>
           <Title>{cocktail.strDrink}</Title>
           <PriceAndAddContainer>
             <Price>{cocktail.cocktailPrice} kr</Price>
@@ -180,9 +177,9 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           </PriceAndAddContainer>
-        </>
+        </div>
       ) : (
-        <div>Error: No Product</div>
+        <div>No Product</div>
       )}
     </StyledCocktail>
   );
