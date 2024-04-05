@@ -41,7 +41,7 @@ const Image = styled.img`
 
 const Title = styled.h3`
   font-family: 'Parisienne';
-  font-size: 25px;
+  font-size: 20px;
   margin: 0;
 `;
 
@@ -200,7 +200,7 @@ const CourseComponent: React.FC<DishProps> = ({
       {quantity > 0 && (
         <Recommendation>
           <RecommendationComponent
-          title={title}></RecommendationComponent>
+            title={title}></RecommendationComponent>
         </Recommendation>
       )}
     </StyledCourse>

@@ -30,7 +30,7 @@ const Image = styled.img`
 
 const Title = styled.h3`
   font-family: 'Parisienne';
-  font-size: 25px;
+  font-size: 20px;
   margin: 0;
 `;
 
