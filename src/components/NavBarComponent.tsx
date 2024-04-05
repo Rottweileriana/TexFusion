@@ -129,6 +129,7 @@ const LinkStyle = styled(Link)`
 
 const Badge = styled.span`
   position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
   top: 0px;
   right: 14px;
   background-color: #eca884;

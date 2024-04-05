@@ -142,6 +142,8 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({ title }) => {
 
     if (title) {
       fetchCocktail();
+      console.log(title);
+      console.log(cocktail?.strDrink);
     }
 
     return () => {
