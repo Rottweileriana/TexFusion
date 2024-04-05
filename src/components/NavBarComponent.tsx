@@ -25,7 +25,7 @@ export const NavBarComponent: React.FC = () => {
               to="CourseMenu"
               spy={true}
               smooth={true}
-              offset={-140}
+              offset={-162}
               duration={500}
             >
               Huvudrätt
@@ -37,7 +37,7 @@ export const NavBarComponent: React.FC = () => {
               to="SidesMenu"
               spy={true}
               smooth={true}
-              offset={-150}
+              offset={-162}
               duration={500}
             >
               Tillbehör
@@ -49,7 +49,7 @@ export const NavBarComponent: React.FC = () => {
               to="CocktailMenu"
               spy={true}
               smooth={true}
-              offset={-140}
+              offset={-162}
               duration={500}
             >
               Cocktail
