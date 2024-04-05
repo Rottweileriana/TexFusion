@@ -117,7 +117,7 @@ const CourseComponent: React.FC<DishProps> = ({
   imageUrl,
   title,
   ingredients,
-  price
+  price,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const [error, setError] = useState<string | null>(null);
