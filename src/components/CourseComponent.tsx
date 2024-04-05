@@ -40,7 +40,7 @@ const Image = styled.img`
 `;
 
 const Title = styled.h3`
-  font-family: 'Parisienne';
+  font-family: "Parisienne";
   font-size: 25px;
   margin: 0;
 `;
@@ -117,15 +117,15 @@ const CourseComponent: React.FC<DishProps> = ({
   imageUrl,
   title,
   ingredients,
-  price
+  price,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => { };
-  let handleDecrement: () => void = () => { };
+  let handleIncrement: () => void = () => {};
+  let handleDecrement: () => void = () => {};
 
   try {
     //course
@@ -199,8 +199,7 @@ const CourseComponent: React.FC<DishProps> = ({
       </div>
       {quantity > 0 && (
         <Recommendation>
-          <RecommendationComponent
-          title={title}></RecommendationComponent>
+          <RecommendationComponent title={title}></RecommendationComponent>
         </Recommendation>
       )}
     </StyledCourse>

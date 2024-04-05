@@ -77,36 +77,44 @@ const ResultField = styled.input`
 `;
 //#endregion
 
-export const RecommendationComponent: React.FC<RecCocktail> = ({
-  title,
-}) => {
+export const RecommendationComponent: React.FC<RecCocktail> = ({ title }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const [cocktail, setCocktail] = useState<Cocktail | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
+  const [cocktailPrices, setCocktailPrices] = useState<number[]>([
+    175, 159, 165, 170, 150,
+  ]);
+  let cocktailPrice = cocktailPrices[0];
 
   useEffect(() => {
     let id = "";
     switch (title) {
       case "Tacos":
         id = "11007";
+        cocktailPrice = cocktailPrices[0];
         break;
       case "Nachos":
         id = "178365";
+        cocktailPrice = cocktailPrices[1];
         break;
       case "Bowl":
         id = "13621";
+        cocktailPrice = cocktailPrices[2];
         break;
       case "Burrito":
         id = "11003";
+        cocktailPrice = cocktailPrices[3];
         break;
       case "Enchiladas":
         id = "11001";
+        cocktailPrice = cocktailPrices[4];
         break;
       default:
         id = "11007";
+        cocktailPrice = cocktailPrices[0];
         break;
     }
-    //Fixa hämtningen av cocktail
+
     const API_URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
 
     const fetchCocktail = async () => {
@@ -116,8 +124,9 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        if (data && data.length > 0) {
-          setCocktail(data[0]);
+        if (data && data.drinks && data.drinks.length > 0) {
+          console.log(data);
+          setCocktail(data.drinks[0]);
         }
       } catch (error) {
         console.error("Error fetching cocktails:", error);
@@ -126,6 +135,8 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({
 
     if (title) {
       fetchCocktail();
+      console.log(title);
+      console.log(cocktail?.strDrink);
     }
 
     return () => {
@@ -147,9 +158,9 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({
     if (cocktail) {
       const product = {
         _id: cocktail.idDrink,
-        imageUrl: "",
+        imageUrl: cocktail.strDrinkThumb,
         title: cocktail.strDrink,
-        price: 10,
+        price: cocktailPrice,
         quantity: 1,
       };
       addToCart(product);
@@ -163,14 +174,14 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({
       setQuantity((prevQuantity) => Math.max(0, prevQuantity - 1));
     }
   };
- //Sätt cocktailformatet
+  //Sätt cocktailformatet
   return (
     <StyledCocktail>
       {cocktail ? (
         <div>
           <Title>{cocktail.strDrink}</Title>
           <PriceAndAddContainer>
-            <Price>{cocktail.cocktailPrice} kr</Price>
+            <Price>{cocktailPrice} kr</Price>
             <CounterContainer>
               <CounterButton onClick={handleDecrement}>-</CounterButton>
               <ResultField type="text" value={quantity} readOnly />
