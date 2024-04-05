@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useContext, FontAwesomeIcon, faShoppingCart } from "./index";
 import { CartContext } from "./context";
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { Link, animateScroll as scroll } from "react-scroll";
 
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
@@ -11,12 +11,11 @@ export const NavBarComponent: React.FC = () => {
   try {
     totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
   } catch (error) {
-    console.error('Error calculating total quantity in cart:', error);
+    console.error("Error calculating total quantity in cart:", error);
   }
 
   return (
     <>
-
       <MainDiv>
         <NavBarList>
           <NavBarLogo>TexFusion</NavBarLogo>
@@ -66,35 +65,32 @@ export const NavBarComponent: React.FC = () => {
               duration={500}
             >
               <Badge>
-                {totCartQuant > 0 && (totCartQuant > 10 ? '10+' : totCartQuant)}
+                {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
               </Badge>
               <FontAwesomeIcon icon={faShoppingCart} />
             </LinkStyle>
           </NavBarListElements>
         </NavBarList>
-
       </MainDiv>
-
     </>
-
   );
-}
+};
 
 //#region CSS
 
 const MainDiv = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 `;
 
 const NavBarLogo = styled.h1`
-font-family: 'Parisienne';
-font-size: 50px;
-font-weight: bold;
-color: #eca884;
-margin: 0;
-padding: 0;
+  font-family: "Parisienne";
+  font-size: 50px;
+  font-weight: bold;
+  color: #eca884;
+  margin: 0;
+  padding: 0;
 `;
 
 const NavBarList = styled.ul`
@@ -116,17 +112,17 @@ const NavBarListElements = styled.li`
 const LinkStyle = styled(Link)`
   display: block;
   color: white;
-  font-family: 'Parisienne';
+  font-family: "Parisienne";
   font-size: 25px;
-  margin:0px;
+  margin: 0px;
   text-align: center;
   padding: 5px 35px;
   text-decoration: none;
   position: relative;
   border-radius: 5px;
-  &:hover{
+  &:hover {
     color: #eca884;
-    font-size:22px;
+    font-size: 22px;
   }
 `;
 
