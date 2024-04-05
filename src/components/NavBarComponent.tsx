@@ -103,6 +103,7 @@ const NavBarList = styled.ul`
   background-color: #145775;
   border-radius: 10px;
   cursor: pointer;
+  z-index: 9999;
 `;
 
 const NavBarListElements = styled.li`
