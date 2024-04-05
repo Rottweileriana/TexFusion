@@ -16,67 +16,67 @@ export const NavBarComponent: React.FC = () => {
 
   return (
     <>
-    
-    <MainDiv>
-    <NavBarList>
-    <NavBarLogo>TexFusion</NavBarLogo>
-      <NavBarListElements>
-        <LinkStyle
-          activeClass="active"
-          to="CourseMenu"
-          spy={true}
-          smooth={true}
-          offset={-140}
-          duration={500}
-        >
-          Huvudrätt
-        </LinkStyle>
-      </NavBarListElements>
-      <NavBarListElements>
-        <LinkStyle
-          activeClass="active"
-          to="SidesMenu"
-          spy={true}
-          smooth={true}
-          offset={-150}
-          duration={500}
-        >
-          Tillbehör
-        </LinkStyle>
-      </NavBarListElements>
-      <NavBarListElements>
-        <LinkStyle
-          activeClass="active"
-          to="CocktailMenu"
-          spy={true}
-          smooth={true}
-          offset={-140}
-          duration={500}
-        >
-          Cocktail
-        </LinkStyle>
-      </NavBarListElements>
-      <NavBarListElements>
-        <LinkStyle
-          activeClass="active"
-          to="ShoppingCart"
-          spy={true}
-          smooth={true}
-          offset={-120}
-          duration={500}
-        >
-          <Badge>
-            {totCartQuant > 0 && (totCartQuant > 10 ? '10+' : totCartQuant)}
-          </Badge>
-          <FontAwesomeIcon icon={faShoppingCart}/>
-        </LinkStyle>
-      </NavBarListElements>
-    </NavBarList>
-    
-    </MainDiv>
-    
+
+      <MainDiv>
+        <NavBarList>
+          <NavBarLogo>TexFusion</NavBarLogo>
+          <NavBarListElements>
+            <LinkStyle
+              activeClass="active"
+              to="CourseMenu"
+              spy={true}
+              smooth={true}
+              offset={-140}
+              duration={500}
+            >
+              Huvudrätt
+            </LinkStyle>
+          </NavBarListElements>
+          <NavBarListElements>
+            <LinkStyle
+              activeClass="active"
+              to="SidesMenu"
+              spy={true}
+              smooth={true}
+              offset={-150}
+              duration={500}
+            >
+              Tillbehör
+            </LinkStyle>
+          </NavBarListElements>
+          <NavBarListElements>
+            <LinkStyle
+              activeClass="active"
+              to="CocktailMenu"
+              spy={true}
+              smooth={true}
+              offset={-140}
+              duration={500}
+            >
+              Cocktail
+            </LinkStyle>
+          </NavBarListElements>
+          <NavBarListElements>
+            <LinkStyle
+              activeClass="active"
+              to="ShoppingCart"
+              spy={true}
+              smooth={true}
+              offset={-120}
+              duration={500}
+            >
+              <Badge>
+                {totCartQuant > 0 && (totCartQuant > 10 ? '10+' : totCartQuant)}
+              </Badge>
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </LinkStyle>
+          </NavBarListElements>
+        </NavBarList>
+
+      </MainDiv>
+
     </>
-    
+
   );
 }
 
@@ -89,7 +89,7 @@ const MainDiv = styled.div`
 `;
 
 const NavBarLogo = styled.h1`
-font-family: 'Dancing Script';
+font-family: 'Parisienne';
 font-size: 50px;
 font-weight: bold;
 color: #eca884;
@@ -112,12 +112,12 @@ const NavBarList = styled.ul`
 const NavBarListElements = styled.li`
   float: left;
 `;
- // box-shadow: 0 0 10px rgba(0,0,0,0,5);
+// box-shadow: 0 0 10px rgba(0,0,0,0,5);
 const LinkStyle = styled(Link)`
   display: block;
   color: white;
-  font-family: 'Dancing Script';
-  font-size: 20px;
+  font-family: 'Parisienne';
+  font-size: 25px;
   margin:0px;
   text-align: center;
   padding: 5px 35px;

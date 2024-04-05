@@ -29,6 +29,8 @@ const Image = styled.img`
 `;
 
 const Title = styled.h3`
+  font-family: 'Parisienne';
+  font-size: 25px;
   margin: 0;
 `;
 
@@ -103,11 +105,10 @@ const SidesComponent: React.FC<DishProps> = ({
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => {};
-  let handleDecrement: () => void = () => {};
+  let handleIncrement: () => void = () => { };
+  let handleDecrement: () => void = () => { };
 
-  try
-  {
+  try {
     useEffect(() => {
       const productInCart = cart.find(product => product._id === _id);
       const quantityInCart = productInCart ? productInCart.quantity : 0;

@@ -43,6 +43,8 @@ const Image = styled.img`
 `;
 
 const Title = styled.h4`
+  font-family: 'Parisienne';
+  font-size: 25px;
   margin: 0;
 `;
 
@@ -121,17 +123,16 @@ const Cocktail: React.FC<Cocktail> = ({
   cocktailPrice
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
-  const [ error, setError ] = useState<string | null>(null);
-  const [ quantity, setQuantity ] = useState<number>(0);
-  
+  const [error, setError] = useState<string | null>(null);
+  const [quantity, setQuantity] = useState<number>(0);
+
   const MAX_LENGTH = 19;
   let formattedCocktailName = strDrink;
 
-  let handleIncrement: () => void = () => {};
-  let handleDecrement: () => void = () => {};
+  let handleIncrement: () => void = () => { };
+  let handleDecrement: () => void = () => { };
 
-  try 
-  {
+  try {
     useEffect(() => {
       const productInCart = cart.find(product => product._id === idDrink);
       const quantityInCart = productInCart ? productInCart.quantity : 0;
