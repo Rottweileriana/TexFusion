@@ -1,4 +1,5 @@
 export { CourseMenu } from "./CourseMenu";
+export { RecommendationComponent } from "./RecommendationComponent";
 export { CocktailMenu } from "./CocktailMenu";
 export { SidesMenu } from "./SidesMenu";
 export { NavBarComponent } from "./NavBarComponent";

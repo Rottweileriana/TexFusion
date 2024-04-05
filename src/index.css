@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fairwater+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fairwater+Script&display=swap");
 
 :root {
-
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -17,6 +16,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+label {
+  margin: 0;
+  padding: 0;
+  font-size: 90%;
+}
 
 a {
   font-weight: 500;
@@ -29,22 +33,29 @@ a:hover {
 
 body {
   margin: 0;
-  padding:0;
+  padding: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h3 {
-  font-family: 'Parisienne';
+h4 {
+  font-family: "Parisienne";
   color: white;
+  font-size: 1em;
+  line-height: 1.1;
+}
+
+h3 {
+  font-family: "Parisienne";
+  color: #eca884;
   font-size: 1.3em;
   line-height: 1.1;
 }
 
 h2 {
-  font-family: 'Parisienne';
+  font-family: "Parisienne";
   color: #eca884;
   font-size: 3.2em;
   line-height: 1.1;

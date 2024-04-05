@@ -1,7 +1,8 @@
-import { useState, useContext, useEffect } from "./index";
+import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
 import { DishProps } from "../types/index";
+import { RecommendationComponent } from "./index";
 
 type Product = {
   imageUrl: string;
@@ -10,19 +11,24 @@ type Product = {
   quantity: number;
 };
 
-//#region Styles       
-const StyledCourse = styled.div`
+interface StyledCourseProps {
+  quantity: number;
+}
+
+//#region Styles
+const StyledCourse = styled.div<StyledCourseProps>`
   display: flex;
   width: 300px;
-  height: 100px;
+  height: ${({ quantity }: { quantity: number }) =>
+    quantity > 0 ? "185px" : "100px"};
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
   background-color: #156082;
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   text-align: left;
-  &:hover { cursor: default; }
+  position: relative;
 `;
 
 const Image = styled.img`
@@ -34,7 +40,7 @@ const Image = styled.img`
 `;
 
 const Title = styled.h3`
-  font-family: 'Parisienne';
+  font-family: "Parisienne";
   font-size: 25px;
   margin: 0;
 `;
@@ -91,8 +97,27 @@ const ResultField = styled.input`
   color: #333333;
   font-size: 15px;
   outline: none;
-  &:hover { cursor: default; }
+  &:hover {
+    cursor: default;
+  }
 `;
+
+const Recommendation = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 97%;
+  margin: 5px;
+`;
+
+const HeadRecCocktail = styled.h3`
+  margin-top: 15px;
+  margin-bottom: 3px;
+  margin-left: 7px;
+`;
+
 //#endregion
 
 const CourseComponent: React.FC<DishProps> = ({
@@ -100,21 +125,22 @@ const CourseComponent: React.FC<DishProps> = ({
   imageUrl,
   title,
   ingredients,
-  price
+  price,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => { };
-  let handleDecrement: () => void = () => { };
+  let handleIncrement: () => void = () => {};
+  let handleDecrement: () => void = () => {};
 
   try {
+    //course
     useEffect(() => {
-      const productInCart = cart.find(product => product._id === _id);
+      const productInCart = cart.find((product) => product._id === _id);
       const quantityInCart = productInCart ? productInCart.quantity : 0;
-      setQuantity(prevQuantity => {
+      setQuantity((prevQuantity) => {
         // Only update if the quantity changed to avoid infinite loop
         return prevQuantity !== quantityInCart ? quantityInCart : prevQuantity;
       });
@@ -149,7 +175,7 @@ const CourseComponent: React.FC<DishProps> = ({
         imageUrl,
         title,
         price,
-        quantity: 1
+        quantity: 1,
       };
       // Anropa addToCart-metoden med det nya produktobjektet
       addToCart(product);
@@ -159,14 +185,13 @@ const CourseComponent: React.FC<DishProps> = ({
       // Anropa removeFromCart-metoden för att ta bort produkten
       removeFromCart(_id);
     };
-  }
-  catch (error) {
-    console.error("Error in creating course component", error)
+  } catch (error) {
+    console.error("Error in creating course component", error);
     setError("An error occurred while rendering course component.");
   }
 
   return (
-    <StyledCourse>
+    <StyledCourse quantity={quantity}>
       <Image src={imageUrl} alt={title} />
       <div>
         <Title>{title}</Title>
@@ -180,6 +205,12 @@ const CourseComponent: React.FC<DishProps> = ({
           </CounterContainer>
         </PriceAndAddContainer>
       </div>
+      {quantity > 0 && (
+        <Recommendation>
+          <HeadRecCocktail>Rekommenderad Dryck:</HeadRecCocktail>
+          <RecommendationComponent title={title}></RecommendationComponent>
+        </Recommendation>
+      )}
     </StyledCourse>
   );
 };

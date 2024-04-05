@@ -26,6 +26,14 @@ type Ingredient = {
   unit: string;
 };
 
+export type Cocktail = {
+  idDrink: string;
+  strDrink: string;
+  strDrinkThumb: string;
+  recommended?: string;
+  cocktailPrice: number;
+};
+
 export type CartItem = {
   _id: string;
   imageUrl: string;
