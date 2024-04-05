@@ -10,53 +10,62 @@ type RecCocktail = {
 //#region Styles
 const StyledCocktail = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
-  background-color: blue;
-  color: #333333;
-  margin-bottom: 10px;
-  text-align: left;
+  background-color: #156082;
+  color: white;
   &:hover {
     cursor: default;
   }
 `;
 
-const Title = styled.h4`
-  margin: 0;
+const Image = styled.img`
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #222222;
+  margin-right: 10px;
 `;
 
-const PriceAndAddContainer = styled.div`
+const Title = styled.h4`
+  margin: 0;
+  margin-right: 10px;
+`;
+
+const CocktailAndAddContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
 `;
 
 const Price = styled.p`
   margin: 0;
-  margin-bottom: 5px;
+  margin-right: 10px;
+  font-size: 0.9em;
 `;
 
 const CounterContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
-  margin-top: 5px;
   border: 0px solid #808080;
   border-radius: 5px;
   background-color: #d3d3d3;
+  float: right;
 `;
 
 const CounterButton = styled.button`
   margin: 0;
   padding: 0;
   padding-bottom: 4px;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   background-color: transparent;
   border: none;
   color: #333333;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -64,7 +73,7 @@ const CounterButton = styled.button`
 `;
 
 const ResultField = styled.input`
-  width: 20px;
+  width: 18px;
   text-align: center;
   background-color: transparent;
   border: none;
@@ -179,15 +188,16 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({ title }) => {
     <StyledCocktail>
       {cocktail ? (
         <div>
-          <Title>{cocktail.strDrink}</Title>
-          <PriceAndAddContainer>
+          <CocktailAndAddContainer>
+            <Image src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+            <Title>{cocktail.strDrink}</Title>
             <Price>{cocktailPrice} kr</Price>
             <CounterContainer>
               <CounterButton onClick={handleDecrement}>-</CounterButton>
               <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
-          </PriceAndAddContainer>
+          </CocktailAndAddContainer>
         </div>
       ) : (
         <div>No Product</div>
