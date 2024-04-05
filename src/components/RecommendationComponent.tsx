@@ -12,7 +12,7 @@ const StyledCocktail = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   border-radius: 5px;
   padding: 5px;
   background-color: #156082;
@@ -90,37 +90,36 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({ title }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const [cocktail, setCocktail] = useState<Cocktail | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
-  const [cocktailPrices, setCocktailPrices] = useState<number[]>([
-    175, 159, 165, 170, 150,
-  ]);
-  let cocktailPrice = cocktailPrices[0];
+  const [cocktailPrice, setCocktailPrice] = useState<number>(0);
+  const cocktailPrices = [175, 159, 165, 170, 150];
 
   useEffect(() => {
     let id = "";
+
     switch (title) {
       case "Tacos":
         id = "11007";
-        cocktailPrice = cocktailPrices[0];
+        setCocktailPrice(cocktailPrices[0]);
         break;
       case "Nachos":
         id = "178365";
-        cocktailPrice = cocktailPrices[1];
+        setCocktailPrice(cocktailPrices[1]);
         break;
       case "Bowl":
         id = "13621";
-        cocktailPrice = cocktailPrices[2];
+        setCocktailPrice(cocktailPrices[2]);
         break;
       case "Burrito":
         id = "11003";
-        cocktailPrice = cocktailPrices[3];
+        setCocktailPrice(cocktailPrices[3]);
         break;
       case "Enchiladas":
         id = "11001";
-        cocktailPrice = cocktailPrices[4];
+        setCocktailPrice(cocktailPrices[4]);
         break;
       default:
         id = "11007";
-        cocktailPrice = cocktailPrices[0];
+        setCocktailPrice(cocktailPrices[0]);
         break;
     }
 
@@ -134,7 +133,6 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({ title }) => {
         }
         const data = await response.json();
         if (data && data.drinks && data.drinks.length > 0) {
-          console.log(data);
           setCocktail(data.drinks[0]);
         }
       } catch (error) {
@@ -144,8 +142,6 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({ title }) => {
 
     if (title) {
       fetchCocktail();
-      console.log(title);
-      console.log(cocktail?.strDrink);
     }
 
     return () => {
