@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import CourseComponent from "./CourseComponent";
 import { Dish, Cocktail } from "../types/index";
+import styled from "styled-components";
+
+const MenuTitle = styled.h2`
+  margin-top: 80px;
+  margin-bottom: 15px;
+`;
 
 export function CourseMenu() {
   const [mains, setMains] = useState<Dish[]>([]);
@@ -37,7 +43,7 @@ export function CourseMenu() {
 
   return (
     <>
-      <h2>Huvudrätter</h2>
+      <MenuTitle>Huvudrätter</MenuTitle>
       {mains &&
         mains.map(
           (main) =>

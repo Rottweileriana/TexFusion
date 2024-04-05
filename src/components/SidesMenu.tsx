@@ -1,6 +1,14 @@
 import { useState, useEffect } from "./index";
 import SidesComponent from "./SidesComponent";
 import { Dish } from "../types/index";
+import styled from "styled-components";
+
+//#region Styles
+const MenuTitle = styled.h2`
+  margin-top: 40px;
+  margin-bottom: 15px;
+`;
+//#endregion
 
 export function SidesMenu() {
   const [sides, setSides] = useState<Dish[]>([]);
@@ -30,7 +38,7 @@ export function SidesMenu() {
 
   return (
     <>
-      <h2>Tillbehör</h2>
+      <MenuTitle>Tillbehör</MenuTitle>
       {sides &&
         sides.map(
           (side) =>

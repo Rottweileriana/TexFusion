@@ -26,7 +26,7 @@ const StyledCourse = styled.div<StyledCourseProps>`
   padding: 5px;
   background-color: #156082;
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   text-align: left;
   position: relative;
 `;

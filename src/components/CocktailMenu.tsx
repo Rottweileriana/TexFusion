@@ -1,5 +1,6 @@
 import { useState, useEffect } from "./index";
 import CocktailComponent from "./CocktailComponent";
+import styled from "styled-components";
 
 type Cocktail = {
   idDrink: string;
@@ -9,16 +10,21 @@ type Cocktail = {
   cocktailPrice: number;
 };
 
+const MenuTitle = styled.h2`
+  margin-top: 40px;
+  margin-bottom: 15px;
+`;
 export function CocktailMenu() {
   const [cocktails, setCocktails] = useState<Cocktail[]>([]);
   const [cocktailPrices, setCocktailPrices] = useState<number[]>([
-    180, 170, 175, 180, 150, 165, 155, 170, 160, 180
+    180, 170, 175, 180, 150, 165, 155, 170, 160, 180,
   ]);
 
-  const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
+  const API_URL =
+    "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
 
   useEffect(() => {
-      const fetchCocktails = async () => {
+    const fetchCocktails = async () => {
       try {
         const response = await fetch(API_URL);
         if (!response.ok) {
@@ -27,10 +33,12 @@ export function CocktailMenu() {
         const data = await response.json();
         const firstTenCocktails = data.drinks ? data.drinks.slice(0, 10) : [];
         // Loopar igenom varje cocktail och tilldela cocktailPrice från cocktailPrices
-        const cocktailsWithPrices = firstTenCocktails.map((cocktail: Cocktail, index: number) => ({
-          ...cocktail,
-          cocktailPrice: cocktailPrices[index]
-        }));
+        const cocktailsWithPrices = firstTenCocktails.map(
+          (cocktail: Cocktail, index: number) => ({
+            ...cocktail,
+            cocktailPrice: cocktailPrices[index],
+          })
+        );
         setCocktails(cocktailsWithPrices);
       } catch (error) {
         console.error("Error fetching cocktails:", error);
@@ -47,7 +55,7 @@ export function CocktailMenu() {
 
   return (
     <>
-      <h2>Cocktail</h2>
+      <MenuTitle>Cocktail</MenuTitle>
       {cocktails.map((cocktail) => (
         <CocktailComponent
           key={cocktail.idDrink}
