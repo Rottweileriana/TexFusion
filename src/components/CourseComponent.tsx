@@ -100,6 +100,14 @@ const ResultField = styled.input`
   }
 `;
 
+const Recommendation = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+`;
+
 //#endregion
 
 const CourseComponent: React.FC<DishProps> = ({
@@ -187,8 +195,12 @@ const CourseComponent: React.FC<DishProps> = ({
           </CounterContainer>
         </PriceAndAddContainer>
       </div>
-      <RecommendationComponent
-      title={title}></RecommendationComponent>
+      {quantity > 0 && (
+        <Recommendation>
+          <RecommendationComponent
+          title={title}></RecommendationComponent>
+        </Recommendation>
+      )}
     </StyledCourse>
   );
 };

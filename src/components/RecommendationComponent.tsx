@@ -109,7 +109,7 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({
         id = "11007";
         break;
     }
-
+    //Fixa hämtningen av cocktail
     const API_URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
 
     const fetchCocktail = async () => {
@@ -166,7 +166,7 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({
       setQuantity((prevQuantity) => Math.max(0, prevQuantity - 1));
     }
   };
-
+ //Sätt cocktailformatet
   return (
     <StyledCocktail>
       {cocktail ? (
@@ -182,7 +182,7 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({
           </PriceAndAddContainer>
         </>
       ) : (
-        <div>Loading...</div>
+        <div>Error: No Product</div>
       )}
     </StyledCocktail>
   );
