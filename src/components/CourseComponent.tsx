@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
 import { DishProps } from "../types/index";
-import RecommendationComponent from "./CocktailComponent"
+import { RecommendationComponent } from "./index";
 
 type Product = {
   imageUrl: string;
@@ -188,7 +188,7 @@ const CourseComponent: React.FC<DishProps> = ({
         </PriceAndAddContainer>
       </div>
       <RecommendationComponent
-      course={title}></RecommendationComponent>
+      title={title}></RecommendationComponent>
     </StyledCourse>
   );
 };

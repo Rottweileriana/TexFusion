@@ -1,17 +1,10 @@
-import { useState, useContext, useEffect } from "./index";
+import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
 import { Cocktail } from "../types/index";
 
 type RecCocktail = {
-  title: string
-};
-
-type Product = {
-  imageUrl: string;
   title: string;
-  price: number;
-  quantity: number;
 };
 
 //#region Styles
@@ -31,35 +24,8 @@ const StyledCocktail = styled.div`
   }
 `;
 
-const Image = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
-  border: 1px solid #222222;
-  margin-right: 20px;
-`;
-
 const Title = styled.h4`
   margin: 0;
-`;
-
-const Recommended = styled.p`
-  margin: 5px;
-  padding: 2px;
-  padding-left: 19px;
-  border-radius: 5px;
-  color: #7d532c;
-  background-color: #eac898;
-`;
-
-const BlancRow = styled.p`
-  margin: 5px;
-  padding: 2px;
-`;
-
-const Price = styled.p`
-  margin: 0;
-  margin-bottom: 5px;
 `;
 
 const PriceAndAddContainer = styled.div`
@@ -67,6 +33,11 @@ const PriceAndAddContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 175px;
+`;
+
+const Price = styled.p`
+  margin: 0;
+  margin-bottom: 5px;
 `;
 
 const CounterContainer = styled.div`
@@ -109,129 +80,110 @@ const ResultField = styled.input`
 `;
 //#endregion
 
-const RecCocktail: React.FC<RecCocktail> = ({
-  title
+export const RecommendationComponent: React.FC<RecCocktail> = ({
+  title,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
-  const [cocktails, setCocktails] = useState<Cocktail[]>([]);
-  const [cocktailPrices, setCocktailPrices] = useState<number[]>([
-    180, 170, 175, 180, 150, 165, 155, 170, 160, 180
-  ]);
-  const [cocktail, setCocktail] = useState<Cocktail | null>(null); //ok med null??????????????
-  const [ error, setError ] = useState<string | null>(null);
-  const [ quantity, setQuantity ] = useState<number>(0);
-  
-  const MAX_LENGTH = 19;
-  let formattedCocktailName = cocktail.strDrink; //hantera ifall null
-  let id: string = "11007";
+  const [cocktail, setCocktail] = useState<Cocktail | null>(null);
+  const [quantity, setQuantity] = useState<number>(0);
 
-  let handleIncrement: () => void = () => {};
-  let handleDecrement: () => void = () => {};
-
-  try
-  {
-    //Matcha rätt med cocktail
+  useEffect(() => {
+    let id = "";
     switch (title) {
-        case "Tacos":
-            id = "11007";
-          break;
-        case "Nachos":
-            id = "178365";
-          break;
-        case "Bowl":
-            id = "13621";
-          break;
-        case "Burrito":
-            id = "11003";
-          break;
-        case "Enchiladas":
-            id = "11001";
-          break;
-        default:
-            id = "11007";
-          break;
-      }
-
-    const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="+id;
-
-
-    // Lägg till pris för den rekommenderade cocktailen
-    useEffect(() => {
-        const fetchCocktails = async () => {
-        try {
-            const response = await fetch(API_URL);
-            if (!response.ok) {
-            throw new Error("Network response was not ok");
-            }
-            const data = await response.json();
-
-            setCocktail(data[0]);
-
-        } catch (error) {
-            console.error("Error fetching cocktails:", error);
-        }
-        };
-
-        fetchCocktails();
-
-        return () => {
-        setCocktail(null);
-        setCocktailPrices([]);
-        };
-    }, []);
-
-    useEffect(() => {
-      const productInCart = cart.find(product => product._id === cocktail.idDrink);
-      const quantityInCart = productInCart ? productInCart.quantity : 0;
-      setQuantity(prevQuantity => {
-        // Only update if the quantity changed to avoid infinite loop
-        return prevQuantity !== quantityInCart ? quantityInCart : prevQuantity;
-      });
-    }, [cart, cocktail.idDrink]);
-
-    if (formattedCocktailName.length > MAX_LENGTH) {
-      formattedCocktailName =
-        formattedCocktailName.substring(0, MAX_LENGTH) + "...";
+      case "Tacos":
+        id = "11007";
+        break;
+      case "Nachos":
+        id = "178365";
+        break;
+      case "Bowl":
+        id = "13621";
+        break;
+      case "Burrito":
+        id = "11003";
+        break;
+      case "Enchiladas":
+        id = "11001";
+        break;
+      default:
+        id = "11007";
+        break;
     }
 
-    handleIncrement = () => {
-      // Skapa ett nytt objekt för den aktuella produkten
-      const product = {
-        _id: cocktail.idDrink,
-        imageUrl: cocktail.strDrinkThumb,
-        title: cocktail.strDrink,
-        price: cocktail.cocktailPrice,
-        quantity: 1,
-      };
-      // Anropa addToCart-metoden med det nya produktobjektet
-      addToCart(product);
+    const API_URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+
+    const fetchCocktail = async () => {
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        if (data && data.length > 0) {
+          setCocktail(data[0]);
+        }
+      } catch (error) {
+        console.error("Error fetching cocktails:", error);
+      }
     };
 
-    handleDecrement = () => {
-      // Anropa removeFromCart-metoden för att ta bort produkten
-      removeFromCart(cocktail.idDrink);
+    if (title) {
+      fetchCocktail();
+    }
+
+    return () => {
+      setCocktail(null);
     };
-  }
-  catch (error) {
-    console.error("Error in creating cocktail component", error)
-    setError("An error occurred while rendering cocktail component.");
-  }
+  }, [title]);
+
+  useEffect(() => {
+    if (cocktail) {
+      const productInCart = cart.find(
+        (product) => product._id === cocktail.idDrink
+      );
+      const quantityInCart = productInCart ? productInCart.quantity : 0;
+      setQuantity(quantityInCart);
+    }
+  }, [cart, cocktail]);
+
+  const handleIncrement = () => {
+    if (cocktail) {
+      const product = {
+        _id: cocktail.idDrink,
+        imageUrl: "", // Set your image URL here
+        title: cocktail.strDrink,
+        price: 10, // Set your price here
+        quantity: 1,
+      };
+      addToCart(product);
+      setQuantity((prevQuantity) => prevQuantity + 1);
+    }
+  };
+
+  const handleDecrement = () => {
+    if (cocktail) {
+      removeFromCart(cocktail.idDrink);
+      setQuantity((prevQuantity) => Math.max(0, prevQuantity - 1));
+    }
+  };
 
   return (
     <StyledCocktail>
-      <div>
-        <Title>{formattedCocktailName}</Title>
-        <PriceAndAddContainer>
-          <Price>{cocktail.cocktailPrice} kr</Price>
-          <CounterContainer>
-            <CounterButton onClick={handleDecrement}>-</CounterButton>
-            <ResultField type="text" value={quantity} readOnly />
-            <CounterButton onClick={handleIncrement}>+</CounterButton>
-          </CounterContainer>
-        </PriceAndAddContainer>
-      </div>
+      {cocktail ? (
+        <>
+          <Title>{cocktail.strDrink}</Title>
+          <PriceAndAddContainer>
+            <Price>{cocktail.cocktailPrice} kr</Price>
+            <CounterContainer>
+              <CounterButton onClick={handleDecrement}>-</CounterButton>
+              <ResultField type="text" value={quantity} readOnly />
+              <CounterButton onClick={handleIncrement}>+</CounterButton>
+            </CounterContainer>
+          </PriceAndAddContainer>
+        </>
+      ) : (
+        <div>Loading...</div>
+      )}
     </StyledCocktail>
   );
 };
-
-export default RecCocktail;
