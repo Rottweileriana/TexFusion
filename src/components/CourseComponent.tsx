@@ -20,13 +20,13 @@ const StyledCourse = styled.div<StyledCourseProps>`
   display: flex;
   width: 300px;
   height: ${({ quantity }: { quantity: number }) =>
-    quantity > 0 ? "150px" : "100px"};
+    quantity > 0 ? "185px" : "100px"};
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
   background-color: #156082;
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   text-align: left;
   position: relative;
 `;
@@ -40,8 +40,8 @@ const Image = styled.img`
 `;
 
 const Title = styled.h3`
-  font-family: 'Parisienne';
-  font-size: 20px;
+  font-family: "Parisienne";
+  font-size: 25px;
   margin: 0;
 `;
 
@@ -103,11 +103,19 @@ const ResultField = styled.input`
 `;
 
 const Recommendation = styled.div`
+  display: flex;
+  flex-direction: column;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 97%;
   margin: 5px;
+`;
+
+const HeadRecCocktail = styled.h3`
+  margin-top: 15px;
+  margin-bottom: 3px;
+  margin-left: 7px;
 `;
 
 //#endregion
@@ -124,8 +132,8 @@ const CourseComponent: React.FC<DishProps> = ({
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => { };
-  let handleDecrement: () => void = () => { };
+  let handleIncrement: () => void = () => {};
+  let handleDecrement: () => void = () => {};
 
   try {
     //course
@@ -199,8 +207,8 @@ const CourseComponent: React.FC<DishProps> = ({
       </div>
       {quantity > 0 && (
         <Recommendation>
-          <RecommendationComponent
-            title={title}></RecommendationComponent>
+          <HeadRecCocktail>Rekommenderad Dryck:</HeadRecCocktail>
+          <RecommendationComponent title={title}></RecommendationComponent>
         </Recommendation>
       )}
     </StyledCourse>

@@ -25,7 +25,7 @@ export const NavBarComponent: React.FC = () => {
               to="CourseMenu"
               spy={true}
               smooth={true}
-              offset={-160}
+              offset={-162}
               duration={500}
             >
               Huvudrätt
@@ -37,7 +37,7 @@ export const NavBarComponent: React.FC = () => {
               to="SidesMenu"
               spy={true}
               smooth={true}
-              offset={-160}
+              offset={-162}
               duration={500}
             >
               Tillbehör
@@ -49,7 +49,7 @@ export const NavBarComponent: React.FC = () => {
               to="CocktailMenu"
               spy={true}
               smooth={true}
-              offset={-160}
+              offset={-162}
               duration={500}
             >
               Cocktail
@@ -79,18 +79,18 @@ export const NavBarComponent: React.FC = () => {
 //#region CSS
 
 const MainDiv = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-bottom: 75px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 `;
 
 const NavBarLogo = styled.h1`
-font-family: 'Parisienne';
-font-size: 60px;
-font-weight: bold;
-color: #eca884;
-margin: 0;
-padding: 0;
+  font-family: "Parisienne";
+  font-size: 50px;
+  font-weight: bold;
+  color: #eca884;
+  margin: 0;
+  padding: 0;
 `;
 
 const NavBarList = styled.ul`

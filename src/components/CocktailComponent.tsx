@@ -27,7 +27,7 @@ const StyledCocktail = styled.div`
   padding: 5px;
   background-color: #156082;
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   text-align: left;
   &:hover {
     cursor: default;
@@ -43,8 +43,8 @@ const Image = styled.img`
 `;
 
 const Title = styled.h4`
-  font-family: 'Parisienne';
-  font-size: 20px;
+  font-family: "Parisienne";
+  font-size: 25px;
   margin: 0;
 `;
 
@@ -120,7 +120,7 @@ const Cocktail: React.FC<Cocktail> = ({
   strDrinkThumb,
   strDrink,
   recommended,
-  cocktailPrice
+  cocktailPrice,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const [error, setError] = useState<string | null>(null);
@@ -129,14 +129,14 @@ const Cocktail: React.FC<Cocktail> = ({
   const MAX_LENGTH = 19;
   let formattedCocktailName = strDrink;
 
-  let handleIncrement: () => void = () => { };
-  let handleDecrement: () => void = () => { };
+  let handleIncrement: () => void = () => {};
+  let handleDecrement: () => void = () => {};
 
   try {
     useEffect(() => {
-      const productInCart = cart.find(product => product._id === idDrink);
+      const productInCart = cart.find((product) => product._id === idDrink);
       const quantityInCart = productInCart ? productInCart.quantity : 0;
-      setQuantity(prevQuantity => {
+      setQuantity((prevQuantity) => {
         // Only update if the quantity changed to avoid infinite loop
         return prevQuantity !== quantityInCart ? quantityInCart : prevQuantity;
       });
@@ -164,9 +164,8 @@ const Cocktail: React.FC<Cocktail> = ({
       // Anropa removeFromCart-metoden för att ta bort produkten
       removeFromCart(idDrink);
     };
-  }
-  catch (error) {
-    console.error("Error in creating cocktail component", error)
+  } catch (error) {
+    console.error("Error in creating cocktail component", error);
     setError("An error occurred while rendering cocktail component.");
   }
 

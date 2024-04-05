@@ -13,7 +13,7 @@ const StyledSide = styled.div`
   padding: 5px;
   background-color: #156082;
   color: #333333;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   text-align: left;
   &:hover {
     cursor: default;
@@ -29,8 +29,8 @@ const Image = styled.img`
 `;
 
 const Title = styled.h3`
-  font-family: 'Parisienne';
-  font-size: 20px;
+  font-family: "Parisienne";
+  font-size: 25px;
   margin: 0;
 `;
 
@@ -105,14 +105,14 @@ const SidesComponent: React.FC<DishProps> = ({
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => { };
-  let handleDecrement: () => void = () => { };
+  let handleIncrement: () => void = () => {};
+  let handleDecrement: () => void = () => {};
 
   try {
     useEffect(() => {
-      const productInCart = cart.find(product => product._id === _id);
+      const productInCart = cart.find((product) => product._id === _id);
       const quantityInCart = productInCart ? productInCart.quantity : 0;
-      setQuantity(prevQuantity => {
+      setQuantity((prevQuantity) => {
         // Only update if the quantity changed to avoid infinite loop
         return prevQuantity !== quantityInCart ? quantityInCart : prevQuantity;
       });
@@ -157,9 +157,8 @@ const SidesComponent: React.FC<DishProps> = ({
       // Anropa removeFromCart-metoden för att ta bort produkten
       removeFromCart(_id);
     };
-  }
-  catch (error) {
-    console.error("Error in creating sides component", error)
+  } catch (error) {
+    console.error("Error in creating sides component", error);
     setError("An error occurred while rendering sides component.");
   }
 
