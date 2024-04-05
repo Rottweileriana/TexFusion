@@ -175,11 +175,6 @@ const Cocktail: React.FC<Cocktail> = ({
       <Image src={strDrinkThumb} alt={strDrink} />
       <div>
         <Title>{formattedCocktailName}</Title>
-        {recommended ? (
-          <Recommended>{recommended}</Recommended>
-        ) : (
-          <BlancRow>{"\u00A0"}</BlancRow>
-        )}
         <PriceAndAddContainer>
           <Price>{cocktailPrice} kr</Price>
           <CounterContainer>

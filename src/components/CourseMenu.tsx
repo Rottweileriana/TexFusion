@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import CourseComponent from "./CourseComponent";
-import { Dish } from "../types/index";
+import { Dish, Cocktail } from "../types/index";
 
 export function CourseMenu() {
   const [mains, setMains] = useState<Dish[]>([]);
+  const [cocktail, setCocktail] = useState<Cocktail[]>([]);
   const [error, setError] = useState<string | null>(null);
   const API_URL =
     "https://iths-2024-recept-grupp6-bc215j.reky.se/categories/main/recipes";

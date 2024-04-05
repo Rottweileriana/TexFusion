@@ -1,7 +1,8 @@
-import { useState, useContext, useEffect } from "./index";
+import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
 import { DishProps } from "../types/index";
+import { RecommendationComponent } from "./index";
 
 type Product = {
   imageUrl: string;
@@ -10,11 +11,16 @@ type Product = {
   quantity: number;
 };
 
-//#region Styles       
-const StyledCourse = styled.div`
+interface StyledCourseProps {
+  quantity: number;
+}
+
+//#region Styles
+const StyledCourse = styled.div<StyledCourseProps>`
   display: flex;
   width: 300px;
-  height: 100px;
+  height: ${({ quantity }: { quantity: number }) =>
+    quantity > 0 ? "150px" : "100px"};
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
@@ -22,7 +28,7 @@ const StyledCourse = styled.div`
   color: white;
   margin-bottom: 10px;
   text-align: left;
-  &:hover { cursor: default; }
+  position: relative;
 `;
 
 const Image = styled.img`
@@ -91,8 +97,19 @@ const ResultField = styled.input`
   color: #333333;
   font-size: 15px;
   outline: none;
-  &:hover { cursor: default; }
+  &:hover {
+    cursor: default;
+  }
 `;
+
+const Recommendation = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 97%;
+  margin: 5px;
+`;
+
 //#endregion
 
 const CourseComponent: React.FC<DishProps> = ({
@@ -111,10 +128,11 @@ const CourseComponent: React.FC<DishProps> = ({
   let handleDecrement: () => void = () => { };
 
   try {
+    //course
     useEffect(() => {
-      const productInCart = cart.find(product => product._id === _id);
+      const productInCart = cart.find((product) => product._id === _id);
       const quantityInCart = productInCart ? productInCart.quantity : 0;
-      setQuantity(prevQuantity => {
+      setQuantity((prevQuantity) => {
         // Only update if the quantity changed to avoid infinite loop
         return prevQuantity !== quantityInCart ? quantityInCart : prevQuantity;
       });
@@ -149,7 +167,7 @@ const CourseComponent: React.FC<DishProps> = ({
         imageUrl,
         title,
         price,
-        quantity: 1
+        quantity: 1,
       };
       // Anropa addToCart-metoden med det nya produktobjektet
       addToCart(product);
@@ -159,14 +177,13 @@ const CourseComponent: React.FC<DishProps> = ({
       // Anropa removeFromCart-metoden för att ta bort produkten
       removeFromCart(_id);
     };
-  }
-  catch (error) {
-    console.error("Error in creating course component", error)
+  } catch (error) {
+    console.error("Error in creating course component", error);
     setError("An error occurred while rendering course component.");
   }
 
   return (
-    <StyledCourse>
+    <StyledCourse quantity={quantity}>
       <Image src={imageUrl} alt={title} />
       <div>
         <Title>{title}</Title>
@@ -180,6 +197,12 @@ const CourseComponent: React.FC<DishProps> = ({
           </CounterContainer>
         </PriceAndAddContainer>
       </div>
+      {quantity > 0 && (
+        <Recommendation>
+          <RecommendationComponent
+          title={title}></RecommendationComponent>
+        </Recommendation>
+      )}
     </StyledCourse>
   );
 };
