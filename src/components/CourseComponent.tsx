@@ -9,7 +9,7 @@ type Product = {
   price: number;
   quantity: number;
 };
-        
+
 //#region Styles       
 const StyledCourse = styled.div`
   display: flex;
@@ -34,6 +34,8 @@ const Image = styled.img`
 `;
 
 const Title = styled.h3`
+  font-family: 'Parisienne';
+  font-size: 25px;
   margin: 0;
 `;
 
@@ -105,8 +107,8 @@ const CourseComponent: React.FC<DishProps> = ({
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => {};
-  let handleDecrement: () => void = () => {};
+  let handleIncrement: () => void = () => { };
+  let handleDecrement: () => void = () => { };
 
   try {
     useEffect(() => {
