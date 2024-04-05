@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "./context";
 import styled from "styled-components";
 import { DishProps } from "../types/index";
+import RecommendationComponent from "./CocktailComponent"
 
 type Product = {
   imageUrl: string;
@@ -99,52 +100,6 @@ const ResultField = styled.input`
   }
 `;
 
-const Recommendation = styled.div`
-  position: absolute;
-  bottom: 3px;
-  left: 0;
-  right: 0;
-`;
-
-const RecAndAddContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const CocktailRec = styled.p`
-  font-size: 13px;
-  color: #333333;
-  margin-left: 8px;
-  flex: 1;
-`;
-
-const CocktailCounterContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 5px;
-  border: 1px solid #d3d3d3;
-  border-radius: 5px;
-  background-color: #transparent;
-  margin-right: 8px;
-`;
-
-const CocktailCounterButton = styled.button`
-  margin: 0;
-  padding: 0;
-  padding-bottom: 4px;
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
-  border: none;
-  color: #333333;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 1;
-`;
-
 //#endregion
 
 const CourseComponent: React.FC<DishProps> = ({
@@ -152,13 +107,11 @@ const CourseComponent: React.FC<DishProps> = ({
   imageUrl,
   title,
   ingredients,
-  price,
-  cocktailRec
+  price
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
-  const [cocktailQuantity, setCocktailQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
   let handleIncrement: () => void = () => {};
@@ -197,16 +150,6 @@ const CourseComponent: React.FC<DishProps> = ({
       formattedIngredientText = `${formattedIngredients}.`;
     }
 
-    //cocktail
-    useEffect(() => {
-      const productInCart = cart.find((product) => product._id === cocktailRec.idDrink);
-      const quantityInCart = productInCart ? productInCart.quantity : 0;
-      setCocktailQuantity((prevQuantity) => {
-        // Only update if the quantity changed to avoid infinite loop
-        return prevQuantity !== quantityInCart ? quantityInCart : prevQuantity;
-      });
-    }, [cart, _id]);
-
     handleIncrement = () => {
       // Skapa ett nytt objekt för den aktuella produkten
       const product = {
@@ -244,18 +187,8 @@ const CourseComponent: React.FC<DishProps> = ({
           </CounterContainer>
         </PriceAndAddContainer>
       </div>
-      <Recommendation>
-        {quantity > 0 && (
-          <RecAndAddContainer>
-          <CocktailRec>Rekommenderas: {cocktailRec.strDrink}</CocktailRec>
-          <CocktailCounterContainer>
-            <CocktailCounterButton onClick={handleDecrement}>-</CocktailCounterButton>
-            <ResultField type="text" value={cocktailQuantity} readOnly />
-            <CocktailCounterButton onClick={handleIncrement}>+</CocktailCounterButton>
-          </CocktailCounterContainer>
-          </RecAndAddContainer>
-        )}
-      </Recommendation>
+      <RecommendationComponent
+      course={title}></RecommendationComponent>
     </StyledCourse>
   );
 };

@@ -50,7 +50,6 @@ export function CourseMenu() {
                 title={main.title}
                 ingredients={main.ingredients}
                 price={main.timeInMins}
-                cocktailRec={cocktail}
               />
             )
         )}

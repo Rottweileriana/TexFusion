@@ -1,13 +1,10 @@
 import { useState, useContext, useEffect } from "./index";
 import { CartContext } from "./context";
 import styled from "styled-components";
+import { Cocktail } from "../types/index";
 
-type Cocktail = {
-  idDrink: string;
-  strDrink: string;
-  strDrinkThumb: string;
-  recommended?: string;
-  cocktailPrice: number;
+type RecCocktail = {
+  title: string
 };
 
 type Product = {
@@ -112,33 +109,85 @@ const ResultField = styled.input`
 `;
 //#endregion
 
-const Cocktail: React.FC<Cocktail> = ({
-  idDrink,
-  strDrinkThumb,
-  strDrink,
-  recommended,
-  cocktailPrice
+const RecCocktail: React.FC<RecCocktail> = ({
+  title
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
+  const [cocktails, setCocktails] = useState<Cocktail[]>([]);
+  const [cocktailPrices, setCocktailPrices] = useState<number[]>([
+    180, 170, 175, 180, 150, 165, 155, 170, 160, 180
+  ]);
+  const [cocktail, setCocktail] = useState<Cocktail | null>(null); //ok med null??????????????
   const [ error, setError ] = useState<string | null>(null);
   const [ quantity, setQuantity ] = useState<number>(0);
   
   const MAX_LENGTH = 19;
-  let formattedCocktailName = strDrink;
+  let formattedCocktailName = cocktail.strDrink; //hantera ifall null
+  let id: string = "11007";
 
   let handleIncrement: () => void = () => {};
   let handleDecrement: () => void = () => {};
 
-  try 
+  try
   {
+    //Matcha rätt med cocktail
+    switch (title) {
+        case "Tacos":
+            id = "11007";
+          break;
+        case "Nachos":
+            id = "178365";
+          break;
+        case "Bowl":
+            id = "13621";
+          break;
+        case "Burrito":
+            id = "11003";
+          break;
+        case "Enchiladas":
+            id = "11001";
+          break;
+        default:
+            id = "11007";
+          break;
+      }
+
+    const API_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="+id;
+
+
+    // Lägg till pris för den rekommenderade cocktailen
     useEffect(() => {
-      const productInCart = cart.find(product => product._id === idDrink);
+        const fetchCocktails = async () => {
+        try {
+            const response = await fetch(API_URL);
+            if (!response.ok) {
+            throw new Error("Network response was not ok");
+            }
+            const data = await response.json();
+
+            setCocktail(data[0]);
+
+        } catch (error) {
+            console.error("Error fetching cocktails:", error);
+        }
+        };
+
+        fetchCocktails();
+
+        return () => {
+        setCocktail(null);
+        setCocktailPrices([]);
+        };
+    }, []);
+
+    useEffect(() => {
+      const productInCart = cart.find(product => product._id === cocktail.idDrink);
       const quantityInCart = productInCart ? productInCart.quantity : 0;
       setQuantity(prevQuantity => {
         // Only update if the quantity changed to avoid infinite loop
         return prevQuantity !== quantityInCart ? quantityInCart : prevQuantity;
       });
-    }, [cart, idDrink]);
+    }, [cart, cocktail.idDrink]);
 
     if (formattedCocktailName.length > MAX_LENGTH) {
       formattedCocktailName =
@@ -148,10 +197,10 @@ const Cocktail: React.FC<Cocktail> = ({
     handleIncrement = () => {
       // Skapa ett nytt objekt för den aktuella produkten
       const product = {
-        _id: idDrink,
-        imageUrl: strDrinkThumb,
-        title: strDrink,
-        price: cocktailPrice,
+        _id: cocktail.idDrink,
+        imageUrl: cocktail.strDrinkThumb,
+        title: cocktail.strDrink,
+        price: cocktail.cocktailPrice,
         quantity: 1,
       };
       // Anropa addToCart-metoden med det nya produktobjektet
@@ -160,7 +209,7 @@ const Cocktail: React.FC<Cocktail> = ({
 
     handleDecrement = () => {
       // Anropa removeFromCart-metoden för att ta bort produkten
-      removeFromCart(idDrink);
+      removeFromCart(cocktail.idDrink);
     };
   }
   catch (error) {
@@ -170,11 +219,10 @@ const Cocktail: React.FC<Cocktail> = ({
 
   return (
     <StyledCocktail>
-      <Image src={strDrinkThumb} alt={strDrink} />
       <div>
         <Title>{formattedCocktailName}</Title>
         <PriceAndAddContainer>
-          <Price>{cocktailPrice} kr</Price>
+          <Price>{cocktail.cocktailPrice} kr</Price>
           <CounterContainer>
             <CounterButton onClick={handleDecrement}>-</CounterButton>
             <ResultField type="text" value={quantity} readOnly />
@@ -186,4 +234,4 @@ const Cocktail: React.FC<Cocktail> = ({
   );
 };
 
-export default Cocktail;
+export default RecCocktail;
