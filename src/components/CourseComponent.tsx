@@ -16,6 +16,20 @@ interface StyledCourseProps {
 }
 
 //#region Styles
+
+const Title = styled.h3`
+  font-family: "Parisienne";
+  font-size: 40px;
+  margin: 0;
+`;
+
+const Text = styled.p`
+  margin: 0px;
+  padding-right: 0px;
+  font-size:0px;
+  color: white;
+`;
+
 const StyledCourse = styled.div<StyledCourseProps>`
   display: flex;
   width: 300px;
@@ -29,7 +43,24 @@ const StyledCourse = styled.div<StyledCourseProps>`
   margin-bottom: 25px;
   text-align: left;
   position: relative;
+  transition: background-color 1s, box-shadow 0.8s;
+  &:hover{
+    background-color:#145775;
+    box-shadow: 0px 0px 5px 2px;
+    ${Text}{
+      margin: 5px;
+      padding-right: 5px;
+      font-size:15px;
+      color: white;
+      transition: 0.7s;
+    }
+    ${Title}{
+      font-size:25px;
+      transition:0.7s;
+    }
+  }
 `;
+
 
 const Image = styled.img`
   width: 100px;
@@ -39,17 +70,9 @@ const Image = styled.img`
   margin-right: 20px;
 `;
 
-const Title = styled.h3`
-  font-family: "Parisienne";
-  font-size: 25px;
-  margin: 0;
-`;
 
-const Text = styled.p`
-  margin: 5px;
-  padding-right: 5px;
-  color: white;
-`;
+
+
 
 const Price = styled.p`
   margin: 0;
