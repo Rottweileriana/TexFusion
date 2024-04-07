@@ -30,6 +30,31 @@ const Text = styled.p`
   color: white;
 `;
 
+const Recommendation = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 97%;
+  margin: 5px;
+`;
+
+const HeadRecCocktail = styled.h3`
+  margin-top: 15px;
+  margin-bottom: 3px;
+  margin-left: 7px;
+`;
+
+const Wrapper = styled.div<StyledCourseProps>`
+height: 100%;
+opacity: ${({ quantity }: { quantity: number }) => 
+  quantity > 0 ? 1 : 0};
+transition-delay:0.8s;
+transition-duration: 1s;
+transition-property: opacity;
+`;
+
 const StyledCourse = styled.div<StyledCourseProps>`
   display: flex;
   width: 300px;
@@ -43,7 +68,7 @@ const StyledCourse = styled.div<StyledCourseProps>`
   margin-bottom: 25px;
   text-align: left;
   position: relative;
-  transition: background-color 1s, box-shadow 0.8s;
+  transition: background-color 1s, box-shadow 0.8s, height 0.5s;
   &:hover{
     background-color:#145775;
     box-shadow: 0px 0px 5px 2px;
@@ -69,10 +94,6 @@ const Image = styled.img`
   border: 1px solid #222222;
   margin-right: 20px;
 `;
-
-
-
-
 
 const Price = styled.p`
   margin: 0;
@@ -125,21 +146,7 @@ const ResultField = styled.input`
   }
 `;
 
-const Recommendation = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 97%;
-  margin: 5px;
-`;
 
-const HeadRecCocktail = styled.h3`
-  margin-top: 15px;
-  margin-bottom: 3px;
-  margin-left: 7px;
-`;
 
 //#endregion
 
@@ -228,12 +235,15 @@ const CourseComponent: React.FC<DishProps> = ({
           </CounterContainer>
         </PriceAndAddContainer>
       </div>
+      <Wrapper quantity={quantity}>
       {quantity > 0 && (
-        <Recommendation>
-          <HeadRecCocktail>Rekommenderad Dryck:</HeadRecCocktail>
-          <RecommendationComponent title={title}></RecommendationComponent>
-        </Recommendation>
+          <Recommendation >
+            <HeadRecCocktail>Rekommenderad Dryck:</HeadRecCocktail>
+            <RecommendationComponent title={title}></RecommendationComponent>
+          </Recommendation>
       )}
+      </Wrapper>
+      
     </StyledCourse>
   );
 };
