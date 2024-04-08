@@ -5,6 +5,7 @@ import {
   CocktailMenu,
   SidesMenu,
   NavBarComponent,
+  FooterComponent,
   ShoppingCart,
   CheckoutForm,
   ConfirmationPage,
@@ -65,9 +66,9 @@ const App: React.FC = () => {
               path="/"
               element={
                 <ErrorBoundary>
-                  
+
                   <MainComponent>
-                  <NavBarComponent />
+                    <NavBarComponent />
                     <div id="CourseMenu">
                       <CourseMenu />
                     </div>
@@ -82,6 +83,9 @@ const App: React.FC = () => {
                     </div>
                     <div>
                       <CheckoutForm />
+                    </div>
+                    <div>
+                      <FooterComponent />
                     </div>
                   </MainComponent>
                 </ErrorBoundary>
