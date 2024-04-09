@@ -1,22 +1,31 @@
-import { useState, useContext, useEffect } from "./index.ts";
+import { useState, useContext, useEffect, faTrashCan } from "./index.ts";
 import { CartContext } from "./context";
 import styled from "styled-components";
 import { DishProps } from "../types/index.ts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
+interface StyledCourseProps{
+  quantity: number;
+};
 
 //#region Styles
 const StyledSide = styled.div`
   display: flex;
-  width: 300px;
-  height: 100px;
+  width: 320px;
+  height: 105px;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
   background-color: #156082;
-  color: #333333;
+  color: #white;
   margin-bottom: 25px;
   text-align: left;
+  transition: background-color 1s, box-shadow 0.7s;
   &:hover {
     cursor: default;
+    background-color:#145775;
+    box-shadow: 0px 0px 5px 2px;
   }
 `;
 
@@ -30,13 +39,15 @@ const Image = styled.img`
 
 const Title = styled.h3`
   font-family: "Parisienne";
-  font-size: 25px;
+  font-size: 35px;
   margin: 0;
+  padding: 0;
 `;
 
 const Text = styled.p`
-  margin: 5px;
-  padding-right: 5px;
+  margin: 0px;
+  padding-right: 0px;
+  font-size:15px;
   color: white;
 `;
 
@@ -55,12 +66,12 @@ const PriceAndAddContainer = styled.div`
 
 const CounterContainer = styled.div`
   display: flex;
-  align-items: center;
-  margin-left: auto;
+  align-items: right;
   margin-top: 5px;
+  margin-left: auto;
   border: 0px solid #808080;
-  border-radius: 5px;
-  background-color: #d3d3d3;
+  border-radius: 30px;
+  background-color: #eca884;
 `;
 
 const CounterButton = styled.button`
@@ -71,12 +82,15 @@ const CounterButton = styled.button`
   height: 30px;
   background-color: transparent;
   border: none;
-  color: #333333;
+  color: #145775;
   font-size: 20px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  &:focus{
+    outline:none;
+  }
 `;
 
 const ResultField = styled.input`
@@ -91,6 +105,13 @@ const ResultField = styled.input`
     cursor: default;
   }
 `;
+
+const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
+ color:145775;
+ font-size: 15px;
+ margin-top: 5px;
+`;
+
 //#endregion
 
 const SidesComponent: React.FC<DishProps> = ({
@@ -130,7 +151,7 @@ const SidesComponent: React.FC<DishProps> = ({
         }
       }, "");
 
-    const MAX_LENGTH = 19;
+    const MAX_LENGTH = 30;
     formattedIngredientText = formattedIngredients;
 
     if (formattedIngredientText.length > MAX_LENGTH) {
@@ -170,11 +191,23 @@ const SidesComponent: React.FC<DishProps> = ({
         <Text>{formattedIngredientText}</Text>
         <PriceAndAddContainer>
           <Price>{price} kr</Price>
-          <CounterContainer>
-            <CounterButton onClick={handleDecrement}>-</CounterButton>
-            <ResultField type="text" value={quantity} readOnly />
-            <CounterButton onClick={handleIncrement}>+</CounterButton>
+          {quantity === 0 ? (
+            <CounterContainer>
+              <CounterButton onClick={handleIncrement}>+</CounterButton>
+            </CounterContainer>
+          ) : quantity > 1 ? (
+            <CounterContainer>
+              <CounterButton onClick={handleDecrement}>-</CounterButton>
+                <ResultField type="text" value={quantity} readOnly />
+              <CounterButton onClick={handleIncrement}>+</CounterButton>
+            </CounterContainer>
+          ) : (
+            <CounterContainer>
+              <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
+                <ResultField type="text" value={quantity} readOnly />
+              <CounterButton onClick={handleIncrement}>+</CounterButton>
           </CounterContainer>
+          )}
         </PriceAndAddContainer>
       </div>
     </StyledSide>

@@ -1,6 +1,8 @@
-import { useState, useContext, useEffect } from "./index";
+import { useState, useContext, useEffect, faTrashCan } from "./index";
 import { CartContext } from "./context";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 type Cocktail = {
   idDrink: string;
@@ -17,10 +19,20 @@ type Product = {
   quantity: number;
 };
 
+interface StyledCourseProps {
+  quantity: number;
+};
 //#region Styles
+
+const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
+ color:145775;
+ font-size: 15px;
+ margin-top: 5px;
+`;
+
 const StyledCocktail = styled.div`
   display: flex;
-  width: 300px;
+  width: 320px;
   height: 100px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -29,8 +41,10 @@ const StyledCocktail = styled.div`
   color: white;
   margin-bottom: 25px;
   text-align: left;
-  &:hover {
-    cursor: default;
+  transition: background-color 1s, box-shadow 0.8s ease-in-out;
+  &:hover{
+    background-color:#145775;
+    box-shadow: 0px 0px 5px 2px;
   }
 `;
 
@@ -58,7 +72,7 @@ const Recommended = styled.p`
 `;
 
 const BlancRow = styled.p`
-  margin: 5px;
+  margin-bottom: 5px;
   padding: 2px;
 `;
 
@@ -81,8 +95,8 @@ const CounterContainer = styled.div`
   margin-left: auto;
   margin-top: 5px;
   border: 0px solid #808080;
-  border-radius: 5px;
-  background-color: #d3d3d3;
+  border-radius: 30px;
+  background-color: #eca884;
 `;
 
 const CounterButton = styled.button`
@@ -93,7 +107,7 @@ const CounterButton = styled.button`
   height: 30px;
   background-color: transparent;
   border: none;
-  color: #333333;
+  color: #145775;
   font-size: 20px;
   cursor: pointer;
   display: flex;
@@ -174,13 +188,26 @@ const Cocktail: React.FC<Cocktail> = ({
       <Image src={strDrinkThumb} alt={strDrink} />
       <div>
         <Title>{formattedCocktailName}</Title>
+        <BlancRow/>
         <PriceAndAddContainer>
           <Price>{cocktailPrice} kr</Price>
-          <CounterContainer>
-            <CounterButton onClick={handleDecrement}>-</CounterButton>
-            <ResultField type="text" value={quantity} readOnly />
-            <CounterButton onClick={handleIncrement}>+</CounterButton>
-          </CounterContainer>
+          {quantity === 0 ? (
+            <CounterContainer>
+              <CounterButton onClick={handleIncrement}>+</CounterButton>
+            </CounterContainer>
+          ) : quantity > 1 ? (
+            <CounterContainer>
+              <CounterButton onClick={handleDecrement}>-</CounterButton>
+                <ResultField type="text" value={quantity} readOnly />
+              <CounterButton onClick={handleIncrement}>+</CounterButton>
+            </CounterContainer>
+          ) : (
+            <CounterContainer>
+              <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
+                <ResultField type="text" value={quantity} readOnly />
+              <CounterButton onClick={handleIncrement}>+</CounterButton>
+            </CounterContainer>
+          )}
         </PriceAndAddContainer>
       </div>
     </StyledCocktail>
