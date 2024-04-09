@@ -21,7 +21,7 @@ interface StyledCourseProps {
 
 const Title = styled.h3`
   font-family: "Parisienne";
-  font-size: 40px;
+  font-size: 35px;
   margin: 0;
 `;
 
@@ -59,7 +59,7 @@ transition-property: opacity;
 
 const StyledCourse = styled.div<StyledCourseProps>`
   display: flex;
-  width: 300px;
+  width: 320px;
   height: ${({ quantity }: { quantity: number }) =>
     quantity > 0 ? "185px" : "105px"};
   border: 1px solid #ccc;
