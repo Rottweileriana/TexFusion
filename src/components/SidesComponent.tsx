@@ -130,7 +130,7 @@ const SidesComponent: React.FC<DishProps> = ({
         }
       }, "");
 
-    const MAX_LENGTH = 19;
+    const MAX_LENGTH = 30;
     formattedIngredientText = formattedIngredients;
 
     if (formattedIngredientText.length > MAX_LENGTH) {

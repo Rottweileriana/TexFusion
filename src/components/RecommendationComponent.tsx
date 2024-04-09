@@ -70,6 +70,9 @@ const CounterButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  &:focus{
+    outline:none;
+  }
 `;
 
 const ResultField = styled.input`

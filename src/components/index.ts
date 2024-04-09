@@ -10,5 +10,5 @@ export { ErrorPage } from "./ErrorPage";
 export { useState, useContext, useEffect } from "react";
 export { useNavigate, BrowserRouter, Routes, Route } from "react-router-dom";
 export { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-export { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+export { faShoppingCart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
