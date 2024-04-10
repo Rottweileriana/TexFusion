@@ -60,14 +60,13 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <CartProvider>
+        <NavBarComponent />
           <Routes>
             <Route
               path="/"
               element={
                 <ErrorBoundary>
-                  
                   <MainComponent>
-                  <NavBarComponent />
                     <div id="CourseMenu">
                       <CourseMenu />
                     </div>
@@ -77,16 +76,17 @@ const App: React.FC = () => {
                     <div id="CocktailMenu">
                       <CocktailMenu />
                     </div>
-                    <div id="ShoppingCart">
-                      <ShoppingCart />
-                    </div>
                     <div>
-                      <CheckoutForm />
+                      
                     </div>
                   </MainComponent>
                 </ErrorBoundary>
               }
             ></Route>
+            <Route path="/Shoppingcart" element={<>
+              <ShoppingCart />  
+              <CheckoutForm />
+            </>} />
             <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
