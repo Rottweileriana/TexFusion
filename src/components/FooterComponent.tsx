@@ -53,6 +53,7 @@ const FooterNavbar = styled.ul`
 
 const FooterNavbarElements = styled.li`
   float: left;
+  display: flex;
 `;
 
 const LinkStyle = styled(Link)`
