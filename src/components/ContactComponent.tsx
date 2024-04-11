@@ -1,4 +1,4 @@
-function contact () {
+export function ContactComponent () {
     return (
         <>
             <h4>KONTAKT</h4>
@@ -12,5 +12,3 @@ function contact () {
         </>
     )
 }
-
-export default contact;

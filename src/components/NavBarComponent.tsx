@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useContext, FontAwesomeIcon, faShoppingCart } from "./index";
 import { CartContext } from "./context";
 import { Link, animateScroll as scroll } from "react-scroll";
-import {NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
@@ -61,6 +61,16 @@ export const NavBarComponent: React.FC = () => {
               to="/"
             >
               Hem
+            </NavLinkStyle>
+            <NavLinkStyle
+              to="/Info/OmOss" 
+            >
+              Om Oss
+            </NavLinkStyle>
+            <NavLinkStyle
+              to="/Info/Kontakt"
+            >
+              Kontakt
             </NavLinkStyle>
             <NavLinkStyle
               to="/Shoppingcart"

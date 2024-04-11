@@ -1,4 +1,4 @@
-function about () {
+export function AboutComponent () {
     return (
         <>
             <h4>TexFusion</h4>
@@ -13,5 +13,3 @@ function about () {
         </>
     )
 }
-
-export default about;

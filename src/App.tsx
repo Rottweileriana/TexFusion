@@ -13,6 +13,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  InfoComponent
 } from "./components/index";
 import styled from "styled-components";
 
@@ -87,6 +88,9 @@ const App: React.FC = () => {
                 </ErrorBoundary>
               }
             ></Route>
+            <Route path="/Info/:InfoPart" element={<>
+              <InfoComponent/>
+            </>} />
             <Route path="/Shoppingcart" element={<>
               <ShoppingCart />  
               <CheckoutForm />
