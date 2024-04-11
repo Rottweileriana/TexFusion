@@ -81,9 +81,6 @@ const App: React.FC = () => {
                     <div>
                       
                     </div>
-                    <div>
-                      <FooterComponent />
-                    </div>
                   </MainComponent>
                 </ErrorBoundary>
               }
@@ -98,6 +95,7 @@ const App: React.FC = () => {
             <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
+          <FooterComponent />
         </CartProvider>
       </BrowserRouter>
     </>

@@ -1,4 +1,5 @@
 import { Link, animateScroll as scroll } from "react-scroll";
+import { NavLink } from "react-router-dom"
 import styled from "styled-components";
 
 export const FooterComponent: React.FC = () => {
@@ -6,40 +7,21 @@ export const FooterComponent: React.FC = () => {
         <MainDiv>
             <FooterNavbar>
                 <FooterNavbarElements>
-                    <LinkStyle
-                        activeClass="active"
-                        to="Home"
-                        spy={true}
-                        smooth={true}
-                        offset={-162}
-                        duration={500}
-                    >
-                        Home
-                    </LinkStyle>
-                </FooterNavbarElements>
-                <FooterNavbarElements>
-                    <LinkStyle
-                        activeClass="active"
-                        to="AboutUs"
-                        spy={true}
-                        smooth={true}
-                        offset={-162}
-                        duration={500}
-                    >
-                        About us
-                    </LinkStyle>
-                </FooterNavbarElements>
-                <FooterNavbarElements>
-                    <LinkStyle
-                        activeClass="active"
-                        to="Contact"
-                        spy={true}
-                        smooth={true}
-                        offset={-162}
-                        duration={500}
-                    >
-                        Contact
-                    </LinkStyle>
+                <NavLinkStyle
+              to="/"
+            >
+              Hem
+            </NavLinkStyle>
+                <NavLinkStyle
+              to="/Info/OmOss" 
+            >
+              Om Oss
+            </NavLinkStyle>
+            <NavLinkStyle
+              to="/Info/Kontakt"
+            >
+              Kontakt
+            </NavLinkStyle>
                 </FooterNavbarElements>
             </FooterNavbar>
         </MainDiv>
@@ -78,6 +60,23 @@ const LinkStyle = styled(Link)`
   color: white;
   font-family: "Parisienne";
   font-size: 20px;
+  margin: 0px;
+  text-align: center;
+  padding: 5px 35px;
+  text-decoration: none;
+  position: relative;
+  border-radius: 5px;
+  &:hover {
+    color: #eca884;
+    font-size: 22px;
+  }
+`;
+
+const NavLinkStyle: typeof NavLink = styled(NavLink)`
+  display: block;
+  color: white;
+  font-family: "Parisienne";
+  font-size: 25px;
   margin: 0px;
   text-align: center;
   padding: 5px 35px;
