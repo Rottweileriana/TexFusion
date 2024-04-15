@@ -1,54 +1,61 @@
 import { Link, animateScroll as scroll } from "react-scroll";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const FooterComponent: React.FC = () => {
   return (
     <MainDiv>
+      <CopyRightInfoTextWrapper>
+        <p>CopyRight © {new Date().getFullYear()}</p>
+
+        <CopyRightInfoText>
+          | TexFusion | texfusion@texfusion.se | +4671234567
+        </CopyRightInfoText>
+      </CopyRightInfoTextWrapper>
       <FooterNavbar>
         <FooterNavbarElements>
-          <NavLinkStyle
-            to="/"
-          >
-            Hem
-          </NavLinkStyle>
-          <NavLinkStyle
-            to="/Info/OmOss"
-          >
-            Om Oss
-          </NavLinkStyle>
-          <NavLinkStyle
-            to="/Info/Kontakt"
-          >
-            Kontakt
-          </NavLinkStyle>
+          <NavLinkStyle to="/">Hem</NavLinkStyle>
+          <NavLinkStyle to="/Info/OmOss">Om Oss</NavLinkStyle>
+          <NavLinkStyle to="/Info/Kontakt">Kontakt</NavLinkStyle>
         </FooterNavbarElements>
       </FooterNavbar>
     </MainDiv>
-  )
-}
+  );
+};
+
+const CopyRightInfoTextWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+const CopyRightInfoText = styled.p`
+  color: #ffc000;
+  margin-left: 5px;
+`;
 
 const MainDiv = styled.div`
-display: flex;
-justify-content: center;
-margin-top: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100px;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 10px;
 `;
 
 const FooterNavbar = styled.ul`
-  position: fixed;
-  bottom: 0;
+  display: flex;
+  justify-content: center;
   list-style-type: none;
   margin: 0px;
   overflow: hidden;
-  background-color: #940fc9;
-  border-radius: 10px;
   cursor: pointer;
-  z-index: 9999;
-  background-color: #333333;
   padding: 5px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-
 `;
 
 const FooterNavbarElements = styled.li`
