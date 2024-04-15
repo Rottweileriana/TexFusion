@@ -3,29 +3,29 @@ import { NavLink } from "react-router-dom"
 import styled from "styled-components";
 
 export const FooterComponent: React.FC = () => {
-    return (
-        <MainDiv>
-            <FooterNavbar>
-                <FooterNavbarElements>
-                <NavLinkStyle
-              to="/"
-            >
-              Hem
-            </NavLinkStyle>
-                <NavLinkStyle
-              to="/Info/OmOss" 
-            >
-              Om Oss
-            </NavLinkStyle>
-            <NavLinkStyle
-              to="/Info/Kontakt"
-            >
-              Kontakt
-            </NavLinkStyle>
-                </FooterNavbarElements>
-            </FooterNavbar>
-        </MainDiv>
-    )
+  return (
+    <MainDiv>
+      <FooterNavbar>
+        <FooterNavbarElements>
+          <NavLinkStyle
+            to="/"
+          >
+            Hem
+          </NavLinkStyle>
+          <NavLinkStyle
+            to="/Info/OmOss"
+          >
+            Om Oss
+          </NavLinkStyle>
+          <NavLinkStyle
+            to="/Info/Kontakt"
+          >
+            Kontakt
+          </NavLinkStyle>
+        </FooterNavbarElements>
+      </FooterNavbar>
+    </MainDiv>
+  )
 }
 
 const MainDiv = styled.div`
@@ -56,27 +56,10 @@ const FooterNavbarElements = styled.li`
   display: flex;
 `;
 
-const LinkStyle = styled(Link)`
-  display: block;
-  color: white;
-  font-family: "Parisienne";
-  font-size: 20px;
-  margin: 0px;
-  text-align: center;
-  padding: 5px 35px;
-  text-decoration: none;
-  position: relative;
-  border-radius: 5px;
-  &:hover {
-    color: #eca884;
-    font-size: 22px;
-  }
-`;
-
 const NavLinkStyle: typeof NavLink = styled(NavLink)`
   display: block;
   color: white;
-  font-family: "Parisienne";
+  font-family: "Open Sans";
   font-size: 25px;
   margin: 0px;
   text-align: center;
