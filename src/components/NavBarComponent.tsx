@@ -18,44 +18,51 @@ export const NavBarComponent: React.FC = () => {
   return (
     <>
       <MainDiv>
-        <NavBarList>
+        <LogoContainer>
+          <img src="https://fakeimg.pl/150x150"/>
+        </LogoContainer>
+        <LogotextSubnavbarContainer>
           <NavBarLogo>TexFusion</NavBarLogo>
-          <NavBarListElements>
-            <LinkStyle
-              activeClass="active"
-              to="CourseMenu"
-              spy={true}
-              smooth={true}
-              offset={-162}
-              duration={500}
-            >
-              Huvudrätt
-            </LinkStyle>
-          </NavBarListElements>
-          <NavBarListElements>
-            <LinkStyle
-              activeClass="active"
-              to="SidesMenu"
-              spy={true}
-              smooth={true}
-              offset={-162}
-              duration={500}
-            >
-              Tillbehör
-            </LinkStyle>
-          </NavBarListElements>
-          <NavBarListElements>
-            <LinkStyle
-              activeClass="active"
-              to="CocktailMenu"
-              spy={true}
-              smooth={true}
-              offset={-162}
-              duration={500}
-            >
-              Cocktail
-            </LinkStyle>
-          </NavBarListElements>
+          <NavBarListSub>
+            <NavBarListElements>
+              <LinkStyle
+                activeClass="active"
+                to="CourseMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                Huvudrätt
+              </LinkStyle>
+            </NavBarListElements>
+            <NavBarListElements>
+              <LinkStyle
+                activeClass="active"
+                to="SidesMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                Tillbehör
+              </LinkStyle>
+            </NavBarListElements>
+            <NavBarListElements>
+              <LinkStyle
+                activeClass="active"
+                to="CocktailMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                Cocktail
+              </LinkStyle>
+            </NavBarListElements>
+          </NavBarListSub>
+        </LogotextSubnavbarContainer>
+        <NavBarListMain>
           <NavBarListElements>
             <NavLinkStyle
               to="/menu"
@@ -68,7 +75,7 @@ export const NavBarComponent: React.FC = () => {
               Home
             </NavLinkStyle>
             <NavLinkStyle
-              to="/Info/OmOss"
+              to="/Info/OmOss" 
             >
               Om Oss
             </NavLinkStyle>
@@ -86,7 +93,7 @@ export const NavBarComponent: React.FC = () => {
               <FontAwesomeIcon icon={faShoppingCart} />
             </NavLinkStyle>
           </NavBarListElements>
-        </NavBarList>
+        </NavBarListMain>
       </MainDiv>
     </>
   );
@@ -94,14 +101,41 @@ export const NavBarComponent: React.FC = () => {
 
 //#region CSS
 
+const LogoContainer = styled.div`
+  display:flex;
+  width:150px;
+  height:150px;
+`;
+
+const LogotextSubnavbarContainer = styled.div`
+  width:250px;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+`;
+
 const MainDiv = styled.div`
   display: flex;
-  justify-content: center;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 250px;
+  position: fixed;
+  top: 0;
   margin-bottom: 10px;
+  background-color: #145775;
 `;
 
 const NavBarLogo = styled.h1`
-  font-family: "Parisienne";
+  display:flex;
+  height:50%;
+  justify-content:center;
+  align-items:flex-end;
+  font-family: "Open Sans";
   font-size: 50px;
   font-weight: bold;
   color: #eca884;
@@ -109,12 +143,10 @@ const NavBarLogo = styled.h1`
   padding: 0;
 `;
 
-const NavBarList = styled.ul`
-  position: fixed;
-  top: 0;
+const NavBarListMain = styled.ul`
   list-style-type: none;
+  display:flex;
   margin: 0px;
-  padding: 0px;
   overflow: hidden;
   background-color: #145775;
   border-radius: 10px;
@@ -122,15 +154,30 @@ const NavBarList = styled.ul`
   z-index: 9999;
 `;
 
+const NavBarListSub = styled.ul`
+  display:flex;
+  height:50%;
+  justify-content:center;
+  align-items:flex-end;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  background-color: #145775;
+  cursor: pointer;
+  z-index: 9999;
+`;
+
 const NavBarListElements = styled.li`
-  float: left;
+  color:white;
+  display:flex;
+  flex-direction: row;
 `;
 // box-shadow: 0 0 10px rgba(0,0,0,0,5);
 const LinkStyle = styled(Link)`
   display: block;
   color: white;
   font-family: "Open Sans";
-  font-size: 25px;
+  font-size: 20px;
   margin: 0px;
   text-align: center;
   padding: 5px 35px;
@@ -139,24 +186,22 @@ const LinkStyle = styled(Link)`
   border-radius: 5px;
   &:hover {
     color: #eca884;
-    font-size: 22px;
   }
 `;
 
 const NavLinkStyle: (typeof NavLink) = styled(NavLink)`
   display: block;
-  color: #ffc000;
+  color: white;
   font-family: "Open Sans";
-  font-size: 25px;
+  font-size: 15px;
   margin: 0px;
+  padding-right:10px;
   text-align: center;
-  padding: 5px 35px;
   text-decoration: none;
   position: relative;
   border-radius: 5px;
   &:hover {
     color: #eca884;
-    font-size: 22px;
   }
 `;
 
