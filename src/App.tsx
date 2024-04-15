@@ -22,21 +22,18 @@ import "./App.css";
 
 const BodyBackgroundComponent = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
+  width: 100vw;
   margin: 0;
   padding: 0;
-  width: 100%;
 `;
 
 const MainComponent = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
-  width: 95%;
+  margin: 0 auto;
+  padding: 20px;
   max-width: 1200px;
 `;
 

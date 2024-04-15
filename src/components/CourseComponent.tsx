@@ -67,7 +67,7 @@ const StyledCourse = styled.div<StyledCourseProps>`
   padding: 5px;
   background-color: #156082;
   color: white;
-  margin-bottom: 25px;
+  margin: 0 10px 25px 10px;
   text-align: left;
   position: relative;
   transition: background-color 1s, box-shadow 0.8s, height 0.5s ease-in-out;

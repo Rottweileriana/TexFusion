@@ -39,7 +39,7 @@ const StyledCocktail = styled.div`
   padding: 5px;
   background-color: #156082;
   color: white;
-  margin-bottom: 25px;
+  margin: 0 10px 25px 10px;
   text-align: left;
   transition: background-color 1s, box-shadow 0.8s ease-in-out;
   &:hover{
