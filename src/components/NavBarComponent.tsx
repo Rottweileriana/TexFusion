@@ -68,11 +68,11 @@ export const NavBarComponent: React.FC = () => {
               >
                 HOME
               </NavLinkStyle>
-              <NavLinkStyle
+              {/* <NavLinkStyle
                 to="/Info/OmOss" 
               >
                 OM OSS
-              </NavLinkStyle>
+              </NavLinkStyle> */}
               <NavLinkStyle
                 to="/Info/Kontakt"
               >
@@ -103,7 +103,7 @@ const NavbarBackground = styled.div`
   background-color: #145775;
   z-index: 9999;
   width: 100%;
-  height: 200px;
+  height: 175px;
   position: fixed;
   top: 0;
 `;
@@ -128,34 +128,33 @@ const LogoContainer = styled.div`
 
 const LogotextSubnavbarContainer = styled.div`
   width: 33%;
-  height:100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
 `;
 
 const NavBarLogo = styled.h1`
-  display:flex;
-  height:50%;
-  justify-content:center;
-  align-items:flex-end;
+  display: flex;
+  height: 75%;
+  justify-content: center;
+  align-items: flex-end;
   font-family: "Open Sans";
-  font-size: 50px;
-  font-weight: bold;
+  font-size: 70px;
   color: #eca884;
   margin: 0;
   padding: 0;
 `;
 
 const NavBarListSub = styled.div`
-  display:flex;
-  height:50%;
+  display: flex;
+  height: 25%;
   width: 350px;
   justify-content: space-between;
   list-style-type: none;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
   z-index: 9999;
 `;
@@ -163,10 +162,9 @@ const NavBarListSub = styled.div`
 const NavBarListMain = styled.div`
   list-style-type: none;
   display:flex;
-  justify-content: space-between;
-  margin: 0;
-  margin-bottom: 100px;
-  padding: 0;
+  justify-content: flex-end;
+  margin: 0 0 95px 0;
+  padding-top: 20px;
   width: 33%;
   overflow: hidden;
   cursor: pointer;
@@ -184,7 +182,7 @@ const LinkStyle = styled(Link)`
   display: block;
   color: white;
   font-family: "Open Sans";
-  font-size: 15px;
+  font-size: 14px;
   margin: 0px;
   text-align: center;
   text-decoration: none;
@@ -199,9 +197,8 @@ const NavLinkStyle: (typeof NavLink) = styled(NavLink)`
   display: block;
   color: white;
   font-family: "Open Sans";
-  font-size: 15px;
-  margin: 0px;
-  padding-right: 10px;
+  font-size: 14px;
+  margin: 0 20px 0 15px;
   text-align: center;
   text-decoration: none;
   position: relative;
@@ -214,8 +211,8 @@ const NavLinkStyle: (typeof NavLink) = styled(NavLink)`
 const Badge = styled.span`
   position: absolute;
   font-family: Arial, Helvetica, sans-serif;
-  top: 0px;
-  right: 14px;
+  top: -7px;
+  right: -20px;
   background-color: #eca884;
   color: black;
   border-radius: 50%;
