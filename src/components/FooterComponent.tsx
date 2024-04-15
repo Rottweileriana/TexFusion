@@ -5,6 +5,13 @@ import styled from "styled-components";
 export const FooterComponent: React.FC = () => {
     return (
         <MainDiv>
+          <CopyRightInfoTextWrapper>
+            <p>CopyRight © {new Date().getFullYear()}</p>
+             
+            <CopyRightInfoText>
+               | TexFusion | texfusion@texfusion.se | +4671234567
+            </CopyRightInfoText>
+          </CopyRightInfoTextWrapper>
             <FooterNavbar>
                 <FooterNavbarElements>
                 <NavLinkStyle
@@ -28,49 +35,45 @@ export const FooterComponent: React.FC = () => {
     )
 }
 
+const CopyRightInfoTextWrapper = styled.div`
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+`;
+
+
+const CopyRightInfoText = styled.p`
+  color:#ffc000;
+  margin-left:5px;
+`;
+
 const MainDiv = styled.div`
-display: flex;
-justify-content: center;
-margin-top: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height:100px;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  padding-bottom:10px;
 `;
 
 const FooterNavbar = styled.ul`
-  position: fixed;
-  bottom: 0;
+  display:flex;
+  justify-content:center;
   list-style-type: none;
   margin: 0px;
   overflow: hidden;
-  background-color: #940fc9;
-  border-radius: 10px;
   cursor: pointer;
-  z-index: 9999;
-  background-color: #333333;
   padding: 5px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-
 `;
 
 const FooterNavbarElements = styled.li`
   float: left;
   display: flex;
-`;
-
-const LinkStyle = styled(Link)`
-  display: block;
-  color: white;
-  font-family: "Parisienne";
-  font-size: 20px;
-  margin: 0px;
-  text-align: center;
-  padding: 5px 35px;
-  text-decoration: none;
-  position: relative;
-  border-radius: 5px;
-  &:hover {
-    color: #eca884;
-    font-size: 22px;
-  }
 `;
 
 const NavLinkStyle: typeof NavLink = styled(NavLink)`
