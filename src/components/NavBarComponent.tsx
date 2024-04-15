@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useContext, FontAwesomeIcon, faShoppingCart } from "./index";
 import { CartContext } from "./context";
 import { Link, animateScroll as scroll } from "react-scroll";
+import { NavLink } from "react-router-dom"
 
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
@@ -56,19 +57,34 @@ export const NavBarComponent: React.FC = () => {
             </LinkStyle>
           </NavBarListElements>
           <NavBarListElements>
-            <LinkStyle
-              activeClass="active"
-              to="ShoppingCart"
-              spy={true}
-              smooth={true}
-              offset={-120}
-              duration={500}
+            <NavLinkStyle
+              to="/menu"
+            >
+              Meny
+            </NavLinkStyle>
+            <NavLinkStyle
+              to="/"
+            >
+              Home
+            </NavLinkStyle>
+            <NavLinkStyle
+              to="/Info/OmOss" 
+            >
+              Om Oss
+            </NavLinkStyle>
+            <NavLinkStyle
+              to="/Info/Kontakt"
+            >
+              Kontakt
+            </NavLinkStyle>
+            <NavLinkStyle
+              to="/Shoppingcart"
             >
               <Badge>
                 {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
               </Badge>
               <FontAwesomeIcon icon={faShoppingCart} />
-            </LinkStyle>
+            </NavLinkStyle>
           </NavBarListElements>
         </NavBarList>
       </MainDiv>
@@ -111,6 +127,23 @@ const NavBarListElements = styled.li`
 `;
 // box-shadow: 0 0 10px rgba(0,0,0,0,5);
 const LinkStyle = styled(Link)`
+  display: block;
+  color: white;
+  font-family: "Parisienne";
+  font-size: 25px;
+  margin: 0px;
+  text-align: center;
+  padding: 5px 35px;
+  text-decoration: none;
+  position: relative;
+  border-radius: 5px;
+  &:hover {
+    color: #eca884;
+    font-size: 22px;
+  }
+`;
+
+const NavLinkStyle: (typeof NavLink) = styled(NavLink)`
   display: block;
   color: white;
   font-family: "Parisienne";

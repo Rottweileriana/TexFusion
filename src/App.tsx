@@ -5,6 +5,7 @@ import {
   CocktailMenu,
   SidesMenu,
   NavBarComponent,
+  FooterComponent,
   ShoppingCart,
   CheckoutForm,
   ConfirmationPage,
@@ -12,6 +13,8 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  InfoComponent,
+  HomeComponent
 } from "./components/index";
 import styled from "styled-components";
 
@@ -60,14 +63,14 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <CartProvider>
+        <NavBarComponent />
           <Routes>
+          <Route path="/" element={<HomeComponent />} />
             <Route
-              path="/"
+              path="/menu"
               element={
                 <ErrorBoundary>
-                  
                   <MainComponent>
-                  <NavBarComponent />
                     <div id="CourseMenu">
                       <CourseMenu />
                     </div>
@@ -77,19 +80,21 @@ const App: React.FC = () => {
                     <div id="CocktailMenu">
                       <CocktailMenu />
                     </div>
-                    <div id="ShoppingCart">
-                      <ShoppingCart />
-                    </div>
-                    <div>
-                      <CheckoutForm />
-                    </div>
                   </MainComponent>
                 </ErrorBoundary>
               }
             ></Route>
+            <Route path="/Info/:InfoPart" element={<>
+              <InfoComponent/>
+            </>} />
+            <Route path="/Shoppingcart" element={<>
+              <ShoppingCart />  
+              <CheckoutForm />
+            </>} />
             <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
+          <FooterComponent />
         </CartProvider>
       </BrowserRouter>
     </>
