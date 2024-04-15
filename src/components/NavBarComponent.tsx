@@ -17,154 +17,202 @@ export const NavBarComponent: React.FC = () => {
 
   return (
     <>
-      <MainDiv>
-        <NavBarList>
-          <NavBarLogo>TexFusion</NavBarLogo>
-          <NavBarListElements>
-            <LinkStyle
-              activeClass="active"
-              to="CourseMenu"
-              spy={true}
-              smooth={true}
-              offset={-162}
-              duration={500}
-            >
-              Huvudrätt
-            </LinkStyle>
-          </NavBarListElements>
-          <NavBarListElements>
-            <LinkStyle
-              activeClass="active"
-              to="SidesMenu"
-              spy={true}
-              smooth={true}
-              offset={-162}
-              duration={500}
-            >
-              Tillbehör
-            </LinkStyle>
-          </NavBarListElements>
-          <NavBarListElements>
-            <LinkStyle
-              activeClass="active"
-              to="CocktailMenu"
-              spy={true}
-              smooth={true}
-              offset={-162}
-              duration={500}
-            >
-              Cocktail
-            </LinkStyle>
-          </NavBarListElements>
-          <NavBarListElements>
-            <NavLinkStyle
-              to="/menu"
-            >
-              Meny
-            </NavLinkStyle>
-            <NavLinkStyle
-              to="/"
-            >
-              Home
-            </NavLinkStyle>
-            <NavLinkStyle
-              to="/Info/OmOss"
-            >
-              Om Oss
-            </NavLinkStyle>
-            <NavLinkStyle
-              to="/Info/Kontakt"
-            >
-              Kontakt
-            </NavLinkStyle>
-            <NavLinkStyle
-              to="/Shoppingcart"
-            >
-              <Badge>
-                {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
-              </Badge>
-              <FontAwesomeIcon icon={faShoppingCart} />
-            </NavLinkStyle>
-          </NavBarListElements>
-        </NavBarList>
-      </MainDiv>
+      <NavbarBackground>
+        <MainDiv>
+          <LogoContainer>
+            <img src="https://fakeimg.pl/150x150"/>
+          </LogoContainer>
+          <LogotextSubnavbarContainer>
+            <NavBarLogo>TexFusion</NavBarLogo>
+            <NavBarListSub>
+                <LinkStyle
+                  activeClass="active"
+                  to="CourseMenu"
+                  spy={true}
+                  smooth={true}
+                  offset={-162}
+                  duration={500}
+                >
+                  HUVUDRÄTTER
+                </LinkStyle>
+                <LinkStyle
+                  activeClass="active"
+                  to="SidesMenu"
+                  spy={true}
+                  smooth={true}
+                  offset={-162}
+                  duration={500}
+                >
+                  TILLBEHÖR
+                </LinkStyle>
+                <LinkStyle
+                  activeClass="active"
+                  to="CocktailMenu"
+                  spy={true}
+                  smooth={true}
+                  offset={-162}
+                  duration={500}
+                >
+                  COCKTAILS
+                </LinkStyle>
+            </NavBarListSub>
+          </LogotextSubnavbarContainer>
+          <NavBarListMain>
+              <NavLinkStyle
+                to="/menu"
+              >
+                MENY
+              </NavLinkStyle>
+              <NavLinkStyle
+                to="/"
+              >
+                HOME
+              </NavLinkStyle>
+              {/* <NavLinkStyle
+                to="/Info/OmOss" 
+              >
+                OM OSS
+              </NavLinkStyle> */}
+              <NavLinkStyle
+                to="/Info/Kontakt"
+              >
+                KONTAKT
+              </NavLinkStyle>
+              <NavLinkStyle
+                to="/Shoppingcart"
+              >
+                <Badge>
+                  {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
+                </Badge>
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </NavLinkStyle>
+          </NavBarListMain>
+        </MainDiv>
+      </NavbarBackground>
     </>
   );
 };
 
 //#region CSS
 
+const NavbarBackground = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background-color: #145775;
+  z-index: 9999;
+  width: 100%;
+  height: 175px;
+  position: fixed;
+  top: 0;
+`;
+
 const MainDiv = styled.div`
   display: flex;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  max-width: 1200px;
+  height: 95%;
+  z-index: 9999;
+`;
+
+const LogoContainer = styled.div`
+  display:flex;
+  width: 33%;
+  height:150px;
+`;
+
+const LogotextSubnavbarContainer = styled.div`
+  width: 33%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
 `;
 
 const NavBarLogo = styled.h1`
-  font-family: "Parisienne";
-  font-size: 50px;
-  font-weight: bold;
+  display: flex;
+  height: 75%;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: "Open Sans";
+  font-size: 70px;
   color: #eca884;
   margin: 0;
   padding: 0;
 `;
 
-const NavBarList = styled.ul`
-  position: fixed;
-  top: 0;
+const NavBarListSub = styled.div`
+  display: flex;
+  height: 25%;
+  width: 350px;
+  justify-content: space-between;
   list-style-type: none;
-  margin: 0px;
-  padding: 0px;
-  overflow: hidden;
-  background-color: #145775;
-  border-radius: 10px;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
   z-index: 9999;
 `;
 
-const NavBarListElements = styled.li`
-  float: left;
+const NavBarListMain = styled.div`
+  list-style-type: none;
+  display:flex;
+  justify-content: flex-end;
+  margin: 0 0 95px 0;
+  padding-top: 20px;
+  width: 33%;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 9999;
 `;
+
+// const NavBarListElements = styled.li`
+//   color:white;
+//   display:flex;
+//   flex-direction: row;
+// `;
+
 // box-shadow: 0 0 10px rgba(0,0,0,0,5);
 const LinkStyle = styled(Link)`
   display: block;
   color: white;
   font-family: "Open Sans";
-  font-size: 25px;
+  font-size: 14px;
   margin: 0px;
   text-align: center;
-  padding: 5px 35px;
   text-decoration: none;
   position: relative;
   border-radius: 5px;
   &:hover {
     color: #cc5500;
-    font-size: 22px;
   }
 `;
 
 const NavLinkStyle: (typeof NavLink) = styled(NavLink)`
   display: block;
-  color: #ffc000;
+  color: white;
   font-family: "Open Sans";
-  font-size: 25px;
-  margin: 0px;
+  font-size: 14px;
+  margin: 0 20px 0 15px;
   text-align: center;
-  padding: 5px 35px;
   text-decoration: none;
   position: relative;
   border-radius: 5px;
   &:hover {
     color: #eca884;
-    font-size: 22px;
   }
 `;
 
 const Badge = styled.span`
   position: absolute;
   font-family: Arial, Helvetica, sans-serif;
-  top: 0px;
-  right: 14px;
+  top: -7px;
+  right: -20px;
   background-color: #eca884;
   color: black;
   border-radius: 50%;
