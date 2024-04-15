@@ -138,7 +138,7 @@ const LinkStyle = styled(Link)`
   position: relative;
   border-radius: 5px;
   &:hover {
-    color: #eca884;
+    color: #cc5500;
     font-size: 22px;
   }
 `;
