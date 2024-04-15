@@ -20,8 +20,54 @@ import styled from "styled-components";
 
 import "./App.css";
 
+const BodyBackgroundComponent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+`;
+
 const MainComponent = styled.div`
-  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 95%;
+  max-width: 1200px;
+`;
+
+const CourseMenuContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-top: 200px;
+`;
+
+const SidesMenuContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 300px;
+  margin: 0;
+  padding: 0;
+`;
+
+const CocktailMenuContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 300px;
+  margin: 0;
+  padding: 0;
 `;
 
 interface ErrorBoundaryProps {
@@ -63,24 +109,26 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <CartProvider>
-        <NavBarComponent />
+          <NavBarComponent />
           <Routes>
-          <Route path="/" element={<HomeComponent />} />
+            <Route path="/" element={<HomeComponent />} />
             <Route
               path="/menu"
               element={
                 <ErrorBoundary>
-                  <MainComponent>
-                    <div id="CourseMenu">
-                      <CourseMenu />
-                    </div>
-                    <div id="SidesMenu">
-                      <SidesMenu />
-                    </div>
-                    <div id="CocktailMenu">
-                      <CocktailMenu />
-                    </div>
-                  </MainComponent>
+                  <BodyBackgroundComponent>
+                    <MainComponent>
+                      <CourseMenuContainer id="CourseMenu">
+                        <CourseMenu />
+                      </CourseMenuContainer>
+                      <SidesMenuContainer id="SidesMenu">
+                        <SidesMenu />
+                      </SidesMenuContainer>
+                      <CocktailMenuContainer id="CocktailMenu">
+                        <CocktailMenu />
+                      </CocktailMenuContainer>
+                    </MainComponent>
+                  </BodyBackgroundComponent>
                 </ErrorBoundary>
               }
             ></Route>

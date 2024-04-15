@@ -4,8 +4,19 @@ import { Dish } from "../types/index";
 import styled from "styled-components";
 
 //#region Styles
+const SidesMenuContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SidesContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 const MenuTitle = styled.h2`
-  margin-top: 40px;
   margin-bottom: 15px;
 `;
 //#endregion
@@ -38,7 +49,9 @@ export function SidesMenu() {
 
   return (
     <>
+    <SidesMenuContainer>
       <MenuTitle>Tillbehör</MenuTitle>
+      <SidesContainer>
       {sides &&
         sides.map(
           (side) =>
@@ -54,6 +67,8 @@ export function SidesMenu() {
               />
             )
         )}
+        </SidesContainer>
+        </SidesMenuContainer>
     </>
   );
 }

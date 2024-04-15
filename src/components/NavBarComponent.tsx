@@ -100,6 +100,7 @@ const NavbarBackground = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0;
+  padding: 0;
   background-color: #145775;
   z-index: 9999;
   width: 100%;
