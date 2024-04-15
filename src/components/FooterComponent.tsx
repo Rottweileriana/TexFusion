@@ -3,36 +3,36 @@ import { NavLink } from "react-router-dom"
 import styled from "styled-components";
 
 export const FooterComponent: React.FC = () => {
-    return (
-        <MainDiv>
-          <CopyRightInfoTextWrapper>
-            <p>CopyRight © {new Date().getFullYear()}</p>
-             
-            <CopyRightInfoText>
-               | TexFusion | texfusion@texfusion.se | +4671234567
-            </CopyRightInfoText>
-          </CopyRightInfoTextWrapper>
-            <FooterNavbar>
-                <FooterNavbarElements>
-                <NavLinkStyle
-              to="/"
-            >
-              Hem
-            </NavLinkStyle>
-                <NavLinkStyle
-              to="/Info/OmOss" 
-            >
-              Om Oss
-            </NavLinkStyle>
-            <NavLinkStyle
-              to="/Info/Kontakt"
-            >
-              Kontakt
-            </NavLinkStyle>
-                </FooterNavbarElements>
-            </FooterNavbar>
-        </MainDiv>
-    )
+  return (
+    <MainDiv>
+      <CopyRightInfoTextWrapper>
+        <p>CopyRight © {new Date().getFullYear()}</p>
+
+        <CopyRightInfoText>
+          | TexFusion | texfusion@texfusion.se | +4671234567
+        </CopyRightInfoText>
+      </CopyRightInfoTextWrapper>
+      <FooterNavbar>
+        <FooterNavbarElements>
+          <NavLinkStyle
+            to="/"
+          >
+            Hem
+          </NavLinkStyle>
+          <NavLinkStyle
+            to="/Info/OmOss"
+          >
+            Om Oss
+          </NavLinkStyle>
+          <NavLinkStyle
+            to="/Info/Kontakt"
+          >
+            Kontakt
+          </NavLinkStyle>
+        </FooterNavbarElements>
+      </FooterNavbar>
+    </MainDiv>
+  )
 }
 
 const CopyRightInfoTextWrapper = styled.div`
@@ -79,7 +79,7 @@ const FooterNavbarElements = styled.li`
 const NavLinkStyle: typeof NavLink = styled(NavLink)`
   display: block;
   color: white;
-  font-family: "Parisienne";
+  font-family: "Open Sans";
   font-size: 25px;
   margin: 0px;
   text-align: center;

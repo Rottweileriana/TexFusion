@@ -68,7 +68,7 @@ export const NavBarComponent: React.FC = () => {
               Home
             </NavLinkStyle>
             <NavLinkStyle
-              to="/Info/OmOss" 
+              to="/Info/OmOss"
             >
               Om Oss
             </NavLinkStyle>
@@ -129,7 +129,7 @@ const NavBarListElements = styled.li`
 const LinkStyle = styled(Link)`
   display: block;
   color: white;
-  font-family: "Parisienne";
+  font-family: "Open Sans";
   font-size: 25px;
   margin: 0px;
   text-align: center;
@@ -145,8 +145,8 @@ const LinkStyle = styled(Link)`
 
 const NavLinkStyle: (typeof NavLink) = styled(NavLink)`
   display: block;
-  color: white;
-  font-family: "Parisienne";
+  color: #ffc000;
+  font-family: "Open Sans";
   font-size: 25px;
   margin: 0px;
   text-align: center;
