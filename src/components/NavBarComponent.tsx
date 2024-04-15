@@ -58,9 +58,14 @@ export const NavBarComponent: React.FC = () => {
           </NavBarListElements>
           <NavBarListElements>
             <NavLinkStyle
+              to="/menu"
+            >
+              Meny
+            </NavLinkStyle>
+            <NavLinkStyle
               to="/"
             >
-              Hem
+              Home
             </NavLinkStyle>
             <NavLinkStyle
               to="/Info/OmOss" 

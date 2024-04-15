@@ -13,7 +13,8 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  InfoComponent
+  InfoComponent,
+  HomeComponent
 } from "./components/index";
 import styled from "styled-components";
 
@@ -64,8 +65,9 @@ const App: React.FC = () => {
         <CartProvider>
         <NavBarComponent />
           <Routes>
+          <Route path="/" element={<HomeComponent />} />
             <Route
-              path="/"
+              path="/menu"
               element={
                 <ErrorBoundary>
                   <MainComponent>
@@ -77,9 +79,6 @@ const App: React.FC = () => {
                     </div>
                     <div id="CocktailMenu">
                       <CocktailMenu />
-                    </div>
-                    <div>
-                      
                     </div>
                   </MainComponent>
                 </ErrorBoundary>

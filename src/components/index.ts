@@ -2,6 +2,7 @@ export { CourseMenu } from "./CourseMenu";
 export { RecommendationComponent } from "./RecommendationComponent";
 export { CocktailMenu } from "./CocktailMenu";
 export { SidesMenu } from "./SidesMenu";
+export { HomeComponent } from "./HomeComponent";
 export { NavBarComponent } from "./NavBarComponent";
 export { ShoppingCart } from "./ShoppingCart";
 export { CheckoutForm } from "./CheckoutForm";
