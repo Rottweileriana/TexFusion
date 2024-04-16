@@ -20,7 +20,9 @@ export const NavBarComponent: React.FC = () => {
       <NavbarBackground>
         <MainDiv>
           <LogoContainer>
-            <img src="https://fakeimg.pl/150x150"/>
+              <LogoNavLink to="/">
+              <img src="https://fakeimg.pl/150x150"/>
+              </LogoNavLink>
           </LogoContainer>
           <LogotextSubnavbarContainer>
             <NavBarLogo>TexFusion</NavBarLogo>
@@ -125,6 +127,16 @@ const LogoContainer = styled.div`
   display:flex;
   width: 33%;
   height:150px;
+`;
+
+const LogoNavLink: (typeof NavLink) = styled(NavLink)`
+  display: flex;
+  width:100%;
+  height:100%;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const LogotextSubnavbarContainer = styled.div`
