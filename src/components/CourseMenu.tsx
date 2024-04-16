@@ -3,8 +3,19 @@ import CourseComponent from "./CourseComponent";
 import { Dish, Cocktail } from "../types/index";
 import styled from "styled-components";
 
+const CourseMenuContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const CourseContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 const MenuTitle = styled.h2`
-  margin-top: 80px;
   margin-bottom: 15px;
 `;
 
@@ -43,22 +54,26 @@ export function CourseMenu() {
 
   return (
     <>
-      <MenuTitle>Huvudrätter</MenuTitle>
-      {mains &&
-        mains.map(
-          (main) =>
-            main.title &&
-            main.title.trim() !== "" && (
-              <CourseComponent
-                key={main._id}
-                _id={main._id}
-                imageUrl={main.imageUrl}
-                title={main.title}
-                ingredients={main.ingredients}
-                price={main.timeInMins}
-              />
-            )
-        )}
+      <CourseMenuContainer>
+        <MenuTitle>Huvudrätter</MenuTitle>
+        <CourseContainer>
+          {mains &&
+            mains.map(
+              (main) =>
+                main.title &&
+                main.title.trim() !== "" && (
+                  <CourseComponent
+                    key={main._id}
+                    _id={main._id}
+                    imageUrl={main.imageUrl}
+                    title={main.title}
+                    ingredients={main.ingredients}
+                    price={main.timeInMins}
+                  />
+                )
+          )}
+        </CourseContainer>
+      </CourseMenuContainer>
     </>
   );
 }

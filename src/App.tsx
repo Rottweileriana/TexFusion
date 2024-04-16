@@ -5,6 +5,7 @@ import {
   CocktailMenu,
   SidesMenu,
   NavBarComponent,
+  FooterComponent,
   ShoppingCart,
   CheckoutForm,
   ConfirmationPage,
@@ -12,13 +13,58 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  InfoComponent,
+  HomeComponent
 } from "./components/index";
 import styled from "styled-components";
 
 import "./App.css";
 
+const BodyBackgroundComponent = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+`;
+
 const MainComponent = styled.div`
-  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+`;
+
+const CourseMenuContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-top: 200px;
+`;
+
+const SidesMenuContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 300px;
+  margin: 0;
+  padding: 0;
+`;
+
+const CocktailMenuContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 300px;
+  margin: 0;
+  padding: 0;
 `;
 
 interface ErrorBoundaryProps {
@@ -60,36 +106,40 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <CartProvider>
+          <NavBarComponent />
           <Routes>
+            <Route path="/" element={<HomeComponent />} />
             <Route
-              path="/"
+              path="/menu"
               element={
                 <ErrorBoundary>
-                  
-                  <MainComponent>
-                  <NavBarComponent />
-                    <div id="CourseMenu">
-                      <CourseMenu />
-                    </div>
-                    <div id="SidesMenu">
-                      <SidesMenu />
-                    </div>
-                    <div id="CocktailMenu">
-                      <CocktailMenu />
-                    </div>
-                    <div id="ShoppingCart">
-                      <ShoppingCart />
-                    </div>
-                    <div>
-                      <CheckoutForm />
-                    </div>
-                  </MainComponent>
+                  <BodyBackgroundComponent>
+                    <MainComponent>
+                      <CourseMenuContainer id="CourseMenu">
+                        <CourseMenu />
+                      </CourseMenuContainer>
+                      <SidesMenuContainer id="SidesMenu">
+                        <SidesMenu />
+                      </SidesMenuContainer>
+                      <CocktailMenuContainer id="CocktailMenu">
+                        <CocktailMenu />
+                      </CocktailMenuContainer>
+                    </MainComponent>
+                  </BodyBackgroundComponent>
                 </ErrorBoundary>
               }
             ></Route>
+            <Route path="/Info/:InfoPart" element={<>
+              <InfoComponent/>
+            </>} />
+            <Route path="/Shoppingcart" element={<>
+              <ShoppingCart />  
+              <CheckoutForm />
+            </>} />
             <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
+          <FooterComponent />
         </CartProvider>
       </BrowserRouter>
     </>

@@ -83,6 +83,7 @@ const FormBtn = styled.div`
 
 //#endregion
 
+//ÄNDRA TILL STOR FÖRSTABOKSTAV!!!
 function getSessionStorageOrDefault(key: string, defaultValue: CartItem[]) {
   const stored = sessionStorage.getItem(key);
   if (!stored) {
