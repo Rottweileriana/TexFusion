@@ -14,11 +14,13 @@ import {
   Routes,
   Route,
   InfoComponent,
-  HomeComponent
+  HomeComponent,
 } from "./components/index";
 import styled from "styled-components";
 
 import "./App.css";
+
+//#region Styles
 
 const BodyBackgroundComponent = styled.div`
   display: flex;
@@ -67,6 +69,8 @@ const CocktailMenuContainer = styled.div`
   padding: 0;
 `;
 
+//#endregion
+
 interface ErrorBoundaryProps {
   children: ReactNode;
 }
@@ -75,7 +79,10 @@ interface ErrorBoundaryState {
   hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
@@ -129,19 +136,29 @@ const App: React.FC = () => {
                 </ErrorBoundary>
               }
             ></Route>
-            <Route path="/Info/:InfoPart" element={<>
-              <InfoComponent />
-            </>} />
-            <Route path="/Shoppingcart" element={<>
-              <ShoppingCart />
-              <CheckoutForm />
-            </>} />
+            <Route
+              path="/Info/:InfoPart"
+              element={
+                <>
+                  <InfoComponent />
+                </>
+              }
+            />
+            <Route
+              path="/Shoppingcart"
+              element={
+                <>
+                  <ShoppingCart />
+                  <CheckoutForm />
+                </>
+              }
+            />
             <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
           <FooterComponent />
-        </CartProvider >
-      </BrowserRouter >
+        </CartProvider>
+      </BrowserRouter>
     </>
   );
 };
