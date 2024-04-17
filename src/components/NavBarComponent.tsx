@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useContext, FontAwesomeIcon, faShoppingCart } from "./index";
+import { useContext, FontAwesomeIcon, faShoppingCart, useParams } from "./index";
 import { CartContext } from "./context";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import { NavLink } from "react-router-dom"
 
 export const NavBarComponent: React.FC = () => {
@@ -15,18 +15,24 @@ export const NavBarComponent: React.FC = () => {
     console.error("Error calculating total quantity in cart:", error);
   }
 
+  type InfoParams = { InfoPart: string };
+
+  const { InfoPart } = useParams<InfoParams>();
+
+
   return (
     <>
       <NavbarBackground>
         <MainDiv>
           <LogoContainer>
-              <LogoNavLink to="/">
-              <img src="https://fakeimg.pl/150x150"/>
-              </LogoNavLink>
+            <LogoNavLink to="/">
+              <img src="https://fakeimg.pl/150x150" />
+            </LogoNavLink>
           </LogoContainer>
           <LogotextSubnavbarContainer>
             <NavBarLogo>TexFusion</NavBarLogo>
-            <NavBarListSub>
+            {InfoPart === "menu" ? (
+              <NavBarListSub>
                 <LinkStyle
                   activeClass="active"
                   to="CourseMenu"
@@ -57,42 +63,45 @@ export const NavBarComponent: React.FC = () => {
                 >
                   COCKTAILS
                 </LinkStyle>
-            </NavBarListSub>
+              </NavBarListSub>
+            ) : <a>Hallå</a>}
+
           </LogotextSubnavbarContainer>
           <NavBarListMain>
-              <NavLinkStyle
-                to="/menu"
-              >
-                MENY
-              </NavLinkStyle>
-              <NavLinkStyle
-                to="/"
-              >
-                HOME
-              </NavLinkStyle>
-              {/* <NavLinkStyle
+            <NavLinkStyle
+              to="/menu"
+            >
+              MENY
+            </NavLinkStyle>
+            <NavLinkStyle
+              to="/"
+            >
+              HOME
+            </NavLinkStyle>
+            {/* <NavLinkStyle
                 to="/Info/OmOss" 
               >
                 OM OSS
               </NavLinkStyle> */}
-              <NavLinkStyle
-                to="/Info/Kontakt"
-              >
-                KONTAKT
-              </NavLinkStyle>
-              <NavLinkStyle
-                to="/Shoppingcart"
-              >
-                <Badge>
-                  {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
-                </Badge>
-                <FontAwesomeIcon icon={faShoppingCart} />
-              </NavLinkStyle>
+            <NavLinkStyle
+              to="/Info/Kontakt"
+            >
+              KONTAKT
+            </NavLinkStyle>
+            <NavLinkStyle
+              to="/Shoppingcart"
+            >
+              <Badge>
+                {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
+              </Badge>
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </NavLinkStyle>
           </NavBarListMain>
         </MainDiv>
       </NavbarBackground>
     </>
   );
+  console.log(InfoPart)
 };
 
 //#region CSS
@@ -103,7 +112,7 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: #145775;
+  background-color: rgba(0, 0, 0, 0);
   z-index: 9999;
   width: 100%;
   height: 175px;

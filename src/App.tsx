@@ -110,7 +110,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomeComponent />} />
             <Route
-              path="/menu"
+              path="/:InfoPart"
               element={
                 <ErrorBoundary>
                   <BodyBackgroundComponent>
@@ -130,18 +130,18 @@ const App: React.FC = () => {
               }
             ></Route>
             <Route path="/Info/:InfoPart" element={<>
-              <InfoComponent/>
+              <InfoComponent />
             </>} />
             <Route path="/Shoppingcart" element={<>
-              <ShoppingCart />  
+              <ShoppingCart />
               <CheckoutForm />
             </>} />
             <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
           <FooterComponent />
-        </CartProvider>
-      </BrowserRouter>
+        </CartProvider >
+      </BrowserRouter >
     </>
   );
 };

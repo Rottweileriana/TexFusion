@@ -1,4 +1,3 @@
-import { Link, animateScroll as scroll } from "react-scroll";
 import { NavLink } from "react-router-dom"
 import styled from "styled-components";
 
