@@ -44,6 +44,7 @@ const Title = styled.h4`
 const CocktailAndAddContainer = styled.div`
   display: flex;
   align-items: center;
+  padding: 0 5px 0 10px;
 `;
 
 const Price = styled.p`
