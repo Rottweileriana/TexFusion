@@ -8,7 +8,6 @@ export function ContactComponent () {
             <p>Vägen 68</p>
             <p>235 62, Linköping</p>
             <p>Sverige</p>
-            
             <p>+46 - 705 567 890</p>
             <p>info@texfusion.com</p>
             </>
