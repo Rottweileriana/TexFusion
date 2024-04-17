@@ -5,14 +5,13 @@ import styled from "styled-components";
 import { Cocktail } from "../types/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 type RecCocktail = {
   title: string;
 };
 
-interface StyledCourseProps{
-  quantity: number
-};
+interface StyledCourseProps {
+  quantity: number;
+}
 
 //#region Styles
 const StyledCocktail = styled.div`
@@ -63,10 +62,10 @@ const CounterContainer = styled.div`
   float: right;
 `;
 
-const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
- color:145775;
- font-size: 15px;
- margin-top: 5px;
+const StyledFontAwesomeIcon: typeof FontAwesomeIcon = styled(FontAwesomeIcon)`
+  color: 145775;
+  font-size: 15px;
+  margin-top: 5px;
 `;
 
 const CounterButton = styled.button`
@@ -83,8 +82,8 @@ const CounterButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  &:focus{
-    outline:none;
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -107,7 +106,7 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({ title }) => {
   const [cocktail, setCocktail] = useState<Cocktail | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
   const [cocktailPrice, setCocktailPrice] = useState<number>(0);
-  const cocktailPrices = [175, 159, 165, 170, 150];
+  const cocktailPrices = [175, 159, 165, 170, 150, 149];
 
   useEffect(() => {
     let id = "";
@@ -132,6 +131,10 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({ title }) => {
       case "Enchiladas":
         id = "11001";
         setCocktailPrice(cocktailPrices[4]);
+        break;
+      case "Vego bowl":
+        id = "12370";
+        setCocktailPrice(cocktailPrices[5]);
         break;
       default:
         id = "11007";
@@ -210,18 +213,18 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({ title }) => {
               <CounterContainer>
                 <CounterButton onClick={handleIncrement}>+</CounterButton>
               </CounterContainer>
-            ) 
-            : quantity > 1 ? (
+            ) : quantity > 1 ? (
               <CounterContainer>
                 <CounterButton onClick={handleDecrement}>-</CounterButton>
-                  <ResultField type="text" value={quantity} readOnly />
+                <ResultField type="text" value={quantity} readOnly />
                 <CounterButton onClick={handleIncrement}>+</CounterButton>
               </CounterContainer>
-            ) 
-            : (
+            ) : (
               <CounterContainer>
-                <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
-                  <ResultField type="text" value={quantity} readOnly />
+                <CounterButton onClick={handleDecrement}>
+                  <StyledFontAwesomeIcon icon={faTrashCan} />
+                </CounterButton>
+                <ResultField type="text" value={quantity} readOnly />
                 <CounterButton onClick={handleIncrement}>+</CounterButton>
               </CounterContainer>
             )}
