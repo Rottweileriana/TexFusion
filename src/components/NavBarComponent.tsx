@@ -22,82 +22,120 @@ export const NavBarComponent: React.FC = () => {
     console.error("Error calculating total quantity in cart:", error);
   }
 
-  type InfoParams = { InfoPart: string };
-
-  const { InfoPart } = useParams<InfoParams>();
-
   return (
     <>
-      <NavbarBackground>
-        <MainDiv>
-          <LogoContainer>
-            <LogoNavLink to="/">
-              <img src="https://fakeimg.pl/150x150" />
-            </LogoNavLink>
-          </LogoContainer>
-          <LogotextSubnavbarContainer>
-            <LogoTextContainer>
-              <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
-              <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
-            </LogoTextContainer>
-            {location.pathname === "/Menu" ? (
-              <NavBarListSub>
-                <LinkStyle
-                  activeClass="active"
-                  to="CourseMenu"
-                  spy={true}
-                  smooth={true}
-                  offset={-162}
-                  duration={500}
-                >
-                  HUVUDRÄTTER
-                </LinkStyle>
-                <LinkStyle
-                  activeClass="active"
-                  to="SidesMenu"
-                  spy={true}
-                  smooth={true}
-                  offset={-162}
-                  duration={500}
-                >
-                  TILLBEHÖR
-                </LinkStyle>
-                <LinkStyle
-                  activeClass="active"
-                  to="CocktailMenu"
-                  spy={true}
-                  smooth={true}
-                  offset={-162}
-                  duration={500}
-                >
-                  COCKTAILS
-                </LinkStyle>
-              </NavBarListSub>
-            ) : (
-              <NavBarListSub></NavBarListSub>
-            )}
-          </LogotextSubnavbarContainer>
-          <NavBarListMain>
-            <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
-            <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
-            <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
-            <NavLinkStyle to="/Shoppingcart">
-              <Badge>
-                {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
-              </Badge>
-              <FontAwesomeIcon icon={faShoppingCart} />
-            </NavLinkStyle>
-          </NavBarListMain>
-        </MainDiv>
-      </NavbarBackground>
+     {location.pathname === "/" ? (
+      <NavbarBackgroundHome>
+      <MainDiv>
+        <LogoContainer>
+          <LogoNavLink to="/">
+            <img src="https://fakeimg.pl/150x150" />
+          </LogoNavLink>
+        </LogoContainer>
+        <LogotextSubnavbarContainer>
+          <LogoTextContainer>
+            <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
+            <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
+          </LogoTextContainer>
+            <NavBarListSub></NavBarListSub>
+        </LogotextSubnavbarContainer>
+        <NavBarListMain>
+          <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
+          <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
+          <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
+          <NavLinkStyle to="/Shoppingcart">
+            <Badge>
+              {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
+            </Badge>
+            <FontAwesomeIcon icon={faShoppingCart} />
+          </NavLinkStyle>
+        </NavBarListMain>
+      </MainDiv>
+    </NavbarBackgroundHome>
+     ) : (<NavbarBackground>
+      <MainDiv>
+        <LogoContainer>
+          <LogoNavLink to="/">
+            <img src="https://fakeimg.pl/150x150" />
+          </LogoNavLink>
+        </LogoContainer>
+        <LogotextSubnavbarContainer>
+          <LogoTextContainer>
+            <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
+            <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
+          </LogoTextContainer>
+          {location.pathname === "/Menu" ? (
+            <NavBarListSub>
+              <LinkStyle
+                activeClass="active"
+                to="CourseMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                HUVUDRÄTTER
+              </LinkStyle>
+              <LinkStyle
+                activeClass="active"
+                to="SidesMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                TILLBEHÖR
+              </LinkStyle>
+              <LinkStyle
+                activeClass="active"
+                to="CocktailMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                COCKTAILS
+              </LinkStyle>
+            </NavBarListSub>
+          ) : (
+            <NavBarListSub></NavBarListSub>
+          )}
+        </LogotextSubnavbarContainer>
+        <NavBarListMain>
+          <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
+          <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
+          <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
+          <NavLinkStyle to="/Shoppingcart">
+            <Badge>
+              {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
+            </Badge>
+            <FontAwesomeIcon icon={faShoppingCart} />
+          </NavLinkStyle>
+        </NavBarListMain>
+      </MainDiv>
+    </NavbarBackground>)}
     </>
   );
-  console.log(InfoPart);
 };
 
 //#region CSS
 
 const NavbarBackground = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background-color: ${location.pathname === "/Info/OmOss" ? "#535bf2" : "#fbe3d6"};
+  z-index: 9999;
+  width: 100%;
+  height: 175px;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+`;
+
+const NavbarBackgroundHome = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -192,10 +230,6 @@ const NavBarListSub = styled.div`
   cursor: pointer;
 `;
 
-const BlancRow = styled.div`
-  height: 14px;
-`;
-
 const NavBarListMain = styled.div`
   list-style-type: none;
   display: flex;
@@ -214,7 +248,6 @@ const NavBarListMain = styled.div`
 //   flex-direction: row;
 // `;
 
-// box-shadow: 0 0 10px rgba(0,0,0,0,5);
 const LinkStyle = styled(Link)`
   display: block;
   color: grey;
