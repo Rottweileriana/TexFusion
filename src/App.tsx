@@ -116,7 +116,9 @@ const App: React.FC = () => {
           <NavBarComponent />
           <Routes>
             <Route path="/" element={<HomeComponent />} />
-            <Route path="/Menu" element={
+            <Route
+              path="/Menu"
+              element={
                 <ErrorBoundary>
                   <BodyBackgroundComponent>
                     <MainComponent>
@@ -151,13 +153,23 @@ const App: React.FC = () => {
                 </>
               }
             />
-            <Route path="/Info/:InfoPart" element={<>
-              <InfoComponent/>
-            </>} />
-            <Route path="/Shoppingcart" element={<>
-              <ShoppingCart />  
-              <CheckoutForm />
-            </>} />
+            <Route
+              path="/Info/:InfoPart"
+              element={
+                <>
+                  <InfoComponent />
+                </>
+              }
+            />
+            <Route
+              path="/Shoppingcart"
+              element={
+                <>
+                  <ShoppingCart />
+                  <CheckoutForm />
+                </>
+              }
+            />
             <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
