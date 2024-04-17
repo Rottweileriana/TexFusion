@@ -1,14 +1,17 @@
 import styled from "styled-components";
-import { useContext, FontAwesomeIcon, faShoppingCart } from "./index";
+import { useContext, FontAwesomeIcon, faShoppingCart, useParams, useLocation } from "./index";
 import { CartContext } from "./context";
 import { Link, animateScroll as scroll } from "react-scroll";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+
 
 export const NavBarComponent: React.FC = () => {
+
   const { cart } = useContext(CartContext)!;
+  const location   = useLocation();
 
   let totCartQuant = 0;
-
+  
   try {
     totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
   } catch (error) {
@@ -28,55 +31,53 @@ export const NavBarComponent: React.FC = () => {
             <LogoTextContainer>
             <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft><NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
             </LogoTextContainer>
-            <NavBarListSub>
-                <LinkStyle
-                  activeClass="active"
-                  to="CourseMenu"
-                  spy={true}
-                  smooth={true}
-                  offset={-162}
-                  duration={500}
-                >
-                  HUVUDRÄTTER
-                </LinkStyle>
-                <LinkStyle
-                  activeClass="active"
-                  to="SidesMenu"
-                  spy={true}
-                  smooth={true}
-                  offset={-162}
-                  duration={500}
-                >
-                  TILLBEHÖR
-                </LinkStyle>
-                <LinkStyle
-                  activeClass="active"
-                  to="CocktailMenu"
-                  spy={true}
-                  smooth={true}
-                  offset={-162}
-                  duration={500}
-                >
-                  COCKTAILS
-                </LinkStyle>
-            </NavBarListSub>
+            {location.pathname === "/Menu" ? (
+              <NavBarListSub>
+              <LinkStyle
+                activeClass="active"
+                to="CourseMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                HUVUDRÄTTER
+              </LinkStyle>
+              <LinkStyle
+                activeClass="active"
+                to="SidesMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                TILLBEHÖR
+              </LinkStyle>
+              <LinkStyle
+                activeClass="active"
+                to="CocktailMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                COCKTAILS
+              </LinkStyle>
+          </NavBarListSub>
+            )
+        : (<NavBarListSub></NavBarListSub>)}
           </LogotextSubnavbarContainer>
           <NavBarListMain>
               <NavLinkStyle
-                to="/menu"
+                to="/Menu"
               >
                 MENY
               </NavLinkStyle>
               <NavLinkStyle
-                to="/"
-              >
-                HOME
-              </NavLinkStyle>
-              {/* <NavLinkStyle
                 to="/Info/OmOss" 
               >
                 OM OSS
-              </NavLinkStyle> */}
+              </NavLinkStyle>
               <NavLinkStyle
                 to="/Info/Kontakt"
               >
@@ -192,7 +193,10 @@ const NavBarListSub = styled.div`
   margin: 0;
   padding: 0;
   cursor: pointer;
-  
+`;
+
+const BlancRow = styled.div`
+  height:14px;
 `;
 
 const NavBarListMain = styled.div`
