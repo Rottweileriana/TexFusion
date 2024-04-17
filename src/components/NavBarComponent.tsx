@@ -40,15 +40,15 @@ export const NavBarComponent: React.FC = () => {
             <NavBarListSub></NavBarListSub>
         </LogotextSubnavbarContainer>
         <NavBarListMain>
-          <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
-          <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
-          <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
-          <NavLinkStyle to="/Shoppingcart">
+          <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
+          <NavLinkStyleHome to="/Info/OmOss">OM OSS</NavLinkStyleHome>
+          <NavLinkStyleHome to="/Info/Kontakt">KONTAKT</NavLinkStyleHome>
+          <NavLinkStyleHome to="/Shoppingcart">
             <Badge>
               {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
             </Badge>
             <FontAwesomeIcon icon={faShoppingCart} />
-          </NavLinkStyle>
+          </NavLinkStyleHome>
         </NavBarListMain>
       </MainDiv>
     </NavbarBackgroundHome>
@@ -266,6 +266,21 @@ const LinkStyle = styled(Link)`
 const NavLinkStyle: typeof NavLink = styled(NavLink)`
   display: block;
   color: #2b4175;
+  font-family: "Open Sans";
+  font-size: 14px;
+  margin: 0 20px 0 15px;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  border-radius: 5px;
+  &:hover {
+    color: #eca884;
+  }
+`;
+
+const NavLinkStyleHome: typeof NavLink = styled(NavLink)`
+  display: block;
+  color: #ffc000;
   font-family: "Open Sans";
   font-size: 14px;
   margin: 0 20px 0 15px;
