@@ -1,4 +1,5 @@
 import { AboutComponent, ContactComponent, useParams, ErrorPage } from "./index";
+import styled from "styled-components";
 
 type InfoParams = { InfoPart: string };
 
@@ -7,10 +8,25 @@ export function InfoComponent () {
 
     console.log(InfoPart)
     if (InfoPart === "OmOss")
-        return <AboutComponent />;
+        return(
+            <BodyBackgroundComponent>
+                <AboutComponent />
+            </BodyBackgroundComponent>
+    )
     else if (InfoPart === "Kontakt")
-        return <ContactComponent />;
+        return (
+            <BodyBackgroundComponent>
+                <ContactComponent />
+            </BodyBackgroundComponent>)
     else 
     return <ErrorPage/>;
 }
+
+
+const BodyBackgroundComponent = styled.div`
+  text:center;  
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+`;
 

@@ -1,11 +1,18 @@
 import styled from "styled-components";
-import { useContext, FontAwesomeIcon, faShoppingCart, useParams } from "./index";
+import {
+  useContext,
+  FontAwesomeIcon,
+  faShoppingCart,
+  useParams,
+  useLocation,
+} from "./index";
 import { CartContext } from "./context";
 import { Link } from "react-scroll";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
+  const location = useLocation();
 
   let totCartQuant = 0;
 
@@ -19,7 +26,6 @@ export const NavBarComponent: React.FC = () => {
 
   const { InfoPart } = useParams<InfoParams>();
 
-
   return (
     <>
       <NavbarBackground>
@@ -30,8 +36,11 @@ export const NavBarComponent: React.FC = () => {
             </LogoNavLink>
           </LogoContainer>
           <LogotextSubnavbarContainer>
-            <NavBarLogo>TexFusion</NavBarLogo>
-            {InfoPart === "menu" ? (
+            <LogoTextContainer>
+              <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
+              <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
+            </LogoTextContainer>
+            {location.pathname === "/Menu" ? (
               <NavBarListSub>
                 <LinkStyle
                   activeClass="active"
@@ -64,33 +73,15 @@ export const NavBarComponent: React.FC = () => {
                   COCKTAILS
                 </LinkStyle>
               </NavBarListSub>
-            ) : <a>Hallå</a>}
-
+            ) : (
+              <NavBarListSub></NavBarListSub>
+            )}
           </LogotextSubnavbarContainer>
           <NavBarListMain>
-            <NavLinkStyle
-              to="/menu"
-            >
-              MENY
-            </NavLinkStyle>
-            <NavLinkStyle
-              to="/"
-            >
-              HOME
-            </NavLinkStyle>
-            {/* <NavLinkStyle
-                to="/Info/OmOss" 
-              >
-                OM OSS
-              </NavLinkStyle> */}
-            <NavLinkStyle
-              to="/Info/Kontakt"
-            >
-              KONTAKT
-            </NavLinkStyle>
-            <NavLinkStyle
-              to="/Shoppingcart"
-            >
+            <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
+            <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
+            <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
+            <NavLinkStyle to="/Shoppingcart">
               <Badge>
                 {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
               </Badge>
@@ -101,7 +92,7 @@ export const NavBarComponent: React.FC = () => {
       </NavbarBackground>
     </>
   );
-  console.log(InfoPart)
+  console.log(InfoPart);
 };
 
 //#region CSS
@@ -118,6 +109,7 @@ const NavbarBackground = styled.div`
   height: 175px;
   position: fixed;
   top: 0;
+  z-index: 9999;
 `;
 
 const MainDiv = styled.div`
@@ -133,15 +125,15 @@ const MainDiv = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  display:flex;
+  display: flex;
   width: 33%;
-  height:150px;
+  height: 150px;
 `;
 
-const LogoNavLink: (typeof NavLink) = styled(NavLink)`
+const LogoNavLink: typeof NavLink = styled(NavLink)`
   display: flex;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   text-decoration: none;
   &:hover {
     cursor: pointer;
@@ -157,14 +149,33 @@ const LogotextSubnavbarContainer = styled.div`
   justify-content: center;
 `;
 
-const NavBarLogo = styled.h1`
+const LogoTextContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 9999;
+`;
+
+const NavBarLogoTextLeft = styled.h1`
   display: flex;
   height: 75%;
   justify-content: center;
   align-items: flex-end;
-  font-family: "Open Sans";
+  font-family: "Parisienne";
   font-size: 70px;
-  color: #eca884;
+  color: #e7dc43;
+  margin: 0;
+  padding: 0;
+`;
+
+const NavBarLogoTextRight = styled.h1`
+  display: flex;
+  height: 75%;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: "Parisienne";
+  font-size: 70px;
+  color: #156082;
   margin: 0;
   padding: 0;
 `;
@@ -173,17 +184,21 @@ const NavBarListSub = styled.div`
   display: flex;
   height: 25%;
   width: 350px;
+  align-items: flex-end;
   justify-content: space-between;
   list-style-type: none;
   margin: 0;
   padding: 0;
   cursor: pointer;
-  z-index: 9999;
+`;
+
+const BlancRow = styled.div`
+  height: 14px;
 `;
 
 const NavBarListMain = styled.div`
   list-style-type: none;
-  display:flex;
+  display: flex;
   justify-content: flex-end;
   margin: 0 0 95px 0;
   padding-top: 20px;
@@ -202,7 +217,7 @@ const NavBarListMain = styled.div`
 // box-shadow: 0 0 10px rgba(0,0,0,0,5);
 const LinkStyle = styled(Link)`
   display: block;
-  color: white;
+  color: grey;
   font-family: "Open Sans";
   font-size: 14px;
   margin: 0px;
@@ -215,9 +230,9 @@ const LinkStyle = styled(Link)`
   }
 `;
 
-const NavLinkStyle: (typeof NavLink) = styled(NavLink)`
+const NavLinkStyle: typeof NavLink = styled(NavLink)`
   display: block;
-  color: white;
+  color: #2b4175;
   font-family: "Open Sans";
   font-size: 14px;
   margin: 0 20px 0 15px;
