@@ -1,30 +1,52 @@
 import styled from "styled-components";
 
-const ImageContainer = styled.div`
+const BackgroundImageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw; /* Set width to full viewport width */
-    height: 100vh; /* Set height to full viewport height */
-    overflow: hidden; /* Hide overflow to prevent scrollbar */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 `;
 
 const Image = styled.img`
-  width: 100%; /* Set width to fill the container */
-  height: 100%; /* Set height to fill the container */
-  object-fit: cover; /* Ensure the image covers the container */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const LogotypeContainer = styled.div`
+    position: fixed;
+    top: 305px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    //min-width: 400px;
+    z-index: 9999;
+
+`;
+
+const Logotype = styled.img`
+    width:70%;
+    max-width: 100%;
+    min-width:400px;
+    object-fit: contain;
 `;
 
 export function HomeComponent() {
     const imageUrlHomePageLeft = `/src/assets/images/CactusBackground.jpg`;
     const imageUrlHomepageRight = `/src/assets/images/TableBackground.jpg`;
+    const imageUrlHomePageCenter = `/src/assets/images/LogoWithGirl.jpg`;
 
     return (
         <>
-            <ImageContainer>
+            <BackgroundImageContainer>
                 <Image src={imageUrlHomePageLeft} alt="CactusBackground" className="image" />
                 <Image src={imageUrlHomepageRight} alt="TableBackground" className="image" />
-            </ImageContainer>
+            </BackgroundImageContainer>
+            <LogotypeContainer>
+                <Logotype src={imageUrlHomePageCenter} alt="LogoWithGirl" className="CenterImage" />
+            </LogotypeContainer>
             {/* <h4>Home</h4>
             <p>TexFusion dolor sit amet, consectetur adipiscing elit,
                 sed do eiusmod tempor incididunt ut labore et dolore

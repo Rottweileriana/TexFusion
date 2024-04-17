@@ -45,6 +45,7 @@ const MainDiv = styled.div`
   position: fixed;
   bottom: 0;
   padding-bottom: 10px;
+  z-index: 9999;
 `;
 
 const FooterNavbar = styled.ul`
