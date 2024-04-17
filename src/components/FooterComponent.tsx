@@ -67,7 +67,7 @@ const NavLinkStyle: typeof NavLink = styled(NavLink)`
   display: block;
   color: white;
   font-family: "Open Sans";
-  font-size: 25px;
+  font-size: 15px;
   margin: 0px;
   text-align: center;
   padding: 5px 35px;
@@ -76,6 +76,5 @@ const NavLinkStyle: typeof NavLink = styled(NavLink)`
   border-radius: 5px;
   &:hover {
     color: #eca884;
-    font-size: 22px;
   }
 `;

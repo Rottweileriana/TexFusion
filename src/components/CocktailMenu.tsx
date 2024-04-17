@@ -15,8 +15,20 @@ type Cocktail = {
   cocktailPrice: number;
 };
 
+const CocktailMenuContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 160px;
+`;
+
+const CocktailContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 const MenuTitle = styled.h2`
-  margin-top: 40px;
   margin-bottom: 15px;
 `;
 
@@ -77,7 +89,9 @@ export function CocktailMenu() {
 
   return (
     <>
-      <MenuTitle>Cocktail</MenuTitle>
+      <CocktailMenuContainer>
+      <MenuTitle>Cocktails</MenuTitle>
+      <CocktailContainer>
       {cocktails.map((cocktail) => (
         <CocktailComponent
           key={cocktail.idDrink}
@@ -86,7 +100,10 @@ export function CocktailMenu() {
           strDrink={cocktail.strDrink}
           cocktailPrice={cocktail.cocktailPrice}
         />
-      ))}
+      )
+      )}
+      </CocktailContainer>
+      </CocktailMenuContainer>
     </>
   );
 }
