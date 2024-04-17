@@ -151,7 +151,6 @@ const App: React.FC = () => {
                 </>
               }
             />
-            />
             <Route path="/Info/:InfoPart" element={<>
               <InfoComponent/>
             </>} />
