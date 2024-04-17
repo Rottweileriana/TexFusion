@@ -109,9 +109,7 @@ const App: React.FC = () => {
           <NavBarComponent />
           <Routes>
             <Route path="/" element={<HomeComponent />} />
-            <Route
-              path="/menu"
-              element={
+            <Route path="/Menu" element={
                 <ErrorBoundary>
                   <BodyBackgroundComponent>
                     <MainComponent>
@@ -128,7 +126,7 @@ const App: React.FC = () => {
                   </BodyBackgroundComponent>
                 </ErrorBoundary>
               }
-            ></Route>
+            />
             <Route path="/Info/:InfoPart" element={<>
               <InfoComponent/>
             </>} />

@@ -1,14 +1,17 @@
 import styled from "styled-components";
-import { useContext, FontAwesomeIcon, faShoppingCart } from "./index";
+import { useContext, FontAwesomeIcon, faShoppingCart, useParams, useLocation } from "./index";
 import { CartContext } from "./context";
 import { Link, animateScroll as scroll } from "react-scroll";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+
 
 export const NavBarComponent: React.FC = () => {
+
   const { cart } = useContext(CartContext)!;
+  const location   = useLocation();
 
   let totCartQuant = 0;
-
+  
   try {
     totCartQuant = cart.reduce((total, item) => total + item.quantity, 0);
   } catch (error) {
@@ -25,56 +28,56 @@ export const NavBarComponent: React.FC = () => {
               </LogoNavLink>
           </LogoContainer>
           <LogotextSubnavbarContainer>
-            <NavBarLogo>TexFusion</NavBarLogo>
-            <NavBarListSub>
-                <LinkStyle
-                  activeClass="active"
-                  to="CourseMenu"
-                  spy={true}
-                  smooth={true}
-                  offset={-162}
-                  duration={500}
-                >
-                  HUVUDRÄTTER
-                </LinkStyle>
-                <LinkStyle
-                  activeClass="active"
-                  to="SidesMenu"
-                  spy={true}
-                  smooth={true}
-                  offset={-162}
-                  duration={500}
-                >
-                  TILLBEHÖR
-                </LinkStyle>
-                <LinkStyle
-                  activeClass="active"
-                  to="CocktailMenu"
-                  spy={true}
-                  smooth={true}
-                  offset={-162}
-                  duration={500}
-                >
-                  COCKTAILS
-                </LinkStyle>
-            </NavBarListSub>
+            <LogoTextContainer>
+            <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft><NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
+            </LogoTextContainer>
+            {location.pathname === "/Menu" ? (
+              <NavBarListSub>
+              <LinkStyle
+                activeClass="active"
+                to="CourseMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                HUVUDRÄTTER
+              </LinkStyle>
+              <LinkStyle
+                activeClass="active"
+                to="SidesMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                TILLBEHÖR
+              </LinkStyle>
+              <LinkStyle
+                activeClass="active"
+                to="CocktailMenu"
+                spy={true}
+                smooth={true}
+                offset={-162}
+                duration={500}
+              >
+                COCKTAILS
+              </LinkStyle>
+          </NavBarListSub>
+            )
+        : (<NavBarListSub></NavBarListSub>)}
           </LogotextSubnavbarContainer>
           <NavBarListMain>
               <NavLinkStyle
-                to="/menu"
+                to="/Menu"
               >
                 MENY
               </NavLinkStyle>
               <NavLinkStyle
-                to="/"
-              >
-                HOME
-              </NavLinkStyle>
-              {/* <NavLinkStyle
                 to="/Info/OmOss" 
               >
                 OM OSS
-              </NavLinkStyle> */}
+              </NavLinkStyle>
               <NavLinkStyle
                 to="/Info/Kontakt"
               >
@@ -103,12 +106,13 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: #145775;
+  background-color:#fbe3d6;​
   z-index: 9999;
   width: 100%;
   height: 175px;
   position: fixed;
   top: 0;
+  z-index: 9999;
 `;
 
 const MainDiv = styled.div`
@@ -148,14 +152,33 @@ const LogotextSubnavbarContainer = styled.div`
   justify-content: center;
 `;
 
-const NavBarLogo = styled.h1`
+const LogoTextContainer = styled.div`
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  z-index: 9999;
+`;
+
+const NavBarLogoTextLeft = styled.h1`
   display: flex;
   height: 75%;
   justify-content: center;
   align-items: flex-end;
-  font-family: "Open Sans";
+  font-family: "Parisienne";
   font-size: 70px;
-  color: #eca884;
+  color: #e7dc43;
+  margin: 0;
+  padding: 0;
+`;
+
+const NavBarLogoTextRight = styled.h1`
+  display: flex;
+  height: 75%;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: "Parisienne";
+  font-size: 70px;
+  color: #156082;
   margin: 0;
   padding: 0;
 `;
@@ -164,12 +187,16 @@ const NavBarListSub = styled.div`
   display: flex;
   height: 25%;
   width: 350px;
+  align-items:flex-end;
   justify-content: space-between;
   list-style-type: none;
   margin: 0;
   padding: 0;
   cursor: pointer;
-  z-index: 9999;
+`;
+
+const BlancRow = styled.div`
+  height:14px;
 `;
 
 const NavBarListMain = styled.div`
@@ -193,7 +220,7 @@ const NavBarListMain = styled.div`
 // box-shadow: 0 0 10px rgba(0,0,0,0,5);
 const LinkStyle = styled(Link)`
   display: block;
-  color: white;
+  color: grey;
   font-family: "Open Sans";
   font-size: 14px;
   margin: 0px;
@@ -208,7 +235,7 @@ const LinkStyle = styled(Link)`
 
 const NavLinkStyle: (typeof NavLink) = styled(NavLink)`
   display: block;
-  color: white;
+  color: #2b4175;
   font-family: "Open Sans";
   font-size: 14px;
   margin: 0 20px 0 15px;

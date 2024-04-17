@@ -1,5 +1,5 @@
 import { Link, animateScroll as scroll } from "react-scroll";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const FooterComponent: React.FC = () => {
@@ -14,37 +14,24 @@ export const FooterComponent: React.FC = () => {
       </CopyRightInfoTextWrapper>
       <FooterNavbar>
         <FooterNavbarElements>
-          <NavLinkStyle
-            to="/"
-          >
-            Hem
-          </NavLinkStyle>
-          <NavLinkStyle
-            to="/Info/OmOss"
-          >
-            Om Oss
-          </NavLinkStyle>
-          <NavLinkStyle
-            to="/Info/Kontakt"
-          >
-            Kontakt
-          </NavLinkStyle>
+          <NavLinkStyle to="/">Hem</NavLinkStyle>
+          <NavLinkStyle to="/Info/OmOss">Om Oss</NavLinkStyle>
+          <NavLinkStyle to="/Info/Kontakt">Kontakt</NavLinkStyle>
         </FooterNavbarElements>
       </FooterNavbar>
     </MainDiv>
-  )
-}
+  );
+};
 
 const CopyRightInfoTextWrapper = styled.div`
-  display:flex;
-  flex-direction:row;
-  justify-content:center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 `;
 
-
 const CopyRightInfoText = styled.p`
-  color:#ffc000;
-  margin-left:5px;
+  color: #ffc000;
+  margin-left: 5px;
 `;
 
 const MainDiv = styled.div`
@@ -54,16 +41,16 @@ const MainDiv = styled.div`
   margin: 0;
   padding: 0;
   width: 100%;
-  height:100px;
+  height: 100px;
   background-color: black;
   position: fixed;
   bottom: 0;
-  padding-bottom:10px;
+  padding-bottom: 10px;
 `;
 
 const FooterNavbar = styled.ul`
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
   list-style-type: none;
   margin: 0px;
   overflow: hidden;
