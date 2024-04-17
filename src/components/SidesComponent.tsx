@@ -12,8 +12,9 @@ interface StyledCourseProps{
 //#region Styles
 const StyledSide = styled.div`
   display: flex;
-  width: 320px;
-  height: 105px;
+  flex-direction: column;
+  width: 300px;
+  height: 400px;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
@@ -30,11 +31,20 @@ const StyledSide = styled.div`
 `;
 
 const Image = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 299px;
+  height: 299px;
   border-radius: 5px;
   border: 1px solid #222222;
-  margin-right: 20px;
+`;
+
+const TotalDescription = styled.div`
+  width: 299px;
+  padding: 10px 0 5px 5px;
+`;
+
+const TitleAndAddContainer = styled.div`
+  display: flex;
+  width: 290px;
 `;
 
 const Title = styled.h3`
@@ -44,31 +54,11 @@ const Title = styled.h3`
   padding: 0;
 `;
 
-const Text = styled.p`
-  margin: 0px;
-  padding-right: 0px;
-  font-size:15px;
-  color: white;
-`;
-
-const Price = styled.p`
-  margin: 0;
-  margin-bottom: 5px;
-  color: white;
-`;
-
-const PriceAndAddContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 175px;
-`;
-
 const CounterContainer = styled.div`
   display: flex;
-  align-items: right;
-  margin-top: 5px;
-  margin-left: auto;
+  align-items: center;
+  margin: 3px 0 0 auto;
+  height: 30px;
   border: 0px solid #808080;
   border-radius: 30px;
   background-color: #eca884;
@@ -104,6 +94,24 @@ const ResultField = styled.input`
   &:hover {
     cursor: default;
   }
+`;
+
+const Text = styled.p`
+  margin: 0px;
+  font-size:15px;
+  color: lightgrey;
+`;
+
+const PriceAndAddContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 175px;
+`;
+
+const Price = styled.p`
+  margin: 0 0 5px 0;
+  color: lightgrey;
 `;
 
 const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
@@ -186,12 +194,10 @@ const SidesComponent: React.FC<DishProps> = ({
   return (
     <StyledSide>
       <Image src={imageUrl} alt={title} />
-      <div>
+      <TotalDescription>
+        <TitleAndAddContainer>
         <Title>{title}</Title>
-        <Text>{formattedIngredientText}</Text>
-        <PriceAndAddContainer>
-          <Price>{price} kr</Price>
-          {quantity === 0 ? (
+        {quantity === 0 ? (
             <CounterContainer>
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
@@ -208,8 +214,12 @@ const SidesComponent: React.FC<DishProps> = ({
               <CounterButton onClick={handleIncrement}>+</CounterButton>
           </CounterContainer>
           )}
+          </TitleAndAddContainer>
+        <Text>{formattedIngredientText}</Text>
+        <PriceAndAddContainer>
+          <Price>{price} kr</Price>
         </PriceAndAddContainer>
-      </div>
+      </TotalDescription>
     </StyledSide>
   );
 };

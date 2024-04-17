@@ -112,7 +112,6 @@ const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)
 
 const Text = styled.p`
   margin: 0px;
-  padding-left: 10px;
   font-size:15px;
   color: lightgrey;
 `;
@@ -125,7 +124,8 @@ const PriceAndAddContainer = styled.div`
 `;
 
 const Price = styled.p`
-  margin: 0 0 5px 10px;
+  margin: 0 0 5px 0;
+  color: lightgrey;
 `;
 
 const Recommendation = styled.div`
@@ -250,7 +250,6 @@ const CourseComponent: React.FC<DishProps> = ({
         <Text>{formattedIngredientText}</Text>
         <PriceAndAddContainer>
           <Price>{price} kr</Price>
-          
         </PriceAndAddContainer>
       </TotalDescription>
       <Wrapper quantity={quantity}>

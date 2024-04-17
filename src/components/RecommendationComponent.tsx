@@ -44,13 +44,14 @@ const Title = styled.h4`
 const CocktailAndAddContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 5px 0 10px;
+  padding: 0 2px 0 2px;
 `;
 
 const Price = styled.p`
   margin: 0;
   margin-right: 10px;
   font-size: 0.9em;
+  color: lightgrey
 `;
 
 const CounterContainer = styled.div`

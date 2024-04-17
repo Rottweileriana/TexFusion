@@ -32,8 +32,9 @@ const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)
 
 const StyledCocktail = styled.div`
   display: flex;
-  width: 320px;
-  height: 100px;
+  flex-direction: column;
+  width: 300px;
+  height: 375px;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
@@ -49,11 +50,20 @@ const StyledCocktail = styled.div`
 `;
 
 const Image = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 299px;
+  height: 299px;
   border-radius: 5px;
   border: 1px solid #222222;
-  margin-right: 20px;
+`;
+
+const TotalDescription = styled.div`
+  width: 299px;
+  padding: 10px 0 5px 5px;
+`;
+
+const TitleAndAddContainer = styled.div`
+  display: flex;
+  width: 290px;
 `;
 
 const Title = styled.h4`
@@ -62,38 +72,11 @@ const Title = styled.h4`
   margin: 0;
 `;
 
-const Recommended = styled.p`
-  margin: 5px;
-  padding: 2px;
-  padding-left: 19px;
-  border-radius: 5px;
-  color: #7d532c;
-  background-color: #eac898;
-`;
-
-const BlancRow = styled.p`
-  margin-bottom: 5px;
-  padding: 2px;
-`;
-
-const Price = styled.p`
-  margin: 0;
-  margin-bottom: 5px;
-  color: white;
-`;
-
-const PriceAndAddContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 175px;
-`;
-
 const CounterContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-left: auto;
-  margin-top: 5px;
+  margin: 3px 0 0 auto;
+  height: 30px;
   border: 0px solid #808080;
   border-radius: 30px;
   background-color: #eca884;
@@ -127,6 +110,21 @@ const ResultField = styled.input`
     cursor: default;
   }
 `;
+
+const Price = styled.p`
+  margin: 0;
+  margin-bottom: 5px;
+  color: lightgrey;
+`;
+
+const PriceAndAddContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 175px;
+`;
+
+
 //#endregion
 
 const Cocktail: React.FC<Cocktail> = ({
@@ -186,12 +184,10 @@ const Cocktail: React.FC<Cocktail> = ({
   return (
     <StyledCocktail>
       <Image src={strDrinkThumb} alt={strDrink} />
-      <div>
+      <TotalDescription>
+      <TitleAndAddContainer>
         <Title>{formattedCocktailName}</Title>
-        <BlancRow/>
-        <PriceAndAddContainer>
-          <Price>{cocktailPrice} kr</Price>
-          {quantity === 0 ? (
+        {quantity === 0 ? (
             <CounterContainer>
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
@@ -208,8 +204,11 @@ const Cocktail: React.FC<Cocktail> = ({
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           )}
+          </TitleAndAddContainer>
+        <PriceAndAddContainer>
+          <Price>{cocktailPrice} kr</Price>
         </PriceAndAddContainer>
-      </div>
+      </TotalDescription>
     </StyledCocktail>
   );
 };
