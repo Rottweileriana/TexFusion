@@ -19,8 +19,8 @@ const SidesContainer = styled.div`
 const MenuTitle = styled.h2`
   margin-bottom: 20px;
   font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 35px;
+  font-weight: 300;
+  font-size: 25px;
   text-decoration: none;
   color: lightgrey;
 `;
@@ -55,7 +55,7 @@ export function SidesMenu() {
   return (
     <>
     <SidesMenuContainer>
-      <MenuTitle>Tillbehör</MenuTitle>
+      <MenuTitle>TILLBEHÖR</MenuTitle>
       <SidesContainer>
       {sides &&
         sides.map(

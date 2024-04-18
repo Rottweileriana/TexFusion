@@ -31,8 +31,8 @@ const CocktailContainer = styled.div`
 const MenuTitle = styled.h2`
   margin-bottom: 20px;
   font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 35px;
+  font-weight: 300;
+  font-size: 25px;
   text-decoration: none;
   color: lightgrey;
 `;
@@ -95,7 +95,7 @@ export function CocktailMenu() {
   return (
     <>
       <CocktailMenuContainer>
-        <MenuTitle>Cocktails</MenuTitle>
+        <MenuTitle>COCKTAILS</MenuTitle>
         <CocktailContainer>
           {cocktails.map((cocktail) => (
             <CocktailComponent
