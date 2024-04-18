@@ -107,7 +107,7 @@ export const NavBarComponent: React.FC = () => {
             </NavLinkStyle>
           </NavBarListMain>
         </MainDiv>
-      </NavbarBackground>)};
+      </NavbarBackground>)}
     </>
   );
 };
