@@ -22,6 +22,16 @@ import "./App.css";
 
 //#region Styles
 
+const BodyFooterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+const BodyContainer = styled.div`
+  
+`;
+
 const BodyBackgroundComponent = styled.div`
   display: flex;
   justify-content: center;
@@ -69,6 +79,10 @@ const CocktailMenuContainer = styled.div`
   padding: 0;
 `;
 
+const FooterContainer = styled.div`
+  margin-top: auto;
+`;
+
 //#endregion
 
 interface ErrorBoundaryProps {
@@ -114,66 +128,72 @@ const App: React.FC = () => {
       <BrowserRouter>
         <CartProvider>
           <NavBarComponent />
-          <Routes>
-            <Route path="/" element={<HomeComponent />} />
-            <Route
-              path="/Menu"
-              element={
-                <ErrorBoundary>
-                  <BodyBackgroundComponent>
-                    <MainComponent>
-                      <CourseMenuContainer id="CourseMenu">
-                        <CourseMenu />
-                      </CourseMenuContainer>
-                      <SidesMenuContainer id="SidesMenu">
-                        <SidesMenu />
-                      </SidesMenuContainer>
-                      <CocktailMenuContainer id="CocktailMenu">
-                        <CocktailMenu />
-                      </CocktailMenuContainer>
-                    </MainComponent>
-                  </BodyBackgroundComponent>
-                </ErrorBoundary>
-              }
-            ></Route>
-            <Route
-              path="/Info/:InfoPart"
-              element={
-                <>
-                  <InfoComponent />
-                </>
-              }
-            />
-            <Route
-              path="/Shoppingcart"
-              element={
-                <>
-                  <ShoppingCart />
-                  <CheckoutForm />
-                </>
-              }
-            />
-            <Route
-              path="/Info/:InfoPart"
-              element={
-                <>
-                  <InfoComponent />
-                </>
-              }
-            />
-            <Route
-              path="/Shoppingcart"
-              element={
-                <>
-                  <ShoppingCart />
-                  <CheckoutForm />
-                </>
-              }
-            />
-            <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-          <FooterComponent />
+          <BodyFooterContainer>
+            <BodyContainer>
+              <Routes>
+                <Route path="/" element={<HomeComponent />} />
+                <Route
+                  path="/Menu"
+                  element={
+                    <ErrorBoundary>
+                      <BodyBackgroundComponent>
+                        <MainComponent>
+                          <CourseMenuContainer id="CourseMenu">
+                            <CourseMenu />
+                          </CourseMenuContainer>
+                          <SidesMenuContainer id="SidesMenu">
+                            <SidesMenu />
+                          </SidesMenuContainer>
+                          <CocktailMenuContainer id="CocktailMenu">
+                            <CocktailMenu />
+                          </CocktailMenuContainer>
+                        </MainComponent>
+                      </BodyBackgroundComponent>
+                    </ErrorBoundary>
+                  }
+                ></Route>
+                <Route
+                  path="/Info/:InfoPart"
+                  element={
+                    <>
+                      <InfoComponent />
+                    </>
+                  }
+                />
+                <Route
+                  path="/Shoppingcart"
+                  element={
+                    <>
+                      <ShoppingCart />
+                      <CheckoutForm />
+                    </>
+                  }
+                />
+                <Route
+                  path="/Info/:InfoPart"
+                  element={
+                    <>
+                      <InfoComponent />
+                    </>
+                  }
+                />
+                <Route
+                  path="/Shoppingcart"
+                  element={
+                    <>
+                      <ShoppingCart />
+                      <CheckoutForm />
+                    </>
+                  }
+                />
+                <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
+                <Route path="*" element={<ErrorPage />} />
+              </Routes>
+            </BodyContainer>
+            <FooterContainer>
+              <FooterComponent />
+            </FooterContainer>
+          </BodyFooterContainer>
         </CartProvider>
       </BrowserRouter>
     </>
