@@ -30,17 +30,9 @@ export const NavBarComponent: React.FC = () => {
           <MainDiv>
             <LogoContainer>
               <LogoNavLink to="/">
-                <WomenImage src="/src/assets/images/WomanImage.png" alt="WomenImage" />
+                <WomenImage src={imageUrlHomePageWomen} alt="WomenImage" />
               </LogoNavLink>
             </LogoContainer>
-            <LogotextSubnavbarContainer>
-
-              {/* <LogoTextContainer>
-                <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
-                <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
-              </LogoTextContainer>
-              <NavBarListSub></NavBarListSub> */}
-            </LogotextSubnavbarContainer>
             <NavBarListMain>
               <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
               <NavLinkStyleHome to="/Info/OmOss">OM OSS</NavLinkStyleHome>
