@@ -189,4 +189,7 @@ const Image = styled.img`
 const Title = styled.h4`
   margin: 0;
 `;
+
+//EASTER EGG
+
 //#endregion
