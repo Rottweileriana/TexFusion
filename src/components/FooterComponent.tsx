@@ -42,7 +42,6 @@ const MainDiv = styled.div`
   width: 100%;
   height: 100px;
   background-color: black;
-  position: fixed;
   bottom: 0;
   padding-bottom: 10px;
   z-index: 9999;
