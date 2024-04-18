@@ -7,6 +7,9 @@ const BackgroundImageContainer = styled.div`
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 `;
 
 const Image = styled.img`
@@ -17,35 +20,33 @@ const Image = styled.img`
 
 const LogotypeContainer = styled.div`
     position: fixed;
-    top: 305px;
-    left: 50%;
-    transform: translate(-50%, -50%);
     overflow: hidden;
-    //min-width: 400px;
-    z-index: 9999;
-
+    top: 15px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index:9999;
 `;
 
-const Logotype = styled.img`
-    width:70%;
-    max-width: 100%;
-    min-width:400px;
+const CenterImage = styled.img`
+    width: 100%;
+    height: auto;
+    max-width: 450px;
     object-fit: contain;
 `;
 
 export function HomeComponent() {
     const imageUrlHomePageLeft = `/src/assets/images/CactusBackground.jpg`;
     const imageUrlHomepageRight = `/src/assets/images/TableBackground.jpg`;
-    const imageUrlHomePageCenter = `/src/assets/images/LogoWithGirl.jpg`;
+    const imageUrlHomePageCenter = `/src/assets/images/LogoAndWoman.jpg`;
 
     return (
         <>
             <BackgroundImageContainer>
                 <Image src={imageUrlHomePageLeft} alt="CactusBackground" className="image" />
                 <Image src={imageUrlHomepageRight} alt="TableBackground" className="image" />
-            </BackgroundImageContainer>
+            </ImageContainer>
             <LogotypeContainer>
-                <Logotype src={imageUrlHomePageCenter} alt="LogoWithGirl" className="CenterImage" />
+                <CenterImage src={imageUrlHomePageCenter} alt="LogotypeAndWomen" />
             </LogotypeContainer>
             {/* <h4>Home</h4>
             <p>TexFusion dolor sit amet, consectetur adipiscing elit,

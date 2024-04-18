@@ -13,6 +13,7 @@ import { NavLink } from "react-router-dom";
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
+  const imageUrlHomePageWomen = `/src/assets/images/WomenImage.png`;
 
   let totCartQuant = 0;
 
@@ -24,96 +25,71 @@ export const NavBarComponent: React.FC = () => {
 
   return (
     <>
-     {location.pathname === "/" ? (
-      <NavbarBackgroundHome>
-      <MainDiv>
-        <LogoContainer>
-          <LogoNavLink to="/">
-            <img src="https://fakeimg.pl/150x150" />
-          </LogoNavLink>
-        </LogoContainer>
-        <LogotextSubnavbarContainer>
-          <LogoTextContainer>
-            <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
-            <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
-          </LogoTextContainer>
-            <NavBarListSub></NavBarListSub>
-        </LogotextSubnavbarContainer>
-        <NavBarListMain>
-          <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
-          <NavLinkStyleHome to="/Info/OmOss">OM OSS</NavLinkStyleHome>
-          <NavLinkStyleHome to="/Info/Kontakt">KONTAKT</NavLinkStyleHome>
-          <NavLinkStyleHome to="/Shoppingcart">
-            <Badge>
-              {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
-            </Badge>
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </NavLinkStyleHome>
-        </NavBarListMain>
-      </MainDiv>
-    </NavbarBackgroundHome>
-     ) : (<NavbarBackground>
-      <MainDiv>
-        <LogoContainer>
-          <LogoNavLink to="/">
-            <img src="https://fakeimg.pl/150x150" />
-          </LogoNavLink>
-        </LogoContainer>
-        <LogotextSubnavbarContainer>
-          <LogoTextContainer>
-            <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
-            <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
-          </LogoTextContainer>
-          {location.pathname === "/Menu" ? (
-            <NavBarListSub>
-              <LinkStyle
-                activeClass="active"
-                to="CourseMenu"
-                spy={true}
-                smooth={true}
-                offset={-162}
-                duration={500}
-              >
-                HUVUDRÄTTER
-              </LinkStyle>
-              <LinkStyle
-                activeClass="active"
-                to="SidesMenu"
-                spy={true}
-                smooth={true}
-                offset={-162}
-                duration={500}
-              >
-                TILLBEHÖR
-              </LinkStyle>
-              <LinkStyle
-                activeClass="active"
-                to="CocktailMenu"
-                spy={true}
-                smooth={true}
-                offset={-162}
-                duration={500}
-              >
-                COCKTAILS
-              </LinkStyle>
-            </NavBarListSub>
-          ) : (
-            <NavBarListSub></NavBarListSub>
-          )}
-        </LogotextSubnavbarContainer>
-        <NavBarListMain>
-          <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
-          <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
-          <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
-          <NavLinkStyle to="/Shoppingcart">
-            <Badge>
-              {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
-            </Badge>
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </NavLinkStyle>
-        </NavBarListMain>
-      </MainDiv>
-    </NavbarBackground>)}
+      <NavbarBackground>
+        <MainDiv>
+          <LogoContainer>
+            <LogoNavLink to="/">
+              <WomenImage src="/src/assets/images/WomenImage.png" alt="WomenImage" />
+            </LogoNavLink>
+            {/* <LogoNavLink to="/">
+              <img src="https://fakeimg.pl/150x150" />
+            </LogoNavLink> */}
+          </LogoContainer>
+          <LogotextSubnavbarContainer>
+            <LogoTextContainer>
+              <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
+              <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
+            </LogoTextContainer>
+            {location.pathname === "/Menu" ? (
+              <NavBarListSub>
+                <LinkStyle
+                  activeClass="active"
+                  to="CourseMenu"
+                  spy={true}
+                  smooth={true}
+                  offset={-162}
+                  duration={500}
+                >
+                  HUVUDRÄTTER
+                </LinkStyle>
+                <LinkStyle
+                  activeClass="active"
+                  to="SidesMenu"
+                  spy={true}
+                  smooth={true}
+                  offset={-162}
+                  duration={500}
+                >
+                  TILLBEHÖR
+                </LinkStyle>
+                <LinkStyle
+                  activeClass="active"
+                  to="CocktailMenu"
+                  spy={true}
+                  smooth={true}
+                  offset={-162}
+                  duration={500}
+                >
+                  COCKTAILS
+                </LinkStyle>
+              </NavBarListSub>
+            ) : (
+              <NavBarListSub></NavBarListSub>
+            )}
+          </LogotextSubnavbarContainer>
+          <NavBarListMain>
+            <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
+            <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
+            <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
+            <NavLinkStyle to="/Shoppingcart">
+              <Badge>
+                {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
+              </Badge>
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </NavLinkStyle>
+          </NavBarListMain>
+        </MainDiv>
+      </NavbarBackground >
     </>
   );
 };
@@ -126,13 +102,10 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: ${location.pathname === "/Info/OmOss" ? "#535bf2" : "#fbe3d6"};
-  z-index: 9999;
   width: 100%;
   height: 175px;
   position: fixed;
   top: 0;
-  z-index: 9999;
 `;
 
 const NavbarBackgroundHome = styled.div`
@@ -143,11 +116,12 @@ const NavbarBackgroundHome = styled.div`
   padding: 0;
   background-color: rgba(0, 0, 0, 0);
   z-index: 9999;
+=======
+>>>>>>> 8977255 (Working on homepage pictures)
   width: 100%;
   height: 175px;
   position: fixed;
   top: 0;
-  z-index: 9999;
 `;
 
 const MainDiv = styled.div`
@@ -163,10 +137,23 @@ const MainDiv = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  display: flex;
-  width: 33%;
-  height: 150px;
+    display: flex;
+    width: 120px;
+    height: 120px;
+    left: -250px;
+    position: relative;
 `;
+
+const WomenImage = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+`;
+
 
 const LogoNavLink: typeof NavLink = styled(NavLink)`
   display: flex;
@@ -239,7 +226,6 @@ const NavBarListMain = styled.div`
   width: 33%;
   overflow: hidden;
   cursor: pointer;
-  z-index: 9999;
 `;
 
 // const NavBarListElements = styled.li`
