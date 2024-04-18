@@ -1,15 +1,24 @@
 import styled from "styled-components";
 
-const BackgroundContainer = styled.div`
+const BackgroundImageContainer = styled.div`
     display: flex;
     justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url("/src/assets/images/OmOssBakgrund.jpg");
+    background-size: cover;
+    background-position: center;
 `;
 
 const AboutUsContainer = styled.div`
     width: 800px;
-    margin: 210px 0 0 0;
+    height: 240px;
+    margin: 220px 0 0 0;
+    padding: 0 15px 0 15px;
     text-align: center;
     color: lightgrey;
+    background-color: rgba(245, 245, 245, 0.2);
 `;
 
 const Title = styled.h3`
@@ -22,11 +31,10 @@ const Text = styled.p`
     text-align: justify;
 `;
 
-
 export function AboutComponent () {
     return (
         <>
-            <BackgroundContainer>
+            <BackgroundImageContainer>
                 <AboutUsContainer>
                     <Title>OM OSS</Title>
                     <Text>TexFusion dolor sit amet, consectetur adipiscing elit,
@@ -38,7 +46,7 @@ export function AboutComponent () {
                         pariatur. Excepteur sint occaecat cupidatat non proident,
                         sunt in culpa qui officia deserunt mollit anim id est 2024.</Text>
                 </AboutUsContainer>
-            </BackgroundContainer>
+            </BackgroundImageContainer>
         </>
     )
 }
