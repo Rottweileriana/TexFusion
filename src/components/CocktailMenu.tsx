@@ -18,7 +18,7 @@ type Cocktail = {
 const CocktailMenuContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 160px;
+  margin-bottom: 50px;
 `;
 
 const CocktailContainer = styled.div`
