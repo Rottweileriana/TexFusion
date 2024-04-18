@@ -109,7 +109,9 @@ const ResultField = styled.input`
   background-color: transparent;
   border: none;
   color: #333333;
+  font-family: "Open Sans";
   font-size: 15px;
+  font-weight: 300;
   outline: none;
   &:hover {
     cursor: default;

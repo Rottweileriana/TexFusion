@@ -74,6 +74,7 @@ const CounterContainer = styled.div`
   border: 0px solid #808080;
   border-radius: 30px;
   background-color: #eca884;
+  font-weight: 300;
 `;
 
 const CounterButton = styled.button`
@@ -102,6 +103,7 @@ const ResultField = styled.input`
   background-color: transparent;
   border: none;
   color: #333333;
+  font-family: "Open Sans";
   font-size: 15px;
   font-weight: 300;
   outline: none;
