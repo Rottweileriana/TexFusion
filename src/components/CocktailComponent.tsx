@@ -25,7 +25,7 @@ interface StyledCourseProps {
 //#region Styles
 
 const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
- color:145775;
+ color: 145775;
  font-size: 15px;
  margin-top: 5px;
 `;
@@ -34,7 +34,7 @@ const StyledCocktail = styled.div`
   display: flex;
   flex-direction: column;
   width: 300px;
-  height: 375px;
+  height: 370px;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
@@ -59,6 +59,7 @@ const Image = styled.img`
 const TotalDescription = styled.div`
   width: 299px;
   padding: 10px 0 5px 5px;
+  font-weight: 300;
 `;
 
 const TitleAndAddContainer = styled.div`
@@ -67,15 +68,17 @@ const TitleAndAddContainer = styled.div`
 `;
 
 const Title = styled.h4`
-  font-family: "Parisienne";
+  font-family: "Open Sans";
+  font-weight: 300;
   font-size: 25px;
+  text-decoration: none;
   margin: 0;
 `;
 
 const CounterContainer = styled.div`
   display: flex;
   align-items: center;
-  margin: 3px 0 0 auto;
+  margin: 1px 0 0 auto;
   height: 30px;
   border: 0px solid #808080;
   border-radius: 30px;

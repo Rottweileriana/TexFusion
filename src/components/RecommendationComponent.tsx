@@ -37,6 +37,10 @@ const Image = styled.img`
 `;
 
 const Title = styled.h4`
+  font-family: "Open Sans";
+  font-weight: 300;
+  text-decoration: none;
+  color: lightgrey;
   margin: 0;
   margin-right: 10px;
 `;
@@ -48,9 +52,10 @@ const CocktailAndAddContainer = styled.div`
 `;
 
 const Price = styled.p`
-  margin: 0;
+  margin: 1px 10px 0 0;
   margin-right: 10px;
   font-size: 0.9em;
+  font-weight: 300;
   color: lightgrey
 `;
 

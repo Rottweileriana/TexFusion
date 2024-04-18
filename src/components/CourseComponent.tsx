@@ -48,7 +48,8 @@ const Image = styled.img`
 
 const TotalDescription = styled.div`
   width: 299px;
-  padding: 10px 0 5px 5px;
+  padding: 5px 0 5px 5px;
+  font-weight: 300;
 `;
 
 const TitleAndAddContainer = styled.div`
@@ -57,15 +58,17 @@ const TitleAndAddContainer = styled.div`
 `;
 
 const Title = styled.h3`
-  font-family: "Parisienne";
+  font-family: "Open Sans";
+  font-weight: 300;
   font-size: 35px;
+  text-decoration: none;
   margin: 0;
 `;
 
 const CounterContainer = styled.div`
   display: flex;
   align-items: center;
-  margin: 3px 0 0 auto;
+  margin: 6px 0 0 auto;
   height: 30px;
   border: 0px solid #808080;
   border-radius: 30px;
@@ -111,7 +114,7 @@ const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)
 `;
 
 const Text = styled.p`
-  margin: 0px;
+  margin: 5px 0 0 0;
   font-size:15px;
   color: lightgrey;
 `;
