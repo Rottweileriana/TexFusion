@@ -15,17 +15,17 @@ const StyledSide = styled.div`
   flex-direction: column;
   width: 300px;
   height: 400px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid grey;
+  border-radius: 0px;
   padding: 5px;
-  background-color: #156082;
-  color: #white;
+  background-color: #f5f5f5;
+  color: #333333;
   margin: 0 10px 25px 10px;
   text-align: left;
   transition: background-color 1s, box-shadow 0.7s;
   &:hover {
     cursor: default;
-    background-color:#145775;
+    background-color:#f5f5f5;
     box-shadow: 0px 0px 5px 2px;
   }
 `;
@@ -33,7 +33,7 @@ const StyledSide = styled.div`
 const Image = styled.img`
   width: 299px;
   height: 299px;
-  border-radius: 5px;
+  border-radius: 0px;
   border: 1px solid #222222;
 `;
 
@@ -55,6 +55,7 @@ const Title = styled.h3`
   text-decoration: none;
   margin: 0;
   padding: 0;
+  color: #333333;
 `;
 
 const CounterContainer = styled.div`
@@ -75,8 +76,9 @@ const CounterButton = styled.button`
   height: 30px;
   background-color: transparent;
   border: none;
-  color: #145775;
+  color: #333333;
   font-size: 20px;
+  font-weight: 300;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -102,7 +104,7 @@ const ResultField = styled.input`
 const Text = styled.p`
   margin: 5px 0 0 0;
   font-size:15px;
-  color: lightgrey;
+  color: 333333;
 `;
 
 const PriceAndAddContainer = styled.div`
@@ -114,7 +116,7 @@ const PriceAndAddContainer = styled.div`
 
 const Price = styled.p`
   margin: 0 0 5px 0;
-  color: lightgrey;
+  color: #333333;
 `;
 
 const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`

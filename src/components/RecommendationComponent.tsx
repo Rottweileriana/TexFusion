@@ -19,10 +19,9 @@ const StyledCocktail = styled.div`
   flex-direction: column;
   justify-content: space-between;
   border: 0px solid #ccc;
-  border-radius: 5px;
+  border-radius: 0px;
   padding: 5px;
-  background-color: #156082;
-  color: white;
+  background-color: lightgrey;
   &:hover {
     cursor: default;
   }
@@ -40,7 +39,7 @@ const Title = styled.h4`
   font-family: "Open Sans";
   font-weight: 300;
   text-decoration: none;
-  color: lightgrey;
+  color: #333333;
   margin: 0;
   margin-right: 10px;
 `;
@@ -56,7 +55,7 @@ const Price = styled.p`
   margin-right: 10px;
   font-size: 0.9em;
   font-weight: 300;
-  color: lightgrey
+  color: #333333
 `;
 
 const CounterContainer = styled.div`
@@ -70,7 +69,7 @@ const CounterContainer = styled.div`
 `;
 
 const StyledFontAwesomeIcon: typeof FontAwesomeIcon = styled(FontAwesomeIcon)`
-  color: 145775;
+  color: #333333;
   font-size: 15px;
   margin-top: 5px;
 `;
@@ -83,7 +82,7 @@ const CounterButton = styled.button`
   height: 25px;
   background-color: transparent;
   border: none;
-  color: #145775;
+  color: #333333;
   font-size: 18px;
   font-weight: 300;
   cursor: pointer;

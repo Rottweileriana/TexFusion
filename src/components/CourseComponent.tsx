@@ -24,8 +24,8 @@ const StyledCourse = styled.div<StyledCourseProps>`
   flex-direction: column;
   width: 300px;
   height: ${({ quantity }: { quantity: number }) =>
-    quantity > 0 ? "475px" : "400px"};
-  border: 1px solid #ccc;
+    quantity > 0 ? "480px" : "400px"};
+  border: 1px solid grey;
   border-radius: 0px;
   padding: 5px;
   background-color: #f5f5f5;
@@ -35,7 +35,7 @@ const StyledCourse = styled.div<StyledCourseProps>`
   position: relative;
   transition: background-color 1s, box-shadow 0.8s, height 0.5s ease-in-out;
   &:hover{
-    background-color:#145775;
+    background-color:#f5f5f5;
     box-shadow: 0px 0px 5px 2px;
 `;
 
@@ -63,7 +63,7 @@ const Title = styled.h3`
   font-size: 35px;
   text-decoration: none;
   margin: 0;
-  color: #333333
+  color: #333333;
 `;
 
 const CounterContainer = styled.div`
@@ -143,7 +143,8 @@ const Recommendation = styled.div`
 `;
 
 const HeadRecCocktail = styled.h3`
-  margin: 15px 0 3px 7px;
+  margin: 15px 0 5px 7px;
+  color: #333333;
 `;
 
 const Wrapper = styled.div<StyledCourseProps>`
