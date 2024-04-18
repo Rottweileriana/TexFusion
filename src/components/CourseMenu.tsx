@@ -16,7 +16,11 @@ const CourseContainer = styled.div`
 `;
 
 const MenuTitle = styled.h2`
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 35px;
+  text-decoration: none;
 `;
 
 export function CourseMenu() {
