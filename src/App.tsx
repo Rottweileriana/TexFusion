@@ -46,7 +46,7 @@ const CourseMenuContainer = styled.div`
   align-items: center;
   margin: 0;
   padding: 0;
-  padding-top: 200px;
+  padding-top: 190px;
 `;
 
 const SidesMenuContainer = styled.div`
