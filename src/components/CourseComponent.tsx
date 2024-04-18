@@ -26,10 +26,10 @@ const StyledCourse = styled.div<StyledCourseProps>`
   height: ${({ quantity }: { quantity: number }) =>
     quantity > 0 ? "475px" : "400px"};
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 0px;
   padding: 5px;
-  background-color: #156082;
-  color: white;
+  background-color: #f5f5f5;
+  color: #333333;
   margin: 0 10px 25px 10px;
   text-align: left;
   position: relative;
@@ -42,7 +42,7 @@ const StyledCourse = styled.div<StyledCourseProps>`
 const Image = styled.img`
   width: 299px;
   height: 299px;
-  border-radius: 5px;
+  border-radius: 0px;
   border: 1px solid #222222;
 `;
 
@@ -63,6 +63,7 @@ const Title = styled.h3`
   font-size: 35px;
   text-decoration: none;
   margin: 0;
+  color: #333333
 `;
 
 const CounterContainer = styled.div`
@@ -83,8 +84,9 @@ const CounterButton = styled.button`
   height: 30px;
   background-color: transparent;
   border: none;
-  color: #145775;
+  color: #333333;
   font-size: 20px;
+  font-weight: 300;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -101,6 +103,7 @@ const ResultField = styled.input`
   border: none;
   color: #333333;
   font-size: 15px;
+  font-weight: 300;
   outline: none;
   &:hover {
     cursor: default;
@@ -108,7 +111,7 @@ const ResultField = styled.input`
 `;
 
 const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
- color:145775;
+ color: 145775;
  font-size: 15px;
  margin-top: 5px;
 `;
@@ -116,7 +119,6 @@ const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)
 const Text = styled.p`
   margin: 5px 0 0 0;
   font-size:15px;
-  color: lightgrey;
 `;
 
 const PriceAndAddContainer = styled.div`
@@ -128,7 +130,6 @@ const PriceAndAddContainer = styled.div`
 
 const Price = styled.p`
   margin: 0 0 5px 0;
-  color: lightgrey;
 `;
 
 const Recommendation = styled.div`

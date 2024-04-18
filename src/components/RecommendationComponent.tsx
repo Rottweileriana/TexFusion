@@ -85,6 +85,7 @@ const CounterButton = styled.button`
   border: none;
   color: #145775;
   font-size: 18px;
+  font-weight: 300;
   cursor: pointer;
   display: flex;
   justify-content: center;
