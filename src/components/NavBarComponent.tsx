@@ -29,7 +29,7 @@ export const NavBarComponent: React.FC = () => {
         <MainDiv>
           <LogoContainer>
             <LogoNavLink to="/">
-              <WomenImage src="/src/assets/images/WomenImage.png" alt="WomenImage" />
+              <WomenImage src="/src/assets/images/WomanImage.png" alt="WomenImage" />
             </LogoNavLink>
             {/* <LogoNavLink to="/">
               <img src="https://fakeimg.pl/150x150" />
@@ -153,7 +153,6 @@ const WomenImage = styled.img`
     left: 0;
     z-index: 1; 
 `;
-
 
 const LogoNavLink: typeof NavLink = styled(NavLink)`
   display: flex;
