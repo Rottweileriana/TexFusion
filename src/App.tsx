@@ -169,23 +169,6 @@ const App: React.FC = () => {
                     </>
                   }
                 />
-                <Route
-                  path="/Info/:InfoPart"
-                  element={
-                    <>
-                      <InfoComponent />
-                    </>
-                  }
-                />
-                <Route
-                  path="/Shoppingcart"
-                  element={
-                    <>
-                      <ShoppingCart />
-                      <CheckoutForm />
-                    </>
-                  }
-                />
                 <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
