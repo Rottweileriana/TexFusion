@@ -23,7 +23,6 @@ const LogotypeContainer = styled.div`
     overflow: hidden;
     //min-width: 400px;
     z-index: 9999;
-
 `;
 
 const Logotype = styled.img`
