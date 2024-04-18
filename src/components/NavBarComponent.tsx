@@ -13,7 +13,7 @@ import { NavLink } from "react-router-dom";
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
-  const imageUrlHomePageWomen = `/src/assets/images/WomenImage.png`;
+  const imageUrlHomePageWomen = `/src/assets/images/WomanImage.png`;
 
   let totCartQuant = 0;
 
@@ -50,7 +50,7 @@ export const NavBarComponent: React.FC = () => {
         <MainDiv>
           <LogoContainer>
             <LogoNavLink to="/">
-              <WomenImage src="/src/assets/images/WomanImage.png" alt="WomenImage" />
+              <WomenImage src="/src/assets/images/WomanImage.png" alt="WomanImage" />
             </LogoNavLink>
           </LogoContainer>
           <LogotextSubnavbarContainer>
@@ -107,7 +107,7 @@ export const NavBarComponent: React.FC = () => {
             </NavLinkStyle>
           </NavBarListMain>
         </MainDiv>
-      </NavbarBackground >
+      </NavbarBackground>)};
     </>
   );
 };

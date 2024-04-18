@@ -44,7 +44,7 @@ export function HomeComponent() {
             <BackgroundImageContainer>
                 <Image src={imageUrlHomePageLeft} alt="CactusBackground" className="image" />
                 <Image src={imageUrlHomepageRight} alt="TableBackground" className="image" />
-            </ImageContainer>
+            </BackgroundImageContainer>
             <LogotypeContainer>
                 <CenterImage src={imageUrlHomePageCenter} alt="LogotypeAndWomen" />
             </LogotypeContainer>
