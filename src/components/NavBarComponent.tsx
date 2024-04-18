@@ -25,15 +25,41 @@ export const NavBarComponent: React.FC = () => {
 
   return (
     <>
-      <NavbarBackground>
+      {location.pathname === "/" ? (
+        <NavbarBackgroundHome>
+          <MainDiv>
+            <LogoContainer>
+              <LogoNavLink to="/">
+                <WomenImage src="/src/assets/images/WomanImage.png" alt="WomenImage" />
+              </LogoNavLink>
+            </LogoContainer>
+            <LogotextSubnavbarContainer>
+
+              {/* <LogoTextContainer>
+                <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
+                <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
+              </LogoTextContainer>
+              <NavBarListSub></NavBarListSub> */}
+            </LogotextSubnavbarContainer>
+            <NavBarListMain>
+              <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
+              <NavLinkStyleHome to="/Info/OmOss">OM OSS</NavLinkStyleHome>
+              <NavLinkStyleHome to="/Info/Kontakt">KONTAKT</NavLinkStyleHome>
+              <NavLinkStyleHome to="/Shoppingcart">
+                <Badge>
+                  {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
+                </Badge>
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </NavLinkStyleHome>
+            </NavBarListMain>
+          </MainDiv>
+        </NavbarBackgroundHome>
+      ) : (<NavbarBackground>
         <MainDiv>
           <LogoContainer>
             <LogoNavLink to="/">
               <WomenImage src="/src/assets/images/WomanImage.png" alt="WomenImage" />
             </LogoNavLink>
-            {/* <LogoNavLink to="/">
-              <img src="https://fakeimg.pl/150x150" />
-            </LogoNavLink> */}
           </LogoContainer>
           <LogotextSubnavbarContainer>
             <LogoTextContainer>
@@ -116,12 +142,11 @@ const NavbarBackgroundHome = styled.div`
   padding: 0;
   background-color: rgba(0, 0, 0, 0);
   z-index: 9999;
-=======
->>>>>>> 8977255 (Working on homepage pictures)
   width: 100%;
   height: 175px;
   position: fixed;
   top: 0;
+  z-index: 9999;
 `;
 
 const MainDiv = styled.div`
