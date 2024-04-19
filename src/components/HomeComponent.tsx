@@ -29,28 +29,19 @@ const Logotype = styled.img`
 `;
 
 export function HomeComponent() {
-    const imageUrlHomePageLeft = `/src/assets/images/CactusBackground.jpg`;
-    const imageUrlHomepageRight = `/src/assets/images/TableBackground.jpg`;
-    const imageUrlHomePageCenter = `/src/assets/images/LogoWithGirl.jpg`;
+    const ImageHomePageLeft = `/src/assets/images/CactusBackground.jpg`;
+    const ImageHomepageRight = `/src/assets/images/TableBackground.jpg`;
+    const ImageHomePageCenter = `/src/assets/images/LogoWithGirl.jpg`;
 
     return (
         <>
             <LeftRightBackgroundImage>
-                <BackgroundImage src={imageUrlHomePageLeft} alt="CactusBackground" className="image" />
-                <BackgroundImage src={imageUrlHomepageRight} alt="TableBackground" className="image" />
+                <BackgroundImage src={ImageHomePageLeft} alt="CactusBackground" className="image" />
+                <BackgroundImage src={ImageHomepageRight} alt="TableBackground" className="image" />
             </LeftRightBackgroundImage>
             <CenterLogoContainer>
-                <Logotype src={imageUrlHomePageCenter} alt="LogoWithGirl" className="CenterImage" />
+                <Logotype src={ImageHomePageCenter} alt="LogoWithGirl" className="CenterImage" />
             </CenterLogoContainer>
-            {/* <h4>Home</h4>
-            <p>TexFusion dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat. Duis aute irure dolor in reprehenderit
-                in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est 2024.</p> */}
         </>
     );
 }
