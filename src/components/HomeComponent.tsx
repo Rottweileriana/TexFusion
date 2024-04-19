@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BackgroundImageContainer = styled.div`
+const LeftRightBackgroundImage = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@ const BackgroundImageContainer = styled.div`
     overflow: hidden;
 `;
 
-const Image = styled.img`
+const BackgroundImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -39,10 +39,10 @@ export function HomeComponent() {
 
     return (
         <>
-            <BackgroundImageContainer>
-                <Image src={imageUrlHomePageLeft} alt="CactusBackground" className="image" />
-                <Image src={imageUrlHomepageRight} alt="TableBackground" className="image" />
-            </BackgroundImageContainer>
+            <LeftRightBackgroundImage>
+                <BackgroundImage src={imageUrlHomePageLeft} alt="CactusBackground" className="image" />
+                <BackgroundImage src={imageUrlHomepageRight} alt="TableBackground" className="image" />
+            </LeftRightBackgroundImage>
             <LogotypeContainer>
                 <Logotype src={imageUrlHomePageCenter} alt="LogoWithGirl" className="CenterImage" />
             </LogotypeContainer>
