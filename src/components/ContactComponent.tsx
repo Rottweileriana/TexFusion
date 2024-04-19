@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export function ContactComponent () {
     return (
-            <BackgroundStyle>
+            
+        <BackgroundWrapper>
+                <BackgroundStyle>
                 <ContactContainerTitle>
                     <ContactTitle>
                         Kontakt
@@ -55,10 +57,18 @@ export function ContactComponent () {
                     </ContactMapsContainer>
                 </ContactContainerInformation>
             </BackgroundStyle>
+        </BackgroundWrapper>
     )
 }
 
 //Background
+
+const BackgroundWrapper = styled.div`
+    background-image: url("/src/assets/images/TransparentBackgroundExample2.jpg");
+    background-image: no-repeat;
+    background-size: cover;
+`;
+
 
 const BackgroundStyle = styled.div`
     display:flex;
@@ -67,9 +77,6 @@ const BackgroundStyle = styled.div`
     flex-direction:column;
     align-items:center;
     padding-top:20px;
-    background-image: url("/src/assets/images/TransparentBackgroundExample.jpg");
-    background-image: no-repeat;
-    background-size: cover;
 `;
 
 //Contact Title Container with children
