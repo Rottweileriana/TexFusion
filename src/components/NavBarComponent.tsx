@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
-  const imageUrlWomanLogoTopLeft = `/src/assets/images/WomanLogo.png`;
+  const WomanLogoTopLeft = `/src/assets/images/WomanLogo.png`;
 
   let totCartQuant = 0;
 
@@ -29,7 +29,7 @@ export const NavBarComponent: React.FC = () => {
           <MainDiv>
             <LogoContainer>
               <LogoNavLink to="/">
-                <img src={imageUrlWomanLogoTopLeft} alt="WomanLogoTopLeft" />
+                <img src={WomanLogoTopLeft} alt="WomanLogoTopLeft" />
               </LogoNavLink>
             </LogoContainer>
             <NavBarListMain>
@@ -49,7 +49,7 @@ export const NavBarComponent: React.FC = () => {
         <MainDiv>
           <LogoContainer>
             <LogoNavLink to="/">
-              <img src={imageUrlWomanLogoTopLeft} alt="WomanLogoTopLeft" />
+              <img src={lWomanLogoTopLeft} alt="WomanLogoTopLeft" />
             </LogoNavLink>
           </LogoContainer>
           <LogotextSubnavbarContainer>
@@ -157,7 +157,7 @@ const MainDiv = styled.div`
 
 const LogoContainer = styled.div`
   display: flex;
-  width: 15%;
+  width: 7%;
   height: 120px;
   margin-left: 0px;
 `;
