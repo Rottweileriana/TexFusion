@@ -32,13 +32,6 @@ export const NavBarComponent: React.FC = () => {
                 <img src={imageUrlWomanLogoTopLeft} alt="WomanLogoTopLeft" />
               </LogoNavLink>
             </LogoContainer>
-            <LogotextSubnavbarContainer>
-              <LogoTextContainer>
-                <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
-                <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
-              </LogoTextContainer>
-              <NavBarListSub></NavBarListSub>
-            </LogotextSubnavbarContainer>
             <NavBarListMain>
               <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
               <NavLinkStyleHome to="/Info/OmOss">OM OSS</NavLinkStyleHome>
