@@ -150,15 +150,16 @@ const MainDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 95%;
-  max-width: 1200px;
+  max-width: 2048px;
   height: 95%;
   z-index: 9999;
 `;
 
 const LogoContainer = styled.div`
   display: flex;
-  width: 33%;
-  height: 150px;
+  width: 15%;
+  height: 120px;
+  margin-left: 0px;
 `;
 
 const LogoNavLink: typeof NavLink = styled(NavLink)`

@@ -43,8 +43,7 @@ const MainDiv = styled.div`
   height: 100px;
   background-color: black;
   bottom: 0;
-  padding-bottom: 10px;
-  z-index: 9999;
+  padding-bottom: 0;
 `;
 
 const FooterNavbar = styled.ul`

@@ -6,7 +6,6 @@ const LeftRightBackgroundImage = styled.div`
     align-items: center;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
 `;
 
 const BackgroundImage = styled.img`
@@ -15,14 +14,11 @@ const BackgroundImage = styled.img`
   object-fit: cover;
 `;
 
-const LogotypeContainer = styled.div`
+const CenterLogoContainer = styled.div`
     position: fixed;
     top: 305px;
     left: 50%;
     transform: translate(-50%, -50%);
-    overflow: hidden;
-    //min-width: 400px;
-    z-index: 9999;
 `;
 
 const Logotype = styled.img`
@@ -43,9 +39,9 @@ export function HomeComponent() {
                 <BackgroundImage src={imageUrlHomePageLeft} alt="CactusBackground" className="image" />
                 <BackgroundImage src={imageUrlHomepageRight} alt="TableBackground" className="image" />
             </LeftRightBackgroundImage>
-            <LogotypeContainer>
+            <CenterLogoContainer>
                 <Logotype src={imageUrlHomePageCenter} alt="LogoWithGirl" className="CenterImage" />
-            </LogotypeContainer>
+            </CenterLogoContainer>
             {/* <h4>Home</h4>
             <p>TexFusion dolor sit amet, consectetur adipiscing elit,
                 sed do eiusmod tempor incididunt ut labore et dolore
