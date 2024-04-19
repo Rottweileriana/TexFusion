@@ -37,6 +37,7 @@ const StyledCourse = styled.div<StyledCourseProps>`
   &:hover{
     background-color:#f5f5f5;
     box-shadow: 0px 0px 5px 2px;
+  }
 `;
 
 const Image = styled.img`
@@ -112,7 +113,7 @@ const ResultField = styled.input`
   }
 `;
 
-const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
+const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
  color: 145775;
  font-size: 15px;
  margin-top: 5px;
@@ -151,8 +152,8 @@ const HeadRecCocktail = styled.h3`
 
 const Wrapper = styled.div<StyledCourseProps>`
 height: 100%;
-opacity: ${({ quantity }: { quantity: number }) => 
-  quantity > 0 ? 1 : 0};
+opacity: ${({ quantity }: { quantity: number }) =>
+    quantity > 0 ? 1 : 0};
 transition-delay:0.8s;
 transition-duration: 1s;
 transition-property: opacity;
@@ -172,8 +173,8 @@ const CourseComponent: React.FC<DishProps> = ({
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => {};
-  let handleDecrement: () => void = () => {};
+  let handleIncrement: () => void = () => { };
+  let handleDecrement: () => void = () => { };
 
   try {
     //course
@@ -235,39 +236,39 @@ const CourseComponent: React.FC<DishProps> = ({
       <Image src={imageUrl} alt={title} />
       <TotalDescription>
         <TitleAndAddContainer>
-        <Title>{title}</Title>
-        {quantity === 0 ? (
+          <Title>{title}</Title>
+          {quantity === 0 ? (
             <CounterContainer>
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : quantity > 1 ? (
             <CounterContainer>
               <CounterButton onClick={handleDecrement}>-</CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : (
             <CounterContainer>
               <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           )}
-          </TitleAndAddContainer>
+        </TitleAndAddContainer>
         <Text>{formattedIngredientText}</Text>
         <PriceAndAddContainer>
           <Price>{price} kr</Price>
         </PriceAndAddContainer>
       </TotalDescription>
       <Wrapper quantity={quantity}>
-      {quantity > 0 && (
+        {quantity > 0 && (
           <Recommendation>
             <HeadRecCocktail>Rekommenderad Dryck:</HeadRecCocktail>
             <RecommendationComponent title={title}></RecommendationComponent>
           </Recommendation>
-      )}
+        )}
       </Wrapper>
-      
+
     </StyledCourse>
   );
 };
