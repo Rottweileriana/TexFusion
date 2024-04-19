@@ -49,7 +49,7 @@ export const NavBarComponent: React.FC = () => {
         <MainDiv>
           <LogoContainer>
             <LogoNavLink to="/">
-              <img src={lWomanLogoTopLeft} alt="WomanLogoTopLeft" />
+              <img src={WomanLogoTopLeft} alt="WomanLogoTopLeft" />
             </LogoNavLink>
           </LogoContainer>
           <LogotextSubnavbarContainer>
