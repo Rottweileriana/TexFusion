@@ -148,7 +148,7 @@ const MainDiv = styled.div`
   margin: 0;
   padding: 0;
   align-items: center;
-  justify-content: space-between;
+  justify-content:space-between;
   width: 95%;
   max-width: 2048px;
   height: 95%;
@@ -157,15 +157,17 @@ const MainDiv = styled.div`
 
 const LogoContainer = styled.div`
   display: flex;
-  width: 7%;
+  align-self:center;
+  width: 22%;
   height: 120px;
   margin-left: 0px;
 `;
 
 const LogoNavLink: typeof NavLink = styled(NavLink)`
   display: flex;
-  width: 100%;
+  width: 115px;
   height: 100%;
+  border-radius:90px;
   text-decoration: none;
   &:hover {
     cursor: pointer;
@@ -179,6 +181,7 @@ const LogotextSubnavbarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  justify-self:center;
 `;
 
 const LogoTextContainer = styled.div`
@@ -228,9 +231,10 @@ const NavBarListMain = styled.div`
   list-style-type: none;
   display: flex;
   justify-content: flex-end;
+  justify-self:flex-end;
   margin: 0 0 95px 0;
   padding-top: 20px;
-  width: 33%;
+  width: 22%;
   overflow: hidden;
   cursor: pointer;
   z-index: 9999;
