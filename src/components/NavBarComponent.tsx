@@ -28,9 +28,9 @@ export const NavBarComponent: React.FC = () => {
         <NavbarBackgroundHome>
           <MainDiv>
             <LogoContainer>
-              <LogoNavLink to="/">
+              {/* <LogoNavLink to="/">
                 <img src={WomanLogoTopLeft} alt="WomanLogoTopLeft" />
-              </LogoNavLink>
+              </LogoNavLink> */}
             </LogoContainer>
             <NavBarListMain>
               <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
