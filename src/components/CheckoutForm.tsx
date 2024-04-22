@@ -23,6 +23,10 @@ const InputForm = styled.div`
   padding: 5px;
   background-color: #e0e0e0;
   color: #333333;
+  justify-content:center;
+  max-width:450px;
+  width: 100%;
+  min-width:400px;
 `;
 
 const FormInputElements = styled.div`
@@ -37,7 +41,8 @@ const PaymentRadioBtnContainer = styled.div`
   flex-direction: column;
   align-items: start;
   border: none;
-  margin-left: 16px;
+  margin-left: 20px;
+  text-align:center;
 `;
 
 const PaymentInput = styled.div`
@@ -45,6 +50,7 @@ const PaymentInput = styled.div`
   flex-direction: column;
   align-items: start;
   border: none;
+  margin-left: 40px;
 `;
 
 const RadioElement = styled.div`
@@ -55,18 +61,15 @@ const RadioElement = styled.div`
 `;
 
 const RadioBtn = styled.input`
-  margin-left: 90px;
-}
+  margin-left: 104px;
 `;
 
 const PaymentRadio = styled.label`
-  margin-left: 10px;
-  
+  margin-left: 15px;
 `;
 
 const InputElement = styled.div`
-  margin-left: auto;
-  margin-right: 30px;
+  margin: 0 100px 5px auto;
 `;
 
 const TextInput = styled.input`
@@ -75,11 +78,33 @@ const TextInput = styled.input`
   color: #333333;
   border: 1px solid #222222;
   border-radius: 5px;
+  width:180px;
 `;
 
 const FormBtn = styled.div`
   margin-bottom: 20px;
 `;
+
+const CheckoutFormCartContainer = styled.div`
+  display:flex;
+  width: 100%;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+`;
+
+const StyledTitle = styled.h2`
+  font-family: "open sans";
+  color:white;
+`;
+
+const StyledP = styled.p`
+  width:100%;
+  text-align:center;
+  font-family:"Open sans";
+  margin:0;
+`;
+
 
 //#endregion
 
@@ -146,10 +171,11 @@ export function CheckoutForm() {
   };
 
   return (
-    <div>
-      <h2>Kassa</h2>
+    <CheckoutFormCartContainer>
+        <StyledTitle>Kassa</StyledTitle>
       <InputForm>
         <form onSubmit={onSubmit}>
+        <StyledP>Betalningsuppgifter</StyledP>
           <FormInputElements>
             <InputElement>
               <label>
@@ -231,7 +257,7 @@ export function CheckoutForm() {
           </FormInputElements>
           <br/>
           <PaymentRadioBtnContainer>
-            Betalmetod
+            <StyledP>Betalmetod</StyledP>
             <PaymentInput>
               <RadioElement>
                 <RadioBtn
@@ -277,6 +303,6 @@ export function CheckoutForm() {
           </FormBtn>
         </form>
       </InputForm>
-    </div>
+    </CheckoutFormCartContainer>
   );
 }

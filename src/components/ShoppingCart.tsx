@@ -33,7 +33,8 @@ const CartItemElement = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 60px;
+  align-items: center;
+  height: 122px;
 `;
 
 const ItemCol = styled.div`
@@ -54,6 +55,9 @@ const Title = styled.h4`
   margin-right: 15px;
   padding-left: 15px;
   text-align: left;
+  font-family: "Opens Sans";
+  Font-weight: 100;
+  color: #333333;
 `;
 
 const Price = styled.div`
@@ -64,10 +68,9 @@ const Price = styled.div`
 `;
 
 const ItemImage = styled.img`
-  width: 50px;
-  height: 50px;
-  margin-top: 4px;
-  margin-left: 8px;
+  width: 102px;
+  height: 102px;
+  margin-left: 10px;
   border: 1px;
   border-radius: 3px;
 `;
@@ -142,6 +145,19 @@ const TotalQuantity = styled.div`
   font-weight: bold;
   margin-right: 14px;
 `;
+
+
+const ShoppingCartContainer = styled.div`
+  max-width:1000px;
+  width:60%;
+  min-width:400px;
+  margin-top: 140px;
+`;
+
+const StyledTitle = styled.h2`
+  font-family: "open sans";
+  color:white;
+`;
 //#endregion
 
 export const ShoppingCart: React.FC = () => {
@@ -185,9 +201,8 @@ export const ShoppingCart: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Varukorg</h2>
-      --
+    <ShoppingCartContainer>
+      <StyledTitle>Varukorg</StyledTitle>
       <CartList>
         {cart.map((cartItem, index) => (
           <CartRow key={index}>
@@ -226,7 +241,7 @@ export const ShoppingCart: React.FC = () => {
           <TotalQuantity>{totCartQuant} st</TotalQuantity>
         </CartTotals>
       </CartList>
-    </div>
+    </ShoppingCartContainer>
     
   );
 };
