@@ -54,7 +54,7 @@ export const NavBarComponent: React.FC = () => {
           </LogoContainer>
           <LogotextSubnavbarContainer>
             <TexFusionLogoTextContainer>
-              <img src="/src/assets/images/TexFusionLogo.jpg" alt="TexFusionLogotype" />
+              <TexFusionLogoImage src="/src/assets/images/TexFusionLogo.jpg" alt="TexFusionLogotype" />
             </TexFusionLogoTextContainer>
             {location.pathname === "/Menu" ? (
               <NavBarListSub>
@@ -190,7 +190,11 @@ const TexFusionLogoTextContainer = styled.div`
   justify-content: center;
   z-index: 9999;
   size: 50px;
-  padding: 5px;
+`;
+
+const TexFusionLogoImage = styled.img`
+  max-width: 95%;
+  max-height: 95%;
 `;
 
 /* const NavBarLogoTextLeft = styled.h1`
