@@ -53,10 +53,9 @@ export const NavBarComponent: React.FC = () => {
             </LogoNavLink>
           </LogoContainer>
           <LogotextSubnavbarContainer>
-            <LogoTextContainer>
-              <NavBarLogoTextLeft>Tex</NavBarLogoTextLeft>
-              <NavBarLogoTextRight>Fusion</NavBarLogoTextRight>
-            </LogoTextContainer>
+            <TexFusionLogoTextContainer>
+              <img src="/src/assets/images/TexFusionLogo.jpg" alt="TexFusionLogotype" />
+            </TexFusionLogoTextContainer>
             {location.pathname === "/Menu" ? (
               <NavBarListSub>
                 <LinkStyle
@@ -119,7 +118,7 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: ${location.pathname === "/Info/OmOss" ? "#535bf2" : "#fbe3d6"};
+  background-color: ${location.pathname === "/Info/OmOss" ? "#535bf2" : "#F9DDD2"};
   z-index: 9999;
   width: 100%;
   height: 175px;
@@ -157,10 +156,11 @@ const MainDiv = styled.div`
 
 const LogoContainer = styled.div`
   display: flex;
-  align-self:center;
+  align-self: center;
   width: 22%;
   height: 120px;
   margin-left: 0px;
+  
 `;
 
 const LogoNavLink: typeof NavLink = styled(NavLink)`
@@ -184,14 +184,16 @@ const LogotextSubnavbarContainer = styled.div`
   justify-self:center;
 `;
 
-const LogoTextContainer = styled.div`
+const TexFusionLogoTextContainer = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
   z-index: 9999;
+  size: 50px;
+  padding: 5px;
 `;
 
-const NavBarLogoTextLeft = styled.h1`
+/* const NavBarLogoTextLeft = styled.h1`
   display: flex;
   height: 75%;
   justify-content: center;
@@ -213,7 +215,7 @@ const NavBarLogoTextRight = styled.h1`
   color: #156082;
   margin: 0;
   padding: 0;
-`;
+`; */
 
 const NavBarListSub = styled.div`
   display: flex;

@@ -16,13 +16,13 @@ const BackgroundImage = styled.img`
 
 const CenterLogoContainer = styled.div`
     position: fixed;
-    top: 305px;
+    top: 350px;
     left: 50%;
     transform: translate(-50%, -50%);
 `;
 
-const Logotype = styled.img`
-    width:70%;
+const WomanLogotype = styled.img`
+    width:80%;
     max-width: 100%;
     min-width:400px;
     object-fit: contain;
@@ -40,7 +40,7 @@ export function HomeComponent() {
                 <BackgroundImage src={ImageHomepageRight} alt="TableBackground" className="image" />
             </LeftRightBackgroundImage>
             <CenterLogoContainer>
-                <Logotype src={ImageHomePageCenter} alt="LogoWithGirl" className="CenterImage" />
+                <WomanLogotype src={ImageHomePageCenter} alt="LogoWithGirl" className="CenterImage" />
             </CenterLogoContainer>
         </>
     );
