@@ -88,14 +88,18 @@ const FormBtn = styled.div`
 const CheckoutFormCartContainer = styled.div`
   display:flex;
   width: 100%;
+  margin-bottom: 50px;
   flex-direction:column;
   justify-content:center;
   align-items:center;
 `;
 
 const StyledTitle = styled.h2`
-  font-family: "open sans";
-  color:white;
+  margin-top: 50px;
+  font-family: "Open Sans";
+  font-size: 25px;
+  font-weight: 300;
+  color: white;
 `;
 
 const StyledP = styled.p`
@@ -172,7 +176,7 @@ export function CheckoutForm() {
 
   return (
     <CheckoutFormCartContainer>
-        <StyledTitle>Kassa</StyledTitle>
+        <StyledTitle>KASSA</StyledTitle>
       <InputForm>
         <form onSubmit={onSubmit}>
         <StyledP>Betalningsuppgifter</StyledP>

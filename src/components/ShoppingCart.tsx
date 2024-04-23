@@ -151,12 +151,14 @@ const ShoppingCartContainer = styled.div`
   max-width:1000px;
   width:60%;
   min-width:400px;
-  margin-top: 140px;
+  margin-top: 210px;
 `;
 
 const StyledTitle = styled.h2`
-  font-family: "open sans";
-  color:white;
+  font-family: "open Sans";
+  font-size: 25px;
+  font-weight: 300;
+  color: white;
 `;
 //#endregion
 
@@ -202,7 +204,7 @@ export const ShoppingCart: React.FC = () => {
 
   return (
     <ShoppingCartContainer>
-      <StyledTitle>Varukorg</StyledTitle>
+      <StyledTitle>VARUKORG</StyledTitle>
       <CartList>
         {cart.map((cartItem, index) => (
           <CartRow key={index}>
