@@ -1,6 +1,7 @@
-import { useContext } from "./index";
+import { useContext, faTrashCan } from "./index";
 import { CartContext } from "./context";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type CartItem = {
   _id: string;
@@ -14,11 +15,11 @@ type CartItem = {
 
 const CartList = styled.div`
   display: flex;
+  width: 500px;
   flex-direction: column;
-  border-radius: 3px;
+  border-radius: 0px;
   background-color: #e0e0e0;
   color: #333333;
-  padding: 1px;
 `;
 
 const CartRow = styled.div`
@@ -56,7 +57,7 @@ const Title = styled.h4`
   padding-left: 15px;
   text-align: left;
   font-family: "Opens Sans";
-  Font-weight: 100;
+  Font-weight: 300;
   color: #333333;
 `;
 
@@ -71,7 +72,7 @@ const ItemImage = styled.img`
   width: 102px;
   height: 102px;
   margin-left: 10px;
-  border: 1px;
+  border: 1px solid #333333;
   border-radius: 3px;
 `;
 
@@ -82,7 +83,8 @@ const CounterContainer = styled.div`
   margin-top: 5px;
   border: 0px solid #808080;
   border-radius: 5px;
-  background-color: #d3d3d3;
+  background-color: #eca884;
+  font-weight: 300;
 `;
 
 const CounterButton = styled.button`
@@ -146,11 +148,7 @@ const TotalQuantity = styled.div`
   margin-right: 14px;
 `;
 
-
 const ShoppingCartContainer = styled.div`
-  max-width:1000px;
-  width:60%;
-  min-width:400px;
   margin-top: 210px;
 `;
 
@@ -159,6 +157,12 @@ const StyledTitle = styled.h2`
   font-size: 25px;
   font-weight: 300;
   color: white;
+`;
+
+const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
+ color: 145775;
+ font-size: 15px;
+ margin-top: 5px;
 `;
 //#endregion
 
@@ -169,6 +173,8 @@ export const ShoppingCart: React.FC = () => {
   let totProdPrice = 0;
   let totCartPrice = 0;
   let totCartQuant = 0;
+
+ 
 
   try {
     totProdPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -219,20 +225,19 @@ export const ShoppingCart: React.FC = () => {
                 <Price>{cartItem.price * cartItem.quantity} kr</Price>
               </ItemCol>
               <ItemColBtn>
-                <CounterContainer>
-                  <CounterButton onClick={() => handleDecrement(cartItem._id)}>
-                    -
-                  </CounterButton>
-                  <ResultField type="text" value={cartItem.quantity} readOnly />
-                  <CounterButton onClick={() => handleIncrement(cartItem)}>
-                    +
-                  </CounterButton>
-                </CounterContainer>
+              {cartItem.quantity > 1 ? (
+            <CounterContainer>
+              <CounterButton onClick={() => handleDecrement(cartItem._id)}>-</CounterButton>
+                <ResultField type="text" value={cartItem.quantity} readOnly />
+              <CounterButton onClick={() => handleIncrement(cartItem)}>+</CounterButton>
+            </CounterContainer>) : (
+            <CounterContainer>
+              <CounterButton onClick={() => handleDecrement(cartItem._id)}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
+                <ResultField type="text" value={cartItem.quantity} readOnly />
+              <CounterButton onClick={() => handleIncrement(cartItem)}>+</CounterButton>
+            </CounterContainer>)}
                 <DeleteButton
-                  onClick={() => deleteProdFromCart(cartItem._id, true)}
-                >
-                  Ta Bort
-                </DeleteButton>
+                  onClick={() => deleteProdFromCart(cartItem._id, true)}>Ta Bort</DeleteButton>
               </ItemColBtn>
             </CartItemElement>
           </CartRow>

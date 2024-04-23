@@ -17,16 +17,13 @@ const defaultFormData: FormData = {
 //#region Styles
 const InputForm = styled.div`
   display: flex;
-  width: 300px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 0px;
   background-color: #e0e0e0;
   color: #333333;
   justify-content:center;
-  max-width:450px;
-  width: 100%;
-  min-width:400px;
+  width: 500px;
+  padding-top: 15px;
 `;
 
 const FormInputElements = styled.div`
@@ -50,14 +47,21 @@ const PaymentInput = styled.div`
   flex-direction: column;
   align-items: start;
   border: none;
-  margin-left: 40px;
+  margin: 10px 0 0 85px;
 `;
 
 const RadioElement = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   border: none;
+`;
+
+const ButtonStyle = styled.button`
+  background-color:#fbe3d6;
+  color: #2b4175;
+  border:solid;
+  border-color:black;
 `;
 
 const RadioBtn = styled.input`
@@ -88,7 +92,7 @@ const FormBtn = styled.div`
 const CheckoutFormCartContainer = styled.div`
   display:flex;
   width: 100%;
-  margin-bottom: 50px;
+  margin: 25px 0 90px 0;
   flex-direction:column;
   justify-content:center;
   align-items:center;
@@ -104,7 +108,7 @@ const StyledTitle = styled.h2`
 
 const StyledP = styled.p`
   width:100%;
-  text-align:center;
+  text-align: center;
   font-family:"Open sans";
   margin:0;
 `;
@@ -260,8 +264,8 @@ export function CheckoutForm() {
             </InputElement>
           </FormInputElements>
           <br/>
+          <StyledP>Betalmetod</StyledP>
           <PaymentRadioBtnContainer>
-            <StyledP>Betalmetod</StyledP>
             <PaymentInput>
               <RadioElement>
                 <RadioBtn
@@ -303,7 +307,7 @@ export function CheckoutForm() {
           </PaymentRadioBtnContainer>
           <br/>
           <FormBtn>
-            <button type="submit">Beställ</button>
+            <ButtonStyle type="submit">Beställ</ButtonStyle>
           </FormBtn>
         </form>
       </InputForm>

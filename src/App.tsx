@@ -84,7 +84,10 @@ const FooterContainer = styled.div`
 `;
 
 const ShoppingCartContainer = styled.div`
-  background-color:blue;
+  background-image:url("/src/assets/images/ShoppingCartBg.jpg");
+  background-size:cover;
+  background-image: no-repeat;
+  background-position: center;
   width:100vw;
   display:flex;
   align-items:center;
