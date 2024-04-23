@@ -153,7 +153,7 @@ const ShoppingCartContainer = styled.div`
 `;
 
 const StyledTitle = styled.h2`
-  font-family: "open Sans";
+  font-family: "pen Sans";
   font-size: 25px;
   font-weight: 300;
   color: white;
@@ -163,6 +163,10 @@ const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
  color: 145775;
  font-size: 15px;
  margin-top: 5px;
+`;
+
+const EmtptyCartText = styled.div`
+  margin-left: 162px;
 `;
 //#endregion
 
@@ -243,9 +247,15 @@ export const ShoppingCart: React.FC = () => {
           </CartRow>
         ))}
         <CartTotals>
-          <p>Summa:</p>
-          <TotalPrice>{totCartPrice} kr</TotalPrice>
-          <TotalQuantity>{totCartQuant} st</TotalQuantity>
+          {totCartQuant < 1 ? (
+            <EmtptyCartText>Din varukorg är tom.</EmtptyCartText>
+            ) : (
+            <>
+              <p>Summa:</p>
+              <TotalPrice>{totCartPrice} kr</TotalPrice>
+              <TotalQuantity>{totCartQuant} st</TotalQuantity>
+            </>
+          )}
         </CartTotals>
       </CartList>
     </ShoppingCartContainer>
