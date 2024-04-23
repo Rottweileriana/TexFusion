@@ -65,7 +65,7 @@ export function ConfirmationPage() {
                 <AdressParts>{formvalue.address}</AdressParts>
                 <AdressParts>{formvalue.zipCode} {formvalue.city}</AdressParts>
               </Address>
-              <InfoToCustomer> Din mat är hos dig om ca 10-15 minuter.</InfoToCustomer>
+              <InfoToCustomer> Din mat är hos dig om ca 30-35 minuter.</InfoToCustomer>
               <InfoToCustomer>Vi ringer dig på {formvalue.phone} när vi är vid din dörr.</InfoToCustomer>
               {formvalue.paymentMethod === 'Klarna' &&
               <>
@@ -94,7 +94,7 @@ export function ConfirmationPage() {
                           <Title>
                             {cartValue.title} x {cartValue.quantity}{" "}
                           </Title>
-                          {cartValue.price} Sek <br />
+                          {cartValue.price*cartValue.quantity} Sek <br />
                         </div>
                       </StyledCartItems>
                     </StyledMainCartItems>
@@ -107,7 +107,6 @@ export function ConfirmationPage() {
       </>
     )
   };
-
 
 //#region CSS...
 
@@ -190,6 +189,10 @@ const ConfirmedProducts = styled.p`
   align-items: center;
   margin-top: 45px;
   margin-bottom: 30px;
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 300;
+  color: #333333;
 `;
 
 const StyledMainCartItems = styled.div`
@@ -214,15 +217,19 @@ const StyledCartItems = styled.div`
 `;
 
 const Image = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 102px;
+  height: 102px;
   border-radius: 5px;
   border: 1px solid #222222;
   margin-right: 20px;
 `;
 
 const Title = styled.h4`
-  margin: 0;
+  margin: 5px 0 5px 0;
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 400;
+  color: #333333;
 `;
 
 const BackHomeButton = styled.button`
