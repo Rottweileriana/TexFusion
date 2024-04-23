@@ -153,7 +153,7 @@ const ShoppingCartContainer = styled.div`
 `;
 
 const StyledTitle = styled.h2`
-  font-family: "pen Sans";
+  font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;
   color: white;
