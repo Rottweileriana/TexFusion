@@ -64,9 +64,8 @@ const SidesMenuContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding-top: 300px;
+  padding-top: 25px;
   margin: 0;
-  padding: 0;
 `;
 
 const CocktailMenuContainer = styled.div`
@@ -74,9 +73,8 @@ const CocktailMenuContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding-top: 300px;
+  padding-top: 25px;
   margin: 0;
-  padding: 0;
 `;
 
 const FooterContainer = styled.div`

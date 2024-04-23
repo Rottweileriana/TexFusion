@@ -5,7 +5,7 @@ import { DishProps } from "../types/index.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-interface StyledCourseProps{
+interface StyledCourseProps {
   quantity: number;
 };
 
@@ -51,7 +51,7 @@ const TitleAndAddContainer = styled.div`
 const Title = styled.h3`
   font-family: "Open Sans";
   font-weight: 300;
-  font-size: 35px;
+  font-size: 30px;
   text-decoration: none;
   margin: 0;
   padding: 0;
@@ -121,7 +121,7 @@ const Price = styled.p`
   color: #333333;
 `;
 
-const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
+const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
  color:145775;
  font-size: 15px;
  margin-top: 5px;
@@ -141,8 +141,8 @@ const SidesComponent: React.FC<DishProps> = ({
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => {};
-  let handleDecrement: () => void = () => {};
+  let handleIncrement: () => void = () => { };
+  let handleDecrement: () => void = () => { };
 
   try {
     useEffect(() => {
@@ -203,25 +203,25 @@ const SidesComponent: React.FC<DishProps> = ({
       <Image src={imageUrl} alt={title} />
       <TotalDescription>
         <TitleAndAddContainer>
-        <Title>{title}</Title>
-        {quantity === 0 ? (
+          <Title>{title}</Title>
+          {quantity === 0 ? (
             <CounterContainer>
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : quantity > 1 ? (
             <CounterContainer>
               <CounterButton onClick={handleDecrement}>-</CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : (
             <CounterContainer>
               <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
-          </CounterContainer>
+            </CounterContainer>
           )}
-          </TitleAndAddContainer>
+        </TitleAndAddContainer>
         <Text>{formattedIngredientText}</Text>
         <PriceAndAddContainer>
           <Price>{price} kr</Price>

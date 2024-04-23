@@ -24,7 +24,7 @@ interface StyledCourseProps {
 };
 //#region Styles
 
-const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
+const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
  color: 145775;
  font-size: 15px;
  margin-top: 5px;
@@ -70,7 +70,7 @@ const TitleAndAddContainer = styled.div`
 const Title = styled.h4`
   font-family: "Open Sans";
   font-weight: 300;
-  font-size: 25px;
+  font-size: 30px;
   text-decoration: none;
   margin: 0;
   color: #333333;
@@ -148,8 +148,8 @@ const Cocktail: React.FC<Cocktail> = ({
   const MAX_LENGTH = 19;
   let formattedCocktailName = strDrink;
 
-  let handleIncrement: () => void = () => {};
-  let handleDecrement: () => void = () => {};
+  let handleIncrement: () => void = () => { };
+  let handleDecrement: () => void = () => { };
 
   try {
     useEffect(() => {
@@ -192,26 +192,26 @@ const Cocktail: React.FC<Cocktail> = ({
     <StyledCocktail>
       <Image src={strDrinkThumb} alt={strDrink} />
       <TotalDescription>
-      <TitleAndAddContainer>
-        <Title>{formattedCocktailName}</Title>
-        {quantity === 0 ? (
+        <TitleAndAddContainer>
+          <Title>{formattedCocktailName}</Title>
+          {quantity === 0 ? (
             <CounterContainer>
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : quantity > 1 ? (
             <CounterContainer>
               <CounterButton onClick={handleDecrement}>-</CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : (
             <CounterContainer>
               <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           )}
-          </TitleAndAddContainer>
+        </TitleAndAddContainer>
         <PriceAndAddContainer>
           <Price>{cocktailPrice} kr</Price>
         </PriceAndAddContainer>

@@ -28,8 +28,8 @@ const StyledCocktail = styled.div`
 `;
 
 const Image = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 75px;
+  height: 75px;
   border-radius: 5px;
   border: 1px solid #222222;
   margin-right: 10px;
@@ -37,7 +37,7 @@ const Image = styled.img`
 
 const Title = styled.h4`
   font-family: "Open Sans";
-  font-weight: 300;
+  font-weight: 400;
   text-decoration: none;
   color: #333333;
   margin: 0;
@@ -50,12 +50,13 @@ const CocktailAndAddContainer = styled.div`
   padding: 0 2px 0 2px;
 `;
 
-const Price = styled.p`
+const Price = styled.h4`
+  font-family: "Open Sans";
   margin: 1px 10px 0 0;
   margin-right: 10px;
-  font-size: 0.9em;
-  font-weight: 300;
-  color: #333333;
+  //font-size: 0.9em;
+  font-weight: 400;
+  color: #333333
 `;
 
 const CounterContainer = styled.div`

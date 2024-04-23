@@ -20,9 +20,9 @@ const MenuTitle = styled.h2`
   margin-bottom: 20px;
   font-family: "Open Sans";
   font-weight: 300;
-  font-size: 25px;
+  font-size: 30px;
   text-decoration: none;
-  color: lightgrey;
+  color: #818181;
 `;
 //#endregion
 
@@ -54,26 +54,26 @@ export function SidesMenu() {
 
   return (
     <>
-    <SidesMenuContainer>
-      <MenuTitle>TILLBEHÖR</MenuTitle>
-      <SidesContainer>
-      {sides &&
-        sides.map(
-          (side) =>
-            side.title &&
-            side.title.trim() !== "" && (
-              <SidesComponent
-                key={side._id}
-                _id={side._id}
-                imageUrl={side.imageUrl}
-                title={side.title}
-                ingredients={side.ingredients}
-                price={side.timeInMins}
-              />
-            )
-        )}
+      <SidesMenuContainer>
+        <MenuTitle>TILLBEHÖR</MenuTitle>
+        <SidesContainer>
+          {sides &&
+            sides.map(
+              (side) =>
+                side.title &&
+                side.title.trim() !== "" && (
+                  <SidesComponent
+                    key={side._id}
+                    _id={side._id}
+                    imageUrl={side.imageUrl}
+                    title={side.title}
+                    ingredients={side.ingredients}
+                    price={side.timeInMins}
+                  />
+                )
+            )}
         </SidesContainer>
-        </SidesMenuContainer>
+      </SidesMenuContainer>
     </>
   );
 }

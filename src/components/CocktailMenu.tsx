@@ -32,10 +32,10 @@ const MenuTitle = styled.h2`
   margin-bottom: 20px;
   font-family: "Open Sans";
   font-weight: 300;
-  font-size: 25px;
+  font-size: 30px;
   text-decoration: none;
-  color: lightgrey;
-`;
+  color: #818181;
+  `
 
 export function CocktailMenu() {
   const [cocktails, setCocktails] = useState<Cocktail[]>([]);
