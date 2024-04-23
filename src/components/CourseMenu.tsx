@@ -16,7 +16,12 @@ const CourseContainer = styled.div`
 `;
 
 const MenuTitle = styled.h2`
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-size: 25px;
+  text-decoration: none;
+  color: lightgrey;
 `;
 
 export function CourseMenu() {
@@ -55,7 +60,7 @@ export function CourseMenu() {
   return (
     <>
       <CourseMenuContainer>
-        <MenuTitle>Huvudrätter</MenuTitle>
+        <MenuTitle>HUVUDRÄTTER</MenuTitle>
         <CourseContainer>
           {mains &&
             mains.map(

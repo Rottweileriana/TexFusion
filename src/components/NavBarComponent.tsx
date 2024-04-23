@@ -1,11 +1,18 @@
 import styled from "styled-components";
-import { useContext, FontAwesomeIcon, faShoppingCart } from "./index";
+import {
+  useContext,
+  FontAwesomeIcon,
+  faShoppingCart,
+  useLocation,
+} from "./index";
 import { CartContext } from "./context";
-import { Link, animateScroll as scroll } from "react-scroll";
-import { NavLink } from "react-router-dom"
+import { Link } from "react-scroll";
+import { NavLink } from "react-router-dom";
 
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
+  const location = useLocation();
+  const WomanLogoTopLeft = `/src/assets/images/WomanLogo.png`;
 
   let totCartQuant = 0;
 
@@ -17,16 +24,40 @@ export const NavBarComponent: React.FC = () => {
 
   return (
     <>
-      <NavbarBackground>
+      {location.pathname === "/" ? (
+        <NavbarBackgroundHome>
+          <MainDiv>
+            <LogoContainer>
+              {/* <LogoNavLink to="/">
+                <img src={WomanLogoTopLeft} alt="WomanLogoTopLeft" />
+              </LogoNavLink> */}
+            </LogoContainer>
+            <NavBarListMain>
+              <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
+              <NavLinkStyleHome to="/Info/OmOss">OM OSS</NavLinkStyleHome>
+              <NavLinkStyleHome to="/Info/Kontakt">KONTAKT</NavLinkStyleHome>
+              <NavLinkStyleHome to="/Shoppingcart">
+                <Badge>
+                  {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
+                </Badge>
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </NavLinkStyleHome>
+            </NavBarListMain>
+          </MainDiv>
+        </NavbarBackgroundHome>
+      ) : (<NavbarBackground>
         <MainDiv>
           <LogoContainer>
-              <LogoNavLink to="/">
-              <img src="https://fakeimg.pl/150x150"/>
-              </LogoNavLink>
+            <LogoNavLink to="/">
+              <img src={WomanLogoTopLeft} alt="WomanLogoTopLeft" />
+            </LogoNavLink>
           </LogoContainer>
           <LogotextSubnavbarContainer>
-            <NavBarLogo>TexFusion</NavBarLogo>
-            <NavBarListSub>
+            <TexFusionLogoTextContainer>
+              <TexFusionLogoImage src="/src/assets/images/TexFusionLogo.jpg" alt="TexFusionLogotype" />
+            </TexFusionLogoTextContainer>
+            {location.pathname === "/Menu" ? (
+              <NavBarListSub>
                 <LinkStyle
                   activeClass="active"
                   to="CourseMenu"
@@ -57,40 +88,24 @@ export const NavBarComponent: React.FC = () => {
                 >
                   COCKTAILS
                 </LinkStyle>
-            </NavBarListSub>
+              </NavBarListSub>
+            ) : (
+              <NavBarListSub></NavBarListSub>
+            )}
           </LogotextSubnavbarContainer>
           <NavBarListMain>
-              <NavLinkStyle
-                to="/menu"
-              >
-                MENY
-              </NavLinkStyle>
-              <NavLinkStyle
-                to="/"
-              >
-                HOME
-              </NavLinkStyle>
-              {/* <NavLinkStyle
-                to="/Info/OmOss" 
-              >
-                OM OSS
-              </NavLinkStyle> */}
-              <NavLinkStyle
-                to="/Info/Kontakt"
-              >
-                KONTAKT
-              </NavLinkStyle>
-              <NavLinkStyle
-                to="/Shoppingcart"
-              >
-                <Badge>
-                  {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
-                </Badge>
-                <FontAwesomeIcon icon={faShoppingCart} />
-              </NavLinkStyle>
+            <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
+            <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
+            <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
+            <NavLinkStyle to="/Shoppingcart">
+              <Badge>
+                {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
+              </Badge>
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </NavLinkStyle>
           </NavBarListMain>
         </MainDiv>
-      </NavbarBackground>
+      </NavbarBackground>)}
     </>
   );
 };
@@ -103,12 +118,28 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: #145775;
+  background-color: ${location.pathname === "/Info/OmOss" ? "#535bf2" : "#F9DDD2"};
   z-index: 9999;
   width: 100%;
   height: 175px;
   position: fixed;
   top: 0;
+  z-index: 9999;
+`;
+
+const NavbarBackgroundHome = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 9999;
+  width: 100%;
+  height: 175px;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
 `;
 
 const MainDiv = styled.div`
@@ -116,23 +147,27 @@ const MainDiv = styled.div`
   margin: 0;
   padding: 0;
   align-items: center;
-  justify-content: space-between;
+  justify-content:space-between;
   width: 95%;
-  max-width: 1200px;
+  max-width: 2048px;
   height: 95%;
   z-index: 9999;
 `;
 
 const LogoContainer = styled.div`
-  display:flex;
-  width: 33%;
-  height:150px;
+  display: flex;
+  align-self: center;
+  width: 22%;
+  height: 120px;
+  margin-left: 0px;
+  
 `;
 
-const LogoNavLink: (typeof NavLink) = styled(NavLink)`
+const LogoNavLink: typeof NavLink = styled(NavLink)`
   display: flex;
-  width:100%;
-  height:100%;
+  width: 115px;
+  height: 100%;
+  border-radius:90px;
   text-decoration: none;
   &:hover {
     cursor: pointer;
@@ -146,39 +181,66 @@ const LogotextSubnavbarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  justify-self:center;
 `;
 
-const NavBarLogo = styled.h1`
+const TexFusionLogoTextContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 9999;
+  size: 50px;
+`;
+
+const TexFusionLogoImage = styled.img`
+  max-width: 95%;
+  max-height: 95%;
+`;
+
+/* const NavBarLogoTextLeft = styled.h1`
   display: flex;
   height: 75%;
   justify-content: center;
   align-items: flex-end;
-  font-family: "Open Sans";
+  font-family: "Parisienne";
   font-size: 70px;
-  color: #eca884;
+  color: #e7dc43;
   margin: 0;
   padding: 0;
 `;
+
+const NavBarLogoTextRight = styled.h1`
+  display: flex;
+  height: 75%;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: "Parisienne";
+  font-size: 70px;
+  color: #156082;
+  margin: 0;
+  padding: 0;
+`; */
 
 const NavBarListSub = styled.div`
   display: flex;
   height: 25%;
   width: 350px;
+  align-items: flex-end;
   justify-content: space-between;
   list-style-type: none;
   margin: 0;
   padding: 0;
   cursor: pointer;
-  z-index: 9999;
 `;
 
 const NavBarListMain = styled.div`
   list-style-type: none;
-  display:flex;
+  display: flex;
   justify-content: flex-end;
+  justify-self:flex-end;
   margin: 0 0 95px 0;
   padding-top: 20px;
-  width: 33%;
+  width: 22%;
   overflow: hidden;
   cursor: pointer;
   z-index: 9999;
@@ -190,10 +252,9 @@ const NavBarListMain = styled.div`
 //   flex-direction: row;
 // `;
 
-// box-shadow: 0 0 10px rgba(0,0,0,0,5);
 const LinkStyle = styled(Link)`
   display: block;
-  color: white;
+  color: grey;
   font-family: "Open Sans";
   font-size: 14px;
   margin: 0px;
@@ -206,9 +267,24 @@ const LinkStyle = styled(Link)`
   }
 `;
 
-const NavLinkStyle: (typeof NavLink) = styled(NavLink)`
+const NavLinkStyle: typeof NavLink = styled(NavLink)`
   display: block;
-  color: white;
+  color: #2b4175;
+  font-family: "Open Sans";
+  font-size: 14px;
+  margin: 0 20px 0 15px;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  border-radius: 5px;
+  &:hover {
+    color: #eca884;
+  }
+`;
+
+const NavLinkStyleHome: typeof NavLink = styled(NavLink)`
+  display: block;
+  color: #ffc000;
   font-family: "Open Sans";
   font-size: 14px;
   margin: 0 20px 0 15px;

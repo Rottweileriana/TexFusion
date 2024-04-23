@@ -12,63 +12,57 @@ interface StyledCourseProps{
 //#region Styles
 const StyledSide = styled.div`
   display: flex;
-  width: 320px;
-  height: 105px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  flex-direction: column;
+  width: 300px;
+  height: 400px;
+  border: 1px solid grey;
+  border-radius: 0px;
   padding: 5px;
-  background-color: #156082;
-  color: #white;
+  background-color: #f5f5f5;
+  color: #333333;
   margin: 0 10px 25px 10px;
   text-align: left;
   transition: background-color 1s, box-shadow 0.7s;
   &:hover {
     cursor: default;
-    background-color:#145775;
+    background-color:#f5f5f5;
     box-shadow: 0px 0px 5px 2px;
   }
 `;
 
 const Image = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
+  width: 299px;
+  height: 299px;
+  border-radius: 0px;
   border: 1px solid #222222;
-  margin-right: 20px;
+`;
+
+const TotalDescription = styled.div`
+  width: 299px;
+  padding: 5px 0 5px 5px;
+  font-weight: 300;
+`;
+
+const TitleAndAddContainer = styled.div`
+  display: flex;
+  width: 290px;
 `;
 
 const Title = styled.h3`
-  font-family: "Parisienne";
+  font-family: "Open Sans";
+  font-weight: 300;
   font-size: 35px;
+  text-decoration: none;
   margin: 0;
   padding: 0;
-`;
-
-const Text = styled.p`
-  margin: 0px;
-  padding-right: 0px;
-  font-size:15px;
-  color: white;
-`;
-
-const Price = styled.p`
-  margin: 0;
-  margin-bottom: 5px;
-  color: white;
-`;
-
-const PriceAndAddContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 175px;
+  color: #333333;
 `;
 
 const CounterContainer = styled.div`
   display: flex;
-  align-items: right;
-  margin-top: 5px;
-  margin-left: auto;
+  align-items: center;
+  margin: 7px 0 0 auto;
+  height: 30px;
   border: 0px solid #808080;
   border-radius: 30px;
   background-color: #eca884;
@@ -82,8 +76,9 @@ const CounterButton = styled.button`
   height: 30px;
   background-color: transparent;
   border: none;
-  color: #145775;
+  color: #333333;
   font-size: 20px;
+  font-weight: 300;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -99,11 +94,31 @@ const ResultField = styled.input`
   background-color: transparent;
   border: none;
   color: #333333;
+  font-family: "Open Sans";
   font-size: 15px;
+  font-weight: 300;
   outline: none;
   &:hover {
     cursor: default;
   }
+`;
+
+const Text = styled.p`
+  margin: 5px 0 0 0;
+  font-size:15px;
+  color: 333333;
+`;
+
+const PriceAndAddContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 175px;
+`;
+
+const Price = styled.p`
+  margin: 0 0 5px 0;
+  color: #333333;
 `;
 
 const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
@@ -186,12 +201,10 @@ const SidesComponent: React.FC<DishProps> = ({
   return (
     <StyledSide>
       <Image src={imageUrl} alt={title} />
-      <div>
+      <TotalDescription>
+        <TitleAndAddContainer>
         <Title>{title}</Title>
-        <Text>{formattedIngredientText}</Text>
-        <PriceAndAddContainer>
-          <Price>{price} kr</Price>
-          {quantity === 0 ? (
+        {quantity === 0 ? (
             <CounterContainer>
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
@@ -208,8 +221,12 @@ const SidesComponent: React.FC<DishProps> = ({
               <CounterButton onClick={handleIncrement}>+</CounterButton>
           </CounterContainer>
           )}
+          </TitleAndAddContainer>
+        <Text>{formattedIngredientText}</Text>
+        <PriceAndAddContainer>
+          <Price>{price} kr</Price>
         </PriceAndAddContainer>
-      </div>
+      </TotalDescription>
     </StyledSide>
   );
 };

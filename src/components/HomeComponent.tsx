@@ -1,15 +1,48 @@
-export function HomeComponent () {
+import styled from "styled-components";
+
+const LeftRightBackgroundImage = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+`;
+
+const BackgroundImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const CenterLogoContainer = styled.div`
+    position: fixed;
+    top: 350px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`;
+
+const WomanLogotype = styled.img`
+    width:80%;
+    max-width: 100%;
+    min-width:400px;
+    object-fit: contain;
+`;
+
+export function HomeComponent() {
+    const ImageHomePageLeft = `/src/assets/images/CactusBackground.jpg`;
+    const ImageHomepageRight = `/src/assets/images/TableBackground.jpg`;
+    const ImageHomePageCenter = `/src/assets/images/LogoWithGirl.jpg`;
+
     return (
         <>
-            <h4>Home</h4>
-            <p>TexFusion dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat. Duis aute irure dolor in reprehenderit
-                in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est 2024.</p>
+            <LeftRightBackgroundImage>
+                <BackgroundImage src={ImageHomePageLeft} alt="CactusBackground" className="image" />
+                <BackgroundImage src={ImageHomepageRight} alt="TableBackground" className="image" />
+            </LeftRightBackgroundImage>
+            <CenterLogoContainer>
+                <WomanLogotype src={ImageHomePageCenter} alt="LogoWithGirl" className="CenterImage" />
+            </CenterLogoContainer>
         </>
-    )
+    );
 }
+

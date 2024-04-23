@@ -19,93 +19,63 @@ interface StyledCourseProps {
 
 //#region Styles
 
-const Title = styled.h3`
-  font-family: "Parisienne";
-  font-size: 35px;
-  margin: 0;
-`;
-
-const Text = styled.p`
-  margin: 0px;
-  padding-right: 0px;
-  font-size:15px;
-  color: white;
-`;
-
-const Recommendation = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 97%;
-  margin: 5px;
-`;
-
-const HeadRecCocktail = styled.h3`
-  margin-top: 15px;
-  margin-bottom: 3px;
-  margin-left: 7px;
-`;
-
-const Wrapper = styled.div<StyledCourseProps>`
-height: 100%;
-opacity: ${({ quantity }: { quantity: number }) => 
-  quantity > 0 ? 1 : 0};
-transition-delay:0.8s;
-transition-duration: 1s;
-transition-property: opacity;
-`;
-
 const StyledCourse = styled.div<StyledCourseProps>`
   display: flex;
-  width: 320px;
+  flex-direction: column;
+  width: 300px;
   height: ${({ quantity }: { quantity: number }) =>
-    quantity > 0 ? "185px" : "105px"};
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    quantity > 0 ? "480px" : "400px"};
+  border: 1px solid grey;
+  border-radius: 0px;
   padding: 5px;
-  background-color: #156082;
-  color: white;
+  background-color: #f5f5f5;
+  color: #333333;
   margin: 0 10px 25px 10px;
   text-align: left;
   position: relative;
   transition: background-color 1s, box-shadow 0.8s, height 0.5s ease-in-out;
   &:hover{
-    background-color:#145775;
+    background-color:#f5f5f5;
     box-shadow: 0px 0px 5px 2px;
-
+  }
 `;
-
 
 const Image = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
+  width: 299px;
+  height: 299px;
+  border-radius: 0px;
   border: 1px solid #222222;
-  margin-right: 20px;
 `;
 
-const Price = styled.p`
-  margin: 0;
-  margin-bottom: 5px;
+const TotalDescription = styled.div`
+  width: 299px;
+  padding: 5px 0 5px 5px;
+  font-weight: 300;
 `;
 
-const PriceAndAddContainer = styled.div`
+const TitleAndAddContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 175px;
+  width: 290px;
+`;
+
+const Title = styled.h3`
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-size: 35px;
+  text-decoration: none;
+  margin: 0;
+  color: #333333;
 `;
 
 const CounterContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-left: auto;
-  margin-top: 5px;
+  margin: 6px 0 0 auto;
+  height: 30px;
   border: 0px solid #808080;
   border-radius: 30px;
   background-color: #eca884;
+  font-weight: 300;
 `;
 
 const CounterButton = styled.button`
@@ -116,8 +86,9 @@ const CounterButton = styled.button`
   height: 30px;
   background-color: transparent;
   border: none;
-  color: #145775;
+  color: #333333;
   font-size: 20px;
+  font-weight: 300;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -133,22 +104,60 @@ const ResultField = styled.input`
   background-color: transparent;
   border: none;
   color: #333333;
+  font-family: "Open Sans";
   font-size: 15px;
+  font-weight: 300;
   outline: none;
   &:hover {
     cursor: default;
   }
 `;
 
-const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
- color:145775;
+const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
+ color: 145775;
  font-size: 15px;
  margin-top: 5px;
 `;
 
+const Text = styled.p`
+  margin: 5px 0 0 0;
+  font-size:15px;
+`;
 
+const PriceAndAddContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 293px;
+`;
 
+const Price = styled.p`
+  margin: 0 0 5px 0;
+`;
 
+const Recommendation = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 97%;
+  margin: 5px;
+`;
+
+const HeadRecCocktail = styled.h3`
+  margin: 15px 0 5px 7px;
+  color: #333333;
+`;
+
+const Wrapper = styled.div<StyledCourseProps>`
+height: 100%;
+opacity: ${({ quantity }: { quantity: number }) =>
+    quantity > 0 ? 1 : 0};
+transition-delay:0.8s;
+transition-duration: 1s;
+transition-property: opacity;
+`;
 
 //#endregion
 
@@ -164,8 +173,8 @@ const CourseComponent: React.FC<DishProps> = ({
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => {};
-  let handleDecrement: () => void = () => {};
+  let handleIncrement: () => void = () => { };
+  let handleDecrement: () => void = () => { };
 
   try {
     //course
@@ -225,11 +234,9 @@ const CourseComponent: React.FC<DishProps> = ({
   return (
     <StyledCourse quantity={quantity}>
       <Image src={imageUrl} alt={title} />
-      <div>
-        <Title>{title}</Title>
-        <Text>{formattedIngredientText}</Text>
-        <PriceAndAddContainer>
-          <Price>{price} kr</Price>
+      <TotalDescription>
+        <TitleAndAddContainer>
+          <Title>{title}</Title>
           {quantity === 0 ? (
             <CounterContainer>
               <CounterButton onClick={handleIncrement}>+</CounterButton>
@@ -237,27 +244,31 @@ const CourseComponent: React.FC<DishProps> = ({
           ) : quantity > 1 ? (
             <CounterContainer>
               <CounterButton onClick={handleDecrement}>-</CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : (
             <CounterContainer>
               <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           )}
+        </TitleAndAddContainer>
+        <Text>{formattedIngredientText}</Text>
+        <PriceAndAddContainer>
+          <Price>{price} kr</Price>
         </PriceAndAddContainer>
-      </div>
+      </TotalDescription>
       <Wrapper quantity={quantity}>
-      {quantity > 0 && (
-          <Recommendation >
+        {quantity > 0 && (
+          <Recommendation>
             <HeadRecCocktail>Rekommenderad Dryck:</HeadRecCocktail>
             <RecommendationComponent title={title}></RecommendationComponent>
           </Recommendation>
-      )}
+        )}
       </Wrapper>
-      
+
     </StyledCourse>
   );
 };

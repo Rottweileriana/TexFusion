@@ -14,13 +14,25 @@ import {
   Routes,
   Route,
   InfoComponent,
-  HomeComponent
+  HomeComponent,
 } from "./components/index";
 import styled from "styled-components";
 
 import "./App.css";
 
-const BodyBackgroundComponent = styled.div`
+//#region Styles
+
+const BodyFooterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+const BodyContainer = styled.div`
+  
+`;
+
+const BodyBackgroundContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -28,7 +40,7 @@ const BodyBackgroundComponent = styled.div`
   padding: 0;
 `;
 
-const MainComponent = styled.div`
+const MainContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -44,7 +56,7 @@ const CourseMenuContainer = styled.div`
   align-items: center;
   margin: 0;
   padding: 0;
-  padding-top: 200px;
+  padding-top: 190px;
 `;
 
 const SidesMenuContainer = styled.div`
@@ -67,6 +79,23 @@ const CocktailMenuContainer = styled.div`
   padding: 0;
 `;
 
+const FooterContainer = styled.div`
+  margin-top: auto;
+`;
+
+const ShoppingCartContainer = styled.div`
+  background-image:url("/src/assets/images/ShoppingCartBg.jpg");
+  background-size:cover;
+  background-image: no-repeat;
+  background-position: center;
+  width:100vw;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+`;
+
+//#endregion
+
 interface ErrorBoundaryProps {
   children: ReactNode;
 }
@@ -75,7 +104,10 @@ interface ErrorBoundaryState {
   hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
@@ -107,39 +139,55 @@ const App: React.FC = () => {
       <BrowserRouter>
         <CartProvider>
           <NavBarComponent />
-          <Routes>
-            <Route path="/" element={<HomeComponent />} />
-            <Route
-              path="/menu"
-              element={
-                <ErrorBoundary>
-                  <BodyBackgroundComponent>
-                    <MainComponent>
-                      <CourseMenuContainer id="CourseMenu">
-                        <CourseMenu />
-                      </CourseMenuContainer>
-                      <SidesMenuContainer id="SidesMenu">
-                        <SidesMenu />
-                      </SidesMenuContainer>
-                      <CocktailMenuContainer id="CocktailMenu">
-                        <CocktailMenu />
-                      </CocktailMenuContainer>
-                    </MainComponent>
-                  </BodyBackgroundComponent>
-                </ErrorBoundary>
-              }
-            ></Route>
-            <Route path="/Info/:InfoPart" element={<>
-              <InfoComponent/>
-            </>} />
-            <Route path="/Shoppingcart" element={<>
-              <ShoppingCart />  
-              <CheckoutForm />
-            </>} />
-            <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-          <FooterComponent />
+          <BodyFooterContainer>
+            <BodyContainer>
+              <Routes>
+                <Route path="/" element={<HomeComponent />} />
+                <Route
+                  path="/Menu"
+                  element={
+                    <ErrorBoundary>
+                      <BodyBackgroundContainer>
+                        <MainContainer>
+                          <CourseMenuContainer id="CourseMenu">
+                            <CourseMenu />
+                          </CourseMenuContainer>
+                          <SidesMenuContainer id="SidesMenu">
+                            <SidesMenu />
+                          </SidesMenuContainer>
+                          <CocktailMenuContainer id="CocktailMenu">
+                            <CocktailMenu />
+                          </CocktailMenuContainer>
+                        </MainContainer>
+                      </BodyBackgroundContainer>
+                    </ErrorBoundary>
+                  }
+                ></Route>
+                <Route
+                  path="/Info/:InfoPart"
+                  element={
+                    <>
+                      <InfoComponent />
+                    </>
+                  }
+                />
+                <Route
+                  path="/Shoppingcart"
+                  element={
+                    <ShoppingCartContainer>
+                      <ShoppingCart />
+                      <CheckoutForm />
+                    </ShoppingCartContainer>
+                  }
+                />
+                <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
+                <Route path="*" element={<ErrorPage />} />
+              </Routes>
+            </BodyContainer>
+            <FooterContainer>
+              <FooterComponent />
+            </FooterContainer>
+          </BodyFooterContainer>
         </CartProvider>
       </BrowserRouter>
     </>

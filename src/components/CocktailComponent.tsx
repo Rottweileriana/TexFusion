@@ -25,75 +25,62 @@ interface StyledCourseProps {
 //#region Styles
 
 const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
- color:145775;
+ color: 145775;
  font-size: 15px;
  margin-top: 5px;
 `;
 
 const StyledCocktail = styled.div`
   display: flex;
-  width: 320px;
-  height: 100px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  flex-direction: column;
+  width: 300px;
+  height: 370px;
+  border: 1px solid grey;
+  border-radius: 0px;
   padding: 5px;
-  background-color: #156082;
-  color: white;
+  background-color: #f5f5f5;
+  color: #333333;
   margin: 0 10px 25px 10px;
   text-align: left;
   transition: background-color 1s, box-shadow 0.8s ease-in-out;
   &:hover{
-    background-color:#145775;
+    background-color:#f5f5f5;
     box-shadow: 0px 0px 5px 2px;
   }
 `;
 
 const Image = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
+  width: 299px;
+  height: 299px;
+  border-radius: 0px;
   border: 1px solid #222222;
-  margin-right: 20px;
+`;
+
+const TotalDescription = styled.div`
+  width: 299px;
+  padding: 10px 0 5px 5px;
+  font-weight: 300;
+`;
+
+const TitleAndAddContainer = styled.div`
+  display: flex;
+  width: 290px;
 `;
 
 const Title = styled.h4`
-  font-family: "Parisienne";
+  font-family: "Open Sans";
+  font-weight: 300;
   font-size: 25px;
+  text-decoration: none;
   margin: 0;
-`;
-
-const Recommended = styled.p`
-  margin: 5px;
-  padding: 2px;
-  padding-left: 19px;
-  border-radius: 5px;
-  color: #7d532c;
-  background-color: #eac898;
-`;
-
-const BlancRow = styled.p`
-  margin-bottom: 5px;
-  padding: 2px;
-`;
-
-const Price = styled.p`
-  margin: 0;
-  margin-bottom: 5px;
-  color: white;
-`;
-
-const PriceAndAddContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 175px;
+  color: #333333;
 `;
 
 const CounterContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-left: auto;
-  margin-top: 5px;
+  margin: 1px 0 0 auto;
+  height: 30px;
   border: 0px solid #808080;
   border-radius: 30px;
   background-color: #eca884;
@@ -107,8 +94,9 @@ const CounterButton = styled.button`
   height: 30px;
   background-color: transparent;
   border: none;
-  color: #145775;
+  color: #333333;
   font-size: 20px;
+  font-weight: 300;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -121,12 +109,29 @@ const ResultField = styled.input`
   background-color: transparent;
   border: none;
   color: #333333;
+  font-family: "Open Sans";
   font-size: 15px;
+  font-weight: 300;
   outline: none;
   &:hover {
     cursor: default;
   }
 `;
+
+const Price = styled.p`
+  margin: 0;
+  margin-bottom: 5px;
+  color: #333333;
+`;
+
+const PriceAndAddContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 175px;
+`;
+
+
 //#endregion
 
 const Cocktail: React.FC<Cocktail> = ({
@@ -186,12 +191,10 @@ const Cocktail: React.FC<Cocktail> = ({
   return (
     <StyledCocktail>
       <Image src={strDrinkThumb} alt={strDrink} />
-      <div>
+      <TotalDescription>
+      <TitleAndAddContainer>
         <Title>{formattedCocktailName}</Title>
-        <BlancRow/>
-        <PriceAndAddContainer>
-          <Price>{cocktailPrice} kr</Price>
-          {quantity === 0 ? (
+        {quantity === 0 ? (
             <CounterContainer>
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
@@ -208,8 +211,11 @@ const Cocktail: React.FC<Cocktail> = ({
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           )}
+          </TitleAndAddContainer>
+        <PriceAndAddContainer>
+          <Price>{cocktailPrice} kr</Price>
         </PriceAndAddContainer>
-      </div>
+      </TotalDescription>
     </StyledCocktail>
   );
 };
