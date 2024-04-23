@@ -6,6 +6,7 @@ import { CartContext } from "./context";
 export function ConfirmationPage() {
   const { confirmedCheckout } = useContext(CartContext)!;
   const navigate = useNavigate();
+
   useEffect(() => {
     if(!confirmedCheckout){
       navigate("/");
@@ -18,6 +19,7 @@ export function ConfirmationPage() {
   
       return storedValue ? JSON.parse(storedValue) : [];
     });
+
     // Get CartData
     const [cartValue] = useState<CartItem[]>(() => {
       const storedValue = sessionStorage.getItem("confirmedItems");
@@ -51,112 +53,145 @@ export function ConfirmationPage() {
       (acc, cartValue) => acc + cartValue.price * cartValue.quantity,
       0
     );
-    return formvalue.paymentMethod === 'Klarna' ?
+
+    return (
       <>
-        <button onClick={onClickTest}>Tillbaka</button>
-        <h1>
-          Tack för din beställning {formvalue.firstName} {formvalue.lastName}!
-        </h1>
-        <p>
-          Din leverans kommer att skickas med PostNord Express. Leveranstid ca:
-          10-15 minuter.
-        </p>
-        <p>
-          Leverans sker till {formvalue.address}, {formvalue.zipCode},{" "}
-          {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.
-        </p>
-        <p>
-          Ett bekräftelsemejl och fakturan på totalt {totalCost} SEK har skickats
-          till {formvalue.email}
-        </p>
-        {cartValue.map((cartValue) => {
-          return (
-            <StyledMainCartItems key={cartValue._id}>
-              <StyledCartItems>
-                <Image src={cartValue.imageUrl} />
-                <div>
-                  <Title>
-                    {cartValue.title} x {cartValue.quantity}{" "}
-                  </Title>
-                  {cartValue.price} Sek <br />
-                </div>
-              </StyledCartItems>
-            </StyledMainCartItems>
-          );
-        })}
+        <ConfirmationBackgroundContainer>
+          <PageTitle>BESTÄLLNING</PageTitle>
+            <ConfirmationCardContainer>
+              <ThankYouText>Tack för att du beställer från oss!</ThankYouText>
+              <Address>
+                <AdressParts>{formvalue.firstName} {formvalue.lastName}</AdressParts>
+                <AdressParts>{formvalue.address}</AdressParts>
+                <AdressParts>{formvalue.zipCode} {formvalue.city}</AdressParts>
+              </Address>
+              <InfoToCustomer> Din mat är hos dig om ca 10-15 minuter.</InfoToCustomer>
+              <InfoToCustomer>Vi ringer dig på {formvalue.phone} när vi är vid din dörr.</InfoToCustomer>
+              {formvalue.paymentMethod === 'Klarna' &&
+              <>
+                <InfoToCustomerMail>
+                Ett bekräftelsemejl med faktura på totalt {totalCost} SEK</InfoToCustomerMail>
+                <InfoToCustomerMail>
+                  har skickats till {formvalue.email}.
+                </InfoToCustomerMail>
+              </>}
+              {(formvalue.paymentMethod === 'Swish' || formvalue.paymentMethod === 'KreditKort') &&
+              <>
+                <InfoToCustomerMail>
+                  Ett bekräftelsemejl och kvitto på totalt {totalCost} SEK
+                </InfoToCustomerMail>
+                <InfoToCustomerMail>
+                  har skickats till {formvalue.email}.
+                </InfoToCustomerMail>
+              </>}
+              <ConfirmedProducts>
+                {cartValue.map((cartValue) => {
+                  return (
+                    <StyledMainCartItems key={cartValue._id}>
+                      <StyledCartItems>
+                        <Image src={cartValue.imageUrl} />
+                        <div>
+                          <Title>
+                            {cartValue.title} x {cartValue.quantity}{" "}
+                          </Title>
+                          {cartValue.price} Sek <br />
+                        </div>
+                      </StyledCartItems>
+                    </StyledMainCartItems>
+                  );
+                })}
+              </ConfirmedProducts>
+            <BackHomeButton onClick={onClickTest}>Tillbaka</BackHomeButton>
+          </ConfirmationCardContainer>
+        </ConfirmationBackgroundContainer>
       </>
-      : formvalue.paymentMethod === 'KreditKort' ?
-      <>
-      <button onClick={onClickTest}>Tillbaka</button>
-      <h1>
-        Tack för din betalning {formvalue.firstName} {formvalue.lastName}!
-      </h1>
-      <p>
-        Din leverans kommer att skickas med PostNord Express. Leveranstid ca:
-        10-15 minuter.
-      </p>
-      <p>
-        Leverens sker till {formvalue.address}, {formvalue.zipCode},{" "}
-        {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.
-      </p>
-      <p>
-        Ett bekräftelsemejl och kvittot på totalt {totalCost} SEK har skickats
-        till {formvalue.email}
-      </p>
-      {cartValue.map((cartValue) => {
-        return (
-          <StyledMainCartItems key={cartValue._id}>
-            <StyledCartItems>
-              <Image src={cartValue.imageUrl} />
-              <div>
-                <Title>
-                  {cartValue.title} x {cartValue.quantity}{" "}
-                </Title>
-                {cartValue.price} Sek <br />
-              </div>
-            </StyledCartItems>
-          </StyledMainCartItems>
-        );
-      })}
-    </>
-    : formvalue.paymentMethod === 'Swish' && waiting ?
-      <h1>Väntar på betalning...</h1>
-    : 
-  <>
-      <button onClick={onClickTest}>Tillbaka</button>
-        <h1>
-          Tack för din betalning {formvalue.firstName} {formvalue.lastName}!
-        </h1>
-        <p>
-          Din leverans kommer att skickas med PostNord Express. Leveranstid ca:
-          10-15 minuter.
-        </p>
-        <p>
-          Leverens sker till {formvalue.address}, {formvalue.zipCode},{" "}
-          {formvalue.city}. Chauffören kommer att ringa dig på {formvalue.phone}.
-        </p>
-        <p>
-          Ett bekräftelsemejl och kvittot på totalt {totalCost} SEK har skickats
-          till {formvalue.email}
-        </p>
-        {cartValue.map((cartValue) => {
-          return ( 
-            <StyledMainCartItems key={cartValue._id}>
-              <StyledCartItems>
-                <Image src={cartValue.imageUrl} />
-                <div>
-                  <Title>
-                    {cartValue.title} x {cartValue.quantity}{" "}
-                  </Title>
-                  {cartValue.price} Sek <br />
-                </div>
-              </StyledCartItems>
-            </StyledMainCartItems>
-          );
-        })}
-      </>
+    )
   };
+
+
 //#region CSS...
+
+const ConfirmationBackgroundContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vH;
+  background-color: skyblue;
+`;
+
+const PageTitle = styled.h2`
+  margin-top: 240px;
+  font-family: "Open Sans";
+  font-size: 25px;
+  font-weight: 300;
+  color: white;
+`;
+
+const ConfirmationCardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 110px;
+  padding: 20px;
+  width: 500px;
+  background-color: lightgrey;
+`;
+
+const ThankYouText = styled.h3`
+  font-family: "Open Sans";
+  font-size: 25px;
+  font-weight: 300;
+  color: #333333;
+  margin-bottom: 35px;
+`;
+
+const Address = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+`;
+
+const AdressParts = styled.p`
+  display: flex;
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 300;
+  color: #333333;
+  margin: 0;
+`;
+
+const InfoToCustomer = styled.p`
+  display: flex;
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-weight: 300;
+  color: #333333;
+  margin: 0;
+`;
+
+const InfoToCustomerMail = styled.p`
+  display: flex;
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-weight: 300;
+  color: #333333;
+  margin: 0;
+`;
+
+const ConfirmedProducts = styled.p`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 45px;
+  margin-bottom: 30px;
+`;
+
 const StyledMainCartItems = styled.div`
   display: block;
   flex-wrap: wrap;
@@ -189,6 +224,11 @@ const Image = styled.img`
 const Title = styled.h4`
   margin: 0;
 `;
+
+const BackHomeButton = styled.button`
+  margin-bottom: 15px;
+`;
+
 
 //EASTER EGG
 
