@@ -17,12 +17,13 @@ const defaultFormData: FormData = {
 //#region Styles
 const InputForm = styled.div`
   display: flex;
-  width: 300px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 0px;
   background-color: #e0e0e0;
   color: #333333;
+  justify-content:center;
+  width: 500px;
+  padding-top: 15px;
 `;
 
 const FormInputElements = styled.div`
@@ -37,7 +38,8 @@ const PaymentRadioBtnContainer = styled.div`
   flex-direction: column;
   align-items: start;
   border: none;
-  margin-left: 16px;
+  margin-left: 20px;
+  text-align:center;
 `;
 
 const PaymentInput = styled.div`
@@ -45,28 +47,33 @@ const PaymentInput = styled.div`
   flex-direction: column;
   align-items: start;
   border: none;
+  margin: 10px 0 0 85px;
 `;
 
 const RadioElement = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   border: none;
 `;
 
+const ButtonStyle = styled.button`
+  background-color:#fbe3d6;
+  color: #2b4175;
+  border:solid;
+  border-color:black;
+`;
+
 const RadioBtn = styled.input`
-  margin-left: 90px;
-}
+  margin-left: 104px;
 `;
 
 const PaymentRadio = styled.label`
-  margin-left: 10px;
-  
+  margin-left: 15px;
 `;
 
 const InputElement = styled.div`
-  margin-left: auto;
-  margin-right: 30px;
+  margin: 0 100px 5px auto;
 `;
 
 const TextInput = styled.input`
@@ -75,11 +82,37 @@ const TextInput = styled.input`
   color: #333333;
   border: 1px solid #222222;
   border-radius: 5px;
+  width:180px;
 `;
 
 const FormBtn = styled.div`
   margin-bottom: 20px;
 `;
+
+const CheckoutFormCartContainer = styled.div`
+  display:flex;
+  width: 100%;
+  margin: 25px 0 90px 0;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+`;
+
+const StyledTitle = styled.h2`
+  margin-top: 50px;
+  font-family: "Open Sans";
+  font-size: 25px;
+  font-weight: 300;
+  color: white;
+`;
+
+const StyledP = styled.p`
+  width:100%;
+  text-align: center;
+  font-family:"Open sans";
+  margin:0;
+`;
+
 
 //#endregion
 
@@ -146,10 +179,11 @@ export function CheckoutForm() {
   };
 
   return (
-    <div>
-      <h2>Kassa</h2>
+    <CheckoutFormCartContainer>
+        <StyledTitle>KASSA</StyledTitle>
       <InputForm>
         <form onSubmit={onSubmit}>
+        <StyledP>Betalningsuppgifter</StyledP>
           <FormInputElements>
             <InputElement>
               <label>
@@ -230,8 +264,8 @@ export function CheckoutForm() {
             </InputElement>
           </FormInputElements>
           <br/>
+          <StyledP>Betalmetod</StyledP>
           <PaymentRadioBtnContainer>
-            Betalmetod
             <PaymentInput>
               <RadioElement>
                 <RadioBtn
@@ -273,10 +307,10 @@ export function CheckoutForm() {
           </PaymentRadioBtnContainer>
           <br/>
           <FormBtn>
-            <button type="submit">Beställ</button>
+            <ButtonStyle type="submit">Beställ</ButtonStyle>
           </FormBtn>
         </form>
       </InputForm>
-    </div>
+    </CheckoutFormCartContainer>
   );
 }

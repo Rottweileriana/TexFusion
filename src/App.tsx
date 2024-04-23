@@ -32,7 +32,7 @@ const BodyContainer = styled.div`
   
 `;
 
-const BodyBackgroundComponent = styled.div`
+const BodyBackgroundContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -40,7 +40,7 @@ const BodyBackgroundComponent = styled.div`
   padding: 0;
 `;
 
-const MainComponent = styled.div`
+const MainContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -81,6 +81,17 @@ const CocktailMenuContainer = styled.div`
 
 const FooterContainer = styled.div`
   margin-top: auto;
+`;
+
+const ShoppingCartContainer = styled.div`
+  background-image:url("/src/assets/images/ShoppingCartBg.jpg");
+  background-size:cover;
+  background-image: no-repeat;
+  background-position: center;
+  width:100vw;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
 `;
 
 //#endregion
@@ -136,8 +147,8 @@ const App: React.FC = () => {
                   path="/Menu"
                   element={
                     <ErrorBoundary>
-                      <BodyBackgroundComponent>
-                        <MainComponent>
+                      <BodyBackgroundContainer>
+                        <MainContainer>
                           <CourseMenuContainer id="CourseMenu">
                             <CourseMenu />
                           </CourseMenuContainer>
@@ -147,8 +158,8 @@ const App: React.FC = () => {
                           <CocktailMenuContainer id="CocktailMenu">
                             <CocktailMenu />
                           </CocktailMenuContainer>
-                        </MainComponent>
-                      </BodyBackgroundComponent>
+                        </MainContainer>
+                      </BodyBackgroundContainer>
                     </ErrorBoundary>
                   }
                 ></Route>
@@ -163,10 +174,10 @@ const App: React.FC = () => {
                 <Route
                   path="/Shoppingcart"
                   element={
-                    <>
+                    <ShoppingCartContainer>
                       <ShoppingCart />
                       <CheckoutForm />
-                    </>
+                    </ShoppingCartContainer>
                   }
                 />
                 <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
