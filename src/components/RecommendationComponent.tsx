@@ -56,7 +56,7 @@ const Price = styled.h4`
   margin-right: 10px;
   //font-size: 0.9em;
   font-weight: 400;
-  color: #333333
+  color: #333333;
 `;
 
 const CounterContainer = styled.div`
