@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {
   useContext,
+  useEffect,
   FontAwesomeIcon,
   faShoppingCart,
   useLocation,
@@ -21,6 +22,10 @@ export const NavBarComponent: React.FC = () => {
   } catch (error) {
     console.error("Error calculating total quantity in cart:", error);
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <>
