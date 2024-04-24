@@ -53,9 +53,6 @@ export function CourseMenu() {
     };
   }, []);
 
-  // if (error) {
-  //   return <div>Huvudrätter: Kunde inte hämta huvudrätter.</div>;
-  // }
 
   return (
     <>

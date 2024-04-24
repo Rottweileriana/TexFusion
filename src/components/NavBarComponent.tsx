@@ -35,8 +35,6 @@ export const NavBarComponent: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  //<i class="fa fa-bars" aria-hidden="true"></i>
-
   return (
     <>
       {location.pathname === "/" ? (

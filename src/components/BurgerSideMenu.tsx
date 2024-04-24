@@ -14,7 +14,6 @@ interface StylesProps {
 //#region Styles
 
 const BurgerSideMenuContainer = styled.div<StylesProps>`
-  //display: none;
   display: ${({ isOpen }: { isOpen: boolean }) => (isOpen ? "flex" : "none")};
   flex-direction: column;
   align-items: flex-start;
@@ -45,6 +44,10 @@ const LinkStyle: typeof Link = styled(Link)`
   color: lightgrey;
 `;
 
+// const CloseSidebarButton = styled.button`
+//   background
+// `;
+
 //#endregion
 
 export function BurgerSideMenu({
@@ -58,8 +61,12 @@ export function BurgerSideMenu({
   return (
     <>
       <BurgerSideMenuContainer isOpen={isOpen}>
-        <button onClick={() => OpenCloseSidebar()}>Close</button>
-        <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
+        <button onClick={() => OpenCloseSidebar()}>
+          Close</button>
+          <FontAwesomeIcon icon={fa-window-close} />
+          <i class="fal fa-window-close"></i>
+        <NavLinkStyle to="/Menu" onClick={() => OpenCloseSidebar()}>
+          MENY</NavLinkStyle>
         <SubLinkMenuContainer>
           <LinkStyle
             activeClass="active"
@@ -68,7 +75,7 @@ export function BurgerSideMenu({
             smooth={true}
             offset={-162}
             duration={500}
-          >
+            onClick={() => OpenCloseSidebar()}>
             Huvudrätter
           </LinkStyle>
           <LinkStyle
@@ -78,7 +85,7 @@ export function BurgerSideMenu({
             smooth={true}
             offset={-162}
             duration={500}
-          >
+            onClick={() => OpenCloseSidebar()}>
             Tillbehör
           </LinkStyle>
           <LinkStyle
@@ -88,14 +95,18 @@ export function BurgerSideMenu({
             smooth={true}
             offset={-162}
             duration={500}
-          >
+            onClick={() => OpenCloseSidebar()}>
             Cocktails
           </LinkStyle>
         </SubLinkMenuContainer>
-        <NavLinkStyle to="/Shoppingcart">VARUKORG</NavLinkStyle>
-        <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
-        <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
-        <NavLinkStyle to="/">HEM</NavLinkStyle>
+        <NavLinkStyle to="/Shoppingcart" onClick={() => OpenCloseSidebar()}>
+          VARUKORG</NavLinkStyle>
+        <NavLinkStyle to="/Info/OmOss" onClick={() => OpenCloseSidebar()}>
+          OM OSS</NavLinkStyle>
+        <NavLinkStyle to="/Info/Kontakt" onClick={() => OpenCloseSidebar()}>
+          KONTAKT</NavLinkStyle>
+        <NavLinkStyle to="/" onClick={() => OpenCloseSidebar()}>
+          HEM</NavLinkStyle>
       </BurgerSideMenuContainer>
     </>
   );
