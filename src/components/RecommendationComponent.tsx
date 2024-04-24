@@ -35,7 +35,14 @@ const Image = styled.img`
   margin-right: 10px;
 `;
 
-const Title = styled.h4`
+const PriceAndTitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 125px;
+`;
+
+const Title = styled.p`
   font-family: "Open Sans";
   font-weight: 400;
   text-decoration: none;
@@ -50,7 +57,7 @@ const CocktailAndAddContainer = styled.div`
   padding: 0 2px 0 2px;
 `;
 
-const Price = styled.h4`
+const Price = styled.p`
   font-family: "Open Sans";
   margin: 1px 10px 0 0;
   margin-right: 10px;
@@ -217,8 +224,10 @@ export const RecommendationComponent: React.FC<RecCocktail> = ({ title }) => {
         <div>
           <CocktailAndAddContainer>
             <Image src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-            <Title>{cocktail.strDrink}</Title>
-            <Price>{cocktailPrice} kr</Price>
+            <PriceAndTitleContainer>
+              <Title>{cocktail.strDrink}</Title>
+              <Price>{cocktailPrice} kr</Price>
+            </PriceAndTitleContainer>
             {quantity === 0 ? (
               <CounterContainer>
                 <CounterButton onClick={handleIncrement}>+</CounterButton>
