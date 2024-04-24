@@ -38,6 +38,11 @@ const BodyBackgroundContainer = styled.div`
   width: 100vw;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  background-image: url("/src/assets/images/-.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 const MainContainer = styled.div`
