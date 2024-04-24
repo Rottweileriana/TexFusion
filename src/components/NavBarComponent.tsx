@@ -180,7 +180,8 @@ const LogoNavLink: typeof NavLink = styled(NavLink)`
 `;
 
 const LogotextSubnavbarContainer = styled.div`
-  width: 33%;
+  width: 30%;
+  min-width:30%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -198,6 +199,7 @@ const TexFusionLogoTextContainer = styled.div`
 `;
 
 const TexFusionLogoImage = styled.img`
+  min-width:420px;
   max-width: 95%;
   max-height: 95%;
 `;
@@ -239,6 +241,7 @@ const NavBarListSub = styled.div`
 `;
 
 const NavBarListMain = styled.div`
+  overflow:visible;
   list-style-type: none;
   display: flex;
   justify-content: flex-end;
@@ -246,7 +249,7 @@ const NavBarListMain = styled.div`
   margin: 0 0 95px 0;
   padding-top: 20px;
   width: 22%;
-  overflow: hidden;
+  overflow: visible;
   cursor: pointer;
   z-index: 9999;
 `;
@@ -277,11 +280,15 @@ const NavLinkStyle: typeof NavLink = styled(NavLink)`
   color: #2b4175;
   font-family: "Open Sans";
   font-size: 14px;
-  margin: 0 20px 0 15px;
+  width:25%;
+  min-width:75px;
+  max-width:100px;
+  height:100%;
+  margin: 0 0 0 0;
+  padding:0 5px 0 0;
   text-align: center;
   text-decoration: none;
   position: relative;
-  border-radius: 5px;
   &:hover {
     color: #eca884;
   }
