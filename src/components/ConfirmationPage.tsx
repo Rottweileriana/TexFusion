@@ -57,7 +57,7 @@ export function ConfirmationPage() {
     return (
       <>
         <ConfirmationBackgroundContainer>
-          <PageTitle>BESTÄLLNING</PageTitle>
+          <PageTitle>DIN BESTÄLLNING</PageTitle>
             <ConfirmationCardContainer>
               <ThankYouText>Tack för att du beställer från oss!</ThankYouText>
               <Address>
@@ -94,13 +94,16 @@ export function ConfirmationPage() {
                           <Title>
                             {cartValue.title} x {cartValue.quantity}{" "}
                           </Title>
-                          {cartValue.price*cartValue.quantity} Sek <br />
+                          <Price>
+                            {cartValue.price*cartValue.quantity} Sek <br />
+                          </Price>
                         </div>
                       </StyledCartItems>
                     </StyledMainCartItems>
                   );
                 })}
               </ConfirmedProducts>
+              <TotalCost>Summa: {totalCost} kr</TotalCost>
             <BackHomeButton onClick={onClickTest}>Tillbaka</BackHomeButton>
           </ConfirmationCardContainer>
         </ConfirmationBackgroundContainer>
@@ -113,11 +116,13 @@ export function ConfirmationPage() {
 const ConfirmationBackgroundContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100vw;
-  min-height: 100vH;
-  background-color: skyblue;
+  min-height: 100vh;
+  background-image: url("/src/assets/images/ConfirmationPageBackground.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 const PageTitle = styled.h2`
@@ -188,7 +193,7 @@ const ConfirmedProducts = styled.p`
   justify-content: center;
   align-items: center;
   margin-top: 45px;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   font-family: "Open Sans";
   font-size: 15px;
   font-weight: 300;
@@ -196,20 +201,18 @@ const ConfirmedProducts = styled.p`
 `;
 
 const StyledMainCartItems = styled.div`
-  display: block;
-  flex-wrap: wrap;
 `;
 
 const StyledCartItems = styled.div`
   display: flex;
-  width: 300px;
-  height: 100px;
+  align-items: center;
+  width: 350px;
+  height: 116px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 5px;
   background-color: #e0e0e0;
   color: #333333;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   text-align: left;
   &:hover {
     cursor: default;
@@ -221,7 +224,7 @@ const Image = styled.img`
   height: 102px;
   border-radius: 5px;
   border: 1px solid #222222;
-  margin-right: 20px;
+  margin: 0 25px 0 7px;
 `;
 
 const Title = styled.h4`
@@ -229,6 +232,22 @@ const Title = styled.h4`
   font-family: "Open Sans";
   font-size: 15px;
   font-weight: 400;
+  color: #333333;
+`;
+
+const Price = styled.p`
+  margin: 5px 0 35px 0;
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 300;
+  color: #333333;
+`;
+
+const TotalCost = styled.p`
+  margin: 5px 0 35px 0;
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 300;
   color: #333333;
 `;
 
