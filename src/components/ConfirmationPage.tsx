@@ -244,7 +244,7 @@ const Price = styled.p`
 `;
 
 const TotalCost = styled.p`
-  margin: 5px 0 35px 0;
+  margin: 10px 0 35px 0;
   font-family: "Open Sans";
   font-size: 15px;
   font-weight: 300;
