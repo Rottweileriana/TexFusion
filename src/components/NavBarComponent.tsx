@@ -296,14 +296,18 @@ const NavLinkStyle: typeof NavLink = styled(NavLink)`
 
 const NavLinkStyleHome: typeof NavLink = styled(NavLink)`
   display: block;
-  color: #ffc000;
+  color: #ffc000;;
   font-family: "Open Sans";
   font-size: 14px;
-  margin: 0 20px 0 15px;
+  width:25%;
+  min-width:75px;
+  max-width:100px;
+  height:100%;
+  margin: 0 0 0 0;
+  padding:0 5px 0 0;
   text-align: center;
   text-decoration: none;
   position: relative;
-  border-radius: 5px;
   &:hover {
     color: #eca884;
   }
