@@ -39,7 +39,7 @@ const BodyBackgroundContainer = styled.div`
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-image: url("/src/assets/images/-.jpg");
+  background-image: url("/src/assets/images/MenuBg.jpg");
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
