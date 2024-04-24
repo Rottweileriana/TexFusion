@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-scroll";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "./index";
 
 type SideMenuProps = {
   isOpen: boolean;
@@ -58,6 +59,22 @@ export function BurgerSideMenu({
     setIsOpen(!isOpen);
   };
 
+  const navigate = useNavigate();
+
+  const GoToMenuAndSubLink = (number: number) => {
+    if (number === 1){
+      navigate('/Menu');
+    }
+    else if (number === 2){
+      navigate('/Menu', { state: { scrollTop: -162 }, replace: true });
+    }
+    else if (number === 3){
+      navigate('/Menu', { state: { scrollTop: -162 }, replace: true });
+    }
+    OpenCloseSidebar;
+    
+  }
+//skicka med scrollTop värde i urlen till navbar.
   return (
     <>
       <BurgerSideMenuContainer isOpen={isOpen}>
@@ -65,6 +82,12 @@ export function BurgerSideMenu({
           Close</button>
         <NavLinkStyle to="/Menu" onClick={() => OpenCloseSidebar()}>
           MENY</NavLinkStyle>
+          <button onClick={() => GoToMenuAndSubLink(1)}>
+          Menu1</button>
+          <button onClick={() => GoToMenuAndSubLink(2)}>
+          Tillbehör2</button>
+          <button onClick={() => GoToMenuAndSubLink(3)}>
+          Cocktails3</button>
         <SubLinkMenuContainer>
           <LinkStyle
             activeClass="active"
@@ -73,7 +96,7 @@ export function BurgerSideMenu({
             smooth={true}
             offset={-162}
             duration={500}
-            onClick={() => OpenCloseSidebar()}>
+            onClick={() => GoToMenuAndSubLink(1)}>
             Huvudrätter
           </LinkStyle>
           <LinkStyle
@@ -83,7 +106,7 @@ export function BurgerSideMenu({
             smooth={true}
             offset={-162}
             duration={500}
-            onClick={() => OpenCloseSidebar()}>
+            onClick={() => GoToMenuAndSubLink(2)}>
             Tillbehör
           </LinkStyle>
           <LinkStyle
@@ -93,7 +116,7 @@ export function BurgerSideMenu({
             smooth={true}
             offset={-162}
             duration={500}
-            onClick={() => OpenCloseSidebar()}>
+            onClick={() => GoToMenuAndSubLink(3)}>
             Cocktails
           </LinkStyle>
         </SubLinkMenuContainer>
