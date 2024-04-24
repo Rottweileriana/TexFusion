@@ -22,7 +22,7 @@ const MenuTitle = styled.h2`
   font-weight: 300;
   font-size: 30px;
   text-decoration: none;
-  color: #818181;
+  color: #ffffff;
 `;
 //#endregion
 
