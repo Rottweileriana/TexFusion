@@ -56,7 +56,18 @@ export function ConfirmationPage() {
 
     return (
       <>
-        <ConfirmationBackgroundContainer>
+        {waiting === true ? (
+          <ConfirmationBackgroundContainer>
+            <PageTitle></PageTitle>
+            <ConfirmationCardContainer>
+              <ThankYouText>Din order bearbetas...</ThankYouText>
+              <Address>
+              </Address>
+            </ConfirmationCardContainer>
+          </ConfirmationBackgroundContainer>
+          ) :
+        (
+          <ConfirmationBackgroundContainer>
           <PageTitle>DIN BESTÄLLNING</PageTitle>
             <ConfirmationCardContainer>
               <ThankYouText>Tack för att du beställer från oss!</ThankYouText>
@@ -107,6 +118,7 @@ export function ConfirmationPage() {
             <BackHomeButton onClick={onClickTest}>Tillbaka</BackHomeButton>
           </ConfirmationCardContainer>
         </ConfirmationBackgroundContainer>
+        )}
       </>
     )
   };
