@@ -317,7 +317,7 @@ const Badge = styled.span`
   position: absolute;
   font-family: Arial, Helvetica, sans-serif;
   top: -7px;
-  right: -20px;
+  right: 16px;
   background-color: #eca884;
   color: black;
   border-radius: 50%;
