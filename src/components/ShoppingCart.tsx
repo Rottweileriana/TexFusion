@@ -166,7 +166,11 @@ const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
 `;
 
 const EmtptyCartText = styled.div`
-  margin-left: 162px;
+  margin-left: 165px;
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 300;
+  color: #333333;
 `;
 //#endregion
 
