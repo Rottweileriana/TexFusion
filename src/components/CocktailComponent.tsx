@@ -3,7 +3,6 @@ import { CartContext } from "./context";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 type Cocktail = {
   idDrink: string;
   strDrink: string;
@@ -12,22 +11,12 @@ type Cocktail = {
   cocktailPrice: number;
 };
 
-type Product = {
-  imageUrl: string;
-  title: string;
-  price: number;
-  quantity: number;
-};
-
-interface StyledCourseProps {
-  quantity: number;
-};
 //#region Styles
 
-const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
- color: 145775;
- font-size: 15px;
- margin-top: 5px;
+const StyledFontAwesomeIcon: typeof FontAwesomeIcon = styled(FontAwesomeIcon)`
+  color: 145775;
+  font-size: 15px;
+  margin-top: 5px;
 `;
 
 const StyledCocktail = styled.div`
@@ -43,8 +32,8 @@ const StyledCocktail = styled.div`
   margin: 0 10px 25px 10px;
   text-align: left;
   transition: background-color 1s, box-shadow 0.8s ease-in-out;
-  &:hover{
-    background-color:#f5f5f5;
+  &:hover {
+    background-color: #f5f5f5;
     box-shadow: 0px 0px 5px 2px;
   }
 `;
@@ -131,18 +120,15 @@ const PriceAndAddContainer = styled.div`
   width: 175px;
 `;
 
-
 //#endregion
 
 const Cocktail: React.FC<Cocktail> = ({
   idDrink,
   strDrinkThumb,
   strDrink,
-  recommended,
   cocktailPrice,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
-  const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
 
   const MAX_LENGTH = 19;
@@ -185,33 +171,34 @@ const Cocktail: React.FC<Cocktail> = ({
     };
   } catch (error) {
     console.error("Error in creating cocktail component", error);
-    setError("An error occurred while rendering cocktail component.");
   }
 
   return (
     <StyledCocktail>
       <Image src={strDrinkThumb} alt={strDrink} />
       <TotalDescription>
-      <TitleAndAddContainer>
-        <Title>{formattedCocktailName}</Title>
-        {quantity === 0 ? (
+        <TitleAndAddContainer>
+          <Title>{formattedCocktailName}</Title>
+          {quantity === 0 ? (
             <CounterContainer>
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : quantity > 1 ? (
             <CounterContainer>
               <CounterButton onClick={handleDecrement}>-</CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : (
             <CounterContainer>
-              <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <CounterButton onClick={handleDecrement}>
+                <StyledFontAwesomeIcon icon={faTrashCan} />
+              </CounterButton>
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           )}
-          </TitleAndAddContainer>
+        </TitleAndAddContainer>
         <PriceAndAddContainer>
           <Price>{cocktailPrice} kr</Price>
         </PriceAndAddContainer>

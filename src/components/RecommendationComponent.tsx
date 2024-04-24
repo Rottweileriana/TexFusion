@@ -9,10 +9,6 @@ type RecCocktail = {
   title: string;
 };
 
-interface StyledCourseProps {
-  quantity: number;
-}
-
 //#region Styles
 const StyledCocktail = styled.div`
   display: flex;
@@ -55,7 +51,7 @@ const Price = styled.p`
   margin-right: 10px;
   font-size: 0.9em;
   font-weight: 300;
-  color: #333333
+  color: #333333;
 `;
 
 const CounterContainer = styled.div`

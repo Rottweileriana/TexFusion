@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import CourseComponent from "./CourseComponent";
-import { Dish, Cocktail } from "../types/index";
+import { Dish } from "../types/index";
 import styled from "styled-components";
 
 const CourseMenuContainer = styled.div`
@@ -26,8 +26,6 @@ const MenuTitle = styled.h2`
 
 export function CourseMenu() {
   const [mains, setMains] = useState<Dish[]>([]);
-  const [cocktail, setCocktail] = useState<Cocktail[]>([]);
-  const [error, setError] = useState<string | null>(null);
   const API_URL =
     "https://iths-2024-recept-grupp6-bc215j.reky.se/categories/main/recipes";
 
@@ -42,7 +40,6 @@ export function CourseMenu() {
         setMains(data);
       } catch (error) {
         console.error("Error fetching main courses:", error);
-        setError("An error occurred while fetching data.");
       }
     };
 
@@ -76,7 +73,7 @@ export function CourseMenu() {
                     price={main.timeInMins}
                   />
                 )
-          )}
+            )}
         </CourseContainer>
       </CourseMenuContainer>
     </>

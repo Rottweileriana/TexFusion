@@ -5,14 +5,6 @@ import { DishProps } from "../types/index";
 import { RecommendationComponent, faTrashCan } from "./index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-type Product = {
-  imageUrl: string;
-  title: string;
-  price: number;
-  quantity: number;
-};
-
 interface StyledCourseProps {
   quantity: number;
 }
@@ -34,8 +26,8 @@ const StyledCourse = styled.div<StyledCourseProps>`
   text-align: left;
   position: relative;
   transition: background-color 1s, box-shadow 0.8s, height 0.5s ease-in-out;
-  &:hover{
-    background-color:#f5f5f5;
+  &:hover {
+    background-color: #f5f5f5;
     box-shadow: 0px 0px 5px 2px;
   }
 `;
@@ -93,8 +85,8 @@ const CounterButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  &:focus{
-    outline:none;
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -113,15 +105,15 @@ const ResultField = styled.input`
   }
 `;
 
-const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
- color: 145775;
- font-size: 15px;
- margin-top: 5px;
+const StyledFontAwesomeIcon: typeof FontAwesomeIcon = styled(FontAwesomeIcon)`
+  color: 145775;
+  font-size: 15px;
+  margin-top: 5px;
 `;
 
 const Text = styled.p`
   margin: 5px 0 0 0;
-  font-size:15px;
+  font-size: 15px;
 `;
 
 const PriceAndAddContainer = styled.div`
@@ -151,12 +143,11 @@ const HeadRecCocktail = styled.h3`
 `;
 
 const Wrapper = styled.div<StyledCourseProps>`
-height: 100%;
-opacity: ${({ quantity }: { quantity: number }) =>
-    quantity > 0 ? 1 : 0};
-transition-delay:0.8s;
-transition-duration: 1s;
-transition-property: opacity;
+  height: 100%;
+  opacity: ${({ quantity }: { quantity: number }) => (quantity > 0 ? 1 : 0)};
+  transition-delay: 0.8s;
+  transition-duration: 1s;
+  transition-property: opacity;
 `;
 
 //#endregion
@@ -169,12 +160,11 @@ const CourseComponent: React.FC<DishProps> = ({
   price,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
-  const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => { };
-  let handleDecrement: () => void = () => { };
+  let handleIncrement: () => void = () => {};
+  let handleDecrement: () => void = () => {};
 
   try {
     //course
@@ -228,7 +218,6 @@ const CourseComponent: React.FC<DishProps> = ({
     };
   } catch (error) {
     console.error("Error in creating course component", error);
-    setError("An error occurred while rendering course component.");
   }
 
   return (
@@ -249,7 +238,9 @@ const CourseComponent: React.FC<DishProps> = ({
             </CounterContainer>
           ) : (
             <CounterContainer>
-              <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
+              <CounterButton onClick={handleDecrement}>
+                <StyledFontAwesomeIcon icon={faTrashCan} />
+              </CounterButton>
               <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
@@ -268,7 +259,6 @@ const CourseComponent: React.FC<DishProps> = ({
           </Recommendation>
         )}
       </Wrapper>
-
     </StyledCourse>
   );
 };

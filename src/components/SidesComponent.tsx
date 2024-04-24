@@ -4,11 +4,6 @@ import styled from "styled-components";
 import { DishProps } from "../types/index.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-interface StyledCourseProps{
-  quantity: number;
-};
-
 //#region Styles
 const StyledSide = styled.div`
   display: flex;
@@ -25,7 +20,7 @@ const StyledSide = styled.div`
   transition: background-color 1s, box-shadow 0.7s;
   &:hover {
     cursor: default;
-    background-color:#f5f5f5;
+    background-color: #f5f5f5;
     box-shadow: 0px 0px 5px 2px;
   }
 `;
@@ -83,8 +78,8 @@ const CounterButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  &:focus{
-    outline:none;
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -105,7 +100,7 @@ const ResultField = styled.input`
 
 const Text = styled.p`
   margin: 5px 0 0 0;
-  font-size:15px;
+  font-size: 15px;
   color: 333333;
 `;
 
@@ -121,10 +116,10 @@ const Price = styled.p`
   color: #333333;
 `;
 
-const StyledFontAwesomeIcon :(typeof FontAwesomeIcon ) = styled(FontAwesomeIcon)`
- color:145775;
- font-size: 15px;
- margin-top: 5px;
+const StyledFontAwesomeIcon: typeof FontAwesomeIcon = styled(FontAwesomeIcon)`
+  color: 145775;
+  font-size: 15px;
+  margin-top: 5px;
 `;
 
 //#endregion
@@ -137,7 +132,6 @@ const SidesComponent: React.FC<DishProps> = ({
   price,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
-  const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
@@ -195,7 +189,6 @@ const SidesComponent: React.FC<DishProps> = ({
     };
   } catch (error) {
     console.error("Error in creating sides component", error);
-    setError("An error occurred while rendering sides component.");
   }
 
   return (
@@ -203,25 +196,27 @@ const SidesComponent: React.FC<DishProps> = ({
       <Image src={imageUrl} alt={title} />
       <TotalDescription>
         <TitleAndAddContainer>
-        <Title>{title}</Title>
-        {quantity === 0 ? (
+          <Title>{title}</Title>
+          {quantity === 0 ? (
             <CounterContainer>
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : quantity > 1 ? (
             <CounterContainer>
               <CounterButton onClick={handleDecrement}>-</CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
           ) : (
             <CounterContainer>
-              <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
-                <ResultField type="text" value={quantity} readOnly />
+              <CounterButton onClick={handleDecrement}>
+                <StyledFontAwesomeIcon icon={faTrashCan} />
+              </CounterButton>
+              <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
-          </CounterContainer>
+            </CounterContainer>
           )}
-          </TitleAndAddContainer>
+        </TitleAndAddContainer>
         <Text>{formattedIngredientText}</Text>
         <PriceAndAddContainer>
           <Price>{price} kr</Price>
