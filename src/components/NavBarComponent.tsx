@@ -103,10 +103,12 @@ export const NavBarComponent: React.FC = () => {
             <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
             <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
             <NavLinkStyle to="/Shoppingcart">
-              <Badge>
-                {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
-              </Badge>
-              <FontAwesomeIcon icon={faShoppingCart} />
+              <CartIconAndBadge>
+                <FontAwesomeIcon icon={faShoppingCart} />
+                <Badge>
+                  {totCartQuant > 0 && (totCartQuant > 10 ? "10+" : totCartQuant)}
+                </Badge>
+              </CartIconAndBadge>
             </NavLinkStyle>
           </NavBarListMain>
         </MainDiv>
@@ -252,6 +254,7 @@ const NavBarListMain = styled.div`
   overflow: visible;
   cursor: pointer;
   z-index: 9999;
+  position: relative;
 `;
 
 // const NavBarListElements = styled.li`
@@ -288,7 +291,6 @@ const NavLinkStyle: typeof NavLink = styled(NavLink)`
   padding:0 5px 0 0;
   text-align: center;
   text-decoration: none;
-  position: relative;
   &:hover {
     color: #eca884;
   }
@@ -313,11 +315,15 @@ const NavLinkStyleHome: typeof NavLink = styled(NavLink)`
   }
 `;
 
+const CartIconAndBadge = styled.span`
+  position: relative;
+`;
+
 const Badge = styled.span`
   position: absolute;
   font-family: Arial, Helvetica, sans-serif;
   top: -7px;
-  right: 16px;
+  right: -20px;
   background-color: #eca884;
   color: black;
   border-radius: 50%;
