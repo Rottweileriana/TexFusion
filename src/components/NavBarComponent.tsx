@@ -27,21 +27,17 @@ export const NavBarComponent: React.FC = () => {
     console.error("Error calculating total quantity in cart:", error);
   }
 
-  // useEffect(() => {
-  //   const params = new URLSearchParams(location.search);
-  //   const offset = parseInt(params.get("offset")) || 0;
+   useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const offset: number = parseInt(params.get('offset') ?? '0');
+    setTimeout(() =>
+      {window.scrollTo(0, offset);}, 3000)
+   }, [location.search]);
 
-  //   if (isNaN(offset)) {
-  //     window.scrollTo(0, 0);
-  //   } else {
-  //     window.scrollTo(0, offset);
-  //   }
-  // }, [location.search]);
-
-  useEffect(() => {
+  /* useEffect(() => {
     const offset = location.state?.scrollTop || 0;
     window.scrollTo(0, offset);
-  }, [location.state]);
+  }, [location.state]); */
 
   // useEffect(() => {
   //   window.scrollTo(0, 0);

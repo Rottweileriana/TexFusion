@@ -61,7 +61,9 @@ export function BurgerSideMenu({
 
   const navigate = useNavigate();
 
-  const GoToMenuAndSubLink = (number: number) => {
+//Din tidigare kod David
+
+  /* const GoToMenuAndSubLink = (number: number) => {
     if (number === 1){
       navigate('/Menu');
     }
@@ -73,7 +75,50 @@ export function BurgerSideMenu({
     }
     OpenCloseSidebar;
     
+  } */
+
+  //Funkar men behöver ses över gemensamt? Finns saker i Navbar som behöver korrigeras
+
+  const GoToMenuAndSubLink = (number: number) => {
+    // 
+    let offset = 0;
+    switch (number) {
+      case 1:
+        //Navigera till menyn
+        navigate('/Menu');
+        //Aktivera timer så scroll sker efter component är renderad
+        setTimeout(() => {
+          //Definera courseMenuElemnt som HTMLelement och kan ej vara null
+          const courseMenuElement: HTMLElement = document.getElementById('CourseMenu')!;
+          //Scrolla till ElementID i routing + offset
+          window.scrollTo(0, courseMenuElement?.offsetTop + offset);
+        }, 100);
+        OpenCloseSidebar();
+        break;
+      case 2:
+        offset = -162;
+        navigate('/Menu');
+        setTimeout(() => {
+          const sidesMenuElement: HTMLElement = document.getElementById('SidesMenu')!;
+          window.scrollTo(0, sidesMenuElement?.offsetTop + offset);
+        }, 100); // Adjust delay as needed
+        OpenCloseSidebar();
+        break;
+      case 3:
+        offset = -162;
+        navigate('/Menu');
+        setTimeout(() => {
+          const cocktailMenuElement: HTMLElement = document.getElementById('CocktailMenu')!;
+          window.scrollTo(0, cocktailMenuElement?.offsetTop + offset);
+        }, 100);
+        OpenCloseSidebar();
+        break;
+      default:
+        navigate('/Menu');
+        break;
+    }
   }
+
 //skicka med scrollTop värde i urlen till navbar.
   return (
     <>
