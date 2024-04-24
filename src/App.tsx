@@ -92,7 +92,9 @@ const ShoppingCartContainer = styled.div`
   background-image: no-repeat;
   background-position: center;
   width:100vw;
-  min-height: 100vh;
+  overflow:scroll;
+  overflow-x:hidden;
+  height: 100vh;
   display:flex;
   align-items:center;
   flex-direction:column;
