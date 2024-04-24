@@ -2,10 +2,12 @@ import styled from "styled-components";
 import {
   useContext,
   useEffect,
+  useState,
   FontAwesomeIcon,
   faShoppingCart,
   faBars,
   useLocation,
+  BurgerSideMenu,
 } from "./index";
 import { CartContext } from "./context";
 import { Link } from "react-scroll";
@@ -15,6 +17,8 @@ export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
   const WomanLogoTopLeft = `/src/assets/images/WomanLogo.png`;
+  const [ isOpen, setIsOpen ] = useState<boolean>(false);
+  
 
   let totCartQuant = 0;
 
@@ -27,6 +31,10 @@ export const NavBarComponent: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  const OpenCloseSidebar = (isOpen: boolean) => {
+    setIsOpen(!isOpen);
+  };
 
   //<i class="fa fa-bars" aria-hidden="true"></i>
 
@@ -104,9 +112,10 @@ export const NavBarComponent: React.FC = () => {
               <NavBarListSub></NavBarListSub>
             )}
           </LogotextSubnavbarContainer>
-          <HamburgerMenuButton>
+          <HamburgerMenuButton onClick={() => OpenCloseSidebar(isOpen)}>
                 <FontAwesomeIcon icon={faBars} />
-              </HamburgerMenuButton>
+          </HamburgerMenuButton>
+          <BurgerSideMenu />
           <NavBarListMain>
             <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
             <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
@@ -385,7 +394,7 @@ const HamburgerMenuButtonHome = styled.div`
 
 //"#535bf2" : "#F9DDD2"
 
-const HamburgerMenuButton = styled.div`
+const HamburgerMenuButton = styled.button`
   display: none;
   cursor: pointer;
 
