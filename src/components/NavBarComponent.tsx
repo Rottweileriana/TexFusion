@@ -4,6 +4,7 @@ import {
   useEffect,
   FontAwesomeIcon,
   faShoppingCart,
+  faBars,
   useLocation,
 } from "./index";
 import { CartContext } from "./context";
@@ -27,6 +28,8 @@ export const NavBarComponent: React.FC = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  //<i class="fa fa-bars" aria-hidden="true"></i>
+
   return (
     <>
       {location.pathname === "/" ? (
@@ -37,6 +40,9 @@ export const NavBarComponent: React.FC = () => {
                 <img src={WomanLogoTopLeft} alt="WomanLogoTopLeft" />
               </LogoNavLink> */}
             </LogoContainer>
+            <HamburgerMenuButtonHome>
+                <FontAwesomeIcon icon={faBars} />
+              </HamburgerMenuButtonHome>
             <NavBarListMain>
               <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
               <NavLinkStyleHome to="/Info/OmOss">OM OSS</NavLinkStyleHome>
@@ -98,6 +104,9 @@ export const NavBarComponent: React.FC = () => {
               <NavBarListSub></NavBarListSub>
             )}
           </LogotextSubnavbarContainer>
+          <HamburgerMenuButton>
+                <FontAwesomeIcon icon={faBars} />
+              </HamburgerMenuButton>
           <NavBarListMain>
             <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
             <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
@@ -132,6 +141,10 @@ const NavbarBackground = styled.div`
   position: fixed;
   top: 0;
   z-index: 9999;
+
+  @media (max-width: 768px) {
+    height: 100px;
+  }
 `;
 
 const NavbarBackgroundHome = styled.div`
@@ -166,8 +179,7 @@ const LogoContainer = styled.div`
   align-self: center;
   width: 22%;
   height: 120px;
-  margin-left: 0px;
-  
+  margin-left: 0px;  
 `;
 
 const LogoNavLink: typeof NavLink = styled(NavLink)`
@@ -178,6 +190,10 @@ const LogoNavLink: typeof NavLink = styled(NavLink)`
   text-decoration: none;
   &:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 900px) {
+    visibility: hidden;
   }
 `;
 
@@ -204,6 +220,12 @@ const TexFusionLogoImage = styled.img`
   min-width:420px;
   max-width: 95%;
   max-height: 95%;
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+    min-width: 230px;
+    object-fit: cover;
+  }
 `;
 
 /* const NavBarLogoTextLeft = styled.h1`
@@ -240,6 +262,11 @@ const NavBarListSub = styled.div`
   margin: 0;
   padding: 0;
   cursor: pointer;
+
+  
+  @media (max-width: 768px) {
+    visibility: hidden;
+  }
 `;
 
 const NavBarListMain = styled.div`
@@ -255,6 +282,10 @@ const NavBarListMain = styled.div`
   cursor: pointer;
   z-index: 9999;
   position: relative;
+
+  @media (max-width: 1200px) {
+    visibility: hidden;
+  }
 `;
 
 // const NavBarListElements = styled.li`
@@ -331,6 +362,46 @@ const Badge = styled.span`
   font-size: 12px;
   min-width: 20px;
   text-align: center;
+`;
+
+const HamburgerMenuButtonHome = styled.div`
+  display: none;
+  cursor: pointer;
+
+  @media (max-width: 1200px) {
+    display: block;
+    position: absolute;
+    top: 36px;
+    right: 45px;
+    z-index: 9999;
+
+    & > svg {
+      font-size: 25px;
+      font-weight: 100;
+      color: #ffc000;
+    }
+  }
+`;
+
+//"#535bf2" : "#F9DDD2"
+
+const HamburgerMenuButton = styled.div`
+  display: none;
+  cursor: pointer;
+
+  @media (max-width: 1200px) {
+    display: block;
+    position: absolute;
+    top: 36px;
+    right: 45px;
+    z-index: 9999;
+
+    & > svg {
+      font-size: 25px;
+      font-weight: 100;
+      color: #2b4175;
+    }
+  }
 `;
 
 //#endregion CSS

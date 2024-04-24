@@ -62,6 +62,10 @@ const CourseMenuContainer = styled.div`
   margin: 0;
   padding: 0;
   padding-top: 190px;
+
+  @media (max-width: 768px) {
+    padding-top: 120px;
+  }
 `;
 
 const SidesMenuContainer = styled.div`
