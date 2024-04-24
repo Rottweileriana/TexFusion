@@ -63,8 +63,6 @@ export function BurgerSideMenu({
       <BurgerSideMenuContainer isOpen={isOpen}>
         <button onClick={() => OpenCloseSidebar()}>
           Close</button>
-          <FontAwesomeIcon icon={fa-window-close} />
-          <i class="fal fa-window-close"></i>
         <NavLinkStyle to="/Menu" onClick={() => OpenCloseSidebar()}>
           MENY</NavLinkStyle>
         <SubLinkMenuContainer>
