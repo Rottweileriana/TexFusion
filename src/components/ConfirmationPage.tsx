@@ -130,7 +130,7 @@ const PageTitle = styled.h2`
   font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;
-  color: white;
+  color: lightgrey;
 `;
 
 const ConfirmationCardContainer = styled.div`
