@@ -1,59 +1,25 @@
 import styled from "styled-components";
 
-const LeftRightBackgroundImage = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
+const HomeBackgroundContainer = styled.div`
+    width: 100%;
+    height: 89vh;
+    z-index: 0;
 `;
 
-const BackgroundImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-const CenterLogoContainer = styled.div`
-  position: fixed;
-  top: 350px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const WomanLogotype = styled.img`
-  width: 80%;
-  max-width: 100%;
-  min-width: 400px;
-  object-fit: contain;
+const HomeBg = styled.img`
+    width: 100vw;
+    height: 100vh;
 `;
 
 export function HomeComponent() {
-  const ImageHomePageLeft = `./images/CactusBackground.jpg`;
-  const ImageHomepageRight = `./images/TableBackground.jpg`;
-  const ImageHomePageCenter = `./images/LogoWithGirl.jpg`;
 
-  return (
-    <>
-      <LeftRightBackgroundImage>
-        <BackgroundImage
-          src={ImageHomePageLeft}
-          alt="CactusBackground"
-          className="image"
-        />
-        <BackgroundImage
-          src={ImageHomepageRight}
-          alt="TableBackground"
-          className="image"
-        />
-      </LeftRightBackgroundImage>
-      <CenterLogoContainer>
-        <WomanLogotype
-          src={ImageHomePageCenter}
-          alt="LogoWithGirl"
-          className="CenterImage"
-        />
-      </CenterLogoContainer>
-    </>
-  );
+    const HomeBackground = `/src/assets/images/MenuBg.jpg`;
+
+    return (
+        <>
+            <HomeBackgroundContainer>
+                <HomeBg src={HomeBackground} alt="BackgroundImage" />
+            </HomeBackgroundContainer>
+        </>
+    );
 }
