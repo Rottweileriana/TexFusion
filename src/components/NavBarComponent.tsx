@@ -66,11 +66,13 @@ export const NavBarComponent: React.FC = () => {
               <NavLinkStyleHome to="/Info/OmOss">OM OSS</NavLinkStyleHome>
               <NavLinkStyleHome to="/Info/Kontakt">KONTAKT</NavLinkStyleHome>
               <NavLinkStyleHome to="/Shoppingcart">
-                <Badge>
-                  {totCartQuant > 0 &&
-                    (totCartQuant > 10 ? "10+" : totCartQuant)}
-                </Badge>
-                <FontAwesomeIcon icon={faShoppingCart} />
+              <CartIconAndBadge>
+                  <FontAwesomeIcon icon={faShoppingCart} />
+                  <Badge>
+                    {totCartQuant > 0 &&
+                      (totCartQuant > 10 ? "10+" : totCartQuant)}
+                  </Badge>
+                </CartIconAndBadge>
               </NavLinkStyleHome>
             </NavBarListMain>
           </MainDiv>
