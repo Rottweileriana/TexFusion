@@ -27,21 +27,21 @@ export const NavBarComponent: React.FC = () => {
     console.error("Error calculating total quantity in cart:", error);
   }
 
-   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const offset: number = parseInt(params.get('offset') ?? '0');
-    setTimeout(() =>
-      {window.scrollTo(0, offset);}, 3000)
-   }, [location.search]);
+  //  useEffect(() => {
+  //   const params = new URLSearchParams(location.search);
+  //   const offset: number = parseInt(params.get('offset') ?? '0');
+  //   setTimeout(() =>
+  //     {window.scrollTo(0, offset);}, 3000)
+  //  }, [location.search]);
 
   /* useEffect(() => {
     const offset = location.state?.scrollTop || 0;
     window.scrollTo(0, offset);
   }, [location.state]); */
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, [location.pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const OpenCloseSidebar = () => {
     setIsOpen(!isOpen);
@@ -57,9 +57,10 @@ export const NavBarComponent: React.FC = () => {
                 <img src={WomanLogoTopLeft} alt="WomanLogoTopLeft" />
               </LogoNavLink> */}
             </LogoContainer>
-            <HamburgerMenuButtonHome>
+            <HamburgerMenuButtonHome onClick={() => OpenCloseSidebar()}>
               <FontAwesomeIcon icon={faBars} />
             </HamburgerMenuButtonHome>
+            <BurgerSideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
             <NavBarListMain>
               <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
               <NavLinkStyleHome to="/Info/OmOss">OM OSS</NavLinkStyleHome>
