@@ -19,14 +19,18 @@ const BurgerSideMenuContainer = styled.div<StylesProps>`
   flex-direction: column;
   align-items: flex-start;
   height: 100vh;
-  width: 80%;
+  width: 50%;
+  max-width: 200px;
   background-color: #333333;
-  padding-top: 100px;
+  padding-top: 45px;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 99999;
   transition: right;
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-size: 15px;
 `;
 
 const SubLinkMenuContainer = styled.div`
@@ -43,6 +47,17 @@ const NavLinkStyle: typeof NavLink = styled(NavLink)`
 const LinkStyle: typeof Link = styled(Link)`
   margin-left: 50px;
   color: lightgrey;
+`;
+
+const CloseButton = styled.button`
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-size: 20px;
+  color: lightgrey;
+  margin: 0 0 30px 20px;;
 `;
 
 // const CloseSidebarButton = styled.button`
@@ -123,8 +138,8 @@ export function BurgerSideMenu({
   return (
     <>
       <BurgerSideMenuContainer isOpen={isOpen}>
-        <button onClick={() => OpenCloseSidebar()}>
-          Close</button>
+        <CloseButton onClick={() => OpenCloseSidebar()}>
+          x</CloseButton>
         <NavLinkStyle to="/Menu" onClick={() => OpenCloseSidebar()}>
           MENY</NavLinkStyle>
           {/* <button onClick={() => GoToMenuAndSubLink(1)}>
