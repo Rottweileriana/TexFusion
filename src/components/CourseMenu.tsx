@@ -19,9 +19,9 @@ const MenuTitle = styled.h2`
   margin-bottom: 20px;
   font-family: "Open Sans";
   font-weight: 300;
-  font-size: 25px;
+  font-size: 30px;
   text-decoration: none;
-  color: lightgrey;
+  color: #ffffff;
 `;
 
 export function CourseMenu() {
@@ -53,9 +53,6 @@ export function CourseMenu() {
     };
   }, []);
 
-  // if (error) {
-  //   return <div>Huvudrätter: Kunde inte hämta huvudrätter.</div>;
-  // }
 
   return (
     <>
@@ -76,7 +73,7 @@ export function CourseMenu() {
                     price={main.timeInMins}
                   />
                 )
-          )}
+            )}
         </CourseContainer>
       </CourseMenuContainer>
     </>

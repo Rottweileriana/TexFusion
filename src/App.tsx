@@ -38,6 +38,11 @@ const BodyBackgroundContainer = styled.div`
   width: 100vw;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  background-image: url("/src/assets/images/MenuBg.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 const MainContainer = styled.div`
@@ -57,6 +62,10 @@ const CourseMenuContainer = styled.div`
   margin: 0;
   padding: 0;
   padding-top: 190px;
+
+  @media (max-width: 768px) {
+    padding-top: 120px;
+  }
 `;
 
 const SidesMenuContainer = styled.div`
@@ -64,9 +73,8 @@ const SidesMenuContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding-top: 300px;
+  padding-top: 25px;
   margin: 0;
-  padding: 0;
 `;
 
 const CocktailMenuContainer = styled.div`
@@ -74,9 +82,8 @@ const CocktailMenuContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding-top: 300px;
+  padding-top: 25px;
   margin: 0;
-  padding: 0;
 `;
 
 const FooterContainer = styled.div`
@@ -89,6 +96,9 @@ const ShoppingCartContainer = styled.div`
   background-image: no-repeat;
   background-position: center;
   width:100vw;
+  overflow:scroll;
+  overflow-x:hidden;
+  height: 100vh;
   display:flex;
   align-items:center;
   flex-direction:column;

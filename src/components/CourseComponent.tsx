@@ -5,7 +5,6 @@ import { DishProps } from "../types/index";
 import { RecommendationComponent, faTrashCan } from "./index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 type Product = {
   imageUrl: string;
   title: string;
@@ -23,8 +22,9 @@ const StyledCourse = styled.div<StyledCourseProps>`
   display: flex;
   flex-direction: column;
   width: 300px;
+  // Temp workaround... fix at 400px so card does not change size
   height: ${({ quantity }: { quantity: number }) =>
-    quantity > 0 ? "480px" : "400px"};
+    quantity > 0 ? "400px" : "400px"};
   border: 1px solid grey;
   border-radius: 0px;
   padding: 5px;
@@ -34,17 +34,21 @@ const StyledCourse = styled.div<StyledCourseProps>`
   text-align: left;
   position: relative;
   transition: background-color 1s, box-shadow 0.8s, height 0.5s ease-in-out;
-  &:hover{
-    background-color:#f5f5f5;
+  &:hover {
+    background-color: #f5f5f5;
     box-shadow: 0px 0px 5px 2px;
   }
 `;
 
-const Image = styled.img`
+const Image = styled.img<StyledCourseProps>`
   width: 299px;
-  height: 299px;
+  height: ${({ quantity }: { quantity: number }) =>
+    quantity > 0 ? "170px" : "299px"};
+  object-fit: cover;
+  object-position: 0% 100%;
   border-radius: 0px;
   border: 1px solid #222222;
+  transition: height 0.5s ease-in-out;
 `;
 
 const TotalDescription = styled.div`
@@ -61,7 +65,7 @@ const TitleAndAddContainer = styled.div`
 const Title = styled.h3`
   font-family: "Open Sans";
   font-weight: 300;
-  font-size: 35px;
+  font-size: 30px;
   text-decoration: none;
   margin: 0;
   color: #333333;
@@ -93,8 +97,8 @@ const CounterButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  &:focus{
-    outline:none;
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -113,15 +117,16 @@ const ResultField = styled.input`
   }
 `;
 
-const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
- color: 145775;
- font-size: 15px;
- margin-top: 5px;
+const StyledFontAwesomeIcon: typeof FontAwesomeIcon = styled(FontAwesomeIcon)`
+  color: 145775;
+  font-size: 15px;
+  margin-top: 5px;
 `;
 
 const Text = styled.p`
   margin: 5px 0 0 0;
-  font-size:15px;
+  font-size: 15px;
+  font-weight: 400;
 `;
 
 const PriceAndAddContainer = styled.div`
@@ -133,6 +138,7 @@ const PriceAndAddContainer = styled.div`
 
 const Price = styled.p`
   margin: 0 0 5px 0;
+  font-weight: 400;
 `;
 
 const Recommendation = styled.div`
@@ -145,18 +151,19 @@ const Recommendation = styled.div`
   margin: 5px;
 `;
 
-const HeadRecCocktail = styled.h3`
+const HeadRecCocktail = styled.text`
+font-family: "Open Sans";
+font-weight: 500;
   margin: 15px 0 5px 7px;
   color: #333333;
 `;
 
 const Wrapper = styled.div<StyledCourseProps>`
-height: 100%;
-opacity: ${({ quantity }: { quantity: number }) =>
-    quantity > 0 ? 1 : 0};
-transition-delay:0.8s;
-transition-duration: 1s;
-transition-property: opacity;
+  height: 100%;
+  opacity: ${({ quantity }: { quantity: number }) => (quantity > 0 ? 1 : 0)};
+  transition-delay: 0.5s;
+  transition-duration: 0.8s;
+  transition-property: opacity;
 `;
 
 //#endregion
@@ -233,7 +240,7 @@ const CourseComponent: React.FC<DishProps> = ({
 
   return (
     <StyledCourse quantity={quantity}>
-      <Image src={imageUrl} alt={title} />
+      <Image src={imageUrl} alt={title} quantity={quantity} />
       <TotalDescription>
         <TitleAndAddContainer>
           <Title>{title}</Title>
@@ -249,7 +256,9 @@ const CourseComponent: React.FC<DishProps> = ({
             </CounterContainer>
           ) : (
             <CounterContainer>
-              <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
+              <CounterButton onClick={handleDecrement}>
+                <StyledFontAwesomeIcon icon={faTrashCan} />
+              </CounterButton>
               <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
@@ -268,7 +277,6 @@ const CourseComponent: React.FC<DishProps> = ({
           </Recommendation>
         )}
       </Wrapper>
-
     </StyledCourse>
   );
 };
