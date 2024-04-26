@@ -102,6 +102,9 @@ const CounterButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const ResultField = styled.input`
@@ -153,7 +156,7 @@ const ShoppingCartContainer = styled.div`
 `;
 
 const StyledTitle = styled.h2`
-  font-family: "open Sans";
+  font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;
   color: white;
@@ -163,6 +166,14 @@ const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
  color: 145775;
  font-size: 15px;
  margin-top: 5px;
+`;
+
+const EmtptyCartText = styled.div`
+  margin-left: 165px;
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 300;
+  color: #333333;
 `;
 //#endregion
 
@@ -243,9 +254,15 @@ export const ShoppingCart: React.FC = () => {
           </CartRow>
         ))}
         <CartTotals>
-          <p>Summa:</p>
-          <TotalPrice>{totCartPrice} kr</TotalPrice>
-          <TotalQuantity>{totCartQuant} st</TotalQuantity>
+          {totCartQuant < 1 ? (
+            <EmtptyCartText>Din varukorg är tom.</EmtptyCartText>
+            ) : (
+            <>
+              <p>Summa:</p>
+              <TotalPrice>{totCartPrice} kr</TotalPrice>
+              <TotalQuantity>{totCartQuant} st</TotalQuantity>
+            </>
+          )}
         </CartTotals>
       </CartList>
     </ShoppingCartContainer>

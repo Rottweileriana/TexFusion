@@ -83,6 +83,7 @@ const BackgroundStyle = styled.div`
 
 const ContactContainerTitle = styled.div`
     background-color:white;
+    max-width: 900px;
     width:80%;
     padding-bottom:5px;
     border-bottom:solid;
@@ -107,6 +108,7 @@ const ContactTitleInformation = styled.p`
 
 const ContactContainerInformation = styled.div`
     display:flex;
+    max-width: 900px;
     width:80%;
     margin:0;
     padding:0;

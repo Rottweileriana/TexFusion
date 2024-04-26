@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { DishProps } from "../types/index.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+interface StyledCourseProps {
+  quantity: number;
+};
+
 //#region Styles
 const StyledSide = styled.div`
   display: flex;
@@ -46,7 +50,7 @@ const TitleAndAddContainer = styled.div`
 const Title = styled.h3`
   font-family: "Open Sans";
   font-weight: 300;
-  font-size: 35px;
+  font-size: 30px;
   text-decoration: none;
   margin: 0;
   padding: 0;
@@ -116,10 +120,10 @@ const Price = styled.p`
   color: #333333;
 `;
 
-const StyledFontAwesomeIcon: typeof FontAwesomeIcon = styled(FontAwesomeIcon)`
-  color: 145775;
-  font-size: 15px;
-  margin-top: 5px;
+const StyledFontAwesomeIcon: (typeof FontAwesomeIcon) = styled(FontAwesomeIcon)`
+ color:145775;
+ font-size: 15px;
+ margin-top: 5px;
 `;
 
 //#endregion
@@ -135,8 +139,8 @@ const SidesComponent: React.FC<DishProps> = ({
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => {};
-  let handleDecrement: () => void = () => {};
+  let handleIncrement: () => void = () => { };
+  let handleDecrement: () => void = () => { };
 
   try {
     useEffect(() => {
@@ -209,9 +213,7 @@ const SidesComponent: React.FC<DishProps> = ({
             </CounterContainer>
           ) : (
             <CounterContainer>
-              <CounterButton onClick={handleDecrement}>
-                <StyledFontAwesomeIcon icon={faTrashCan} />
-              </CounterButton>
+              <CounterButton onClick={handleDecrement}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
               <ResultField type="text" value={quantity} readOnly />
               <CounterButton onClick={handleIncrement}>+</CounterButton>
             </CounterContainer>
