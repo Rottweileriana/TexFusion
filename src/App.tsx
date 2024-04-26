@@ -32,17 +32,37 @@ const BodyFooterContainer = styled.div`
 const BodyContainer = styled.div``;
 
 const BodyBackgroundContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100vw;
   margin: 0;
   padding: 0;
   min-height: 100vh;
+<<<<<<< HEAD
   background-image: url("./images/MenuBg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+=======
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/src/assets/images/StreetMexicoBackground.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(4px);
+    z-index: -1;
+  }
+>>>>>>> b9b0e12 (Added picLogo)
 `;
+
 
 const MainContainer = styled.div`
   display: flex;
@@ -90,8 +110,13 @@ const FooterContainer = styled.div`
 `;
 
 const ShoppingCartContainer = styled.div`
+<<<<<<< HEAD
   background-image: url("./images/ShoppingCartBg.jpg");
   background-size: cover;
+=======
+  background-image:url("/src/assets/images/StreetMexicoBackground2.jpg");
+  background-size:cover;
+>>>>>>> b9b0e12 (Added picLogo)
   background-image: no-repeat;
   background-position: center;
   width: 100vw;

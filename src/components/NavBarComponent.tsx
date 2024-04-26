@@ -16,7 +16,7 @@ import { NavLink } from "react-router-dom";
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
-  const WomanLogoTopLeft = `./images/WomanLogo.png`;
+  const WomanLogoTopLeft = `/src/assets/images/RoundLogoPic6.png`;
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   let totCartQuant = 0;

@@ -79,7 +79,7 @@ const CounterContainer = styled.div`
   height: 30px;
   border: 0px solid #808080;
   border-radius: 30px;
-  background-color: #eca884;
+  background-color: #7B0E34;
   font-weight: 300;
 `;
 
@@ -91,9 +91,9 @@ const CounterButton = styled.button`
   height: 30px;
   background-color: transparent;
   border: none;
-  color: #333333;
+  color: white;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 400;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -108,10 +108,10 @@ const ResultField = styled.input`
   text-align: center;
   background-color: transparent;
   border: none;
-  color: #333333;
+  color: white;
   font-family: "Open Sans";
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 400;
   outline: none;
   &:hover {
     cursor: default;

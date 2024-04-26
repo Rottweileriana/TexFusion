@@ -83,7 +83,7 @@ const CounterContainer = styled.div`
   height: 30px;
   border: 0px solid #808080;
   border-radius: 30px;
-  background-color: #eca884;
+  background-color: #D53F37;
 `;
 
 const CounterButton = styled.button`
