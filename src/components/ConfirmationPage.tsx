@@ -8,85 +8,94 @@ export function ConfirmationPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(!confirmedCheckout){
+    if (!confirmedCheckout) {
       navigate("/");
     }
-  }, [confirmedCheckout, navigate])
-  
-    // Get AdressData
-    const [formvalue] = useState<FormData>(() => {
-      const storedValue = sessionStorage.getItem("addressData");
-  
-      return storedValue ? JSON.parse(storedValue) : [];
-    });
+  }, [confirmedCheckout, navigate]);
 
-    // Get CartData
-    const [cartValue] = useState<CartItem[]>(() => {
-      const storedValue = sessionStorage.getItem("confirmedItems");
-  
-      return storedValue ? JSON.parse(storedValue) : [];
-    });
-  
-    const [waiting, setWaiting] = useState(false);
-    useEffect(() => {
-      if(formvalue.paymentMethod === "Swish") {
-          setWaiting(true);
-          const timer = setTimeout(() => {
-            setWaiting(false);
-          }, 3000);
-          return () => {
-            clearTimeout(timer);
-          };
-        }
-      }, [formvalue.paymentMethod]);
-    
-    
-    // Navigera till Huvudmeny via knapp
-    const onClickTest = (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-  
-      navigate("/");
-    };
-  
-    //Beräkna totala kostnaden för beställningsbekräftelsen
-    const totalCost = cartValue.reduce(
-      (acc, cartValue) => acc + cartValue.price * cartValue.quantity,
-      0
-    );
+  // Get AdressData
+  const [formvalue] = useState<FormData>(() => {
+    const storedValue = sessionStorage.getItem("addressData");
 
-    return (
-      <>
-        {waiting === true ? (
-          <ConfirmationBackgroundContainer>
-            <PageTitle></PageTitle>
-            <ConfirmationCardContainer>
-              <ThankYouText>Din order bearbetas...</ThankYouText>
-              <Address>
-              </Address>
-            </ConfirmationCardContainer>
-          </ConfirmationBackgroundContainer>
-          ) :
-        (
-          <ConfirmationBackgroundContainer>
+    return storedValue ? JSON.parse(storedValue) : [];
+  });
+
+  // Get CartData
+  const [cartValue] = useState<CartItem[]>(() => {
+    const storedValue = sessionStorage.getItem("confirmedItems");
+
+    return storedValue ? JSON.parse(storedValue) : [];
+  });
+
+  const [waiting, setWaiting] = useState(false);
+  useEffect(() => {
+    if (formvalue.paymentMethod === "Swish") {
+      setWaiting(true);
+      const timer = setTimeout(() => {
+        setWaiting(false);
+      }, 3000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [formvalue.paymentMethod]);
+
+  // Navigera till Huvudmeny via knapp
+  const onClickTest = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    navigate("/");
+  };
+
+  //Beräkna totala kostnaden för beställningsbekräftelsen
+  const totalCost = cartValue.reduce(
+    (acc, cartValue) => acc + cartValue.price * cartValue.quantity,
+    0
+  );
+
+  return (
+    <>
+      {waiting === true ? (
+        <ConfirmationBackgroundContainer>
+          <PageTitle></PageTitle>
+          <ConfirmationCardContainer>
+            <ThankYouText>Din order bearbetas...</ThankYouText>
+            <Address></Address>
+          </ConfirmationCardContainer>
+        </ConfirmationBackgroundContainer>
+      ) : (
+        <ConfirmationBackgroundContainer>
           <PageTitle>DIN BESTÄLLNING</PageTitle>
-            <ConfirmationCardContainer>
-              <ThankYouText>Tack för att du beställer från oss!</ThankYouText>
-              <Address>
-                <AdressParts>{formvalue.firstName} {formvalue.lastName}</AdressParts>
-                <AdressParts>{formvalue.address}</AdressParts>
-                <AdressParts>{formvalue.zipCode} {formvalue.city}</AdressParts>
-              </Address>
-              <InfoToCustomer> Din mat är hos dig om ca 30-35 minuter.</InfoToCustomer>
-              <InfoToCustomer>Vi ringer dig på {formvalue.phone} när vi är vid din dörr.</InfoToCustomer>
-              {formvalue.paymentMethod === 'Klarna' &&
+          <ConfirmationCardContainer>
+            <ThankYouText>Tack för att du beställer från oss!</ThankYouText>
+            <Address>
+              <AdressParts>
+                {formvalue.firstName} {formvalue.lastName}
+              </AdressParts>
+              <AdressParts>{formvalue.address}</AdressParts>
+              <AdressParts>
+                {formvalue.zipCode} {formvalue.city}
+              </AdressParts>
+            </Address>
+            <InfoToCustomer>
+              {" "}
+              Din mat är hos dig om ca 30-35 minuter.
+            </InfoToCustomer>
+            <InfoToCustomer>
+              Vi ringer dig på {formvalue.phone} när vi är vid din dörr.
+            </InfoToCustomer>
+            {formvalue.paymentMethod === "Klarna" && (
               <>
                 <InfoToCustomerMail>
-                Ett bekräftelsemejl med faktura på totalt {totalCost} SEK</InfoToCustomerMail>
+                  Ett bekräftelsemejl med faktura på totalt {totalCost} SEK
+                </InfoToCustomerMail>
                 <InfoToCustomerMail>
                   har skickats till {formvalue.email}.
                 </InfoToCustomerMail>
-              </>}
-              {(formvalue.paymentMethod === 'Swish' || formvalue.paymentMethod === 'KreditKort') &&
+              </>
+            )}
+            {(formvalue.paymentMethod === "Swish" ||
+              formvalue.paymentMethod === "KreditKort") && (
               <>
                 <InfoToCustomerMail>
                   Ett bekräftelsemejl och kvitto på totalt {totalCost} SEK
@@ -94,34 +103,35 @@ export function ConfirmationPage() {
                 <InfoToCustomerMail>
                   har skickats till {formvalue.email}.
                 </InfoToCustomerMail>
-              </>}
-              <ConfirmedProducts>
-                {cartValue.map((cartValue) => {
-                  return (
-                    <StyledMainCartItems key={cartValue._id}>
-                      <StyledCartItems>
-                        <Image src={cartValue.imageUrl} />
-                        <div>
-                          <Title>
-                            {cartValue.title} x {cartValue.quantity}{" "}
-                          </Title>
-                          <Price>
-                            {cartValue.price*cartValue.quantity} Sek <br />
-                          </Price>
-                        </div>
-                      </StyledCartItems>
-                    </StyledMainCartItems>
-                  );
-                })}
-              </ConfirmedProducts>
-              <TotalCost>Summa: {totalCost} kr</TotalCost>
+              </>
+            )}
+            <ConfirmedProducts>
+              {cartValue.map((cartValue) => {
+                return (
+                  <StyledMainCartItems key={cartValue._id}>
+                    <StyledCartItems>
+                      <Image src={cartValue.imageUrl} />
+                      <div>
+                        <Title>
+                          {cartValue.title} x {cartValue.quantity}{" "}
+                        </Title>
+                        <Price>
+                          {cartValue.price * cartValue.quantity} Sek <br />
+                        </Price>
+                      </div>
+                    </StyledCartItems>
+                  </StyledMainCartItems>
+                );
+              })}
+            </ConfirmedProducts>
+            <TotalCost>Summa: {totalCost} kr</TotalCost>
             <BackHomeButton onClick={onClickTest}>Tillbaka</BackHomeButton>
           </ConfirmationCardContainer>
         </ConfirmationBackgroundContainer>
-        )}
-      </>
-    )
-  };
+      )}
+    </>
+  );
+}
 
 //#region CSS...
 
@@ -131,8 +141,8 @@ const ConfirmationBackgroundContainer = styled.div`
   align-items: center;
   width: 100vw;
   min-height: 100vh;
-  background-image: url("/src/assets/images/ConfirmationPageBackground.jpg");
-  background-size:cover;
+  background-image: url("./images/ConfirmationPageBackground.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 `;
@@ -212,8 +222,7 @@ const ConfirmedProducts = styled.p`
   color: #333333;
 `;
 
-const StyledMainCartItems = styled.div`
-`;
+const StyledMainCartItems = styled.div``;
 
 const StyledCartItems = styled.div`
   display: flex;
@@ -266,7 +275,6 @@ const TotalCost = styled.p`
 const BackHomeButton = styled.button`
   margin-bottom: 15px;
 `;
-
 
 //EASTER EGG
 
