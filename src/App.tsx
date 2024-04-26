@@ -28,9 +28,7 @@ const BodyFooterContainer = styled.div`
   min-height: 100vh;
 `;
 
-const BodyContainer = styled.div`
-  
-`;
+const BodyContainer = styled.div``;
 
 const BodyBackgroundContainer = styled.div`
   display: flex;
@@ -91,8 +89,8 @@ const FooterContainer = styled.div`
 `;
 
 const ShoppingCartContainer = styled.div`
-  background-image:url("/src/assets/images/ShoppingCartBg.jpg");
-  background-size:cover;
+  background-image: url("/src/assets/images/ShoppingCartBg.jpg");
+  background-size: cover;
   background-image: no-repeat;
   background-position: center;
   width:100vw;
@@ -121,11 +119,6 @@ class ErrorBoundary extends React.Component<
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error: any) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true };
   }
 
   componentDidCatch(error: any, errorInfo: any) {
@@ -190,7 +183,10 @@ const App: React.FC = () => {
                     </ShoppingCartContainer>
                   }
                 />
-                <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
+                <Route
+                  path="/ConfirmationPage"
+                  element={<ConfirmationPage />}
+                />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </BodyContainer>

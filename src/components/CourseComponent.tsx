@@ -5,13 +5,6 @@ import { DishProps } from "../types/index";
 import { RecommendationComponent, faTrashCan } from "./index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-type Product = {
-  imageUrl: string;
-  title: string;
-  price: number;
-  quantity: number;
-};
-
 interface StyledCourseProps {
   quantity: number;
 }
@@ -176,12 +169,11 @@ const CourseComponent: React.FC<DishProps> = ({
   price,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
-  const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => { };
-  let handleDecrement: () => void = () => { };
+  let handleIncrement: () => void = () => {};
+  let handleDecrement: () => void = () => {};
 
   try {
     //course
@@ -235,7 +227,6 @@ const CourseComponent: React.FC<DishProps> = ({
     };
   } catch (error) {
     console.error("Error in creating course component", error);
-    setError("An error occurred while rendering course component.");
   }
 
   return (

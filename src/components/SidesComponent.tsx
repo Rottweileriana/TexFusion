@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { DishProps } from "../types/index.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 interface StyledCourseProps {
   quantity: number;
 };
@@ -25,7 +24,7 @@ const StyledSide = styled.div`
   transition: background-color 1s, box-shadow 0.7s;
   &:hover {
     cursor: default;
-    background-color:#f5f5f5;
+    background-color: #f5f5f5;
     box-shadow: 0px 0px 5px 2px;
   }
 `;
@@ -83,8 +82,8 @@ const CounterButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  &:focus{
-    outline:none;
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -105,7 +104,7 @@ const ResultField = styled.input`
 
 const Text = styled.p`
   margin: 5px 0 0 0;
-  font-size:15px;
+  font-size: 15px;
   color: 333333;
 `;
 
@@ -137,7 +136,6 @@ const SidesComponent: React.FC<DishProps> = ({
   price,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
-  const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
@@ -195,7 +193,6 @@ const SidesComponent: React.FC<DishProps> = ({
     };
   } catch (error) {
     console.error("Error in creating sides component", error);
-    setError("An error occurred while rendering sides component.");
   }
 
   return (

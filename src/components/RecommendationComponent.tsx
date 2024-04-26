@@ -9,10 +9,6 @@ type RecCocktail = {
   title: string;
 };
 
-interface StyledCourseProps {
-  quantity: number;
-}
-
 //#region Styles
 const StyledCocktail = styled.div`
   display: flex;
