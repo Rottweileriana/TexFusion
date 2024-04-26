@@ -66,7 +66,7 @@ export const NavBarComponent: React.FC = () => {
               <NavLinkStyleHome to="/About">OM OSS</NavLinkStyleHome>
               <NavLinkStyleHome to="/Contact">KONTAKT</NavLinkStyleHome>
               <NavLinkStyleHome to="/Shoppingcart">
-              <CartIconAndBadge>
+                <CartIconAndBadge>
                   <FontAwesomeIcon icon={faShoppingCart} />
                   <Badge>
                     {totCartQuant > 0 &&
@@ -87,10 +87,10 @@ export const NavBarComponent: React.FC = () => {
             </LogoContainer>
             <LogotextSubnavbarContainer>
               <TexFusionLogoTextContainer>
-                <TexFusionLogoImage
-                  src="./images/TexFusionLogo.jpg"
-                  alt="TexFusionLogotype"
-                />
+                {/* <TexFusionLogoImage
+                  src="/src/assets/images/TexFusionLogo.jpg"
+                  alt="TexFusionLogotype" */}
+                {/* /> */}
               </TexFusionLogoTextContainer>
               {location.pathname === "/Menu" ? (
                 <NavBarListSub>
@@ -162,9 +162,7 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: ${location.pathname === "/Info/OmOss"
-    ? "#535bf2"
-    : "#F9DDD2"};
+  background-color: #7B0E34;
   z-index: 9999;
   width: 100%;
   height: 175px;
@@ -246,7 +244,7 @@ const TexFusionLogoTextContainer = styled.div`
   size: 50px;
 `;
 
-const TexFusionLogoImage = styled.img`
+/* const TexFusionLogoImage = styled.img`
   min-width: 420px;
   max-width: 95%;
   max-height: 95%;
@@ -256,7 +254,7 @@ const TexFusionLogoImage = styled.img`
     min-width: 230px;
     object-fit: cover;
   }
-`;
+`; */
 
 /* const NavBarLogoTextLeft = styled.h1`
   display: flex;
@@ -325,7 +323,7 @@ const NavBarListMain = styled.div`
 
 const LinkStyle = styled(Link)`
   display: block;
-  color: grey;
+  color:white;
   font-family: "Open Sans";
   font-size: 14px;
   margin: 0px;
@@ -340,7 +338,7 @@ const LinkStyle = styled(Link)`
 
 const NavLinkStyle: typeof NavLink = styled(NavLink)`
   display: block;
-  color: #2b4175;
+  color: white;
   font-family: "Open Sans";
   font-size: 14px;
   width: 25%;
@@ -358,7 +356,7 @@ const NavLinkStyle: typeof NavLink = styled(NavLink)`
 
 const NavLinkStyleHome: typeof NavLink = styled(NavLink)`
   display: block;
-  color: #ffc000;
+  color: white;
   font-family: "Open Sans";
   font-size: 14px;
   width: 25%;
@@ -384,7 +382,7 @@ const Badge = styled.span`
   font-family: Arial, Helvetica, sans-serif;
   top: -7px;
   right: -20px;
-  background-color: #eca884;
+  background-color: white;
   color: black;
   border-radius: 50%;
   padding: 0 2px;
@@ -407,7 +405,7 @@ const HamburgerMenuButtonHome = styled.div`
     & > svg {
       font-size: 25px;
       font-weight: 100;
-      color: #ffc000;
+      color: white;
     }
   }
 `;
@@ -430,7 +428,7 @@ const HamburgerMenuButton = styled.button`
     & > svg {
       font-size: 25px;
       font-weight: 100;
-      color: #2b4175;
+      color: white;
     }
   }
 `;

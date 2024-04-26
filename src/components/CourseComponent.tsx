@@ -29,7 +29,8 @@ const StyledCourse = styled.div<StyledCourseProps>`
   border-radius: 0px;
   padding: 5px;
   background-color: #f5f5f5;
-  color: #333333;
+  color: black;
+  font-weight: bolder;
   margin: 0 10px 25px 10px;
   text-align: left;
   position: relative;
@@ -64,11 +65,11 @@ const TitleAndAddContainer = styled.div`
 
 const Title = styled.h3`
   font-family: "Open Sans";
-  font-weight: 300;
+  font-weight: 500;
   font-size: 30px;
   text-decoration: none;
   margin: 0;
-  color: #333333;
+  color: black;
 `;
 
 const CounterContainer = styled.div`
