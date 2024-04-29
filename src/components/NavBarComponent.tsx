@@ -16,7 +16,7 @@ import { NavLink } from "react-router-dom";
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
-  const WomanLogoTopLeft = `/src/assets/images/WomanLogo.png`;
+  const WomanLogoTopLeft = `./images/WomanLogo.png`;
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   let totCartQuant = 0;
@@ -88,7 +88,7 @@ export const NavBarComponent: React.FC = () => {
             <LogotextSubnavbarContainer>
               <TexFusionLogoTextContainer>
                 <TexFusionLogoImage
-                  src="/src/assets/images/TexFusionLogo.jpg"
+                  src="./images/TexFusionLogo.jpg"
                   alt="TexFusionLogotype"
                 />
               </TexFusionLogoTextContainer>

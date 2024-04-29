@@ -28,9 +28,7 @@ const BodyFooterContainer = styled.div`
   min-height: 100vh;
 `;
 
-const BodyContainer = styled.div`
-  
-`;
+const BodyContainer = styled.div``;
 
 const BodyBackgroundContainer = styled.div`
   display: flex;
@@ -39,8 +37,8 @@ const BodyBackgroundContainer = styled.div`
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-image: url("/src/assets/images/MenuBg.jpg");
-  background-size:cover;
+  background-image: url("./images/MenuBg.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 `;
@@ -91,17 +89,17 @@ const FooterContainer = styled.div`
 `;
 
 const ShoppingCartContainer = styled.div`
-  background-image:url("/src/assets/images/ShoppingCartBg.jpg");
-  background-size:cover;
+  background-image: url("./images/ShoppingCartBg.jpg");
+  background-size: cover;
   background-image: no-repeat;
   background-position: center;
-  width:100vw;
-  overflow:scroll;
-  overflow-x:hidden;
+  width: 100vw;
+  overflow: scroll;
+  overflow-x: hidden;
   height: 100vh;
-  display:flex;
-  align-items:center;
-  flex-direction:column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 //#endregion
@@ -190,7 +188,10 @@ const App: React.FC = () => {
                     </ShoppingCartContainer>
                   }
                 />
-                <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
+                <Route
+                  path="/ConfirmationPage"
+                  element={<ConfirmationPage />}
+                />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </BodyContainer>
