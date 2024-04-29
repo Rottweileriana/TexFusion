@@ -64,7 +64,7 @@ export function ContactComponent () {
 //Background
 
 const BackgroundWrapper = styled.div`
-    background-image: url("/src/assets/images/TransparentBackgroundExample2.jpg");
+    background-image: url("./images/TransparentBackgroundExample2.jpg");
     background-image: no-repeat;
     background-size: cover;
 `;
