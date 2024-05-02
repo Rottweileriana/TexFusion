@@ -1,14 +1,29 @@
 import styled from "styled-components";
 
 const BackgroundImageContainer = styled.div`
+    position: relative;
     display: flex;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("./images/StreetMexicoBackground6.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
+    filter: blur(4px);
+    transform: scale(1.02);
+    z-index: -1;
+  }
 `;
 
 const AboutUsContainer = styled.div`
