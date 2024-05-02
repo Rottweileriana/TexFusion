@@ -10,7 +10,7 @@ export function ContactComponent () {
                         KONTAKT
                     </ContactTitle>
                     <ContactTitleInformation>
-                        Kontaktuppgifter & öppetider
+                        Kontakt & öppetider
                     </ContactTitleInformation>
                 </ContactContainerTitle>
                 <ContactContainerInformation>
