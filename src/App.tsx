@@ -41,7 +41,7 @@ const BodyBackgroundContainer = styled.div`
   min-height: 100vh;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -52,10 +52,10 @@ const BodyBackgroundContainer = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     filter: blur(4px);
+    transform: scale(1.02);
     z-index: -1;
   }
 `;
-
 
 const MainContainer = styled.div`
   display: flex;
@@ -103,8 +103,8 @@ const FooterContainer = styled.div`
 `;
 
 const ShoppingCartContainer = styled.div`
-  background-image:url("./images/StreetMexicoBackground2.jpg");
-  background-size:cover;
+  background-image: url("./images/StreetMexicoBackground2.jpg");
+  background-size: cover;
   background-image: no-repeat;
   background-position: center;
   width: 100vw;
@@ -166,7 +166,8 @@ const App: React.FC = () => {
               <Routes>
                 <Route path="/" element={<HomeComponent />} />
                 <Route
-                  path="/Menu" element={
+                  path="/Menu"
+                  element={
                     <ErrorBoundary>
                       <BodyBackgroundContainer>
                         <MainContainer>
@@ -182,16 +183,23 @@ const App: React.FC = () => {
                         </MainContainer>
                       </BodyBackgroundContainer>
                     </ErrorBoundary>
-                  }></Route>
+                  }
+                ></Route>
                 <Route path="/About" element={<AboutComponent />} />
                 <Route path="/Contact" element={<ContactComponent />} />
-                <Route path="/Shoppingcart" element={
-                  <ShoppingCartContainer>
-                    <ShoppingCart />
-                    <CheckoutForm />
-                  </ShoppingCartContainer>
-                } />
-                <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
+                <Route
+                  path="/Shoppingcart"
+                  element={
+                    <ShoppingCartContainer>
+                      <ShoppingCart />
+                      <CheckoutForm />
+                    </ShoppingCartContainer>
+                  }
+                />
+                <Route
+                  path="/ConfirmationPage"
+                  element={<ConfirmationPage />}
+                />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </BodyContainer>
