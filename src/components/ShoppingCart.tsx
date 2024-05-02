@@ -138,7 +138,7 @@ const CartTotals = styled.div`
   padding-bottom: 5px;
   height: 60px;
   color: #333333;
-  background-color: #c0d6c0;
+  background-color: #85aeab;
 `;
 
 const TotalPrice = styled.div`
