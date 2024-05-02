@@ -14,8 +14,8 @@ export const FooterComponent: React.FC = () => {
       <FooterNavbar>
         <FooterNavbarElements>
           <NavLinkStyle to="/">Hem</NavLinkStyle>
-          <NavLinkStyle to="/Info/OmOss">Om Oss</NavLinkStyle>
-          <NavLinkStyle to="/Info/Kontakt">Kontakt</NavLinkStyle>
+          <NavLinkStyle to="/About">Om Oss</NavLinkStyle>
+          <NavLinkStyle to="/Contact">Kontakt</NavLinkStyle>
         </FooterNavbarElements>
       </FooterNavbar>
     </MainDiv>
