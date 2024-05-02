@@ -141,17 +141,30 @@ const ConfirmationBackgroundContainer = styled.div`
   align-items: center;
   width: 100vw;
   min-height: 100vh;
-  background-image: url("./images/ConfirmationPageBackground.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+
+  &::before {
+    content: "";
+    position: fixed;
+    background-image: url("./images/StreetMexicoBackground6.jpg");
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(4px);
+    transform: scale(1.02);
+    z-index: -1;
+  }
 `;
 
 const PageTitle = styled.h2`
   margin-top: 240px;
   font-family: "Open Sans";
-  font-size: 25px;
-  font-weight: 300;
+  font-size: 30px;
+  font-weight: 500;
   color: lightgrey;
 `;
 
