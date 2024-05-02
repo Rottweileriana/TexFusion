@@ -31,7 +31,7 @@ const CocktailContainer = styled.div`
 const MenuTitle = styled.h2`
   margin-bottom: 20px;
   font-family: "Open Sans";
-  font-weight: 300;
+  font-weight: 400;
   font-size: 30px;
   text-decoration: none;
   color: #ffffff;
