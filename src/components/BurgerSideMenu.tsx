@@ -182,9 +182,9 @@ export function BurgerSideMenu({
         </SubLinkMenuContainer> */}
         <NavLinkStyle to="/Shoppingcart" onClick={() => OpenCloseSidebar()}>
           VARUKORG</NavLinkStyle>
-        <NavLinkStyle to="/Info/OmOss" onClick={() => OpenCloseSidebar()}>
+        <NavLinkStyle to="/About" onClick={() => OpenCloseSidebar()}>
           OM OSS</NavLinkStyle>
-        <NavLinkStyle to="/Info/Kontakt" onClick={() => OpenCloseSidebar()}>
+        <NavLinkStyle to="/Contact" onClick={() => OpenCloseSidebar()}>
           KONTAKT</NavLinkStyle>
         <NavLinkStyle to="/" onClick={() => OpenCloseSidebar()}>
           HEM</NavLinkStyle>
