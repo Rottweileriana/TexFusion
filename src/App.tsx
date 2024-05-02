@@ -15,6 +15,8 @@ import {
   Route,
   InfoComponent,
   HomeComponent,
+  ContactComponent,
+  AboutComponent,
 } from "./components/index";
 import styled from "styled-components";
 
@@ -152,8 +154,7 @@ const App: React.FC = () => {
               <Routes>
                 <Route path="/" element={<HomeComponent />} />
                 <Route
-                  path="/Menu"
-                  element={
+                  path="/Menu" element={
                     <ErrorBoundary>
                       <BodyBackgroundContainer>
                         <MainContainer>
@@ -169,29 +170,16 @@ const App: React.FC = () => {
                         </MainContainer>
                       </BodyBackgroundContainer>
                     </ErrorBoundary>
-                  }
-                ></Route>
-                <Route
-                  path="/Info/:InfoPart"
-                  element={
-                    <>
-                      <InfoComponent />
-                    </>
-                  }
-                />
-                <Route
-                  path="/Shoppingcart"
-                  element={
+                  }></Route>
+                <Route path="/About" element={<AboutComponent  />}/>
+                <Route path="/Contact" element={<ContactComponent />}/>
+                <Route path="/Shoppingcart" element={
                     <ShoppingCartContainer>
                       <ShoppingCart />
                       <CheckoutForm />
                     </ShoppingCartContainer>
-                  }
-                />
-                <Route
-                  path="/ConfirmationPage"
-                  element={<ConfirmationPage />}
-                />
+                  }/>
+                <Route path="/ConfirmationPage" element={<ConfirmationPage />}/>
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </BodyContainer>

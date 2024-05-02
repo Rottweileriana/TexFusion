@@ -63,8 +63,8 @@ export const NavBarComponent: React.FC = () => {
             <BurgerSideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
             <NavBarListMain>
               <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
-              <NavLinkStyleHome to="/Info/OmOss">OM OSS</NavLinkStyleHome>
-              <NavLinkStyleHome to="/Info/Kontakt">KONTAKT</NavLinkStyleHome>
+              <NavLinkStyleHome to="/About">OM OSS</NavLinkStyleHome>
+              <NavLinkStyleHome to="/Contact">KONTAKT</NavLinkStyleHome>
               <NavLinkStyleHome to="/Shoppingcart">
               <CartIconAndBadge>
                   <FontAwesomeIcon icon={faShoppingCart} />
@@ -135,8 +135,8 @@ export const NavBarComponent: React.FC = () => {
             <BurgerSideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
             <NavBarListMain>
               <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
-              <NavLinkStyle to="/Info/OmOss">OM OSS</NavLinkStyle>
-              <NavLinkStyle to="/Info/Kontakt">KONTAKT</NavLinkStyle>
+              <NavLinkStyle to="/About">OM OSS</NavLinkStyle>
+              <NavLinkStyle to="/Contact">KONTAKT</NavLinkStyle>
               <NavLinkStyle to="/Shoppingcart">
                 <CartIconAndBadge>
                   <FontAwesomeIcon icon={faShoppingCart} />
