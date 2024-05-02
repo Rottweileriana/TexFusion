@@ -13,7 +13,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  InfoComponent,
   HomeComponent,
   ContactComponent,
   AboutComponent,
