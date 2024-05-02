@@ -6,7 +6,7 @@ const BackgroundImageContainer = styled.div`
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-image: url("./images/StreetMexicoBackground2.jpg");
+    background-image: url("./images/StreetMexicoBackground6.jpg");
     background-size: cover;
     background-position: center;
 `;
@@ -14,21 +14,23 @@ const BackgroundImageContainer = styled.div`
 const AboutUsContainer = styled.div`
     width: 800px;
     height: 240px;
-    margin: 220px 0 0 0;
+    margin: 229px 0 0 0;
     padding: 0 15px 0 15px;
     text-align: center;
-    color: lightgrey;
-    background-color: rgba(245, 245, 245, 0.2);
+    color: #333333;
+    background-color: rgba(245, 245, 245, 0.5);
 `;
 
 const Title = styled.h3`
     font-family: "Open Sans";
-    font-weight: 300;
-    color: lightgrey;
+    font-weight: 400;
+    font-size: 30px;
+    color: #333333;
 `;
 
 const Text = styled.p`
     text-align: justify;
+    font-weight: 400;
 `;
 
 export function AboutComponent () {
@@ -36,7 +38,7 @@ export function AboutComponent () {
         <>
             <BackgroundImageContainer>
                 <AboutUsContainer>
-                    <Title>OM OSS</Title>
+                <Title>OM OSS</Title>
                     <Text>TexFusion dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
