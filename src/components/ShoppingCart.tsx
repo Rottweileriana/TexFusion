@@ -157,8 +157,8 @@ const ShoppingCartContainer = styled.div`
 
 const StyledTitle = styled.h2`
   font-family: "Open Sans";
-  font-size: 25px;
-  font-weight: 300;
+  font-size: 30px;
+  font-weight: 400;
   color: white;
 `;
 
@@ -172,7 +172,7 @@ const EmtptyCartText = styled.div`
   margin-left: 165px;
   font-family: "Open Sans";
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 400;
   color: #333333;
 `;
 //#endregion
