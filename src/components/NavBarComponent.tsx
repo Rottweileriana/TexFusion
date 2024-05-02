@@ -66,7 +66,7 @@ export const NavBarComponent: React.FC = () => {
               <NavLinkStyleHome to="/About">OM OSS</NavLinkStyleHome>
               <NavLinkStyleHome to="/Contact">KONTAKT</NavLinkStyleHome>
               <NavLinkStyleHome to="/Shoppingcart">
-              <CartIconAndBadge>
+                <CartIconAndBadge>
                   <FontAwesomeIcon icon={faShoppingCart} />
                   <Badge>
                     {totCartQuant > 0 &&
