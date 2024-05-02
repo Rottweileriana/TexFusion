@@ -199,10 +199,9 @@ font-family: 'Marschel' sans-serif;
     height:auto;
     @media (max-width:  768px) {
       font-size:18px;
-
     }
 `;
-
+//SUPREME HACK
 const SubTitle = styled.p`
 font-family: 'Marschel' sans-serif;
     font-size: 10px;
@@ -213,6 +212,9 @@ font-family: 'Marschel' sans-serif;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     margin:0;
     padding:0;
+    @media (max-width:  768px) {
+      visibility: hidden;
+    }
 `;
 const NavbarBackground = styled.div`
   display: flex;
