@@ -60,8 +60,7 @@ const RadioElement = styled.div`
 const ButtonStyle = styled.button`
   background-color:#fbe3d6;
   color: #2b4175;
-  border:solid;
-  border-color:black;
+  border: 2px solid #333333;
 `;
 
 const RadioBtn = styled.input`

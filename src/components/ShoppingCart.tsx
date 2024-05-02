@@ -51,17 +51,18 @@ const ItemColBtn = styled.div`
   justify-content: space-between;
 `;
 
-const Title = styled.h4`
+const Title = styled.h3`
   margin: 0;
   margin-right: 15px;
   padding-left: 15px;
   text-align: left;
-  font-family: "Opens Sans";
-  Font-weight: 300;
+  font-weight: 400;
   color: #333333;
 `;
 
 const Price = styled.div`
+  font-size: 18px;
+  font-weight: 400;
   margin-right: 15px;
   margin-bottom: 5px;
   text-align: right;
@@ -138,7 +139,7 @@ const CartTotals = styled.div`
   padding-bottom: 5px;
   height: 60px;
   color: #333333;
-  background-color: #c0d6c0;
+  background-color: #85aeab;
 `;
 
 const TotalPrice = styled.div`

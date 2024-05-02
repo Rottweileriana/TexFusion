@@ -35,15 +35,30 @@ export const NavBarComponent: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const [isScreenSmaller, setIsScreenSmaller] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsScreenSmaller(window.matchMedia("(max-width: 900px)").matches);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       {location.pathname === "/" ? (
         <NavbarBackgroundHome>
           <MainDiv>
             <LogoContainer>
-              {/* <LogoNavLink to="/">
-                <img src={RoundLogo} alt="WomanLogoTopLeft" />
-              </LogoNavLink> */}
+              <Title>Tex Fusion</Title>
+              <SubTitle>Premium tacos</SubTitle>
             </LogoContainer>
             <HamburgerMenuButtonHome onClick={() => OpenCloseSidebar()}>
               <FontAwesomeIcon icon={faBars} />
@@ -69,16 +84,19 @@ export const NavBarComponent: React.FC = () => {
         <NavbarBackground>
           <MainDiv>
             <LogoContainer>
-              <LogoNavLink to="/">
-                <img src={RoundLogo} alt="WomanLogoTopLeft" />
+              {isScreenSmaller ? (
+                <LogoNavLink to="/">
+                  <TitleSmallScren>Tex Fusion</TitleSmallScren>
               </LogoNavLink>
+              ) : (
+                <LogoNavLink to="/">
+                <Logo src={RoundLogo} alt="WomanLogoTopLeft" />
+              </LogoNavLink>
+              )}
             </LogoContainer>
             <LogotextSubnavbarContainer>
               <TexFusionLogoTextContainer>
-                {/* <TexFusionLogoImage
-                  src="/src/assets/images/TexFusionLogo.jpg"
-                  alt="TexFusionLogotype" */}
-                {/* /> */}
+              <Title>Tex Fusion</Title>
               </TexFusionLogoTextContainer>
               {location.pathname === "/Menu" ? (
                 <NavBarListSub>
@@ -144,6 +162,58 @@ export const NavBarComponent: React.FC = () => {
 
 //#region CSS
 
+const Logo = styled.img`
+max-width:150px;
+@media (max-width: 900px) {
+}
+`;
+
+const Title = styled.h2`
+font-family: 'Marschel' sans-serif;
+    font-size: 32px;
+    font-weight: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin:0;
+    padding:0;
+    min-width:34px;
+    overflow:show;
+    @media (max-width: 900px) {
+      visibility: hidden;
+    }
+`;
+
+const TitleSmallScren = styled.h2`
+font-family: 'Marschel' sans-serif;
+    font-size: 32px;
+    font-weight: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin:0;
+    padding:0;
+    min-width:34px;
+    height:auto;
+    @media (max-width:  768px) {
+      font-size:18px;
+
+    }
+`;
+
+const SubTitle = styled.p`
+font-family: 'Marschel' sans-serif;
+    font-size: 10px;
+    font-weight: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin:0;
+    padding:0;
+`;
 const NavbarBackground = styled.div`
   display: flex;
   align-items: center;
@@ -192,24 +262,23 @@ const MainDiv = styled.div`
 
 const LogoContainer = styled.div`
   display: flex;
+  flex-direction:column;
   align-self: center;
   width: 22%;
   height: 120px;
   margin-left: 0px;
+  min-width:250px;
 `;
 
 const LogoNavLink: typeof NavLink = styled(NavLink)`
   display: flex;
+  align-items:center;
   width: 115px;
   height: 100%;
   border-radius: 90px;
   text-decoration: none;
   &:hover {
     cursor: pointer;
-  }
-
-  @media (max-width: 900px) {
-    visibility: hidden;
   }
 `;
 
