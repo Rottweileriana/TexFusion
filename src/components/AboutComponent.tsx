@@ -6,7 +6,7 @@ const BackgroundImageContainer = styled.div`
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-image: url("./images/OmOssBakgrund.jpg");
+    background-image: url("./images/StreetMexicoBackground2.jpg");
     background-size: cover;
     background-position: center;
 `;
