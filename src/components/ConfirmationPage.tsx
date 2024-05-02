@@ -286,7 +286,12 @@ const TotalCost = styled.p`
 `;
 
 const BackHomeButton = styled.button`
+  background-color:#7B0E34;
+  color: white;
   margin-bottom: 15px;
+  &:hover{
+    box-shadow:none;
+  }
 `;
 
 //EASTER EGG

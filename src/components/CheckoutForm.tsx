@@ -58,9 +58,9 @@ const RadioElement = styled.div`
 `;
 
 const ButtonStyle = styled.button`
-  background-color:#fbe3d6;
-  color: #2b4175;
-  border: 2px solid #333333;
+  background-color:#7B0E34;
+  color: white;
+  
 `;
 
 const RadioBtn = styled.input`
@@ -305,9 +305,14 @@ export function CheckoutForm() {
             </PaymentInput>
           </PaymentRadioBtnContainer>
           <br/>
-          <FormBtn>
+          {cart.length === 0 ? (
+            <FormBtn>
+            </FormBtn>
+          ) : (
+            <FormBtn>
             <ButtonStyle type="submit">Beställ</ButtonStyle>
-          </FormBtn>
+            </FormBtn>
+          )}
         </form>
       </InputForm>
     </CheckoutFormCartContainer>
