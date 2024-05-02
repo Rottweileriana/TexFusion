@@ -29,8 +29,7 @@ const BodyFooterContainer = styled.div`
   min-height: 100vh;
 `;
 
-const BodyContainer = styled.div`
-  `;
+const BodyContainer = styled.div``;
 
 const BodyBackgroundContainer = styled.div`
   position: relative;
@@ -43,15 +42,16 @@ const BodyBackgroundContainer = styled.div`
 
   &::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-image: url("./images/StreetMexicoBackground.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
     filter: blur(4px);
     transform: scale(1.02);
     z-index: -1;
@@ -117,15 +117,16 @@ const ShoppingCartContainer = styled.div`
 
   &::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    min-height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-image: url("./images/StreetMexicoBackground2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
     filter: blur(4px);
     transform: scale(1.02);
     z-index: -1;
