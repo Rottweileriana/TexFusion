@@ -13,7 +13,7 @@ const HomeBg = styled.img`
 
 export function HomeComponent() {
 
-    const HomeBackground = `/src/assets/images/MenuBg.jpg`;
+    const HomeBackground = `./images/MenuBg.jpg`;
 
     return (
         <>
