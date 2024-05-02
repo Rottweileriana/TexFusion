@@ -7,7 +7,7 @@ export function ContactComponent () {
                 <BackgroundStyle>
                 <ContactContainerTitle>
                     <ContactTitle>
-                        Kontakt
+                        KONTAKT
                     </ContactTitle>
                     <ContactTitleInformation>
                         Kontaktuppgifter & öppetider
@@ -17,13 +17,13 @@ export function ContactComponent () {
                     <ContactOpenHoursContainer>
                         <ContactContainer>
                             <OpenHoursTitle>Adress</OpenHoursTitle>
-                            <p>TexFusion
+                            <Text>TexFusion
                             Vägen 68
-                            <br></br>
-                            235 62, Linköping</p>
-                            <p>+46 - 705 567 890
-                                <br></br>
-                            info@texfusion.com</p>
+                            <br />
+                            235 62, Linköping</Text>
+                            <Text>+46 - 705 567 890
+                            <br />
+                            info@texfusion.com</Text>
                         </ContactContainer>
                         <OpenHoursContainer>
                             <OpenHoursTitle>Öppetider</OpenHoursTitle>
@@ -64,44 +64,62 @@ export function ContactComponent () {
 //Background
 
 const BackgroundWrapper = styled.div`
-    background-image: url("./images/StreetMexicoBackground4.jpg");
-    background-image: no-repeat;
+    overflow: hidden;
+    position: relative;
     display: flex;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background-image: url("./images/StreetMexicoBackground4.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
+    filter: blur(4px);
+    transform: scale(1.02);
+    z-index: -1;
+  }
 `;
 
-
 const BackgroundStyle = styled.div`
-    display:flex;
-    height: 100vh;
-    width:100%;
-    justify-content:center;
-    flex-direction:column;
-    align-items:center;
-    padding-top:20px;
+    display: flex;
+    height: 750px;
+    width: 500px;
+    margin: 220px 0 100px 0;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    background-color: rgba(245, 245, 245, 0.5);
 `;
 
 //Contact Title Container with children
 
 const ContactContainerTitle = styled.div`
-    background-color:#e0e0e0;
-    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
     width:80%;
-    padding-bottom:5px;
-    border-bottom:solid;
-    border-color:black;
+    padding-bottom: 10px;
+    border-bottom: solid;
+    border-color: #333333;
 `;
 
 const ContactTitle = styled.h2`
     font-family: "Open sans";
-    color:black;
-    padding-bottom:10px;
-    margin:0px;
+    color: #333333;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 20px;
 `;
 
 const ContactTitleInformation = styled.p`
@@ -115,7 +133,8 @@ const ContactTitleInformation = styled.p`
 
 const ContactContainerInformation = styled.div`
     display:flex;
-    max-width: 900px;
+    flex-direction: column;
+    max-width: 500px;
     width:80%;
     margin:0;
     padding:0;
@@ -127,14 +146,13 @@ const ContactOpenHoursContainer = styled.div`
     flex-direction:column;
     margin:0;
     padding:0;
-    width:50%;
+    width:100%;
     height:100%;
 `;
 
 const ContactMapsContainer = styled.div`
     height:100%;
-    background-color:#e0e0e0;
-    width:50%;
+    width:100%;
     margin:0;
     padding-right:4px;
 `;
@@ -148,33 +166,30 @@ const ContactMaps = styled.iframe`
 
 const ContactContainer = styled.div`
     display:flex;
-    flex-direction:column;
-    background-color:#e0e0e0;
-    color:black;
-    margin:0;
-    padding-top:5px;
-    border-bottom:solid;
+    max-width: 500px;
+    flex-direction: column;
+    color: #333333;
+    margin: 0 0 20px 0;
+    padding: 20px 0;
+    border-bottom: solid;
 `;
 
 const OpenHoursContainer = styled.div`
-    margin:0;
-    padding-bottom:5px;
-    padding-top:5px;
+    margin:0 0 30px 0;
+    padding-bottom: 20px;
     display:flex;
-    justify-content:flex-start;
     align-items:center;
     flex-direction:column;
-    background-color:#e0e0e0;
-    color:black;
+    color: #333333;
     width:100%;
-    height:90%;
-    
+    color: #333333;
+    border-bottom: solid;
 `;
 
 const OpenHoursTitle = styled.h4`
     font-family: "Open sans";
     color:black;
-    margin:0;
+    margin:0 0 10px 0;
 `;
 
 const StyledUl = styled.ul`
@@ -183,31 +198,35 @@ const StyledUl = styled.ul`
     list-style-type: none;
     padding:0;
     margin:0;
-    width:90%;
+    width:50%;
 `;
 
 const StyledLi = styled.li`
     display:flex;
-    align-items:center;
-    padding:0;
-    margin:0;
-    width:100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 `;
 
 const StyledP = styled.p`
-    text-align:left;
+    text-align:center;
     padding:0;
     margin:0;
     width:50%;
 `;
 
 const StyledSpan = styled.span`
-    text-align:right;
+    text-align:center;
     padding:0;
     margin:0;
     width:50%;
 `;
 
+const Text = styled.p`
+    margin:0;
+`;
 
 
 
