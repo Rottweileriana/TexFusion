@@ -29,7 +29,8 @@ const BodyFooterContainer = styled.div`
   min-height: 100vh;
 `;
 
-const BodyContainer = styled.div``;
+const BodyContainer = styled.div`
+  `;
 
 const BodyBackgroundContainer = styled.div`
   position: relative;
@@ -103,17 +104,32 @@ const FooterContainer = styled.div`
 `;
 
 const ShoppingCartContainer = styled.div`
-  background-image: url("./images/StreetMexicoBackground2.jpg");
-  background-size: cover;
-  background-image: no-repeat;
-  background-position: center;
   width: 100vw;
   overflow: scroll;
   overflow-x: hidden;
-  height: 100vh;
-  display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background-image: url("./images/StreetMexicoBackground2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(4px);
+    transform: scale(1.02);
+    z-index: -1;
+  }
 `;
 
 //#endregion
