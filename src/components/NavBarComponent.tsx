@@ -16,7 +16,7 @@ import { NavLink } from "react-router-dom";
 export const NavBarComponent: React.FC = () => {
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
-  const WomanLogoTopLeft = `/src/assets/images/RoundLogoPic6.png`;
+  const RoundLogo = `/images/RoundLogoPic6.png`;
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   let totCartQuant = 0;
@@ -26,18 +26,6 @@ export const NavBarComponent: React.FC = () => {
   } catch (error) {
     console.error("Error calculating total quantity in cart:", error);
   }
-
-  //  useEffect(() => {
-  //   const params = new URLSearchParams(location.search);
-  //   const offset: number = parseInt(params.get('offset') ?? '0');
-  //   setTimeout(() =>
-  //     {window.scrollTo(0, offset);}, 3000)
-  //  }, [location.search]);
-
-  /* useEffect(() => {
-    const offset = location.state?.scrollTop || 0;
-    window.scrollTo(0, offset);
-  }, [location.state]); */
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -54,7 +42,7 @@ export const NavBarComponent: React.FC = () => {
           <MainDiv>
             <LogoContainer>
               {/* <LogoNavLink to="/">
-                <img src={WomanLogoTopLeft} alt="WomanLogoTopLeft" />
+                <img src={RoundLogo} alt="WomanLogoTopLeft" />
               </LogoNavLink> */}
             </LogoContainer>
             <HamburgerMenuButtonHome onClick={() => OpenCloseSidebar()}>
@@ -82,7 +70,7 @@ export const NavBarComponent: React.FC = () => {
           <MainDiv>
             <LogoContainer>
               <LogoNavLink to="/">
-                <img src={WomanLogoTopLeft} alt="WomanLogoTopLeft" />
+                <img src={RoundLogo} alt="WomanLogoTopLeft" />
               </LogoNavLink>
             </LogoContainer>
             <LogotextSubnavbarContainer>
