@@ -64,7 +64,7 @@ export function ContactComponent () {
 //Background
 
 const BackgroundWrapper = styled.div`
-    background-image: url("./images/TransparentBackgroundExample2.jpg");
+    background-image: url("./images/StreetMexicoBackground4.jpg");
     background-image: no-repeat;
     display: flex;
     justify-content: center;
@@ -89,7 +89,7 @@ const BackgroundStyle = styled.div`
 //Contact Title Container with children
 
 const ContactContainerTitle = styled.div`
-    background-color:white;
+    background-color:#e0e0e0;
     max-width: 900px;
     width:80%;
     padding-bottom:5px;
@@ -133,7 +133,7 @@ const ContactOpenHoursContainer = styled.div`
 
 const ContactMapsContainer = styled.div`
     height:100%;
-    background-color:white;
+    background-color:#e0e0e0;
     width:50%;
     margin:0;
     padding-right:4px;
@@ -149,7 +149,7 @@ const ContactMaps = styled.iframe`
 const ContactContainer = styled.div`
     display:flex;
     flex-direction:column;
-    background-color:white;
+    background-color:#e0e0e0;
     color:black;
     margin:0;
     padding-top:5px;
@@ -164,7 +164,7 @@ const OpenHoursContainer = styled.div`
     justify-content:flex-start;
     align-items:center;
     flex-direction:column;
-    background-color:white;
+    background-color:#e0e0e0;
     color:black;
     width:100%;
     height:90%;
