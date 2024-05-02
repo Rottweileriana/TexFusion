@@ -94,7 +94,7 @@ const BackgroundStyle = styled.div`
     display: flex;
     height: 750px;
     width: 500px;
-    margin: 220px 0 100px 0;
+    margin: 229px 0 100px 0;
     flex-direction: column;
     align-items: center;
     padding-top: 15px;
