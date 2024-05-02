@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { CartContext } from "./context";
+import { Link } from "react-scroll";
+import { NavLink } from "react-router-dom";
 import {
   useContext,
   useEffect,
@@ -9,15 +12,15 @@ import {
   useLocation,
   BurgerSideMenu,
 } from "./index";
-import { CartContext } from "./context";
-import { Link } from "react-scroll";
-import { NavLink } from "react-router-dom";
+
 
 export const NavBarComponent: React.FC = () => {
+
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
   const RoundLogo = `/images/RoundLogoPic6.png`;
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isScreenSmaller, setIsScreenSmaller] = useState<boolean>(false);
 
   let totCartQuant = 0;
 
@@ -29,15 +32,6 @@ export const NavBarComponent: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location.pathname]);
-
-  const OpenCloseSidebar = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const [isScreenSmaller, setIsScreenSmaller] = useState<boolean>(false);
-
-  useEffect(() => {
     const handleResize = () => {
       setIsScreenSmaller(window.matchMedia("(max-width: 900px)").matches);
     };
@@ -49,7 +43,12 @@ export const NavBarComponent: React.FC = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [location.pathname]);
+
+  const OpenCloseSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
 
   return (
     <>
@@ -90,7 +89,7 @@ export const NavBarComponent: React.FC = () => {
               </LogoNavLink>
               ) : (
                 <LogoNavLink to="/">
-                <Logo src={RoundLogo} alt="WomanLogoTopLeft" />
+                <Logo src={RoundLogo} alt="LogoTopLeft" />
               </LogoNavLink>
               )}
             </LogoContainer>
@@ -137,6 +136,10 @@ export const NavBarComponent: React.FC = () => {
             </LogotextSubnavbarContainer>
             <HamburgerMenuButton onClick={() => OpenCloseSidebar()}>
               <FontAwesomeIcon icon={faBars} />
+                  <BadgeBurger>
+                    {totCartQuant > 0 &&
+                      (totCartQuant > 10 ? "10+" : totCartQuant)}
+                  </BadgeBurger>
             </HamburgerMenuButton>
             <BurgerSideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
             <NavBarListMain>
@@ -212,7 +215,7 @@ font-family: 'Marschel' sans-serif;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     margin:0;
     padding:0;
-    @media (max-width:  768px) {
+    @media (max-width:  900px) {
       visibility: hidden;
     }
 `;
@@ -303,41 +306,7 @@ const TexFusionLogoTextContainer = styled.div`
   size: 50px;
 `;
 
-/* const TexFusionLogoImage = styled.img`
-  min-width: 420px;
-  max-width: 95%;
-  max-height: 95%;
 
-  @media (max-width: 768px) {
-    margin-top: 20px;
-    min-width: 230px;
-    object-fit: cover;
-  }
-`; */
-
-/* const NavBarLogoTextLeft = styled.h1`
-  display: flex;
-  height: 75%;
-  justify-content: center;
-  align-items: flex-end;
-  font-family: "Parisienne";
-  font-size: 70px;
-  color: #e7dc43;
-  margin: 0;
-  padding: 0;
-`;
-
-const NavBarLogoTextRight = styled.h1`
-  display: flex;
-  height: 75%;
-  justify-content: center;
-  align-items: flex-end;
-  font-family: "Parisienne";
-  font-size: 70px;
-  color: #156082;
-  margin: 0;
-  padding: 0;
-`; */
 
 const NavBarListSub = styled.div`
   display: flex;
@@ -350,7 +319,7 @@ const NavBarListSub = styled.div`
   padding: 0;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     visibility: hidden;
   }
 `;
@@ -374,11 +343,7 @@ const NavBarListMain = styled.div`
   }
 `;
 
-// const NavBarListElements = styled.li`
-//   color:white;
-//   display:flex;
-//   flex-direction: row;
-// `;
+
 
 const LinkStyle = styled(Link)`
   display: block;
@@ -439,13 +404,27 @@ const CartIconAndBadge = styled.span`
 const Badge = styled.span`
   position: absolute;
   font-family: Arial, Helvetica, sans-serif;
-  top: -7px;
-  right: -20px;
-  background-color: white;
+  top: -9px;
+  right: -22px;
+  background-color: #cc5500;
   color: black;
   border-radius: 50%;
   padding: 0 2px;
   font-size: 12px;
+  min-width: 20px;
+  text-align: center;
+`;
+
+const BadgeBurger = styled.span`
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  top: -1px;
+  right: -3px;
+  background-color: #cc5500;
+  color: black;
+  border-radius: 50%;
+  padding: 0 2px;
+  font-size: 15px;
   min-width: 20px;
   text-align: center;
 `;
@@ -468,8 +447,6 @@ const HamburgerMenuButtonHome = styled.div`
     }
   }
 `;
-
-//"#535bf2" : "#F9DDD2"
 
 const HamburgerMenuButton = styled.button`
   display: none;
