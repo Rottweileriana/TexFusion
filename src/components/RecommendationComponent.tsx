@@ -72,12 +72,12 @@ const CounterContainer = styled.div`
   margin-left: auto;
   border: 0px solid #808080;
   border-radius: 5px;
-  background-color: #eca884;
+  background-color: #7B0E34;
   float: right;
 `;
 
 const StyledFontAwesomeIcon: typeof FontAwesomeIcon = styled(FontAwesomeIcon)`
-  color: #333333;
+  color: white;
   font-size: 15px;
   margin-top: 5px;
 `;
@@ -90,7 +90,7 @@ const CounterButton = styled.button`
   height: 25px;
   background-color: transparent;
   border: none;
-  color: #333333;
+  color: white;
   font-size: 18px;
   font-weight: 300;
   cursor: pointer;
@@ -107,7 +107,7 @@ const ResultField = styled.input`
   text-align: center;
   background-color: transparent;
   border: none;
-  color: #333333;
+  color: white;
   font-family: "Open Sans";
   font-size: 15px;
   font-weight: 300;

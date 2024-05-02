@@ -83,7 +83,7 @@ const CounterContainer = styled.div`
   margin-top: 5px;
   border: 0px solid #808080;
   border-radius: 5px;
-  background-color: #eca884;
+  background-color: #7B0E34;
   font-weight: 300;
 `;
 
@@ -97,7 +97,7 @@ const CounterButton = styled.button`
   border: 0;
   border-radius: 5px;
   font-size: 20px;
-  color: #333333;
+  color: white;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -110,7 +110,7 @@ const CounterButton = styled.button`
 const ResultField = styled.input`
   width: 20px;
   text-align: center;
-  color: #333333;
+  color: white;
   background-color: transparent;
   border: none;
   font-size: 15px;
@@ -185,7 +185,7 @@ export const ShoppingCart: React.FC = () => {
   let totCartPrice = 0;
   let totCartQuant = 0;
 
- 
+
 
   try {
     totProdPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -236,17 +236,17 @@ export const ShoppingCart: React.FC = () => {
                 <Price>{cartItem.price * cartItem.quantity} kr</Price>
               </ItemCol>
               <ItemColBtn>
-              {cartItem.quantity > 1 ? (
-            <CounterContainer>
-              <CounterButton onClick={() => handleDecrement(cartItem._id)}>-</CounterButton>
-                <ResultField type="text" value={cartItem.quantity} readOnly />
-              <CounterButton onClick={() => handleIncrement(cartItem)}>+</CounterButton>
-            </CounterContainer>) : (
-            <CounterContainer>
-              <CounterButton onClick={() => handleDecrement(cartItem._id)}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
-                <ResultField type="text" value={cartItem.quantity} readOnly />
-              <CounterButton onClick={() => handleIncrement(cartItem)}>+</CounterButton>
-            </CounterContainer>)}
+                {cartItem.quantity > 1 ? (
+                  <CounterContainer>
+                    <CounterButton onClick={() => handleDecrement(cartItem._id)}>-</CounterButton>
+                    <ResultField type="text" value={cartItem.quantity} readOnly />
+                    <CounterButton onClick={() => handleIncrement(cartItem)}>+</CounterButton>
+                  </CounterContainer>) : (
+                  <CounterContainer>
+                    <CounterButton onClick={() => handleDecrement(cartItem._id)}><StyledFontAwesomeIcon icon={faTrashCan} /></CounterButton>
+                    <ResultField type="text" value={cartItem.quantity} readOnly />
+                    <CounterButton onClick={() => handleIncrement(cartItem)}>+</CounterButton>
+                  </CounterContainer>)}
                 <DeleteButton
                   onClick={() => deleteProdFromCart(cartItem._id, true)}>Ta Bort</DeleteButton>
               </ItemColBtn>
@@ -256,7 +256,7 @@ export const ShoppingCart: React.FC = () => {
         <CartTotals>
           {totCartQuant < 1 ? (
             <EmtptyCartText>Din varukorg är tom.</EmtptyCartText>
-            ) : (
+          ) : (
             <>
               <p>Summa:</p>
               <TotalPrice>{totCartPrice} kr</TotalPrice>
@@ -266,6 +266,6 @@ export const ShoppingCart: React.FC = () => {
         </CartTotals>
       </CartList>
     </ShoppingCartContainer>
-    
+
   );
 };
