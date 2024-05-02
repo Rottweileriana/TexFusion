@@ -41,7 +41,7 @@ const MainDiv = styled.div`
   padding: 0;
   width: 100%;
   height: 100px;
-  background-color: black;
+  background-color: #0e1820;
   bottom: 0;
   padding-bottom: 0;
 `;
