@@ -20,7 +20,7 @@ const BurgerSideMenuContainer = styled.div<StylesProps>`
   height: 100vh;
   width: 50%;
   max-width: 200px;
-  background-color: #333333;
+  background-color: #0e1820;
   padding-top: 45px;
   position: fixed;
   right: 0;
@@ -41,9 +41,8 @@ const NavLinkStyle: typeof NavLink = styled(NavLink)`
 const ButtonStyle = styled.button`
   margin-left: 50px;
   font-size: 13px;
-  padding:2px;
+  padding: 2px;
   color: lightgrey;
-  background-color:#333333;
   font-family: "Open Sans";
   border:none;
   &:focus {
@@ -65,6 +64,13 @@ const CloseButton = styled.button`
   color: lightgrey;
   margin: 0 0 30px 20px;;
 `;
+
+const BottomGapSubLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 5px 0;
+`;
+
 //#endregion
 
 export function BurgerSideMenu({
@@ -123,9 +129,11 @@ export function BurgerSideMenu({
           x</CloseButton>
         <NavLinkStyle to="/Menu" onClick={() => OpenCloseSidebar()}>
           MENY</NavLinkStyle>
-          <ButtonStyle onClick={() => GoToMenuAndSubLink(1)}>Huvudrätt</ButtonStyle>
-          <ButtonStyle onClick={() => GoToMenuAndSubLink(2)}>Tillbehör</ButtonStyle>
-          <ButtonStyle onClick={() => GoToMenuAndSubLink(3)}>Cocktails</ButtonStyle>
+          <BottomGapSubLinks>
+            <ButtonStyle onClick={() => GoToMenuAndSubLink(1)}>Huvudrätt</ButtonStyle>
+            <ButtonStyle onClick={() => GoToMenuAndSubLink(2)}>Tillbehör</ButtonStyle>
+            <ButtonStyle onClick={() => GoToMenuAndSubLink(3)}>Cocktails</ButtonStyle>
+          </BottomGapSubLinks>
         <NavLinkStyle to="/Shoppingcart" onClick={() => OpenCloseSidebar()}>
           VARUKORG</NavLinkStyle>
         <NavLinkStyle to="/About" onClick={() => OpenCloseSidebar()}>
