@@ -225,7 +225,7 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: #7B0E34;
+  background-color: #4c041d;
   z-index: 9999;
   width: 100%;
   height: 175px;
@@ -237,6 +237,8 @@ const NavbarBackground = styled.div`
     height: 100px;
   }
 `;
+
+//#7B0E34
 
 const NavbarBackgroundHome = styled.div`
   display: flex;
