@@ -34,6 +34,7 @@ const fadeOut = keyframes`
   100% {
     opacity: 0;
     display: none;
+    pointer-events: none;
   }
 `;
 
