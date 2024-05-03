@@ -56,14 +56,14 @@ export const NavBarComponent: React.FC = () => {
         <NavbarBackgroundHome>
           <MainDiv>
             <LogoContainer>
-              <Title>Tex Fusion</Title>
-              <SubTitle>Premium tacos</SubTitle>
+              {/* <Title>Tex Fusion</Title>
+              <SubTitle>Premium tacos</SubTitle> */}
             </LogoContainer>
             <HamburgerMenuButtonHome onClick={() => OpenCloseSidebar()}>
               <FontAwesomeIcon icon={faBars} />
             </HamburgerMenuButtonHome>
             <BurgerSideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
-            <NavBarListMain>
+            {/* <NavBarListMain>
               <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
               <NavLinkStyleHome to="/About">OM OSS</NavLinkStyleHome>
               <NavLinkStyleHome to="/Contact">KONTAKT</NavLinkStyleHome>
@@ -76,7 +76,7 @@ export const NavBarComponent: React.FC = () => {
                   </Badge>
                 </CartIconAndBadge>
               </NavLinkStyleHome>
-            </NavBarListMain>
+            </NavBarListMain> */}
           </MainDiv>
         </NavbarBackgroundHome>
       ) : (
@@ -86,16 +86,16 @@ export const NavBarComponent: React.FC = () => {
               {isScreenSmaller ? (
                 <LogoNavLink to="/">
                   <TitleSmallScren>Tex Fusion</TitleSmallScren>
-              </LogoNavLink>
+                </LogoNavLink>
               ) : (
                 <LogoNavLink to="/">
-                <Logo src={RoundLogo} alt="LogoTopLeft" />
-              </LogoNavLink>
+                  <Logo src={RoundLogo} alt="LogoTopLeft" />
+                </LogoNavLink>
               )}
             </LogoContainer>
             <LogotextSubnavbarContainer>
               <TexFusionLogoTextContainer>
-              <Title>Tex Fusion</Title>
+                <Title>Tex Fusion</Title>
               </TexFusionLogoTextContainer>
               {location.pathname === "/Menu" ? (
                 <NavBarListSub>
@@ -136,10 +136,10 @@ export const NavBarComponent: React.FC = () => {
             </LogotextSubnavbarContainer>
             <HamburgerMenuButton onClick={() => OpenCloseSidebar()}>
               <FontAwesomeIcon icon={faBars} />
-                  <BadgeBurger>
-                    {totCartQuant > 0 &&
-                      (totCartQuant > 10 ? "10+" : totCartQuant)}
-                  </BadgeBurger>
+              <BadgeBurger>
+                {totCartQuant > 0 &&
+                  (totCartQuant > 10 ? "10+" : totCartQuant)}
+              </BadgeBurger>
             </HamburgerMenuButton>
             <BurgerSideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
             <NavBarListMain>
