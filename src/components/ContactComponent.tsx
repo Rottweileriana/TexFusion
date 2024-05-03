@@ -93,11 +93,12 @@ const BackgroundStyle = styled.div`
   display: flex;
   height: 750px;
   width: 500px;
+  max-width: 80%;
   margin: 229px 0 100px 0;
   flex-direction: column;
   align-items: center;
   padding-top: 15px;
-  background-color: rgba(245, 245, 245, 0.5);
+  background-color: rgba(245, 245, 245, 0.7);
 `;
 
 //Contact Title Container with children

@@ -49,6 +49,9 @@ export const NavBarComponent: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleReload = () => {
+    window.location.href = "/";    
+  };
 
   return (
     <>
@@ -60,7 +63,7 @@ export const NavBarComponent: React.FC = () => {
                   <TitleSmallScren>Tex Fusion</TitleSmallScren>
                 </LogoNavLink>
               ) : (
-                <LogoNavLink to="/">
+                <LogoNavLink to="/" onClick={handleReload}>
                   <Logo src={RoundLogo} alt="LogoTopLeft" />
                 </LogoNavLink>
               )}

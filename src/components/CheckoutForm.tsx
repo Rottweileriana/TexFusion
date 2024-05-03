@@ -21,13 +21,15 @@ const InputForm = styled.div`
   border-radius: 0px;
   background-color: #e0e0e0;
   color: #333333;
-  justify-content:center;
+  justify-content: center;
   width: 500px;
+  max-width: 80%;
   padding-top: 15px;
 `;
 
 const FormInputElements = styled.div`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   border: none;
   margin-top: 20px;
@@ -72,7 +74,7 @@ const PaymentRadio = styled.label`
 `;
 
 const InputElement = styled.div`
-  margin: 0 100px 5px auto;
+  margin: 0 120px 5px auto;
 `;
 
 const TextInput = styled.input`

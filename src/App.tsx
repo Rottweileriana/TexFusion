@@ -28,7 +28,7 @@ const fadeOut = keyframes`
   0% {
     opacity: 1;
   }
-  50% {
+  75% {
     opacity: 1;
   }
   100% {
@@ -46,7 +46,7 @@ const HomeComponentContainer = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 99999;
-  animation: ${fadeOut} 10s ease forwards;
+  animation: ${fadeOut} 7s ease forwards;
 `;
 
 const BodyFooterContainer = styled.div`
