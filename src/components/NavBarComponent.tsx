@@ -238,8 +238,6 @@ const NavbarBackground = styled.div`
   }
 `;
 
-//#7B0E34
-
 const NavbarBackgroundHome = styled.div`
   display: flex;
   align-items: center;
