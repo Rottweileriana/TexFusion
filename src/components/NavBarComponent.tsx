@@ -69,7 +69,7 @@ export const NavBarComponent: React.FC = () => {
               <TexFusionLogoTextContainer>
                 <Title>Tex Fusion</Title>
               </TexFusionLogoTextContainer>
-              {location.pathname === "/Menu" ? (
+              {location.pathname === "/" ? (
                 <NavBarListSub>
                   <LinkStyle
                     activeClass="active"
@@ -115,7 +115,7 @@ export const NavBarComponent: React.FC = () => {
             </HamburgerMenuButton>
             <BurgerSideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
             <NavBarListMain>
-              <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
+              <NavLinkStyle to="/">MENY</NavLinkStyle>
               <NavLinkStyle to="/About">OM OSS</NavLinkStyle>
               <NavLinkStyle to="/Contact">KONTAKT</NavLinkStyle>
               <NavLinkStyle to="/Shoppingcart">
