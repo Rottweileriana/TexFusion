@@ -306,8 +306,6 @@ const TexFusionLogoTextContainer = styled.div`
   size: 50px;
 `;
 
-
-
 const NavBarListSub = styled.div`
   display: flex;
   height: 25%;
@@ -355,6 +353,7 @@ const LinkStyle = styled(Link)`
   text-decoration: none;
   position: relative;
   border-radius: 5px;
+  
   &:hover {
     color: #cc5500;
   }

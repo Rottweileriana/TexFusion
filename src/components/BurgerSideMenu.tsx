@@ -36,6 +36,11 @@ const NavLinkStyle: typeof NavLink = styled(NavLink)`
   margin-left: 20px;
   color: lightgrey;
   font-family: "Open Sans";
+
+  &:hover {
+    color:#cc5500;
+    border:none;
+  }
 `;
 
 const ButtonStyle = styled.button`
@@ -49,7 +54,7 @@ const ButtonStyle = styled.button`
     outline: none;
   }
   &:hover {
-    color:#535bf2;
+    color:#cc5500;
     border:none;
   }
 `;
@@ -63,6 +68,11 @@ const CloseButton = styled.button`
   font-size: 20px;
   color: lightgrey;
   margin: 0 0 30px 20px;;
+
+  &:hover {
+    color:#cc5500;
+    border:none;
+  }
 `;
 
 const BottomGapSubLinks = styled.div`

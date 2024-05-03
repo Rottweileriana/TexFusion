@@ -60,7 +60,43 @@ const RadioElement = styled.div`
 const ButtonStyle = styled.button`
   background-color:#7B0E34;
   color: white;
-  
+
+  &:hover {
+    border-color: #7B0E34;
+  }
+`;
+
+const ButtonStyleInActive = styled.button`
+  position: relative;
+  background-color: #cfcfcf;
+  color: #918f8f;
+  border: 1px solid #989898;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: default;
+    border-color: #989898;
+  }
+
+  &::after {
+    content: "Din varukorg är tom.";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #c3cecd;
+    color: #333333;
+    padding: 5px;
+    border: 1px solid #333333;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
 `;
 
 const RadioBtn = styled.input`
@@ -307,6 +343,7 @@ export function CheckoutForm() {
           <br/>
           {cart.length === 0 ? (
             <FormBtn>
+              <ButtonStyleInActive type="button">Beställ</ButtonStyleInActive>
             </FormBtn>
           ) : (
             <FormBtn>
