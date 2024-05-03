@@ -44,6 +44,7 @@ const MainDiv = styled.div`
   background-color: #0e1820;
   bottom: 0;
   padding-bottom: 0;
+  z-index: 0;
 `;
 
 const FooterNavbar = styled.ul`

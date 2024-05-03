@@ -16,6 +16,7 @@ const HomeBackgroundContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   position: absolute;
+  z-index: 1;
 `;
 
 const Title = styled.h2`
@@ -24,11 +25,12 @@ const Title = styled.h2`
   font-weight: 30px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: white;
-  z-index: 1;
+  color: #999898;
   opacity: 0;
-  padding-top: 23px;
-  transition: opacity 3s ease;
+  transition: opacity 4s ease;
+  padding-left: 10px;
+  padding: 35px 0 0 0;
+  margin: 0 0 0 0;
 `;
 
 const SubTitle = styled.p`
@@ -37,10 +39,11 @@ const SubTitle = styled.p`
   font-weight: 30px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: white;
+  color: #999898;
   opacity: 0;
-  padding-top: 0;
-  transition: opacity 3s ease;
+  transition: opacity 7s ease;
+  padding: 0 0 65px 0;
+  margin: 0 0 0 0;
 `;
 
 const horizontalLineAnimation = keyframes`
@@ -51,9 +54,9 @@ const horizontalLineAnimation = keyframes`
   }
 
   100% {
-    width: calc(68% - 150px);
+    width: calc(50% + 200px);
     opacity: 1;
-    right: calc(13% - 150px);
+    right: calc(5%);
   }
 `;
 
@@ -77,7 +80,7 @@ interface LineProps {
 
 const HorizontalLine = styled.div<LineProps>`
   position: absolute;
-  background-color: white;
+  background-color: #888181;
   width: 2px;
   height: 2px;
   animation: ${horizontalLineAnimation} 2s forwards;
@@ -85,13 +88,18 @@ const HorizontalLine = styled.div<LineProps>`
 
 const VerticalLine = styled.div`
   position: absolute;
-  background-color: white;
+  background-color: #888181;
   width: 2px;
   height: 0;
   top: 100%;
   right: calc(61%);
   animation: ${verticalLineAnimation} 2s forwards;
 `;
+
+/* const SmallTM = styled.span`
+  font-size: 0.4em;
+  margin-bottom: 15px;
+`; */
 
 export function HomeComponent() {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -109,13 +117,13 @@ export function HomeComponent() {
   }, []);
 
   return (
-    <Body>
+    <body>
       <HomeBackgroundContainer>
         <Title ref={titleRef}>Tex Fusion</Title>
         <SubTitle ref={subTitleRef}>Premium Tacos</SubTitle>
         <HorizontalLine titleHeight={titleRef.current?.offsetHeight} />
         <VerticalLine />
       </HomeBackgroundContainer>
-    </Body>
+    </body>
   );
 }
