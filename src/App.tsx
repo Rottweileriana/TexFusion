@@ -18,10 +18,35 @@ import {
   AboutComponent,
 } from "./components/index";
 import styled from "styled-components";
+import { keyframes } from 'styled-components';
 
 import "./App.css";
 
 //#region Styles
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+`;
+
+const HomeComponentContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  animation: ${fadeOut} 10s ease forwards;
+`;
 
 const BodyFooterContainer = styled.div`
   display: flex;
@@ -177,13 +202,15 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <CartProvider>
+          <HomeComponentContainer>
+            <HomeComponent />
+          </HomeComponentContainer>
           <NavBarComponent />
           <BodyFooterContainer>
             <BodyContainer>
               <Routes>
-                <Route path="/" element={<HomeComponent />} />
                 <Route
-                  path="/Menu"
+                  path="/"
                   element={
                     <ErrorBoundary>
                       <BodyBackgroundContainer>

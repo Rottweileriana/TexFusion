@@ -52,34 +52,6 @@ export const NavBarComponent: React.FC = () => {
 
   return (
     <>
-      {location.pathname === "/" ? (
-        <NavbarBackgroundHome>
-          <MainDiv>
-            <LogoContainer>
-              {/* <Title>Tex Fusion</Title>
-              <SubTitle>Premium tacos</SubTitle> */}
-            </LogoContainer>
-            <HamburgerMenuButtonHome onClick={() => OpenCloseSidebar()}>
-              <FontAwesomeIcon icon={faBars} />
-            </HamburgerMenuButtonHome>
-            <BurgerSideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
-            {/* <NavBarListMain>
-              <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
-              <NavLinkStyleHome to="/About">OM OSS</NavLinkStyleHome>
-              <NavLinkStyleHome to="/Contact">KONTAKT</NavLinkStyleHome>
-              <NavLinkStyleHome to="/Shoppingcart">
-                <CartIconAndBadge>
-                  <FontAwesomeIcon icon={faShoppingCart} />
-                  <Badge>
-                    {totCartQuant > 0 &&
-                      (totCartQuant > 10 ? "10+" : totCartQuant)}
-                  </Badge>
-                </CartIconAndBadge>
-              </NavLinkStyleHome>
-            </NavBarListMain> */}
-          </MainDiv>
-        </NavbarBackgroundHome>
-      ) : (
         <NavbarBackground>
           <MainDiv>
             <LogoContainer>
@@ -158,7 +130,6 @@ export const NavBarComponent: React.FC = () => {
             </NavBarListMain>
           </MainDiv>
         </NavbarBackground>
-      )}
     </>
   );
 };
