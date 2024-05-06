@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import { CartProvider } from "./components/context";
 import {
   CourseMenu,
@@ -199,13 +199,19 @@ class ErrorBoundary extends React.Component<
 }
 
 const App: React.FC = () => {
+
+  const [firstRenderForSession, setFirstRenderForSession] = useState<boolean>(true);
+
   return (
     <>
       <BrowserRouter>
         <CartProvider>
-          <HomeComponentContainer>
-            <HomeComponent />
-          </HomeComponentContainer>
+          {firstRenderForSession && 
+          <>
+            <HomeComponentContainer>
+              <HomeComponent />
+            </HomeComponentContainer>
+          </>}
           <NavBarComponent />
           <BodyFooterContainer>
             <BodyContainer>
