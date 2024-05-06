@@ -18,7 +18,7 @@ export const NavBarComponent: React.FC = () => {
 
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
-  const RoundLogo = `/images/RoundLogoPic6.png`;
+  const RoundLogo = `/images/RoundLogoPic.png`;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isScreenSmaller, setIsScreenSmaller] = useState<boolean>(false);
 
@@ -49,9 +49,6 @@ export const NavBarComponent: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleReload = () => {
-    window.location.href = "/";    
-  };
 
   return (
     <>
@@ -63,7 +60,7 @@ export const NavBarComponent: React.FC = () => {
                   <TitleSmallScren>Tex Fusion</TitleSmallScren>
                 </LogoNavLink>
               ) : (
-                <LogoNavLink to="/" onClick={handleReload}>
+                <LogoNavLink to="/">
                   <Logo src={RoundLogo} alt="LogoTopLeft" />
                 </LogoNavLink>
               )}
@@ -147,7 +144,7 @@ max-width:150px;
 
 const Title = styled.h2`
 font-family: 'Marschel' sans-serif;
-    font-size: 32px;
+    font-size: 38px;
     font-weight: 30px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -199,7 +196,7 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: #4c041d;
+  background-color: rgba(107, 7, 7, 1);
   z-index: 9999;
   width: 100%;
   height: 175px;
