@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import {
   useContext,
   useEffect,
+  useNavigate,
   useState,
   FontAwesomeIcon,
   faShoppingCart,
@@ -49,6 +50,13 @@ export const NavBarComponent: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const navigate = useNavigate();
+
+  const clearSessionStorage = () => {
+    sessionStorage.clear();
+    window.location.href = '/'; 
+  };
+
 
   return (
     <>
@@ -56,13 +64,13 @@ export const NavBarComponent: React.FC = () => {
           <MainDiv>
             <LogoContainer>
               {isScreenSmaller ? (
-                <LogoNavLink to="/">
+                <LogoMethod onClick={clearSessionStorage}>
                   <TitleSmallScren>Tex Fusion</TitleSmallScren>
-                </LogoNavLink>
+                </LogoMethod>
               ) : (
-                <LogoNavLink to="/">
+                <LogoMethod onClick={clearSessionStorage}>
                   <Logo src={RoundLogo} alt="LogoTopLeft" />
-                </LogoNavLink>
+                </LogoMethod>
               )}
             </LogoContainer>
             <LogotextSubnavbarContainer>
@@ -248,7 +256,19 @@ const LogoContainer = styled.div`
   min-width:250px;
 `;
 
-const LogoNavLink: typeof NavLink = styled(NavLink)`
+// const LogoNavLink: typeof NavLink = styled(NavLink)`
+//   display: flex;
+//   align-items:center;
+//   width: 115px;
+//   height: 100%;
+//   border-radius: 90px;
+//   text-decoration: none;
+//   &:hover {
+//     cursor: pointer;
+//   }
+// `;
+
+const LogoMethod = styled.div`
   display: flex;
   align-items:center;
   width: 115px;
