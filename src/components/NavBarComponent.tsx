@@ -19,7 +19,7 @@ export const NavBarComponent: React.FC = () => {
 
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
-  const RoundLogo = `/images/RoundLogoPic.png`;
+  const RoundLogo = `/images/RoundLogoForkBlueDarkABitGreyer.png`;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isScreenSmaller, setIsScreenSmaller] = useState<boolean>(false);
 
@@ -157,11 +157,12 @@ font-family: 'Marschel' sans-serif;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin:0;
     padding:0;
     min-width:34px;
     overflow:show;
+    
     @media (max-width: 900px) {
       visibility: hidden;
     }
@@ -254,18 +255,6 @@ const LogoContainer = styled.div`
   min-width:250px;
 `;
 
-// const LogoNavLink: typeof NavLink = styled(NavLink)`
-//   display: flex;
-//   align-items:center;
-//   width: 115px;
-//   height: 100%;
-//   border-radius: 90px;
-//   text-decoration: none;
-//   &:hover {
-//     cursor: pointer;
-//   }
-// `;
-
 const LogoMethod = styled.div`
   display: flex;
   align-items:center;
@@ -296,8 +285,6 @@ const TexFusionLogoTextContainer = styled.div`
   z-index: 9999;
   size: 50px;
 `;
-
-
 
 const NavBarListSub = styled.div`
   display: flex;
@@ -333,8 +320,6 @@ const NavBarListMain = styled.div`
     visibility: hidden;
   }
 `;
-
-
 
 const LinkStyle = styled(Link)`
   display: block;
