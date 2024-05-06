@@ -110,7 +110,7 @@ const ContactContainerTitle = styled.div`
   max-width: 500px;
   width: 80%;
   padding-bottom: 10px;
-  border-bottom: solid;
+  border-bottom: 2px solid;
   border-color: #333333;
 `;
 
@@ -170,7 +170,7 @@ const ContactContainer = styled.div`
   color: #333333;
   margin: 0 0 20px 0;
   padding: 20px 0;
-  border-bottom: solid;
+  border-bottom: 2px solid;
 `;
 
 const OpenHoursContainer = styled.div`
@@ -182,7 +182,7 @@ const OpenHoursContainer = styled.div`
   color: #333333;
   width: 100%;
   color: #333333;
-  border-bottom: solid;
+  border-bottom: 2px solid;
 `;
 
 const OpenHoursTitle = styled.h4`
