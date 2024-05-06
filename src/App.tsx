@@ -201,23 +201,22 @@ class ErrorBoundary extends React.Component<
 
 const App: React.FC = () => {
 
-  const [firstRenderForSession, setFirstRenderForSession] = useState<boolean>(true);
+  const [isFirstRender, setIsFirstRender] = useState(false);
 
-useEffect(() => {
-  const isFirstRender = sessionStorage.getItem("isFirstRender");
+  useEffect(() => {
+    const firstLoad = sessionStorage.getItem('firstLoad');
 
-  if (!isFirstRender || isFirstRender === "true") {
-    sessionStorage.setItem("isFirstRender", "false");
-  } else {
-    setFirstRenderForSession(false);
-  }
-}, []);
+    if (!firstLoad) {
+      sessionStorage.setItem('firstLoad', 'true');
+      setIsFirstRender(true);
+    }
+  }, []);
 
   return (
     <>
       <BrowserRouter>
         <CartProvider>
-        {firstRenderForSession &&
+        {isFirstRender &&
             <HomeComponentContainer>
               <HomeComponent />
             </HomeComponentContainer>}
