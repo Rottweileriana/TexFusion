@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { CartProvider } from "./components/context";
 import {
   CourseMenu,
@@ -21,6 +21,7 @@ import styled from "styled-components";
 import { keyframes } from 'styled-components';
 
 import "./App.css";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 //#region Styles
 
@@ -202,16 +203,24 @@ const App: React.FC = () => {
 
   const [firstRenderForSession, setFirstRenderForSession] = useState<boolean>(true);
 
+useEffect(() => {
+  const isFirstRender = sessionStorage.getItem("isFirstRender");
+
+  if (!isFirstRender || isFirstRender === "true") {
+    sessionStorage.setItem("isFirstRender", "false");
+  } else {
+    setFirstRenderForSession(false);
+  }
+}, []);
+
   return (
     <>
       <BrowserRouter>
         <CartProvider>
-          {firstRenderForSession && 
-          <>
+        {firstRenderForSession &&
             <HomeComponentContainer>
               <HomeComponent />
-            </HomeComponentContainer>
-          </>}
+            </HomeComponentContainer>}
           <NavBarComponent />
           <BodyFooterContainer>
             <BodyContainer>
