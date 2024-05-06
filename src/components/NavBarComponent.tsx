@@ -196,7 +196,7 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: rgba(107, 7, 7, 1);
+  background-color: #5a0303;
   z-index: 9999;
   width: 100%;
   height: 175px;
