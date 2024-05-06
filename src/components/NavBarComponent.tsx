@@ -205,7 +205,7 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: #360315;
+  background-color: rgba(0, 0, 0, 0.1);
   z-index: 9999;
   width: 100%;
   height: 175px;
@@ -217,6 +217,25 @@ const NavbarBackground = styled.div`
     height: 100px;
   }
 `;
+
+// const NavbarBackground = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin: 0;
+//   padding: 0;
+//   background-color: #360315;
+//   z-index: 9999;
+//   width: 100%;
+//   height: 175px;
+//   position: fixed;
+//   top: 0;
+//   z-index: 9999;
+
+//   @media (max-width: 768px) {
+//     height: 100px;
+//   }
+// `;
 
 const NavbarBackgroundHome = styled.div`
   display: flex;
