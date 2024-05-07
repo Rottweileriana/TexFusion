@@ -204,17 +204,13 @@ const App: React.FC = () => {
   const [isFirstRender, setIsFirstRender] = useState(false);
 
   useEffect(() => {
-    const firstLoad = sessionStorage.getItem('firstLoad');
-
-    console.log(firstLoad);
+    const firstLoad = sessionStorage.getItem('firstLoad');<q></q>
 
     if (!firstLoad) {
       sessionStorage.setItem('firstLoad', 'true');
       setIsFirstRender(true);
     }
   }, []);
-
-  console.log(isFirstRender);
 
   return (
     <>
