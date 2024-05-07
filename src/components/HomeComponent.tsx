@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import React, { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 const Body = styled.body`
   margin: 0;
@@ -100,7 +99,6 @@ const VerticalLine = styled.div`
 export function HomeComponent() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subTitleRef = useRef<HTMLParagraphElement>(null);
-  const location = useLocation();
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -114,17 +112,15 @@ export function HomeComponent() {
   }, []);
 
   return (
-    // <>
-    //   { location.pathname === "/" && (
-        <Body>
-          <HomeBackgroundContainer>
-            <Title ref={titleRef}>Tex Fusion</Title>
-            <SubTitle ref={subTitleRef}>Premium Tacos</SubTitle>
-            <HorizontalLine titleHeight={titleRef.current?.offsetHeight} />
-            <VerticalLine />
-          </HomeBackgroundContainer>
-        </Body>
-    //   )}
-    // </>
+    <>
+      <Body>
+        <HomeBackgroundContainer>
+          <Title ref={titleRef}>Tex Fusion</Title>
+          <SubTitle ref={subTitleRef}>Premium Tacos</SubTitle>
+          <HorizontalLine titleHeight={titleRef.current?.offsetHeight} />
+          <VerticalLine />
+        </HomeBackgroundContainer>
+      </Body>
+    </>
   );
 }

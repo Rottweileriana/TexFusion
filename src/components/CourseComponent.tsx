@@ -5,13 +5,6 @@ import { DishProps } from "../types/index";
 import { RecommendationComponent, faTrashCan } from "./index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-type Product = {
-  imageUrl: string;
-  title: string;
-  price: number;
-  quantity: number;
-};
-
 interface StyledCourseProps {
   quantity: number;
 }
@@ -79,7 +72,7 @@ const CounterContainer = styled.div`
   height: 30px;
   border: 0px solid #808080;
   border-radius: 30px;
-  background-color: #7B0E34;
+  background-color: #7b0e34;
   font-weight: 300;
 `;
 
@@ -153,8 +146,8 @@ const Recommendation = styled.div`
 `;
 
 const HeadRecCocktail = styled.text`
-font-family: "Open Sans";
-font-weight: 500;
+  font-family: "Open Sans";
+  font-weight: 500;
   margin: 15px 0 5px 7px;
   color: #333333;
 `;
@@ -177,12 +170,11 @@ const CourseComponent: React.FC<DishProps> = ({
   price,
 }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext)!;
-  const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
 
   let formattedIngredientText = "";
-  let handleIncrement: () => void = () => { };
-  let handleDecrement: () => void = () => { };
+  let handleIncrement: () => void = () => {};
+  let handleDecrement: () => void = () => {};
 
   try {
     //course
@@ -236,7 +228,6 @@ const CourseComponent: React.FC<DishProps> = ({
     };
   } catch (error) {
     console.error("Error in creating course component", error);
-    setError("An error occurred while rendering course component.");
   }
 
   return (
