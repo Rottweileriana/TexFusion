@@ -50,7 +50,7 @@ const TextContainer = styled.div`
   padding: 0;
   margin: 35px 0 20px 0;
   text-align: center;
-  color: #333333;);
+  color: #333333;
   border-top: 2px solid #9f9e9e;
   border-bottom: 2px solid #9f9e9e;
 `;
@@ -79,17 +79,18 @@ export function AboutComponent() {
           <TextContainer>
             <Text>
               TexFusion dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi gott.
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi gott.
             </Text>
             <Text>
               Premium aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est 2024.
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est 2024.
               Välkomna!
-              </Text>
-            </TextContainer>
+            </Text>
+          </TextContainer>
         </AboutUsContainer>
       </BackgroundImageContainer>
     </>
