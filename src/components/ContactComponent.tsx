@@ -111,7 +111,7 @@ const ContactContainerTitle = styled.div`
   width: 80%;
   padding-bottom: 10px;
   border-bottom: 2px solid;
-  border-color: #333333;
+  border-color: #9f9e9e;
 `;
 
 const ContactTitle = styled.h2`
@@ -170,7 +170,7 @@ const ContactContainer = styled.div`
   color: #333333;
   margin: 0 0 20px 0;
   padding: 20px 0;
-  border-bottom: 2px solid;
+  border-bottom: 2px solid #9f9e9e;
 `;
 
 const OpenHoursContainer = styled.div`
@@ -182,7 +182,7 @@ const OpenHoursContainer = styled.div`
   color: #333333;
   width: 100%;
   color: #333333;
-  border-bottom: 2px solid;
+  border-bottom: 2px solid #9f9e9e;
 `;
 
 const OpenHoursTitle = styled.h4`

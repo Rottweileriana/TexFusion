@@ -51,8 +51,8 @@ const TextContainer = styled.div`
   margin: 35px 0 20px 0;
   text-align: center;
   color: #333333;);
-  border-top: 2px solid #333333;
-  border-bottom: 2px solid #333333;
+  border-top: 2px solid #9f9e9e;
+  border-bottom: 2px solid #9f9e9e;
 `;
 
 const Title = styled.h3`
