@@ -9,10 +9,6 @@ type RecCocktail = {
   title: string;
 };
 
-interface StyledCourseProps {
-  quantity: number;
-}
-
 //#region Styles
 const StyledCocktail = styled.div`
   display: flex;
@@ -72,7 +68,7 @@ const CounterContainer = styled.div`
   margin-left: auto;
   border: 0px solid #808080;
   border-radius: 5px;
-  background-color: #7B0E34;
+  background-color: #7b0e34;
   float: right;
 `;
 

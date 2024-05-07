@@ -1,11 +1,11 @@
 import { useState, useContext, useNavigate } from "./index";
 import { CartContext } from "./context";
 import styled from "styled-components";
-import { CartItem, FormData } from "../types/index";
+import { FormData } from "../types/index";
 
 const defaultFormData: FormData = {
-  firstName: '',
-  lastName: '',
+  firstName: "",
+  lastName: "",
   email: "",
   address: "",
   zipCode: "",
@@ -41,7 +41,7 @@ const PaymentRadioBtnContainer = styled.div`
   align-items: start;
   border: none;
   margin-left: 20px;
-  text-align:center;
+  text-align: center;
 `;
 
 const PaymentInput = styled.div`
@@ -60,11 +60,11 @@ const RadioElement = styled.div`
 `;
 
 const ButtonStyle = styled.button`
-  background-color:#7B0E34;
+  background-color: #7b0e34;
   color: white;
 
   &:hover {
-    border-color: #7B0E34;
+    border-color: #7b0e34;
   }
 `;
 
@@ -119,7 +119,7 @@ const TextInput = styled.input`
   color: #333333;
   border: 1px solid #222222;
   border-radius: 5px;
-  width:180px;
+  width: 180px;
 `;
 
 const FormBtn = styled.div`
@@ -127,12 +127,12 @@ const FormBtn = styled.div`
 `;
 
 const CheckoutFormCartContainer = styled.div`
-  display:flex;
+  display: flex;
   width: 100%;
   margin: 25px 0 90px 0;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledTitle = styled.h2`
@@ -144,30 +144,20 @@ const StyledTitle = styled.h2`
 `;
 
 const StyledP = styled.p`
-  width:100%;
+  width: 100%;
   text-align: center;
-  font-family:"Open sans";
-  margin:0;
+  font-family: "Open sans";
+  margin: 0;
 `;
 
-
 //#endregion
-
-//ÄNDRA TILL STOR FÖRSTABOKSTAV!!!
-function getSessionStorageOrDefault(key: string, defaultValue: CartItem[]) {
-  const stored = sessionStorage.getItem(key);
-  if (!stored) {
-    return defaultValue;
-  }
-  return JSON.parse(stored);
-}
 
 export function CheckoutForm() {
   //Cart för senare användning för att skapa confirmation page
   const { cart, confirmation, deleteCart } = useContext(CartContext)!;
   const navigate = useNavigate();
 
- // var [confirmCheckout, setConfirmedCheckout] = useState();
+  // var [confirmCheckout, setConfirmedCheckout] = useState();
   const [formData, setFormData] = useState<FormData>(defaultFormData);
   const { firstName, lastName, email, address, zipCode, city, phone } =
     formData;
@@ -198,7 +188,7 @@ export function CheckoutForm() {
       phone === "" ||
       formData.paymentMethod === ""
     ) {
-      alert('Var vänlig fyll i alla obligatoriska fält.');
+      alert("Var vänlig fyll i alla obligatoriska fält.");
       return; // Avbryt inlämningen om något fält är tomt
     }
 
@@ -212,95 +202,80 @@ export function CheckoutForm() {
     setFormData(defaultFormData);
     //Navigate to ConfirmationPage
     navigate("/ConfirmationPage");
-  
   };
 
   return (
     <CheckoutFormCartContainer>
-        <StyledTitle>KASSA</StyledTitle>
+      <StyledTitle>KASSA</StyledTitle>
       <InputForm>
         <form onSubmit={onSubmit}>
-        <StyledP>Betalningsuppgifter</StyledP>
+          <StyledP>Betalningsuppgifter</StyledP>
           <FormInputElements>
             <InputElement>
-              <label>
-                Förnamn
-                </label>
-                <TextInput
-                  type="text"
-                  id="firstName"
-                  value={firstName}
-                  onChange={onChange}
-                />
-              </InputElement>
-            <InputElement>
-              <label>
-                Efternamn
-                </label>
-                <TextInput
-                  type="text"
-                  id="lastName"
-                  value={lastName}
-                  onChange={onChange}
-                />
+              <label>Förnamn</label>
+              <TextInput
+                type="text"
+                id="firstName"
+                value={firstName}
+                onChange={onChange}
+              />
             </InputElement>
-          <InputElement>
-            <label>
-              E-post
-              </label>
+            <InputElement>
+              <label>Efternamn</label>
+              <TextInput
+                type="text"
+                id="lastName"
+                value={lastName}
+                onChange={onChange}
+              />
+            </InputElement>
+            <InputElement>
+              <label>E-post</label>
               <TextInput
                 type="email"
                 id="email"
                 value={email}
                 onChange={onChange}
               />
-          </InputElement>
-          <InputElement>
-            <label>
-              Telefon
-              </label>
+            </InputElement>
+            <InputElement>
+              <label>Telefon</label>
               <TextInput
                 type="text"
                 id="phone"
                 value={phone}
                 onChange={onChange}
               />
-          </InputElement>
-          <InputElement>
-            <label>
-              Adress
-              </label>
+            </InputElement>
+            <InputElement>
+              <label>Adress</label>
               <TextInput
                 type="text"
                 id="address"
                 value={address}
                 onChange={onChange}
               />
-          </InputElement>
-            <InputElement>
-              <label>
-                Postnummer
-                </label>
-                <TextInput
-                  type="text"
-                  id="zipCode"
-                  value={zipCode}
-                  onChange={onChange}
-                />
             </InputElement>
             <InputElement>
-              <label>
-                Stad
-                </label>
-                <TextInput
-                  type="text"
-                  id="city"
-                  value={city}
-                  onChange={onChange}
-                />
+              <label>Postnummer</label>
+              <TextInput
+                type="text"
+                id="zipCode"
+                value={zipCode}
+                onChange={onChange}
+              />
+            </InputElement>
+            <InputElement>
+              <label>Stad</label>
+              <TextInput
+                type="text"
+                id="city"
+                value={city}
+                onChange={onChange}
+              />
             </InputElement>
           </FormInputElements>
-          <br/>
+          <br />
           <StyledP>Betalmetod</StyledP>
           <PaymentRadioBtnContainer>
             <PaymentInput>
@@ -312,9 +287,7 @@ export function CheckoutForm() {
                   value="Kreditkort"
                   onChange={onPaymentChange}
                 />
-                <PaymentRadio htmlFor="card">
-                Kreditkort
-              </PaymentRadio>
+                <PaymentRadio htmlFor="card">Kreditkort</PaymentRadio>
               </RadioElement>
               <RadioElement>
                 <RadioBtn
@@ -324,9 +297,7 @@ export function CheckoutForm() {
                   value="Klarna"
                   onChange={onPaymentChange}
                 />
-                <PaymentRadio htmlFor="klarna">
-                Klarna
-              </PaymentRadio>
+                <PaymentRadio htmlFor="klarna">Klarna</PaymentRadio>
               </RadioElement>
               <RadioElement>
                 <RadioBtn
@@ -336,20 +307,18 @@ export function CheckoutForm() {
                   value="Swish"
                   onChange={onPaymentChange}
                 />
-                <PaymentRadio htmlFor="swish">
-                Swish
-              </PaymentRadio>
+                <PaymentRadio htmlFor="swish">Swish</PaymentRadio>
               </RadioElement>
             </PaymentInput>
           </PaymentRadioBtnContainer>
-          <br/>
+          <br />
           {cart.length === 0 ? (
             <FormBtn>
               <ButtonStyleInActive type="button">Beställ</ButtonStyleInActive>
             </FormBtn>
           ) : (
             <FormBtn>
-            <ButtonStyle type="submit">Beställ</ButtonStyle>
+              <ButtonStyle type="submit">Beställ</ButtonStyle>
             </FormBtn>
           )}
         </form>

@@ -18,10 +18,9 @@ import {
   AboutComponent,
 } from "./components/index";
 import styled from "styled-components";
-import { keyframes } from 'styled-components';
+import { keyframes } from "styled-components";
 
 import "./App.css";
-import { isCompositeComponent } from "react-dom/test-utils";
 
 //#region Styles
 
@@ -179,7 +178,7 @@ class ErrorBoundary extends React.Component<
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error: any) {
+  static getDerivedStateFromError() {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
@@ -200,14 +199,14 @@ class ErrorBoundary extends React.Component<
 }
 
 const App: React.FC = () => {
-
   const [isFirstRender, setIsFirstRender] = useState(false);
 
   useEffect(() => {
-    const firstLoad = sessionStorage.getItem('firstLoad');<q></q>
+    const firstLoad = sessionStorage.getItem("firstLoad");
+    <q></q>;
 
     if (!firstLoad) {
-      sessionStorage.setItem('firstLoad', 'true');
+      sessionStorage.setItem("firstLoad", "true");
       setIsFirstRender(true);
     }
   }, []);
@@ -216,10 +215,11 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <CartProvider>
-        {isFirstRender &&
+          {isFirstRender && (
             <HomeComponentContainer>
               <HomeComponent />
-            </HomeComponentContainer>}
+            </HomeComponentContainer>
+          )}
           <NavBarComponent />
           <BodyFooterContainer>
             <BodyContainer>
