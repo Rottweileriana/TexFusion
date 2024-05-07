@@ -93,11 +93,12 @@ const BackgroundStyle = styled.div`
   display: flex;
   height: 750px;
   width: 500px;
+  max-width: 80%;
   margin: 229px 0 100px 0;
   flex-direction: column;
   align-items: center;
   padding-top: 15px;
-  background-color: rgba(245, 245, 245, 0.5);
+  background-color: rgba(245, 245, 245, 0.7);
 `;
 
 //Contact Title Container with children
@@ -109,8 +110,8 @@ const ContactContainerTitle = styled.div`
   max-width: 500px;
   width: 80%;
   padding-bottom: 10px;
-  border-bottom: solid;
-  border-color: #333333;
+  border-bottom: 2px solid;
+  border-color: #9f9e9e;
 `;
 
 const ContactTitle = styled.h2`
@@ -169,7 +170,7 @@ const ContactContainer = styled.div`
   color: #333333;
   margin: 0 0 20px 0;
   padding: 20px 0;
-  border-bottom: solid;
+  border-bottom: 2px solid #9f9e9e;
 `;
 
 const OpenHoursContainer = styled.div`
@@ -181,7 +182,7 @@ const OpenHoursContainer = styled.div`
   color: #333333;
   width: 100%;
   color: #333333;
-  border-bottom: solid;
+  border-bottom: 2px solid #9f9e9e;
 `;
 
 const OpenHoursTitle = styled.h4`

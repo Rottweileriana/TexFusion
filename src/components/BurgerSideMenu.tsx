@@ -99,7 +99,7 @@ export function BurgerSideMenu({
      switch (number) {
        case 1:
          //Navigera till menyn
-         navigate('/Menu');
+         navigate('/');
          //Aktivera timer så scroll sker efter component är renderad
          setTimeout(() => {
            //Definera courseMenuElemnt som HTMLelement och kan ej vara null
@@ -111,7 +111,7 @@ export function BurgerSideMenu({
          break;
        case 2:
          offset = -162;
-         navigate('/Menu');
+         navigate('/');
          setTimeout(() => {
            const sidesMenuElement: HTMLElement = document.getElementById('SidesMenu')!;
            window.scrollTo(0, sidesMenuElement?.offsetTop + offset);
@@ -120,7 +120,7 @@ export function BurgerSideMenu({
          break;
        case 3:
          offset = -162;
-         navigate('/Menu');
+         navigate('/');
          setTimeout(() => {
            const cocktailMenuElement: HTMLElement = document.getElementById('CocktailMenu')!;
            window.scrollTo(0, cocktailMenuElement?.offsetTop + offset);
@@ -128,7 +128,7 @@ export function BurgerSideMenu({
          OpenCloseSidebar();
          break;
        default:
-        navigate('/Menu');
+        navigate('/');
         break;
      }
   }
@@ -137,7 +137,7 @@ export function BurgerSideMenu({
       <BurgerSideMenuContainer isOpen={isOpen}>
         <CloseButton onClick={() => OpenCloseSidebar()}>
           x</CloseButton>
-        <NavLinkStyle to="/Menu" onClick={() => OpenCloseSidebar()}>
+        <NavLinkStyle to="/" onClick={() => OpenCloseSidebar()}>
           MENY</NavLinkStyle>
           <BottomGapSubLinks>
             <ButtonStyle onClick={() => GoToMenuAndSubLink(1)}>Huvudrätt</ButtonStyle>

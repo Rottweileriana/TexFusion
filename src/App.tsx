@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { CartProvider } from "./components/context";
 import {
   CourseMenu,
@@ -18,10 +18,37 @@ import {
   AboutComponent,
 } from "./components/index";
 import styled from "styled-components";
+import { keyframes } from 'styled-components';
 
 import "./App.css";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 //#region Styles
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+  }
+`;
+
+const HomeComponentContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  animation: ${fadeOut} 7s ease forwards;
+`;
 
 const BodyFooterContainer = styled.div`
   display: flex;
@@ -173,17 +200,36 @@ class ErrorBoundary extends React.Component<
 }
 
 const App: React.FC = () => {
+
+  const [isFirstRender, setIsFirstRender] = useState(false);
+
+  useEffect(() => {
+    const firstLoad = sessionStorage.getItem('firstLoad');
+
+    console.log(firstLoad);
+
+    if (!firstLoad) {
+      sessionStorage.setItem('firstLoad', 'true');
+      setIsFirstRender(true);
+    }
+  }, []);
+
+  console.log(isFirstRender);
+
   return (
     <>
       <BrowserRouter>
         <CartProvider>
+        {isFirstRender &&
+            <HomeComponentContainer>
+              <HomeComponent />
+            </HomeComponentContainer>}
           <NavBarComponent />
           <BodyFooterContainer>
             <BodyContainer>
               <Routes>
-                <Route path="/" element={<HomeComponent />} />
                 <Route
-                  path="/Menu"
+                  path="/"
                   element={
                     <ErrorBoundary>
                       <BodyBackgroundContainer>

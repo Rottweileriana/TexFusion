@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import {
   useContext,
   useEffect,
+  useNavigate,
   useState,
   FontAwesomeIcon,
   faShoppingCart,
@@ -18,7 +19,7 @@ export const NavBarComponent: React.FC = () => {
 
   const { cart } = useContext(CartContext)!;
   const location = useLocation();
-  const RoundLogo = `/images/RoundLogoPic6.png`;
+  const RoundLogo = `/images/RoundLogoForkBlueDarkABitGreyer.png`;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isScreenSmaller, setIsScreenSmaller] = useState<boolean>(false);
 
@@ -49,55 +50,34 @@ export const NavBarComponent: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const navigate = useNavigate();
+
+  const clearSessionStorage = () => {
+    sessionStorage.clear();
+    window.location.href = '/'; 
+  };
+
 
   return (
     <>
-      {location.pathname === "/" ? (
-        <NavbarBackgroundHome>
-          <MainDiv>
-            <LogoContainer>
-              <Title>Tex Fusion</Title>
-              <SubTitle>Premium tacos</SubTitle>
-            </LogoContainer>
-            <HamburgerMenuButtonHome onClick={() => OpenCloseSidebar()}>
-              <FontAwesomeIcon icon={faBars} />
-            </HamburgerMenuButtonHome>
-            <BurgerSideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
-            <NavBarListMain>
-              <NavLinkStyleHome to="/Menu">MENY</NavLinkStyleHome>
-              <NavLinkStyleHome to="/About">OM OSS</NavLinkStyleHome>
-              <NavLinkStyleHome to="/Contact">KONTAKT</NavLinkStyleHome>
-              <NavLinkStyleHome to="/Shoppingcart">
-                <CartIconAndBadge>
-                  <FontAwesomeIcon icon={faShoppingCart} />
-                  <Badge>
-                    {totCartQuant > 0 &&
-                      (totCartQuant > 10 ? "10+" : totCartQuant)}
-                  </Badge>
-                </CartIconAndBadge>
-              </NavLinkStyleHome>
-            </NavBarListMain>
-          </MainDiv>
-        </NavbarBackgroundHome>
-      ) : (
         <NavbarBackground>
           <MainDiv>
             <LogoContainer>
               {isScreenSmaller ? (
-                <LogoNavLink to="/">
+                <LogoMethod onClick={clearSessionStorage}>
                   <TitleSmallScren>Tex Fusion</TitleSmallScren>
-              </LogoNavLink>
+                </LogoMethod>
               ) : (
-                <LogoNavLink to="/">
-                <Logo src={RoundLogo} alt="LogoTopLeft" />
-              </LogoNavLink>
+                <LogoMethod onClick={clearSessionStorage}>
+                  <Logo src={RoundLogo} alt="LogoTopLeft" />
+                </LogoMethod>
               )}
             </LogoContainer>
             <LogotextSubnavbarContainer>
               <TexFusionLogoTextContainer>
-              <Title>Tex Fusion</Title>
+                <Title>Tex Fusion</Title>
               </TexFusionLogoTextContainer>
-              {location.pathname === "/Menu" ? (
+              {location.pathname === "/" ? (
                 <NavBarListSub>
                   <LinkStyle
                     activeClass="active"
@@ -136,14 +116,14 @@ export const NavBarComponent: React.FC = () => {
             </LogotextSubnavbarContainer>
             <HamburgerMenuButton onClick={() => OpenCloseSidebar()}>
               <FontAwesomeIcon icon={faBars} />
-                  <BadgeBurger>
-                    {totCartQuant > 0 &&
-                      (totCartQuant > 10 ? "10+" : totCartQuant)}
-                  </BadgeBurger>
+              <BadgeBurger>
+                {totCartQuant > 0 &&
+                  (totCartQuant > 10 ? "10+" : totCartQuant)}
+              </BadgeBurger>
             </HamburgerMenuButton>
             <BurgerSideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
             <NavBarListMain>
-              <NavLinkStyle to="/Menu">MENY</NavLinkStyle>
+              <NavLinkStyle to="/">MENY</NavLinkStyle>
               <NavLinkStyle to="/About">OM OSS</NavLinkStyle>
               <NavLinkStyle to="/Contact">KONTAKT</NavLinkStyle>
               <NavLinkStyle to="/Shoppingcart">
@@ -158,7 +138,6 @@ export const NavBarComponent: React.FC = () => {
             </NavBarListMain>
           </MainDiv>
         </NavbarBackground>
-      )}
     </>
   );
 };
@@ -173,16 +152,17 @@ max-width:150px;
 
 const Title = styled.h2`
 font-family: 'Marschel' sans-serif;
-    font-size: 32px;
+    font-size: 38px;
     font-weight: 30px;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin:0;
     padding:0;
     min-width:34px;
     overflow:show;
+    
     @media (max-width: 900px) {
       visibility: hidden;
     }
@@ -225,7 +205,7 @@ const NavbarBackground = styled.div`
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: #4c041d;
+  background-color: #360315;
   z-index: 9999;
   width: 100%;
   height: 175px;
@@ -275,7 +255,7 @@ const LogoContainer = styled.div`
   min-width:250px;
 `;
 
-const LogoNavLink: typeof NavLink = styled(NavLink)`
+const LogoMethod = styled.div`
   display: flex;
   align-items:center;
   width: 115px;
@@ -340,8 +320,6 @@ const NavBarListMain = styled.div`
     visibility: hidden;
   }
 `;
-
-
 
 const LinkStyle = styled(Link)`
   display: block;

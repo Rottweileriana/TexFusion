@@ -28,13 +28,31 @@ const BackgroundImageContainer = styled.div`
 `;
 
 const AboutUsContainer = styled.div`
-  width: 800px;
-  height: 240px;
-  margin: 229px 0 0 0;
-  padding: 0 15px 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  width: 80%;
+  height: 450px;
+  margin: 229px 0 100px 0;
+  padding: 0 0 30px 0;
   text-align: center;
   color: #333333;
-  background-color: rgba(245, 245, 245, 0.5);
+  background-color: rgba(245, 245, 245, 0.7);
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  width: 85%;
+  padding: 0;
+  margin: 35px 0 20px 0;
+  text-align: center;
+  color: #333333;);
+  border-top: 2px solid #9f9e9e;
+  border-bottom: 2px solid #9f9e9e;
 `;
 
 const Title = styled.h3`
@@ -42,11 +60,14 @@ const Title = styled.h3`
   font-weight: 400;
   font-size: 30px;
   color: #333333;
+  margin: 30px 0 0 0;
 `;
 
 const Text = styled.p`
   text-align: justify;
   font-weight: 400;
+  margin: 20px 0;
+  width: 100%;
 `;
 
 export function AboutComponent() {
@@ -55,15 +76,20 @@ export function AboutComponent() {
       <BackgroundImageContainer>
         <AboutUsContainer>
           <Title>OM OSS</Title>
-          <Text>
-            TexFusion dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est 2024.
-          </Text>
+          <TextContainer>
+            <Text>
+              TexFusion dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+              ad minim veniam, quis nostrud exercitation ullamco laboris nisi gott.
+            </Text>
+            <Text>
+              Premium aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est 2024.
+              Välkomna!
+              </Text>
+            </TextContainer>
         </AboutUsContainer>
       </BackgroundImageContainer>
     </>
